@@ -1,2 +1,2 @@
 # Offensive-security
-Offensive-security.cf
+Psecurity.cf
