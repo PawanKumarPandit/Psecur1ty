@@ -1,0 +1,1584 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/bluez/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:09:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>bluez | Kali Linux Tools</title>
+<meta itemprop=name content="bluez | Kali Linux Tools">
+<meta name=application-name content="bluez | Kali Linux Tools">
+<meta name=twitter:title content="bluez | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="bluez | Kali Linux Tools">
+<meta itemprop=description content>
+<meta name=description content>
+<meta name=twitter:description content>
+<meta property="og:description" content>
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2022-02-10T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>bluez</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 5.62</code> <code>arch: linux-any all</code>
+<hr>
+<div id=package-links>
+<a href=http://www.bluez.org/><i class=ti-world></i> bluez Homepage</a><span><span>|</span><a href=http://pkg.kali.org/bluez><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://gitlab.com/kalilinux/packages/bluez><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-default title=kali-linux-default>default</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-large title=kali-linux-large>large</a></li>
+</ul>
+</li>
+<li>
+Tools:
+<ul>
+<li><a href=../kali-meta/index.html#kali-tools-bluetooth title=kali-tools-bluetooth>bluetooth</a></li>
+<li><a href=../kali-meta/index.html#kali-tools-wireless title=kali-tools-wireless>wireless</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#bluetooth title=bluetooth>
+<i class=ti-package></i>bluetooth
+</a>
+</li>
+<li>
+<a href=#bluez title=bluez>
+<i class=ti-package></i>bluez
+</a>
+<ul>
+<li>
+<a href=#bluemoon title=bluemoon>
+bluemoon
+</a>
+</li>
+<li>
+<a href=#bluetoothctl title=bluetoothctl>
+bluetoothctl
+</a>
+</li>
+<li>
+<a href=#bluetoothd title=bluetoothd>
+bluetoothd
+</a>
+</li>
+<li>
+<a href=#btattach title=btattach>
+btattach
+</a>
+</li>
+<li>
+<a href=#btmgmt title=btmgmt>
+btmgmt
+</a>
+</li>
+<li>
+<a href=#btmon title=btmon>
+btmon
+</a>
+</li>
+<li>
+<a href=#ciptool title=ciptool>
+ciptool
+</a>
+</li>
+<li>
+<a href=#gatttool title=gatttool>
+gatttool
+</a>
+</li>
+<li>
+<a href=#hciattach title=hciattach>
+hciattach
+</a>
+</li>
+<li>
+<a href=#hciconfig title=hciconfig>
+hciconfig
+</a>
+</li>
+<li>
+<a href=#hcitool title=hcitool>
+hcitool
+</a>
+</li>
+<li>
+<a href=#hex2hcd title=hex2hcd>
+hex2hcd
+</a>
+</li>
+<li>
+<a href=#l2ping title=l2ping>
+l2ping
+</a>
+</li>
+<li>
+<a href=#l2test title=l2test>
+l2test
+</a>
+</li>
+<li>
+<a href=#mpris-proxy title=mpris-proxy>
+mpris-proxy
+</a>
+</li>
+<li>
+<a href=#obexctl title=obexctl>
+obexctl
+</a>
+</li>
+<li>
+<a href=#rctest title=rctest>
+rctest
+</a>
+</li>
+<li>
+<a href=#rfcomm title=rfcomm>
+rfcomm
+</a>
+</li>
+<li>
+<a href=#sdptool title=sdptool>
+sdptool
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bluez-cups title=bluez-cups>
+<i class=ti-package></i>bluez-cups
+</a>
+</li>
+<li>
+<a href=#bluez-hcidump title=bluez-hcidump>
+<i class=ti-package></i>bluez-hcidump
+</a>
+<ul>
+<li>
+<a href=#hcidump title=hcidump>
+hcidump
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bluez-meshd title=bluez-meshd>
+<i class=ti-package></i>bluez-meshd
+</a>
+<ul>
+<li>
+<a href=#mesh-cfgclient title=mesh-cfgclient>
+mesh-cfgclient
+</a>
+</li>
+<li>
+<a href=#mesh-cfgtest title=mesh-cfgtest>
+mesh-cfgtest
+</a>
+</li>
+<li>
+<a href=#meshctl title=meshctl>
+meshctl
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bluez-obexd title=bluez-obexd>
+<i class=ti-package></i>bluez-obexd
+</a>
+</li>
+<li>
+<a href=#bluez-source title=bluez-source>
+<i class=ti-package></i>bluez-source
+</a>
+</li>
+<li>
+<a href=#bluez-test-scripts title=bluez-test-scripts>
+<i class=ti-package></i>bluez-test-scripts
+</a>
+</li>
+<li>
+<a href=#bluez-test-tools title=bluez-test-tools>
+<i class=ti-package></i>bluez-test-tools
+</a>
+<ul>
+<li>
+<a href=#b1ee title=b1ee>
+b1ee
+</a>
+</li>
+<li>
+<a href=#bnep-tester title=bnep-tester>
+bnep-tester
+</a>
+</li>
+<li>
+<a href=#btvirt title=btvirt>
+btvirt
+</a>
+</li>
+<li>
+<a href=#gap-tester title=gap-tester>
+gap-tester
+</a>
+</li>
+<li>
+<a href=#hci-tester title=hci-tester>
+hci-tester
+</a>
+</li>
+<li>
+<a href=#hfp title=hfp>
+hfp
+</a>
+</li>
+<li>
+<a href=#l2cap-tester title=l2cap-tester>
+l2cap-tester
+</a>
+</li>
+<li>
+<a href=#mgmt-tester title=mgmt-tester>
+mgmt-tester
+</a>
+</li>
+<li>
+<a href=#rfcomm-tester title=rfcomm-tester>
+rfcomm-tester
+</a>
+</li>
+<li>
+<a href=#sco-tester title=sco-tester>
+sco-tester
+</a>
+</li>
+<li>
+<a href=#smp-tester title=smp-tester>
+smp-tester
+</a>
+</li>
+<li>
+<a href=#userchan-tester title=userchan-tester>
+userchan-tester
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#libbluetooth-dev title=libbluetooth-dev>
+<i class=ti-package></i>libbluetooth-dev
+</a>
+</li>
+<li>
+<a href=#libbluetooth3 title=libbluetooth3>
+<i class=ti-package></i>libbluetooth3
+</a>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=bluetooth>bluetooth</h3>
+<p>This package provides all of the different plugins supported
+by the Bluez bluetooth stack.</p>
+<p><strong>Installed size:</strong> <code>76 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluetooth</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bluez
+</div></li>
+</ul>
+<hr>
+<h3 id=bluez>bluez</h3>
+<p>This package contains tools and system daemons for using Bluetooth devices.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>5.43 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>dbus</li>
+<li>init-system-helpers</li>
+<li>kmod</li>
+<li>libasound2</li>
+<li>libc6</li>
+<li>libdbus-1-3</li>
+<li>libdw1</li>
+<li>libglib2.0-0</li>
+<li>libreadline8</li>
+<li>libudev1</li>
+<li>lsb-base</li>
+<li>udev
+</div></li>
+</ul>
+<h5 id=bluemoon>bluemoon</h5>
+<p>Bluemoon configuration utility</p>
+<pre><code>root@kali:~# bluemoon -h
+bluemoon - Bluemoon configuration utility
+Usage:
+	bluemoon [options]
+Options:
+	-A, --bdaddr [addr]    Set Bluetooth address
+	-F, --firmware [file]  Load firmware
+	-C, --check &lt;file&gt;     Check firmware image
+	-R, --reset            Reset controller
+	-B, --coldboot         Cold boot controller
+	-E, --exception        Trigger exception
+	-i, --index &lt;num&gt;      Use specified controller
+	-h, --help             Show help options
+</code></pre>
+<hr>
+<h5 id=bluetoothctl>bluetoothctl</h5>
+<p>Interactive bluetooth control tool</p>
+<pre><code>root@kali:~# man bluetoothctl
+BLUETOOTHCTL(1)             General Commands Manual            BLUETOOTHCTL(1)
+
+NAME
+       bluetoothctl: - interactive bluetooth control tool
+
+DESCRIPTION
+        bluetoothctl ver 5.49 Usage:
+
+               bluetoothctl [options]
+
+OPTIONS
+       --agent
+              Register agent handler: &lt;capability&gt;
+
+       --timeout
+              Timeout in seconds for non-interactive mode
+
+       --version
+              Display version
+
+       --help Display help
+
+                                  April 2018                   BLUETOOTHCTL(1)
+</code></pre>
+<hr>
+<h5 id=bluetoothd>bluetoothd</h5>
+<p>Bluetooth daemon</p>
+<pre><code>root@kali:~# bluetoothd -h
+Usage:
+  bluetoothd [OPTION?]
+
+Help Options:
+  -h, --help                  Show help options
+
+Application Options:
+  -d, --debug=DEBUG           Specify debug options to enable
+  -p, --plugin=NAME,..,       Specify plugins to load
+  -P, --noplugin=NAME,...     Specify plugins not to load
+  -f, --configfile=FILE       Specify an explicit path to the config file
+  -C, --compat                Provide deprecated command line interfaces
+  -E, --experimental          Enable experimental features/interfaces
+  -n, --nodetach              Run with logging in foreground
+  -v, --version               Show version information and exit
+
+</code></pre>
+<hr>
+<h5 id=btattach>btattach</h5>
+<p>Attach serial devices to BlueZ stack</p>
+<pre><code>root@kali:~# btattach -h
+btattach - Bluetooth serial utility
+Usage:
+	btattach [options]
+options:
+	-B, --bredr &lt;device&gt;   Attach Primary controller
+	-A, --amp &lt;device&gt;     Attach AMP controller
+	-P, --protocol &lt;proto&gt; Specify protocol type
+	-S, --speed &lt;baudrate&gt; Specify which baudrate to use
+	-N, --noflowctl        Disable flow control
+	-h, --help             Show help options
+</code></pre>
+<hr>
+<h5 id=btmgmt>btmgmt</h5>
+<p>A command-line interface of BlueZ for management Usage:</p>
+<pre><code>root@kali:~# btmgmt -h
+btmgmt ver 5.62
+Usage:
+	btmgmt [--options] [commands]
+Options:
+	--index 	Specify adapter index
+
+	--monitor 	Enable monitor output
+	--timeout 	Timeout in seconds for non-interactive mode
+	--version 	Display version
+	--help 		Display help
+Commands:
+	select		Select a different index
+	revision	Get the MGMT Revision
+	commands	List supported commands
+	config		Show configuration info
+	info		Show controller info
+	extinfo		Show extended controller info
+	auto-power	Power all available features
+	power		Toggle powered state
+	discov		Toggle discoverable state
+	connectable	Toggle connectable state
+	fast-conn	Toggle fast connectable state
+	bondable	Toggle bondable state
+	pairable	Toggle bondable state
+	linksec		Toggle link level security
+	ssp		Toggle SSP mode
+	sc		Toggle SC support
+	hs		Toggle HS support
+	le		Toggle LE support
+	advertising	Toggle LE advertising
+	bredr		Toggle BR/EDR support
+	privacy		Toggle privacy support
+	class		Set device major/minor class
+	disconnect	Disconnect device
+	con		List connections
+	find		Discover nearby devices
+	find-service	Discover nearby service
+	stop-find	Stop discovery
+	name		Set local name
+	pair		Pair with a remote device
+	cancelpair	Cancel pairing
+	unpair		Unpair device
+	keys		Load Link Keys
+	ltks		Load Long Term Keys
+	irks		Load Identity Resolving Keys
+	block		Block Device
+	unblock		Unblock Device
+	add-uuid	Add UUID
+	rm-uuid		Remove UUID
+	clr-uuids	Clear UUIDs
+	local-oob	Local OOB data
+	remote-oob	Remote OOB data
+	did		Set Device ID
+	static-addr	Set static address
+	public-addr	Set public address
+	ext-config	External configuration
+	debug-keys	Toggle debug keys
+	conn-info	Get connection information
+	io-cap		Set IO Capability
+	scan-params	Set Scan Parameters
+	get-clock	Get Clock Information
+	add-device	Add Device
+	del-device	Remove Device
+	clr-devices	Clear Devices
+	bredr-oob	Local OOB data (BR/EDR)
+	le-oob		Local OOB data (LE)
+	advinfo		Show advertising features
+	advsize		Show advertising size info
+	add-adv		Add advertising instance
+	rm-adv		Remove advertising instance
+	clr-adv		Clear advertising instances
+	appearance	Set appearance
+	phy		Get/Set PHY Configuration
+	wbs		Toggle Wideband-Speech support
+	secinfo		Show security information
+	expinfo		Show experimental features
+	exp-debug	Set debug feature
+	exp-privacy	Set LL privacy feature
+	exp-quality	Set bluetooth quality report feature
+	exp-offload	Toggle codec support
+	read-sysconfig	Read System Configuration
+	set-sysconfig	Set System Configuration
+	get-flags	Get device flags
+	set-flags	Set device flags
+
+	monitor.:
+		features	Show advertisement monitor features
+		remove		Remove advertisement monitor 
+		add-pattern	Add advertisement monitor pattern
+		add-pattern-rssi	Add advertisement monitor pattern with RSSI options
+</code></pre>
+<hr>
+<h5 id=btmon>btmon</h5>
+<p>Bluetooth monitor</p>
+<pre><code>root@kali:~# btmon -h
+btmon - Bluetooth monitor
+Usage:
+	btmon [options]
+options:
+	-r, --read &lt;file&gt;      Read traces in btsnoop format
+	-w, --write &lt;file&gt;     Save traces in btsnoop format
+	-a, --analyze &lt;file&gt;   Analyze traces in btsnoop format
+	-s, --server &lt;socket&gt;  Start monitor server socket
+	-p, --priority &lt;level&gt; Show only priority or lower
+	-i, --index &lt;num&gt;      Show only specified controller
+	-d, --tty &lt;tty&gt;        Read data from TTY
+	-B, --tty-speed &lt;rate&gt; Set TTY speed (default 115200)
+	-V, --vendor &lt;compid&gt;  Set default company identifier
+	-M, --mgmt             Open channel for mgmt events
+	-t, --time             Show time instead of time offset
+	-T, --date             Show time and date information
+	-S, --sco              Dump SCO traffic
+	-A, --a2dp             Dump A2DP stream traffic
+	-E, --ellisys [ip]     Send Ellisys HCI Injection
+	-P, --no-pager         Disable pager usage
+	-J  --jlink &lt;device&gt;,[&lt;serialno&gt;],[&lt;interface&gt;],[&lt;speed&gt;]
+	                       Read data from RTT
+	-R  --rtt [&lt;address&gt;],[&lt;area&gt;],[&lt;name&gt;]
+	                       RTT control block parameters
+	-C, --columns [width]  Output width if not a terminal
+	-c, --color [mode]     Output color: auto/always/never
+	-h, --help             Show help options
+</code></pre>
+<hr>
+<h5 id=ciptool>ciptool</h5>
+<p>Bluetooth Common ISDN Access Profile (CIP)</p>
+<pre><code>root@kali:~# ciptool -h
+ciptool - Bluetooth Common ISDN Access Profile (CIP)
+
+Usage:
+	ciptool [options] [command]
+
+Options:
+	-i [hciX|bdaddr]   Local HCI device or BD Address
+	-h, --help         Display help
+
+Commands:
+	show               	Show remote connections
+	search             	Search for a remote device
+	connect  &lt;bdaddr&gt;  	Connect a remote device
+	release  [bdaddr]  	Disconnect the remote device
+	loopback &lt;bdaddr&gt;  	Loopback test of a device
+
+</code></pre>
+<hr>
+<h5 id=gatttool>gatttool</h5>
+<p>Tool for Bluetooth Low Energy device</p>
+<pre><code>root@kali:~# gatttool -h
+Usage:
+  gatttool [OPTION?]
+
+Help Options:
+  -h, --help                                Show help options
+  --help-all                                Show all help options
+  --help-gatt                               Show all GATT commands
+  --help-params                             Show all Primary Services/Characteristics arguments
+  --help-char-read-write                    Show all Characteristics Value/Descriptor Read/Write arguments
+
+Application Options:
+  -i, --adapter=hciX                        Specify local adapter interface
+  -b, --device=MAC                          Specify remote Bluetooth address
+  -t, --addr-type=[public | random]         Set LE address type. Default: public
+  -m, --mtu=MTU                             Specify the MTU size
+  -p, --psm=PSM                             Specify the PSM for GATT/ATT over BR/EDR
+  -l, --sec-level=[low | medium | high]     Set security level. Default: low
+  -I, --interactive                         Use interactive mode
+
+</code></pre>
+<hr>
+<h5 id=hciattach>hciattach</h5>
+<p>Attach serial devices via UART HCI to BlueZ stack</p>
+<pre><code>root@kali:~# hciattach -h
+hciattach - HCI UART driver initialization utility
+Usage:
+	hciattach [-n] [-p] [-b] [-r] [-t timeout] [-s initial_speed] &lt;tty&gt; &lt;type | id&gt; [speed] [flow|noflow] [sleep|nosleep] [bdaddr]
+	hciattach -l
+</code></pre>
+<hr>
+<h5 id=hciconfig>hciconfig</h5>
+<p>Configure Bluetooth devices</p>
+<pre><code>root@kali:~# hciconfig -h
+hciconfig - HCI device configuration utility
+Usage:
+	hciconfig
+	hciconfig [-a] hciX [command ...]
+Commands:
+	up                 	Open and initialize HCI device
+	down               	Close HCI device
+	reset              	Reset HCI device
+	rstat              	Reset statistic counters
+	auth               	Enable Authentication
+	noauth             	Disable Authentication
+	encrypt            	Enable Encryption
+	noencrypt          	Disable Encryption
+	piscan             	Enable Page and Inquiry scan
+	noscan             	Disable scan
+	iscan              	Enable Inquiry scan
+	pscan              	Enable Page scan
+	ptype      [type]  	Get/Set default packet type
+	lm         [mode]  	Get/Set default link mode
+	lp         [policy]	Get/Set default link policy
+	name       [name]  	Get/Set local name
+	class      [class] 	Get/Set class of device
+	voice      [voice] 	Get/Set voice setting
+	iac        [iac]   	Get/Set inquiry access code
+	inqtpl     [level] 	Get/Set inquiry transmit power level
+	inqmode    [mode]  	Get/Set inquiry mode
+	inqdata    [data]  	Get/Set inquiry data
+	inqtype    [type]  	Get/Set inquiry scan type
+	inqparms   [win:int]	Get/Set inquiry scan window and interval
+	pageparms  [win:int]	Get/Set page scan window and interval
+	pageto     [to]    	Get/Set page timeout
+	afhmode    [mode]  	Get/Set AFH mode
+	sspmode    [mode]  	Get/Set Simple Pairing Mode
+	aclmtu     &lt;mtu:pkt&gt;	Set ACL MTU and number of packets
+	scomtu     &lt;mtu:pkt&gt;	Set SCO MTU and number of packets
+	delkey     &lt;bdaddr&gt;	Delete link key from the device
+	oobdata            	Get local OOB data
+	commands           	Display supported commands
+	features           	Display device features
+	version            	Display version information
+	revision           	Display revision information
+	block      &lt;bdaddr&gt;	Add a device to the reject list
+	unblock    &lt;bdaddr&gt;	Remove a device from the reject list
+	lerandaddr &lt;bdaddr&gt;	Set LE Random Address
+	leadv      [type]  	Enable LE advertising
+			0 - Connectable undirected advertising (default)
+			3 - Non connectable undirected advertising
+	noleadv            	Disable LE advertising
+	lestates           	Display the supported LE states
+</code></pre>
+<hr>
+<h5 id=hcitool>hcitool</h5>
+<p>Configure Bluetooth connections</p>
+<pre><code>root@kali:~# hcitool -h
+hcitool - HCI Tool ver 5.62
+Usage:
+	hcitool [options] &lt;command&gt; [command parameters]
+Options:
+	--help	Display help
+	-i dev	HCI device
+Commands:
+	dev 	Display local devices
+	inq 	Inquire remote devices
+	scan	Scan for remote devices
+	name	Get name from remote device
+	info	Get information from remote device
+	spinq	Start periodic inquiry
+	epinq	Exit periodic inquiry
+	cmd 	Submit arbitrary HCI commands
+	con 	Display active connections
+	cc  	Create connection to remote device
+	dc  	Disconnect from remote device
+	sr  	Switch central/peripheral role
+	cpt 	Change connection packet type
+	rssi	Display connection RSSI
+	lq  	Display link quality
+	tpl 	Display transmit power level
+	afh 	Display AFH channel map
+	lp  	Set/display link policy settings
+	lst 	Set/display link supervision timeout
+	auth	Request authentication
+	enc 	Set connection encryption
+	key 	Change connection link key
+	clkoff	Read clock offset
+	clock	Read local or remote clock
+	lescan	Start LE scan
+	leinfo	Get LE remote information
+	lealadd	Add device to LE White List
+	lealrm	Remove device from LE White List
+	lealsz	Read size of LE White List
+	lealclr	Clear LE White List
+	lewladd	Deprecated. Use lealadd instead.
+	lewlrm	Deprecated. Use lealrm instead.
+	lewlsz	Deprecated. Use lealsz instead.
+	lewlclr	Deprecated. Use lealclr instead.
+	lerladd	Add device to LE Resolving List
+	lerlrm	Remove device from LE Resolving List
+	lerlclr	Clear LE Resolving List
+	lerlsz	Read size of LE Resolving List
+	lerlon	Enable LE Address Resolution
+	lerloff	Disable LE Address Resolution
+	lecc	Create a LE Connection
+	ledc	Disconnect a LE Connection
+	lecup	LE Connection Update
+
+For more information on the usage of each command use:
+	hcitool &lt;command&gt; --help
+</code></pre>
+<hr>
+<h5 id=hex2hcd>hex2hcd</h5>
+<p>Broadcom Bluetooth firmware converter</p>
+<pre><code>root@kali:~# hex2hcd -h
+Broadcom Bluetooth firmware converter
+Usage:
+	hex2hcd [options] &lt;file&gt;
+Options:
+	-o, --output &lt;file&gt;    Provide firmware output file
+	-h, --help             Show help options
+</code></pre>
+<hr>
+<h5 id=l2ping>l2ping</h5>
+<p>Send L2CAP echo request and receive answer</p>
+<pre><code>root@kali:~# l2ping -h
+l2ping - L2CAP ping
+Usage:
+	l2ping [-i device] [-s size] [-c count] [-t timeout] [-d delay] [-f] [-r] [-v] &lt;bdaddr&gt;
+	-f  Flood ping (delay = 0)
+	-r  Reverse ping
+	-v  Verify request and response payload
+</code></pre>
+<hr>
+<h5 id=l2test>l2test</h5>
+<p>L2CAP testing tool</p>
+<pre><code>root@kali:~# l2test -h
+l2test - L2CAP testing
+Usage:
+	l2test &lt;mode&gt; [options] [bdaddr]
+Modes:
+	-r listen and receive
+	-w listen and send
+	-d listen and dump incoming data
+	-x listen, then send, then dump incoming data
+	-t listen, then send and receive at the same time
+	-q connect, then send and receive at the same time
+	-s connect and send
+	-u connect and receive
+	-n connect and be silent
+	-y connect, then send, then dump incoming data
+	-c connect, disconnect, connect, ...
+	-m multiple connects
+	-p trigger dedicated bonding
+	-z information request
+Options:
+	[-b bytes] [-i device] [-P psm] [-J cid]
+	[-I imtu] [-O omtu]
+	[-L seconds] enable SO_LINGER
+	[-W seconds] enable deferred setup
+	[-B filename] use data packets from file
+	[-N num] send num frames (default = infinite)
+	[-C num] send num frames before delay (default = 1)
+	[-D milliseconds] delay after sending num frames (default = 0)
+	[-K milliseconds] delay before receiving (default = 0)
+	[-g milliseconds] delay before disconnecting (default = 0)
+	[-X mode] l2cap mode (help for list, default = basic)
+	[-a policy] chan policy (help for list, default = bredr)
+	[-F fcs] use CRC16 check (default = 1)
+	[-Q num] Max Transmit value (default = 3)
+	[-Z size] Transmission Window size (default = 63)
+	[-Y priority] socket priority
+	[-H size] Maximum receive buffer size
+	[-R] reliable mode
+	[-G] use connectionless channel (datagram)
+	[-U] use sock stream
+	[-A] request authentication
+	[-E] request encryption
+	[-S] secure connection
+	[-M] become central
+	[-T] enable timestamps
+	[-V type] address type (help for list, default = bredr)
+	[-e seq] initial sequence value (default = 0)
+</code></pre>
+<hr>
+<h5 id=mpris-proxy>mpris-proxy</h5>
+<p>Bluetooth mpris-proxy</p>
+<pre><code>root@kali:~# mpris-proxy -h
+Usage:
+  mpris-proxy [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -e, --export      Export remote players
+
+</code></pre>
+<hr>
+<h5 id=obexctl>obexctl</h5>
+<p>A command-line interface of BlueZ for OBEX (file transfer)</p>
+<pre><code>root@kali:~# man obexctl
+OBEXCTL(1)                  General Commands Manual                 OBEXCTL(1)
+
+NAME
+       obexctl - A command-line interface of BlueZ for OBEX (file transfer)
+
+       Usage:
+
+              obexctl [options]
+
+OPTIONS
+       --timeout
+              Timeout in seconds for non-interactive mode
+
+       --version
+              Display version
+
+       --help Display help
+
+                                  April 2018                        OBEXCTL(1)
+</code></pre>
+<hr>
+<h5 id=rctest>rctest</h5>
+<p>RFCOMM testing</p>
+<pre><code>root@kali:~# rctest -h
+rctest - RFCOMM testing
+Usage:
+	rctest &lt;mode&gt; [options] [bdaddr]
+Modes:
+	-r listen and receive
+	-w listen and send
+	-d listen and dump incoming data
+	-s connect and send
+	-u connect and receive
+	-n connect and be silent
+	-c connect, disconnect, connect, ...
+	-m multiple connects
+	-a automated test (receive hcix as parameter)
+Options:
+	[-b bytes] [-i device] [-P channel] [-U uuid]
+	[-L seconds] enabled SO_LINGER option
+	[-W seconds] enable deferred setup
+	[-B filename] use data packets from file
+	[-O filename] save received data to file
+	[-N num] number of frames to send
+	[-C num] send num frames before delay (default = 1)
+	[-D milliseconds] delay after sending num frames (default = 0)
+	[-Y priority] socket priority
+	[-A] request authentication
+	[-E] request encryption
+	[-S] secure connection
+	[-M] become central
+	[-T] enable timestamps
+</code></pre>
+<hr>
+<h5 id=rfcomm>rfcomm</h5>
+<p>RFCOMM configuration utility</p>
+<pre><code>root@kali:~# rfcomm -h
+RFCOMM configuration utility ver 5.62
+Usage:
+	rfcomm [options] &lt;command&gt; &lt;dev&gt;
+
+Options:
+	-i, --device [hciX|bdaddr]     Local HCI device or BD Address
+	-h, --help                     Display help
+	-r, --raw                      Switch TTY into raw mode
+	-A, --auth                     Enable authentication
+	-E, --encrypt                  Enable encryption
+	-S, --secure                   Secure connection
+	-C, --central                  Become the central of a piconet
+	-L, --linger [seconds]         Set linger timeout
+	-a                             Show all devices (default)
+
+Commands:
+	bind     &lt;dev&gt; &lt;bdaddr&gt; [channel]	Bind device
+	release  &lt;dev&gt;                   	Release device
+	show     &lt;dev&gt;                   	Show device
+	connect  &lt;dev&gt; &lt;bdaddr&gt; [channel]	Connect device
+	listen   &lt;dev&gt; [channel [cmd]]   	Listen
+	watch    &lt;dev&gt; [channel [cmd]]   	Watch
+
+</code></pre>
+<hr>
+<h5 id=sdptool>sdptool</h5>
+<p>Control and interrogate SDP servers</p>
+<pre><code>root@kali:~# sdptool -h
+sdptool - SDP tool v5.62
+Usage:
+	sdptool [options] &lt;command&gt; [command parameters]
+Options:
+	-h		Display help
+	-i		Specify source interface
+Commands:
+	search		Search for a service
+	browse		Browse all available services
+	records		Request all records
+	add 		Add local service
+	del 		Delete local service
+	get 		Get local service
+	setattr		Set/Add attribute to a SDP record
+	setseq		Set/Add attribute sequence to a SDP record
+
+Services:
+	DID SP DUN LAN FAX OPUSH FTP PRINT HS HSAG HF HFAG SAP PBAP MAP 
+	NAP GN PANU HCRP HID KEYB WIIMOTE CIP CTP A2SRC A2SNK AVRCT AVRTG 
+	UDIUE UDITE SEMCHLA SR1 SYNCML SYNCMLSERV ACTIVESYNC HOTSYNC 
+	PALMOS NOKID PCSUITE NFTP NSYNCML NGAGE APPLE IAP ISYNC GATT 
+	
+</code></pre>
+<hr>
+<h3 id=bluez-cups>bluez-cups</h3>
+<p>This package contains a driver to let CUPS print to Bluetooth-connected
+printers.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>283 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-cups</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>cups</li>
+<li>libc6</li>
+<li>libdbus-1-3</li>
+<li>libglib2.0-0
+</div></li>
+</ul>
+<hr>
+<h3 id=bluez-hcidump>bluez-hcidump</h3>
+<p>The hcidump utility allows the monitoring of Bluetooth activity.
+It provides a disassembly of the Bluetooth traffic and can display
+packets from higher level protocols such as RFCOMM, SDP and BNEP.</p>
+<p>This was the software that is independent as bluez-hcidump, but this has been
+integrated into BlueZ from BlueZ 5.0.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>599 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-hcidump</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6
+</div></li>
+</ul>
+<h5 id=hcidump>hcidump</h5>
+<p>Parse HCI data</p>
+<pre><code>root@kali:~# hcidump -h
+Usage: hcidump [OPTION...] [filter]
+  -i, --device=hci_dev       HCI device
+  -l, --snap-len=len         Snap len (in bytes)
+  -p, --psm=psm              Default PSM
+  -m, --manufacturer=compid  Default manufacturer
+  -w, --save-dump=file       Save dump to a file
+  -r, --read-dump=file       Read dump from a file
+  -t, --ts                   Display time stamps
+  -a, --ascii                Dump data in ascii
+  -x, --hex                  Dump data in hex
+  -X, --ext                  Dump data in hex and ascii
+  -R, --raw                  Dump raw data
+  -C, --cmtp=psm             PSM for CMTP
+  -H, --hcrp=psm             PSM for HCRP
+  -O, --obex=port            Channel/PSM for OBEX
+  -P, --ppp=channel          Channel for PPP
+  -S, --sap=channel          Channel for SAP
+  -D, --pppdump=file         Extract PPP traffic
+  -A, --audio=file           Extract SCO audio data
+  -Y, --novendor             No vendor commands or events
+  -h, --help                 Give this help list
+  -v, --version              Give version information
+      --usage                Give a short usage message
+</code></pre>
+<hr>
+<h3 id=bluez-meshd>bluez-meshd</h3>
+<p>The Bluetooth Mesh network is a new Bluetooth feature that extends &ldquo;Bluetooth
+Low Energy (BLE)&rdquo;.</p>
+<p>This package provides daemon (meshd) and tools that provide Bluetooth mesh
+functionality.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>1004 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-meshd</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libdbus-1-3</li>
+<li>libell0</li>
+<li>libglib2.0-0</li>
+<li>libjson-c5</li>
+<li>libreadline8
+</div></li>
+</ul>
+<h5 id=mesh-cfgclient>mesh-cfgclient</h5>
+<p>Generate tool a mesh configuration file in JSON format</p>
+<pre><code>root@kali:~# man mesh-cfgclient
+MESH-CFGCLIENT:(1)          General Commands Manual         MESH-CFGCLIENT:(1)
+
+NAME
+       mesh-cfgclient:  - generate tool a mesh configuration file in JSON for-
+       mat
+
+DESCRIPTION
+       mesh-cfgclient: - generate tool a mesh configuration file in JSON  for-
+       mat Usage:
+
+              mesh-cfgclient [--options] [commands]
+
+OPTIONS
+       --config
+              Configuration file
+
+       --address-start
+              Starting unicast address for remote nodes
+
+       --address-range
+              Net index for provisioning subnet
+
+       --net-index
+              (null)
+
+       --monitor
+              Enable monitor output
+
+       --timeout
+              Timeout in seconds for non-interactive mode
+
+       --version
+              Display version
+
+       --help Display help
+
+   Commands:
+       create Create new mesh network with one initial node
+
+       discover-unprovisioned
+              Look for devices to provision
+
+       appkey-create
+              Create a new local AppKey
+
+       appkey-import
+              Import a new local AppKey
+
+       appkey-update
+              Update local AppKey
+
+       appkey-delete
+              Delete local AppKey
+
+       subnet-create
+              Create a new local subnet (NetKey)
+
+       subnet-import
+              Import a new local subnet (NetKey)
+
+       subnet-update
+              Update local subnet (NetKey)
+
+       subnet-delete
+              Delete local subnet (NetKey)
+
+       subnet-set-phase
+              Set subnet (NetKey) phase
+
+       list-unprovisioned
+              List unprovisioned devices
+
+       provision
+              Initiate provisioning
+
+       node-import
+              Import an externally provisioned remote node
+
+       list-nodes
+              List remote mesh nodes
+
+       keys   List available keys
+
+                                September 2021              MESH-CFGCLIENT:(1)
+</code></pre>
+<hr>
+<h5 id=mesh-cfgtest>mesh-cfgtest</h5>
+<p>Mesh configuration file test tool</p>
+<pre><code>root@kali:~# mesh-cfgtest -h
+mesh-cfgtest: invalid option -- 'h'
+Usage:
+(null) [options]
+Options:
+	-v, --version	Show version information and exit
+	-l, --list	Only list the tests to be run
+	-p, --prefix	Run tests matching the provided prefix
+	-s, --string	Run tests matching the provided string
+</code></pre>
+<hr>
+<h5 id=meshctl>meshctl</h5>
+<p>Bluetooth mesh control tool</p>
+<pre><code>root@kali:~# meshctl -h
+meshctl ver 5.62
+Usage:
+	meshctl [--options] [commands]
+Options:
+	--config 	Read local mesh config JSON files from &lt;directory&gt;
+	--monitor 	Enable monitor output
+	--timeout 	Timeout in seconds for non-interactive mode
+	--version 	Display version
+	--help 		Display help
+Reading prov_db.json and local_node.json from /root/.config/meshctl directory
+</code></pre>
+<hr>
+<h3 id=bluez-obexd>bluez-obexd</h3>
+<p>This package contains a OBEX(OBject EXchange) daemon.</p>
+<p>OBEX is communication protocol to facilitate the exchange of the binary
+object between the devices.</p>
+<p>This was the software that is independent as obexd, but this has been
+integrated into BlueZ from BlueZ 5.0.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>625 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-obexd</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>init-system-helpers</li>
+<li>libc6</li>
+<li>libdbus-1-3</li>
+<li>libglib2.0-0</li>
+<li>libical3
+</div></li>
+</ul>
+<hr>
+<h3 id=bluez-source>bluez-source</h3>
+<p>This package contains the sources and patches which are needed
+to build bluez.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>32.93 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-source</code></p>
+<hr>
+<h3 id=bluez-test-scripts>bluez-test-scripts</h3>
+<p>This package contains test scripts for using BlueZ.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>319 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-test-scripts</code></p>
+<hr>
+<h3 id=bluez-test-tools>bluez-test-tools</h3>
+<p>This package contains test tools for using BlueZ.</p>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>3.55 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bluez-test-tools</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bluez</li>
+<li>libc6</li>
+<li>libdbus-1-3</li>
+<li>libglib2.0-0
+</div></li>
+</ul>
+<h5 id=b1ee>b1ee</h5>
+<p>Bluetooth device testing tool over internet</p>
+<pre><code>root@kali:~# b1ee -h
+b1ee - Bluetooth device testing tool over internet
+Usage:
+	b1ee [options] &lt;host&gt;
+options:
+	-p, --port &lt;port&gt;          Specify the server port
+	-s, --sniffer-port &lt;port&gt;  Specify the sniffer port
+	-v, --version              Show version information
+	-h, --help                 Show help options
+</code></pre>
+<hr>
+<h5 id=bnep-tester>bnep-tester</h5>
+<p>Kernel BNEP test tool</p>
+<pre><code>root@kali:~# bnep-tester -h
+Usage:
+  bnep-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=btvirt>btvirt</h5>
+<p>Bluetooth emulator</p>
+<pre><code>root@kali:~# btvirt -h
+btvirt - Bluetooth emulator
+Usage:
+	btvirt [options]
+options:
+	-d                    Enable debug
+	-S                    Create local serial port
+	-s                    Create local server sockets
+	-l[num]               Number of local controllers
+	-L                    Create LE only controller
+	-U[num]               Number of test LE controllers
+	-B                    Create BR/EDR only controller
+	-A                    Create AMP controller
+	-T[num]               Number of test AMP controllers
+	-h, --help            Show help options
+</code></pre>
+<hr>
+<h5 id=gap-tester>gap-tester</h5>
+<p>Daemon D-Bus API test tool</p>
+<pre><code>root@kali:~# gap-tester -h
+Usage:
+  gap-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=hci-tester>hci-tester</h5>
+<p>Bluetooth Host-Controller hardware test tool</p>
+<pre><code>root@kali:~# hci-tester -h
+Usage:
+  hci-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=hfp>hfp</h5>
+<hr>
+<h5 id=l2cap-tester>l2cap-tester</h5>
+<p>Kernel L2CAP implementation test tool</p>
+<pre><code>root@kali:~# l2cap-tester -h
+Usage:
+  l2cap-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=mgmt-tester>mgmt-tester</h5>
+<p>Kernel management interface test tool</p>
+<pre><code>root@kali:~# mgmt-tester -h
+Usage:
+  mgmt-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=rfcomm-tester>rfcomm-tester</h5>
+<p>Kernel RFCOMM implementation test tool</p>
+<pre><code>root@kali:~# rfcomm-tester -h
+Usage:
+  rfcomm-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=sco-tester>sco-tester</h5>
+<p>Kernel SCO implementation test tool</p>
+<pre><code>root@kali:~# sco-tester -h
+Usage:
+  sco-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=smp-tester>smp-tester</h5>
+<p>Kernel SMP implementation test tool</p>
+<pre><code>root@kali:~# smp-tester -h
+Usage:
+  smp-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h5 id=userchan-tester>userchan-tester</h5>
+<p>Kernel HCI User Channel test tool</p>
+<pre><code>root@kali:~# userchan-tester -h
+Usage:
+  userchan-tester [OPTION?]
+
+Help Options:
+  -h, --help        Show help options
+
+Application Options:
+  -v, --version     Show version information and exit
+  -q, --quiet       Run tests without logging
+  -d, --debug       Run tests with debug output
+  -m, --monitor     Enable monitor output
+  -l, --list        Only list the tests to be run
+  -p, --prefix      Run tests matching provided prefix
+  -s, --string      Run tests matching provided string
+
+</code></pre>
+<hr>
+<h3 id=libbluetooth-dev>libbluetooth-dev</h3>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p>This package contains the development libraries and header files you need to
+develop your programs using the libbluetooth library.</p>
+<p><strong>Installed size:</strong> <code>823 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libbluetooth-dev</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libbluetooth3</li>
+<li>libc6-dev | libc-dev
+</div></li>
+</ul>
+<hr>
+<h3 id=libbluetooth3>libbluetooth3</h3>
+<p>BlueZ is the official Linux Bluetooth protocol stack. It is an Open Source
+project distributed under GNU General Public License (GPL).</p>
+<p><strong>Installed size:</strong> <code>302 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libbluetooth3</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libudev1
+</div></li>
+</ul>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2022-Feb-10<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/bluez/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../binwalk/index.html>
+<i class=ti-arrow-left></i>
+<span>binwalk</span>
+</a>
+<a href=../bruteforce-wallet/index.html>
+<span>bruteforce-wallet</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/bluez/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:09:20 GMT -->
+</html>

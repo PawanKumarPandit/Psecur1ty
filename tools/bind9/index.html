@@ -1,0 +1,1676 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/bind9/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:09:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>bind9 | Kali Linux Tools</title>
+<meta itemprop=name content="bind9 | Kali Linux Tools">
+<meta name=application-name content="bind9 | Kali Linux Tools">
+<meta name=twitter:title content="bind9 | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="bind9 | Kali Linux Tools">
+<meta itemprop=description content>
+<meta name=description content>
+<meta name=twitter:description content>
+<meta property="og:description" content>
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2022-02-10T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>bind9</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 9.18.0</code> <code>arch: any all</code>
+<hr>
+<div id=package-links>
+<a href=https://www.isc.org/downloads/bind/><i class=ti-world></i> bind9 Homepage</a><span><span>|</span><a href=http://pkg.kali.org/bind9><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://salsa.debian.org/dns-team/bind9><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-default title=kali-linux-default>default</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-large title=kali-linux-large>large</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#bind9 title=bind9>
+<i class=ti-package></i>bind9
+</a>
+<ul>
+<li>
+<a href=#arpaname title=arpaname>
+arpaname
+</a>
+</li>
+<li>
+<a href=#ddns-confgen title=ddns-confgen>
+ddns-confgen
+</a>
+</li>
+<li>
+<a href=#dnssec-importkey title=dnssec-importkey>
+dnssec-importkey
+</a>
+</li>
+<li>
+<a href=#named title=named>
+named
+</a>
+</li>
+<li>
+<a href=#named-journalprint title=named-journalprint>
+named-journalprint
+</a>
+</li>
+<li>
+<a href=#named-nzd2nzf title=named-nzd2nzf>
+named-nzd2nzf
+</a>
+</li>
+<li>
+<a href=#named-rrchecker title=named-rrchecker>
+named-rrchecker
+</a>
+</li>
+<li>
+<a href=#nsec3hash title=nsec3hash>
+nsec3hash
+</a>
+</li>
+<li>
+<a href=#tsig-keygen title=tsig-keygen>
+tsig-keygen
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bind9-dev title=bind9-dev>
+<i class=ti-package></i>bind9-dev
+</a>
+</li>
+<li>
+<a href=#bind9-dnsutils title=bind9-dnsutils>
+<i class=ti-package></i>bind9-dnsutils
+</a>
+<ul>
+<li>
+<a href=#delv title=delv>
+delv
+</a>
+</li>
+<li>
+<a href=#dig title=dig>
+dig
+</a>
+</li>
+<li>
+<a href=#dnstap-read title=dnstap-read>
+dnstap-read
+</a>
+</li>
+<li>
+<a href=#mdig title=mdig>
+mdig
+</a>
+</li>
+<li>
+<a href=#nslookup title=nslookup>
+nslookup
+</a>
+</li>
+<li>
+<a href=#nsupdate title=nsupdate>
+nsupdate
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bind9-doc title=bind9-doc>
+<i class=ti-package></i>bind9-doc
+</a>
+</li>
+<li>
+<a href=#bind9-host title=bind9-host>
+<i class=ti-package></i>bind9-host
+</a>
+<ul>
+<li>
+<a href=#host title=host>
+host
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bind9-libs title=bind9-libs>
+<i class=ti-package></i>bind9-libs
+</a>
+</li>
+<li>
+<a href=#bind9-utils title=bind9-utils>
+<i class=ti-package></i>bind9-utils
+</a>
+<ul>
+<li>
+<a href=#dnssec-cds title=dnssec-cds>
+dnssec-cds
+</a>
+</li>
+<li>
+<a href=#dnssec-dsfromkey title=dnssec-dsfromkey>
+dnssec-dsfromkey
+</a>
+</li>
+<li>
+<a href=#dnssec-keyfromlabel title=dnssec-keyfromlabel>
+dnssec-keyfromlabel
+</a>
+</li>
+<li>
+<a href=#dnssec-keygen title=dnssec-keygen>
+dnssec-keygen
+</a>
+</li>
+<li>
+<a href=#dnssec-revoke title=dnssec-revoke>
+dnssec-revoke
+</a>
+</li>
+<li>
+<a href=#dnssec-settime title=dnssec-settime>
+dnssec-settime
+</a>
+</li>
+<li>
+<a href=#dnssec-signzone title=dnssec-signzone>
+dnssec-signzone
+</a>
+</li>
+<li>
+<a href=#dnssec-verify title=dnssec-verify>
+dnssec-verify
+</a>
+</li>
+<li>
+<a href=#named-checkconf title=named-checkconf>
+named-checkconf
+</a>
+</li>
+<li>
+<a href=#named-checkzone title=named-checkzone>
+named-checkzone
+</a>
+</li>
+<li>
+<a href=#named-compilezone title=named-compilezone>
+named-compilezone
+</a>
+</li>
+<li>
+<a href=#rndc title=rndc>
+rndc
+</a>
+</li>
+<li>
+<a href=#rndc-confgen title=rndc-confgen>
+rndc-confgen
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#bind9utils title=bind9utils>
+<i class=ti-package></i>bind9utils
+</a>
+</li>
+<li>
+<a href=#dnsutils title=dnsutils>
+<i class=ti-package></i>dnsutils
+</a>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=bind9>bind9</h3>
+<p>The Berkeley Internet Name Domain (BIND 9) implements an Internet domain
+name server. BIND 9 is the most widely-used name server software on the
+Internet, and is supported by the Internet Software Consortium, <a href=http://www.isc.org/>www.isc.org</a>.</p>
+<p>This package provides the server and related configuration files.</p>
+<p><strong>Installed size:</strong> <code>1.14 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>adduser</li>
+<li>bind9-libs</li>
+<li>bind9-utils</li>
+<li>debconf | debconf-2.0</li>
+<li>dns-root-data</li>
+<li>init-system-helpers</li>
+<li>iproute2</li>
+<li>libc6</li>
+<li>libcap2</li>
+<li>libfstrm0</li>
+<li>libjson-c5</li>
+<li>liblmdb0</li>
+<li>libmaxminddb0</li>
+<li>libnghttp2-14</li>
+<li>libprotobuf-c1</li>
+<li>libssl1.1</li>
+<li>libuv1</li>
+<li>libxml2</li>
+<li>lsb-base</li>
+<li>netbase</li>
+<li>zlib1g
+</div></li>
+</ul>
+<h5 id=arpaname>arpaname</h5>
+<p>Translate IP addresses to the corresponding ARPA names</p>
+<pre><code>root@kali:~# man arpaname
+ARPANAME(1)                         BIND 9                         ARPANAME(1)
+
+NAME
+       arpaname - translate IP addresses to the corresponding ARPA names
+
+SYNOPSIS
+       arpaname {ipaddress ...}
+
+DESCRIPTION
+       arpaname  translates  IP addresses (IPv4 and IPv6) to the corresponding
+       IN-ADDR.ARPA or IP6.ARPA names.
+
+SEE ALSO
+       BIND 9 Administrator Reference Manual.
+
+AUTHOR
+       Internet Systems Consortium
+
+COPYRIGHT
+       2022, Internet Systems Consortium
+
+9.18.0-2-Debian                   2022-01-24                       ARPANAME(1)
+</code></pre>
+<hr>
+<h5 id=ddns-confgen>ddns-confgen</h5>
+<p>Ddns key generation tool</p>
+<pre><code>root@kali:~# ddns-confgen -h
+Usage:
+ ddns-confgen [-a alg] [-k keyname] [-q] [-s name | -z zone]
+  -a alg:        algorithm (default hmac-sha256)
+  -k keyname:    name of the key as it will be used in named.conf
+  -s name:       domain name to be updated using the created key
+  -z zone:       name of the zone as it will be used in named.conf
+  -q:            quiet mode: print the key, with no explanatory text
+</code></pre>
+<hr>
+<h5 id=dnssec-importkey>dnssec-importkey</h5>
+<p>Import DNSKEY records from external systems so they can be managed</p>
+<pre><code>root@kali:~# dnssec-importkey --help
+dnssec-importkey: invalid argument --
+Usage:
+    dnssec-importkey options [-K dir] keyfile
+
+    dnssec-importkey options -f file [keyname]
+
+Version: 9.18.0-2-Debian
+Options:
+    -f file: read key from zone file
+    -K &lt;directory&gt;: directory in which to store the key files
+    -L ttl:             set default key TTL
+    -v &lt;verbose level&gt;
+    -V: print version information
+    -h: print usage and exit
+Timing options:
+    -P date/[+-]offset/none: set/unset key publication date
+    -P sync date/[+-]offset/none: set/unset CDS and CDNSKEY publication date
+    -D date/[+-]offset/none: set/unset key deletion date
+    -D sync date/[+-]offset/none: set/unset CDS and CDNSKEY deletion date
+</code></pre>
+<hr>
+<h5 id=named>named</h5>
+<p>Internet domain name server</p>
+<pre><code>root@kali:~# named -h
+usage: named [-4|-6] [-c conffile] [-d debuglevel] [-D comment] [-E engine]
+             [-f|-g] [-L logfile] [-n number_of_cpus] [-p port] [-s]
+             [-S sockets] [-t chrootdir] [-u username] [-U listeners]
+             [-X lockfile] [-m {usage|trace|record|size|mctx}]
+             [-M fill|nofill]
+usage: named [-v|-V]
+named: unknown option '-h'
+</code></pre>
+<hr>
+<h5 id=named-journalprint>named-journalprint</h5>
+<p>Print zone journal in human-readable form</p>
+<pre><code>root@kali:~# named-journalprint -h
+named-journalprint: illegal option -- h
+Usage: named-journalprint [-dux] journal
+</code></pre>
+<hr>
+<h5 id=named-nzd2nzf>named-nzd2nzf</h5>
+<p>Convert an NZD database to NZF text format</p>
+<hr>
+<h5 id=named-rrchecker>named-rrchecker</h5>
+<p>Syntax checker for individual DNS resource records</p>
+<pre><code>root@kali:~# named-rrchecker --help
+named-rrchecker: illegal option -- -
+usage: named-rrchecker [-o origin] [-hpCPTu]
+	-h: print this help message
+	-o origin: set origin to be used when interpreting the record
+	-p: print the record in canonical format
+	-C: list the supported class names
+	-P: list the supported private type names
+	-T: list the supported standard type names
+	-u: print the record in unknown record format
+</code></pre>
+<hr>
+<h5 id=nsec3hash>nsec3hash</h5>
+<p>Generate NSEC3 hash</p>
+<pre><code>root@kali:~# nsec3hash -h
+nsec3hash: illegal option -- h
+Usage: nsec3hash salt algorithm iterations domain
+       nsec3hash -r algorithm flags iterations salt domain
+</code></pre>
+<hr>
+<h5 id=tsig-keygen>tsig-keygen</h5>
+<p>TSIG key generation tool</p>
+<pre><code>root@kali:~# tsig-keygen -h
+Usage:
+ tsig-keygen [-a alg] [keyname]
+  -a alg:        algorithm (default hmac-sha256)
+
+</code></pre>
+<hr>
+<h3 id=bind9-dev>bind9-dev</h3>
+<p>The Berkeley Internet Name Domain (BIND 9) implements an Internet domain
+name server. BIND 9 is the most widely-used name server software on the
+Internet, and is supported by the Internet Software Consortium, <a href=http://www.isc.org/>www.isc.org</a>.</p>
+<p>This package contains a bundle of static libraries and header files used by
+BIND 9.</p>
+<p>Please be aware that the BIND 9 libraries are considered private by upstream
+developers and the API and ABI might break at any time.</p>
+<p><strong>Installed size:</strong> <code>1.76 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9-dev</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bind9-libs
+</div></li>
+</ul>
+<hr>
+<h3 id=bind9-dnsutils>bind9-dnsutils</h3>
+<p>The Berkeley Internet Name Domain (BIND 9) implements an Internet domain
+name server. BIND 9 is the most widely-used name server software on the
+Internet, and is supported by the Internet Software Consortium, <a href=http://www.isc.org/>www.isc.org</a>.</p>
+<p>This package delivers various client programs related to DNS that are
+derived from the BIND 9 source tree.</p>
+<ul>
+<li>dig - query the DNS in various ways</li>
+<li>nslookup - the older way to do it</li>
+<li>nsupdate - perform dynamic updates (See RFC2136)</li>
+</ul>
+<p><strong>Installed size:</strong> <code>732 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9-dnsutils</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bind9-host | host</li>
+<li>bind9-libs</li>
+<li>libc6</li>
+<li>libedit2</li>
+<li>libidn2-0</li>
+<li>libkrb5-3</li>
+<li>libprotobuf-c1
+</div></li>
+</ul>
+<h5 id=delv>delv</h5>
+<p>DNS lookup and validation utility</p>
+<pre><code>root@kali:~# delv --help
+Invalid option: --help
+Usage:  delv [@server] {q-opt} {d-opt} [domain] [q-type] [q-class]
+Where:  domain	  is in the Domain Name System
+        q-class  is one of (in,hs,ch,...) [default: in]
+        q-type   is one of (a,any,mx,ns,soa,hinfo,axfr,txt,...) [default:a]
+        q-opt    is one of:
+                 -4                  (use IPv4 query transport only)
+                 -6                  (use IPv6 query transport only)
+                 -a anchor-file      (specify root trust anchor)
+                 -b address[#port]   (bind to source address/port)
+                 -c class            (option included for compatibility;
+                 -d level            (set debugging level)
+                 -h                  (print help and exit)
+                 -i                  (disable DNSSEC validation)
+                 -m                  (enable memory usage debugging)
+                 -p port             (specify port number)
+                 -q name             (specify query name)
+                 -t type             (specify query type)
+                                      only IN is supported)
+                 -v                  (print version and exit)
+                 -x dot-notation     (shortcut for reverse lookups)
+        d-opt    is of the form +keyword[=value], where keyword is:
+                 +[no]all            (Set or clear all display flags)
+                 +[no]class          (Control display of class)
+                 +[no]comments       (Control display of comment lines)
+                 +[no]crypto         (Control display of cryptographic
+                                      fields in records)
+                 +[no]dlv            (Obsolete)
+                 +[no]dnssec         (Display DNSSEC records)
+                 +[no]mtrace         (Trace messages received)
+                 +[no]multiline      (Print records in an expanded format)
+                 +[no]root           (DNSSEC validation trust anchor)
+                 +[no]rrcomments     (Control display of per-record comments)
+                 +[no]rtrace         (Trace resolver fetches)
+                 +[no]short          (Short form answer)
+                 +[no]split=##       (Split hex/base64 fields into chunks)
+                 +[no]tcp            (TCP mode)
+                 +[no]ttl            (Control display of ttls in records)
+                 +[no]trust          (Control display of trust level)
+                 +[no]unknownformat  (Print RDATA in RFC 3597 &quot;unknown&quot; format)
+                 +[no]vtrace         (Trace validation process)
+                 +[no]yaml           (Present the results as YAML)
+</code></pre>
+<hr>
+<h5 id=dig>dig</h5>
+<p>DNS lookup utility</p>
+<pre><code>root@kali:~# dig -h
+Usage:  dig [@global-server] [domain] [q-type] [q-class] {q-opt}
+            {global-d-opt} host [@local-server] {local-d-opt}
+            [ host [@local-server] {local-d-opt} [...]]
+Where:  domain	  is in the Domain Name System
+        q-class  is one of (in,hs,ch,...) [default: in]
+        q-type   is one of (a,any,mx,ns,soa,hinfo,axfr,txt,...) [default:a]
+                 (Use ixfr=version for type ixfr)
+        q-opt    is one of:
+                 -4                  (use IPv4 query transport only)
+                 -6                  (use IPv6 query transport only)
+                 -b address[#port]   (bind to source address/port)
+                 -c class            (specify query class)
+                 -f filename         (batch mode)
+                 -k keyfile          (specify tsig key file)
+                 -m                  (enable memory usage debugging)
+                 -p port             (specify port number)
+                 -q name             (specify query name)
+                 -r                  (do not read ~/.digrc)
+                 -t type             (specify query type)
+                 -u                  (display times in usec instead of msec)
+                 -x dot-notation     (shortcut for reverse lookups)
+                 -y [hmac:]name:key  (specify named base64 tsig key)
+        d-opt    is of the form +keyword[=value], where keyword is:
+                 +[no]aaflag         (Set AA flag in query (+[no]aaflag))
+                 +[no]aaonly         (Set AA flag in query (+[no]aaflag))
+                 +[no]additional     (Control display of additional section)
+                 +[no]adflag         (Set AD flag in query (default on))
+                 +[no]all            (Set or clear all display flags)
+                 +[no]answer         (Control display of answer section)
+                 +[no]authority      (Control display of authority section)
+                 +[no]badcookie      (Retry BADCOOKIE responses)
+                 +[no]besteffort     (Try to parse even illegal messages)
+                 +bufsize[=###]      (Set EDNS0 Max UDP packet size)
+                 +[no]cdflag         (Set checking disabled flag in query)
+                 +[no]class          (Control display of class in records)
+                 +[no]cmd            (Control display of command line -
+                                      global option)
+                 +[no]comments       (Control display of packet header
+                                      and section name comments)
+                 +[no]cookie         (Add a COOKIE option to the request)
+                 +[no]crypto         (Control display of cryptographic
+                                      fields in records)
+                 +[no]defname        (Use search list (+[no]search))
+                 +[no]dns64prefix    (Get the DNS64 prefixes from ipv4only.arpa)
+                 +[no]dnssec         (Request DNSSEC records)
+                 +domain=###         (Set default domainname)
+                 +[no]dscp[=###]     (Set the DSCP value to ### [0..63])
+                 +[no]edns[=###]     (Set EDNS version) [0]
+                 +ednsflags=###      (Set EDNS flag bits)
+                 +[no]ednsnegotiation (Set EDNS version negotiation)
+                 +ednsopt=###[:value] (Send specified EDNS option)
+                 +noednsopt          (Clear list of +ednsopt options)
+                 +[no]expandaaaa     (Expand AAAA records)
+                 +[no]expire         (Request time to expire)
+                 +[no]fail           (Don't try next server on SERVFAIL)
+                 +[no]header-only    (Send query without a question section)
+                 +[no]https[=###]    (DNS-over-HTTPS mode) [/]
+                 +[no]https-get      (Use GET instead of default POST method
+                 +[no]identify       (ID responders in short answers)
+                 +[no]idnin          (Parse IDN names [default=on on tty])
+                 +[no]idnout         (Convert IDN response [default=on on tty])
+                 +[no]ignore         (Don't revert to TCP for TC responses.)
+                 +[no]keepalive      (Request EDNS TCP keepalive)
+                 +[no]keepopen       (Keep the TCP socket open between queries)
+                 +[no]multiline      (Print records in an expanded format)
+                 +ndots=###          (Set search NDOTS value)
+                 +[no]nsid           (Request Name Server ID)
+                 +[no]nssearch       (Search all authoritative nameservers)
+                 +[no]onesoa         (AXFR prints only one soa record)
+                 +[no]opcode=###     (Set the opcode of the request)
+                 +padding=###        (Set padding block size [0])
+                 +[no]qr             (Print question before sending)
+                 +[no]question       (Control display of question section)
+                 +[no]raflag         (Set RA flag in query (+[no]raflag))
+                 +[no]rdflag         (Recursive mode (+[no]recurse))
+                 +[no]recurse        (Recursive mode (+[no]rdflag))
+                 +retry=###          (Set number of UDP retries) [2]
+                 +[no]rrcomments     (Control display of per-record comments)
+                 +[no]search         (Set whether to use searchlist)
+                 +[no]short          (Display nothing except short
+                                      form of answers - global option)
+                 +[no]showbadcookie  (Show BADCOOKIE message)
+                 +[no]showsearch     (Search with intermediate results)
+                 +[no]split=##       (Split hex/base64 fields into chunks)
+                 +[no]stats          (Control display of statistics)
+                 +subnet=addr        (Set edns-client-subnet option)
+                 +[no]tcflag         (Set TC flag in query (+[no]tcflag))
+                 +[no]tcp            (TCP mode (+[no]vc))
+                 +timeout=###        (Set query timeout) [5]
+                 +[no]tls            (DNS-over-TLS mode)
+                 +[no]trace          (Trace delegation down from root [+dnssec])
+                 +tries=###          (Set number of UDP attempts) [3]
+                 +[no]ttlid          (Control display of ttls in records)
+                 +[no]ttlunits       (Display TTLs in human-readable units)
+                 +[no]unknownformat  (Print RDATA in RFC 3597 &quot;unknown&quot; format)
+                 +[no]vc             (TCP mode (+[no]tcp))
+                 +[no]yaml           (Present the results as YAML)
+                 +[no]zflag          (Set Z flag in query)
+        global d-opts and servers (before host name) affect all queries.
+        local d-opts and servers (after host name) affect only that lookup.
+        -h                           (print help and exit)
+        -v                           (print version and exit)
+</code></pre>
+<hr>
+<h5 id=dnstap-read>dnstap-read</h5>
+<p>Print dnstap data in human-readable form</p>
+<pre><code>root@kali:~# man dnstap-read
+DNSTAP-READ(1)                      BIND 9                      DNSTAP-READ(1)
+
+NAME
+       dnstap-read - print dnstap data in human-readable form
+
+SYNOPSIS
+       dnstap-read [-m] [-p] [-x] [-y] {file}
+
+DESCRIPTION
+       dnstap-read  reads dnstap data from a specified file and prints it in a
+       human-readable format. By default, dnstap data is printed  in  a  short
+       summary  format,  but  if the -y option is specified, a longer and more
+       detailed YAML format is used.
+
+OPTIONS
+       -m     This option indicates trace memory allocations, and is used  for
+              debugging memory leaks.
+
+       -p     This option prints the text form of the DNS message that was en-
+              capsulated in the dnstap frame, after printing the dnstap data.
+
+       -x     This option prints a hex dump of the wire form of the  DNS  mes-
+              sage  that  was encapsulated in the dnstap frame, after printing
+              the dnstap data.
+
+       -y     This option prints dnstap data in a detailed YAML format.
+
+SEE ALSO
+       named(8), rndc(8), BIND 9 Administrator Reference Manual.
+
+AUTHOR
+       Internet Systems Consortium
+
+COPYRIGHT
+       2022, Internet Systems Consortium
+
+9.18.0-2-Debian                   2022-01-24                    DNSTAP-READ(1)
+</code></pre>
+<hr>
+<h5 id=mdig>mdig</h5>
+<p>DNS pipelined lookup utility</p>
+<pre><code>root@kali:~# mdig -h
+Usage: mdig @server {global-opt} host
+           {local-opt} [ host {local-opt} [...]]
+Where:
+ anywhere opt    is one of:
+                 -f filename         (batch mode)
+                 -h                  (print help and exit)
+                 -v                  (print version and exit)
+ global opt      is one of:
+                 -4                  (use IPv4 query transport only)
+                 -6                  (use IPv6 query transport only)
+                 -b address[#port]   (bind to source address/port)
+                 -p port             (specify port number)
+                 -m                  (enable memory usage debugging)
+                 +[no]dscp[=###]     (Set the DSCP value to ### [0..63])
+                 +[no]vc             (TCP mode)
+                 +[no]tcp            (TCP mode, alternate syntax)
+                 +[no]besteffort     (Try to parse even illegal messages)
+                 +[no]cl             (Control display of class in records)
+                 +[no]comments       (Control display of comment lines)
+                 +[no]rrcomments     (Control display of per-record comments)
+                 +[no]crypto         (Control display of cryptographic fields in records)
+                 +[no]question       (Control display of question)
+                 +[no]answer         (Control display of answer)
+                 +[no]authority      (Control display of authority)
+                 +[no]additional     (Control display of additional)
+                 +[no]short          (Disable everything except short
+                                      form of answer)
+                 +[no]ttlid          (Control display of ttls in records)
+                 +[no]ttlunits       (Display TTLs in human-readable units)
+                 +[no]unknownformat  (Print RDATA in RFC 3597 &quot;unknown&quot; format)
+                 +[no]all            (Set or clear all display flags)
+                 +[no]multiline      (Print records in an expanded format)
+                 +[no]split=##       (Split hex/base64 fields into chunks)
+ local opt       is one of:
+                 -c class            (specify query class)
+                 -t type             (specify query type)
+                 -x dot-notation     (shortcut for reverse lookups)
+                 +timeout=###        (Set query timeout) [UDP=5,TCP=10]
+                 +udptimeout=###     (Set timeout before UDP retry)
+                 +tries=###          (Set number of UDP attempts) [3]
+                 +retry=###          (Set number of UDP retries) [2]
+                 +bufsize=###        (Set EDNS0 Max UDP packet size)
+                 +subnet=addr        (Set edns-client-subnet option)
+                 +[no]edns[=###]     (Set EDNS version) [0]
+                 +ednsflags=###      (Set EDNS flag bits)
+                 +ednsopt=###[:value] (Send specified EDNS option)
+                 +noednsopt          (Clear list of +ednsopt options)
+                 +[no]recurse        (Recursive mode)
+                 +[no]aaonly         (Set AA flag in query (+[no]aaflag))
+                 +[no]adflag         (Set AD flag in query)
+                 +[no]cdflag         (Set CD flag in query)
+                 +[no]zflag          (Set Z flag in query)
+                 +[no]dnssec         (Request DNSSEC records)
+                 +[no]expire         (Request time to expire)
+                 +[no]cookie[=###]   (Send a COOKIE option)
+                 +[no]nsid           (Request Name Server ID)
+</code></pre>
+<hr>
+<h5 id=nslookup>nslookup</h5>
+<p>Query Internet name servers interactively</p>
+<pre><code>root@kali:~# man nslookup
+NSLOOKUP(1)                         BIND 9                         NSLOOKUP(1)
+
+NAME
+       nslookup - query Internet name servers interactively
+
+SYNOPSIS
+       nslookup [-option] [name | -] [server]
+
+DESCRIPTION
+       nslookup  is a program to query Internet domain name servers.  nslookup
+       has two modes: interactive and non-interactive. Interactive mode allows
+       the  user to query name servers for information about various hosts and
+       domains or to print a list of hosts in a domain.  Non-interactive  mode
+       prints just the name and requested information for a host or domain.
+
+ARGUMENTS
+       Interactive mode is entered in the following cases:
+
+       a. when no arguments are given (the default name server is used);
+
+       b. when  the  first argument is a hyphen (-) and the second argument is
+          the host name or Internet address of a name server.
+
+       Non-interactive mode is used when the name or Internet address  of  the
+       host  to be looked up is given as the first argument. The optional sec-
+       ond argument specifies the host name or address of a name server.
+
+       Options can also be specified on the command line if they  precede  the
+       arguments  and  are  prefixed with a hyphen. For example, to change the
+       default query type to host information, with an initial timeout  of  10
+       seconds, type:
+
+          nslookup -query=hinfo  -timeout=10
+
+       The -version option causes nslookup to print the version number and im-
+       mediately exit.
+
+INTERACTIVE COMMANDS
+       host [server]
+              This command looks up information for host using the current de-
+              fault server or using server, if specified. If host is an Inter-
+              net address and the query type is A or PTR, the name of the host
+              is  returned. If host is a name and does not have a trailing pe-
+              riod (.), the search list is used to qualify the name.
+
+              To look up a host not in the current domain, append a period  to
+              the name.
+
+       server domain | lserver domain
+              These commands change the default server to domain; lserver uses
+              the initial server to look up information  about  domain,  while
+              server  uses the current default server. If an authoritative an-
+              swer cannot be found, the names of servers that might  have  the
+              answer are returned.
+
+       root   This command is not implemented.
+
+       finger This command is not implemented.
+
+       ls     This command is not implemented.
+
+       view   This command is not implemented.
+
+       help   This command is not implemented.
+
+       ?      This command is not implemented.
+
+       exit   This command exits the program.
+
+       set keyword[=value]
+              This  command  is  used to change state information that affects
+              the lookups. Valid keywords are:
+
+              all    This keyword prints the current values of the  frequently
+                     used  options  to  set. Information about the current de-
+                     fault server and host is also printed.
+
+              class=value
+                     This keyword changes the query class to one of:
+
+                     IN     the Internet class
+
+                     CH     the Chaos class
+
+                     HS     the Hesiod class
+
+                     ANY    wildcard
+
+                     The class specifies the protocol group  of  the  informa-
+                     tion.  The  default is IN; the abbreviation for this key-
+                     word is cl.
+
+              nodebug
+                     This keyword turns on or off the display of the full  re-
+                     sponse  packet,  and  any  intermediate response packets,
+                     when searching. The default for this keyword is  nodebug;
+                     the abbreviation for this keyword is [no]deb.
+
+              nod2   This  keyword  turns  debugging mode on or off. This dis-
+                     plays more about what nslookup is doing. The  default  is
+                     nod2.
+
+              domain=name
+                     This keyword sets the search list to name.
+
+              nosearch
+                     If  the  lookup request contains at least one period, but
+                     does not end with a trailing period, this keyword appends
+                     the domain names in the domain search list to the request
+                     until an answer is received. The default is search.
+
+              port=value
+                     This keyword changes the default TCP/UDP name server port
+                     to  value from its default, port 53. The abbreviation for
+                     this keyword is po.
+
+              querytype=value | type=value
+                     This keyword changes the type of the information query to
+                     value.  The  defaults  are A and then AAAA; the abbrevia-
+                     tions for these keywords are q and ty.
+
+                     Please note that it is only possible to specify one query
+                     type. Only the default behavior looks up both when an al-
+                     ternative is not specified.
+
+              norecurse
+                     This keyword tells the name server to query other servers
+                     if  it  does not have the information. The default is re-
+                     curse; the abbreviation for this keyword is [no]rec.
+
+              ndots=number
+                     This keyword sets the number of dots  (label  separators)
+                     in  a  domain that disables searching. Absolute names al-
+                     ways stop searching.
+
+              retry=number
+                     This keyword sets the number of retries to number.
+
+              timeout=number
+                     This keyword changes the initial timeout interval to wait
+                     for a reply to number, in seconds.
+
+              novc   This  keyword indicates that a virtual circuit should al-
+                     ways be used when sending requests to the  server.   novc
+                     is the default.
+
+              nofail This  keyword  tries  the next nameserver if a nameserver
+                     responds with SERVFAIL or a referral (nofail), or  termi-
+                     nates the query (fail) on such a response. The default is
+                     nofail.
+
+RETURN VALUES
+       nslookup returns with an exit status of 1 if any query  failed,  and  0
+       otherwise.
+
+IDN SUPPORT
+       If  nslookup  has  been  built with IDN (internationalized domain name)
+       support, it can accept and display non-ASCII domain names. nslookup ap-
+       propriately converts character encoding of a domain name before sending
+       a request to a DNS server or displaying a reply from  the  server.   To
+       turn  off IDN support, define the IDN_DISABLE environment variable. IDN
+       support is disabled if the variable is set when nslookup runs, or  when
+       the standard output is not a tty.
+
+FILES
+       /etc/resolv.conf
+
+SEE ALSO
+       dig(1), host(1), named(8).
+
+AUTHOR
+       Internet Systems Consortium
+
+COPYRIGHT
+       2022, Internet Systems Consortium
+
+9.18.0-2-Debian                   2022-01-24                       NSLOOKUP(1)
+</code></pre>
+<hr>
+<h5 id=nsupdate>nsupdate</h5>
+<p>Dynamic DNS update utility</p>
+<pre><code>root@kali:~# nsupdate --help
+nsupdate: illegal option -- -
+nsupdate: invalid argument --
+usage: nsupdate [-CdDi] [-L level] [-l] [-g | -o | -y keyname:secret | -k keyfile] [-p port] [-v] [-V] [-P] [-T] [-4 | -6] [filename]
+</code></pre>
+<hr>
+<h3 id=bind9-doc>bind9-doc</h3>
+<p>This package provides various documents that are useful for maintaining a
+working BIND 9 installation.</p>
+<p><strong>Installed size:</strong> <code>5.82 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9-doc</code></p>
+<hr>
+<h3 id=bind9-host>bind9-host</h3>
+<p>This package provides the &lsquo;host&rsquo; DNS lookup utility in the form that
+is bundled with the BIND 9 sources.</p>
+<p><strong>Installed size:</strong> <code>384 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9-host</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bind9-libs</li>
+<li>libc6</li>
+<li>libidn2-0
+</div></li>
+</ul>
+<h5 id=host>host</h5>
+<p>DNS lookup utility</p>
+<pre><code>root@kali:~# host -h
+host: illegal option -- h
+Usage: host [-aCdilrTvVw] [-c class] [-N ndots] [-t type] [-W time]
+            [-R number] [-m flag] [-p port] hostname [server]
+       -a is equivalent to -v -t ANY
+       -A is like -a but omits RRSIG, NSEC, NSEC3
+       -c specifies query class for non-IN data
+       -C compares SOA records on authoritative nameservers
+       -d is equivalent to -v
+       -l lists all hosts in a domain, using AXFR
+       -m set memory debugging flag (trace|record|usage)
+       -N changes the number of dots allowed before root lookup is done
+       -p specifies the port on the server to query
+       -r disables recursive processing
+       -R specifies number of retries for UDP packets
+       -s a SERVFAIL response should stop query
+       -t specifies the query type
+       -T enables TCP/IP mode
+       -U enables UDP mode
+       -v enables verbose output
+       -V print version number and exit
+       -w specifies to wait forever for a reply
+       -W specifies how long to wait for a reply
+       -4 use IPv4 query transport only
+       -6 use IPv6 query transport only
+</code></pre>
+<hr>
+<h3 id=bind9-libs>bind9-libs</h3>
+<p>The Berkeley Internet Name Domain (BIND 9) implements an Internet domain
+name server. BIND 9 is the most widely-used name server software on the
+Internet, and is supported by the Internet Software Consortium, <a href=http://www.isc.org/>www.isc.org</a>.</p>
+<p>This package contains a bundle of shared libraries used by BIND 9.</p>
+<p><strong>Installed size:</strong> <code>8.57 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9-libs</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfstrm0</li>
+<li>libgssapi-krb5-2</li>
+<li>libjemalloc2</li>
+<li>libjson-c5</li>
+<li>libkrb5-3</li>
+<li>liblmdb0</li>
+<li>libmaxminddb0</li>
+<li>libnghttp2-14</li>
+<li>libprotobuf-c1</li>
+<li>libssl1.1</li>
+<li>libuv1</li>
+<li>libxml2</li>
+<li>zlib1g
+</div></li>
+</ul>
+<hr>
+<h3 id=bind9-utils>bind9-utils</h3>
+<p>This package provides various utilities that are useful for maintaining a
+working BIND 9 installation.</p>
+<p><strong>Installed size:</strong> <code>862 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9-utils</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bind9-libs</li>
+<li>libc6
+</div></li>
+</ul>
+<h5 id=dnssec-cds>dnssec-cds</h5>
+<p>Change DS records for a child zone based on CDS/CDNSKEY</p>
+<pre><code>root@kali:~# dnssec-cds -h
+Usage:
+    dnssec-cds options [options] -f &lt;file&gt; -d &lt;path&gt; &lt;domain&gt;
+Version: 9.18.0-2-Debian
+Options:
+    -a &lt;algorithm&gt;     digest algorithm (SHA-1 / SHA-256 / SHA-384)
+    -c &lt;class&gt;         of domain (default IN)
+    -D                 prefer CDNSKEY records instead of CDS
+    -d &lt;file|dir&gt;      where to find parent dsset- file
+    -f &lt;file&gt;          child DNSKEY+CDNSKEY+CDS+RRSIG records
+    -i[extension]      update dsset- file in place
+    -s &lt;start-time&gt;    oldest permitted child signatures
+    -u                 emit nsupdate script
+    -T &lt;ttl&gt;           TTL of DS records
+    -V                 print version
+    -v &lt;verbosity&gt;
+</code></pre>
+<hr>
+<h5 id=dnssec-dsfromkey>dnssec-dsfromkey</h5>
+<p>DNSSEC DS RR generation tool</p>
+<pre><code>root@kali:~# dnssec-dsfromkey --help
+dnssec-dsfromkey: invalid argument --
+Usage:
+    dnssec-dsfromkey [options] keyfile
+
+    dnssec-dsfromkey [options] -f zonefile [zonename]
+
+    dnssec-dsfromkey [options] -s dnsname
+
+    dnssec-dsfromkey [-h|-V]
+
+Version: 9.18.0-2-Debian
+Options:
+    -1: digest algorithm SHA-1
+    -2: digest algorithm SHA-256
+    -a algorithm: digest algorithm (SHA-1, SHA-256 or SHA-384)
+    -A: include all keys in DS set, not just KSKs (-f only)
+    -c class: rdata class for DS set (default IN) (-f or -s only)
+    -C: print CDS records
+    -f zonefile: read keys from a zone file
+    -h: print help information
+    -K directory: where to find key or keyset files
+    -s: read keys from keyset-&lt;dnsname&gt; file
+    -T: TTL of output records (omitted by default)
+    -v level: verbosity
+    -V: print version information
+Output: DS or CDS RRs
+</code></pre>
+<hr>
+<h5 id=dnssec-keyfromlabel>dnssec-keyfromlabel</h5>
+<p>DNSSEC key generation tool</p>
+<pre><code>root@kali:~# dnssec-keyfromlabel --help
+dnssec-keyfromlabel: invalid argument --
+Usage:
+    dnssec-keyfromlabel -l label [options] name
+
+Version: 9.18.0-2-Debian
+Required options:
+    -l label: label of the key pair
+    name: owner of the key
+Other options:
+    -a algorithm: 
+        DH | RSASHA1 |
+        NSEC3RSASHA1 |
+        RSASHA256 | RSASHA512 |
+        ECDSAP256SHA256 | ECDSAP384SHA384 |
+        ED25519 | ED448
+    -3: use NSEC3-capable algorithm
+    -c class (default: IN)
+    -E &lt;engine&gt;:
+        name of an OpenSSL engine to use
+    -f keyflag: KSK | REVOKE
+    -K directory: directory in which to place key files
+    -k: generate a TYPE=KEY key
+    -L ttl: default key TTL
+    -n nametype: ZONE | HOST | ENTITY | USER | OTHER
+        (DNSKEY generation defaults to ZONE
+    -p protocol: default: 3 [dnssec]
+    -t type: AUTHCONF | NOAUTHCONF | NOAUTH | NOCONF (default: AUTHCONF)
+    -y: permit keys that might collide
+    -v verbose level
+    -V: print version information
+Date options:
+    -P date/[+-]offset: set key publication date
+    -P sync date/[+-]offset: set CDS and CDNSKEY publication date
+    -A date/[+-]offset: set key activation date
+    -R date/[+-]offset: set key revocation date
+    -I date/[+-]offset: set key inactivation date
+    -D date/[+-]offset: set key deletion date
+    -D sync date/[+-]offset: set CDS and CDNSKEY deletion date
+    -G: generate key only; do not set -P or -A
+    -C: generate a backward-compatible key, omitting all dates
+    -S &lt;key&gt;: generate a successor to an existing key
+    -i &lt;interval&gt;: prepublication interval for successor key (default: 30 days)
+Output:
+     K&lt;name&gt;+&lt;alg&gt;+&lt;id&gt;.key, K&lt;name&gt;+&lt;alg&gt;+&lt;id&gt;.private
+</code></pre>
+<hr>
+<h5 id=dnssec-keygen>dnssec-keygen</h5>
+<p>DNSSEC key generation tool</p>
+<pre><code>root@kali:~# dnssec-keygen --help
+dnssec-keygen: invalid argument --
+Usage:
+    dnssec-keygen [options] name
+
+Version: 9.18.0-2-Debian
+    name: owner of the key
+Options:
+    -K &lt;directory&gt;: write keys into directory
+    -k &lt;policy&gt;: generate keys for dnssec-policy
+    -l &lt;file&gt;: configuration file with dnssec-policy statement
+    -a &lt;algorithm&gt;:
+        RSASHA1 | NSEC3RSASHA1 |
+        RSASHA256 | RSASHA512 |
+        ECDSAP256SHA256 | ECDSAP384SHA384 |
+        ED25519 | ED448 | DH
+    -3: use NSEC3-capable algorithm
+    -b &lt;key size in bits&gt;:
+        RSASHA1:	[1024..4096]
+        NSEC3RSASHA1:	[1024..4096]
+        RSASHA256:	[1024..4096]
+        RSASHA512:	[1024..4096]
+        DH:		[128..4096]
+        ECDSAP256SHA256:	ignored
+        ECDSAP384SHA384:	ignored
+        ED25519:	ignored
+        ED448:	ignored
+        (key size defaults are set according to
+        algorithm and usage (ZSK or KSK)
+    -n &lt;nametype&gt;: ZONE | HOST | ENTITY | USER | OTHER
+        (DNSKEY generation defaults to ZONE)
+    -c &lt;class&gt;: (default: IN)
+    -d &lt;digest bits&gt; (0 =&gt; max, default)
+    -E &lt;engine&gt;:
+        name of an OpenSSL engine to use
+    -f &lt;keyflag&gt;: KSK | REVOKE
+    -g &lt;generator&gt;: use specified generator (DH only)
+    -L &lt;ttl&gt;: default key TTL
+    -p &lt;protocol&gt;: (default: 3 [dnssec])
+    -s &lt;strength&gt;: strength value this key signs DNS records with (default: 0)
+    -T &lt;rrtype&gt;: DNSKEY | KEY (default: DNSKEY; use KEY for SIG(0))
+    -t &lt;type&gt;: AUTHCONF | NOAUTHCONF | NOAUTH | NOCONF (default: AUTHCONF)
+    -h: print usage and exit
+    -m &lt;memory debugging mode&gt;:
+       usage | trace | record | size | mctx
+    -v &lt;level&gt;: set verbosity level (0 - 10)
+    -V: print version information
+Timing options:
+    -P date/[+-]offset/none: set key publication date (default: now)
+    -P sync date/[+-]offset/none: set CDS and CDNSKEY publication date
+    -A date/[+-]offset/none: set key activation date (default: now)
+    -R date/[+-]offset/none: set key revocation date
+    -I date/[+-]offset/none: set key inactivation date
+    -D date/[+-]offset/none: set key deletion date
+    -D sync date/[+-]offset/none: set CDS and CDNSKEY deletion date
+    -G: generate key only; do not set -P or -A
+    -C: generate a backward-compatible key, omitting all dates
+    -S &lt;key&gt;: generate a successor to an existing key
+    -i &lt;interval&gt;: prepublication interval for successor key (default: 30 days)
+Output:
+     K&lt;name&gt;+&lt;alg&gt;+&lt;id&gt;.key, K&lt;name&gt;+&lt;alg&gt;+&lt;id&gt;.private
+</code></pre>
+<hr>
+<h5 id=dnssec-revoke>dnssec-revoke</h5>
+<p>Set the REVOKED bit on a DNSSEC key</p>
+<pre><code>root@kali:~# dnssec-revoke --help
+dnssec-revoke: invalid argument --
+Usage:
+    dnssec-revoke [options] keyfile
+
+Version: 9.18.0-2-Debian
+    -E engine:    specify OpenSSL engine
+    -f:           force overwrite
+    -h:           help
+    -K directory: use directory for key files
+    -r:           remove old keyfiles after creating revoked version
+    -v level:     set level of verbosity
+    -V:           print version information
+Output:
+     K&lt;name&gt;+&lt;alg&gt;+&lt;new id&gt;.key, K&lt;name&gt;+&lt;alg&gt;+&lt;new id&gt;.private
+</code></pre>
+<hr>
+<h5 id=dnssec-settime>dnssec-settime</h5>
+<p>Set the key timing metadata for a DNSSEC key</p>
+<pre><code>root@kali:~# dnssec-settime --help
+dnssec-settime: invalid argument --
+Usage:
+    dnssec-settime [options] keyfile
+
+Version: 9.18.0-2-Debian
+General options:
+    -E engine:          specify OpenSSL engine
+    -f:                 force update of old-style keys
+    -K directory:       set key file location
+    -L ttl:             set default key TTL
+    -v level:           set level of verbosity
+    -V:                 print version information
+    -h:                 help
+Timing options:
+    -P date/[+-]offset/none: set/unset key publication date
+    -P ds date/[+-]offset/none: set/unset DS publication date
+    -P sync date/[+-]offset/none: set/unset CDS and CDNSKEY publication date
+    -A date/[+-]offset/none: set/unset key activation date
+    -R date/[+-]offset/none: set/unset key revocation date
+    -I date/[+-]offset/none: set/unset key inactivation date
+    -D date/[+-]offset/none: set/unset key deletion date
+    -D ds date/[+-]offset/none: set/unset DS deletion date
+    -D sync date/[+-]offset/none: set/unset CDS and CDNSKEY deletion date
+    -S &lt;key&gt;: generate a successor to an existing key
+    -i &lt;interval&gt;: prepublication interval for successor key (default: 30 days)
+Key state options:
+    -s: update key state file (default no)
+    -g state: set the goal state for this key
+    -d state date/[+-]offset: set the DS state
+    -k state date/[+-]offset: set the DNSKEY state
+    -r state date/[+-]offset: set the RRSIG (KSK) state
+    -z state date/[+-]offset: set the RRSIG (ZSK) state
+Printing options:
+    -p C/P/Psync/A/R/I/D/Dsync/all: print a particular time value or values
+    -u:                 print times in unix epoch format
+Output:
+     K&lt;name&gt;+&lt;alg&gt;+&lt;new id&gt;.key, K&lt;name&gt;+&lt;alg&gt;+&lt;new id&gt;.private
+</code></pre>
+<hr>
+<h5 id=dnssec-signzone>dnssec-signzone</h5>
+<p>DNSSEC zone signing tool</p>
+<pre><code>root@kali:~# dnssec-signzone --help
+dnssec-signzone: illegal option -- -
+dnssec-signzone: invalid argument --
+Usage:
+	dnssec-signzone [options] zonefile [keys]
+
+Version: 9.18.0-2-Debian
+Options: (default value in parenthesis) 
+	-S:	smart signing: automatically finds key files
+		for the zone and determines how they are to be used
+	-K directory:
+		directory to find key files (.)
+	-d directory:
+		directory to find dsset-* files (.)
+	-g:	update DS records based on child zones' dsset-* files
+	-s [YYYYMMDDHHMMSS|+offset]:
+		RRSIG start time - absolute|offset (now - 1 hour)
+	-e [YYYYMMDDHHMMSS|+offset|&quot;now&quot;+offset]:
+		RRSIG end time - absolute|from start|from now (now + 30 days)
+	-X [YYYYMMDDHHMMSS|+offset|&quot;now&quot;+offset]:
+		DNSKEY RRSIG end - absolute|from start|from now (matches -e)
+	-i interval:
+		cycle interval - resign if &lt; interval from end ( (end-start)/4 )
+	-j jitter:
+		randomize signature end time up to jitter seconds
+	-v debuglevel (0)
+	-q quiet
+	-V:	print version information
+	-o origin:
+		zone origin (name of zonefile)
+	-f outfile:
+		file the signed zone is written in (zonefile + .signed)
+	-I format:
+		file format of input zonefile (text)
+	-O format:
+		file format of signed zone file (text)
+	-N format:
+		soa serial format of signed zone file (keep)
+	-D:
+		output only DNSSEC-related records
+	-a:	verify generated signatures
+	-c class (IN)
+	-E engine:
+		name of an OpenSSL engine to use
+	-P:	disable post-sign verification
+	-Q:	remove signatures from keys that are no longer active
+	-R:	remove signatures from keys that no longer exist
+	-T TTL:	TTL for newly added DNSKEYs
+	-t:	print statistics
+	-u:	update or replace an existing NSEC/NSEC3 chain
+	-x:	sign DNSKEY record with KSKs only, not ZSKs
+	-z:	sign all records with KSKs
+	-C:	generate a keyset file, for compatibility
+		with older versions of dnssec-signzone -g
+	-n ncpus (number of cpus present)
+	-k key_signing_key
+	-3 NSEC3 salt
+	-H NSEC3 iterations (10)
+	-A NSEC3 optout
+
+Signing Keys: (default: all zone keys that have private keys)
+	keyfile (Kname+alg+tag)
+</code></pre>
+<hr>
+<h5 id=dnssec-verify>dnssec-verify</h5>
+<p>DNSSEC zone verification tool</p>
+<pre><code>root@kali:~# dnssec-verify --help
+dnssec-verify: illegal option -- -
+dnssec-verify: illegal option -- e
+dnssec-verify: illegal option -- l
+dnssec-verify: illegal option -- p
+dnssec-verify: invalid argument --
+Usage:
+	dnssec-verify [options] zonefile [keys]
+
+Version: 9.18.0-2-Debian
+Options: (default value in parenthesis) 
+	-v debuglevel (0)
+	-q quiet
+	-V:	print version information
+	-o origin:
+		zone origin (name of zonefile)
+	-I format:
+		file format of input zonefile (text)
+	-c class (IN)
+	-E engine:
+		name of an OpenSSL engine to use
+	-x:	DNSKEY record signed with KSKs only, not ZSKs
+	-z:	All records signed with KSKs
+</code></pre>
+<hr>
+<h5 id=named-checkconf>named-checkconf</h5>
+<p>Named configuration file syntax checking tool</p>
+<pre><code>root@kali:~# named-checkconf --help
+named-checkconf: invalid argument --
+usage: named-checkconf [-chijlvz] [-p [-x]] [-t directory] [named.conf]
+</code></pre>
+<hr>
+<h5 id=named-checkzone>named-checkzone</h5>
+<p>Zone file validity checking or converting tool</p>
+<pre><code>root@kali:~# named-checkzone --help
+named-checkzone: invalid argument --
+usage: named-checkzone [-djqvD] [-c class] [-f inputformat] [-F outputformat] [-J filename] [-s (full|relative)] [-t directory] [-w directory] [-k (ignore|warn|fail)] [-m (ignore|warn|fail)] [-n (ignore|warn|fail)] [-r (ignore|warn|fail)] [-i (full|full-sibling|local|local-sibling|none)] [-M (ignore|warn|fail)] [-S (ignore|warn|fail)] [-W (ignore|warn)] [-o filename] zonename [ (filename|-) ]
+</code></pre>
+<hr>
+<h5 id=named-compilezone>named-compilezone</h5>
+<p>Zone file validity checking or converting tool</p>
+<pre><code>root@kali:~# named-compilezone --help
+named-compilezone: invalid argument --
+usage: named-compilezone [-djqvD] [-c class] [-f inputformat] [-F outputformat] [-J filename] [-s (full|relative)] [-t directory] [-w directory] [-k (ignore|warn|fail)] [-m (ignore|warn|fail)] [-n (ignore|warn|fail)] [-r (ignore|warn|fail)] [-i (full|full-sibling|local|local-sibling|none)] [-M (ignore|warn|fail)] [-S (ignore|warn|fail)] [-W (ignore|warn)] -o filename zonename [ (filename|-) ]
+</code></pre>
+<hr>
+<h5 id=rndc>rndc</h5>
+<p>Name server control utility</p>
+<pre><code>root@kali:~# rndc -h
+Usage: rndc [-b address] [-c config] [-s server] [-p port]
+	[-k key-file ] [-y key] [-r] [-V] [-4 | -6] command
+
+command is one of the following:
+
+  addzone zone [class [view]] { zone-options }
+		Add zone to given view. Requires allow-new-zones option.
+  delzone [-clean] zone [class [view]]
+		Removes zone from given view.
+  dnssec -checkds [-key id [-alg algorithm]] [-when time] (published|withdrawn) zone [class [view]]
+		Mark the DS record for the KSK of the given zone as seen
+		in the parent.  If the zone has multiple KSKs, select a
+		specific key by providing the keytag with -key id and
+		optionally the key's algorithm with -alg algorithm.
+		Requires the zone to have a dnssec-policy.
+  dnssec -rollover -key id [-alg algorithm] [-when time] zone [class [view]]
+		Rollover key with id of the given zone. Requires the zone
+		to have a dnssec-policy.
+  dnssec -status zone [class [view]]
+		Show the DNSSEC signing state for the specified zone.
+		Requires the zone to have a dnssec-policy.
+  dnstap -reopen
+		Close, truncate and re-open the DNSTAP output file.
+  dnstap -roll count
+		Close, rename and re-open the DNSTAP output file(s).
+  dumpdb [-all|-cache|-zones|-adb|-bad|-expired|-fail] [view ...]
+		Dump cache(s) to the dump file (named_dump.db).
+  flush         Flushes all of the server's caches.
+  flush [view]	Flushes the server's cache for a view.
+  flushname name [view]
+		Flush the given name from the server's cache(s)
+  flushtree name [view]
+		Flush all names under the given name from the server's cache(s)
+  freeze	Suspend updates to all dynamic zones.
+  freeze zone [class [view]]
+		Suspend updates to a dynamic zone.
+  halt		Stop the server without saving pending updates.
+  halt -p	Stop the server without saving pending updates reporting
+		process id.
+  loadkeys zone [class [view]]
+		Update keys without signing immediately.
+  managed-keys refresh [class [view]]
+		Check trust anchor for RFC 5011 key changes
+  managed-keys status [class [view]]
+		Display RFC 5011 managed keys information
+  managed-keys sync [class [view]]
+		Write RFC 5011 managed keys to disk
+  modzone zone [class [view]] { zone-options }
+		Modify a zone's configuration.
+		Requires allow-new-zones option.
+  notify zone [class [view]]
+		Resend NOTIFY messages for the zone.
+  notrace	Set debugging level to 0.
+  nta -dump
+		List all negative trust anchors.
+  nta [-lifetime duration] [-force] domain [view]
+		Set a negative trust anchor, disabling DNSSEC validation
+		for the given domain.
+		Using -lifetime specifies the duration of the NTA, up
+		to one week.
+		Using -force prevents the NTA from expiring before its
+		full lifetime, even if the domain can validate sooner.
+  nta -remove domain [view]
+		Remove a negative trust anchor, re-enabling validation
+		for the given domain.
+  querylog [ on | off ]
+		Enable / disable query logging.
+  reconfig	Reload configuration file and new zones only.
+  recursing	Dump the queries that are currently recursing (named.recursing)
+  refresh zone [class [view]]
+		Schedule immediate maintenance for a zone.
+  reload	Reload configuration file and zones.
+  reload zone [class [view]]
+		Reload a single zone.
+  retransfer zone [class [view]]
+		Retransfer a single zone without checking serial number.
+  scan		Scan available network interfaces for changes.
+  secroots [view ...]
+		Write security roots to the secroots file.
+  serve-stale [ on | off | reset | status ] [class [view]]
+		Control whether stale answers are returned
+  showzone zone [class [view]]
+		Print a zone's configuration.
+  sign zone [class [view]]
+		Update zone keys, and sign as needed.
+  signing -clear all zone [class [view]]
+		Remove the private records for all keys that have
+		finished signing the given zone.
+  signing -clear &lt;keyid&gt;/&lt;algorithm&gt; zone [class [view]]
+		Remove the private record that indicating the given key
+		has finished signing the given zone.
+  signing -list zone [class [view]]
+		List the private records showing the state of DNSSEC
+		signing in the given zone.
+  signing -nsec3param hash flags iterations salt zone [class [view]]
+		Add NSEC3 chain to zone if already signed.
+		Prime zone with NSEC3 chain if not yet signed.
+  signing -nsec3param none zone [class [view]]
+		Remove NSEC3 chains from zone.
+  signing -serial &lt;value&gt; zone [class [view]]
+		Set the zones's serial to &lt;value&gt;.
+  stats		Write server statistics to the statistics file.
+  status	Display status of the server.
+  stop		Save pending updates to master files and stop the server.
+  stop -p	Save pending updates to master files and stop the server
+		reporting process id.
+  sync [-clean]	Dump changes to all dynamic zones to disk, and optionally
+		remove their journal files.
+  sync [-clean] zone [class [view]]
+		Dump a single zone's changes to disk, and optionally
+		remove its journal file.
+  tcp-timeouts	Display the tcp-*-timeout option values
+  tcp-timeouts initial idle keepalive advertised
+		Update the tcp-*-timeout option values
+  thaw		Enable updates to all dynamic zones and reload them.
+  thaw zone [class [view]]
+		Enable updates to a frozen dynamic zone and reload it.
+  trace		Increment debugging level by one.
+  trace level	Change the debugging level.
+  tsig-delete keyname [view]
+		Delete a TKEY-negotiated TSIG key.
+  tsig-list	List all currently active TSIG keys, including both statically
+		configured and TKEY-negotiated keys.
+  validation [ on | off | status ] [view]
+		Enable / disable DNSSEC validation.
+  zonestatus zone [class [view]]
+		Display the current status of a zone.
+
+Version: 9.18.0-2-Debian
+</code></pre>
+<hr>
+<h5 id=rndc-confgen>rndc-confgen</h5>
+<p>Rndc key generation tool</p>
+<pre><code>root@kali:~# rndc-confgen -h
+Usage:
+ rndc-confgen [-a] [-b bits] [-c keyfile] [-k keyname] [-p port] [-s addr] [-t chrootdir] [-u user]
+  -a:		 generate just the key clause and write it to keyfile (/etc/bind/rndc.key)
+  -A alg:	 algorithm (default hmac-sha256)
+  -b bits:	 from 1 through 512, default 256; total length of the secret
+  -c keyfile:	 specify an alternate key file (requires -a)
+  -k keyname:	 the name as it will be used  in named.conf and rndc.conf
+  -p port:	 the port named will listen on and rndc will connect to
+  -q:		 suppress printing written key path
+  -s addr:	 the address to which rndc should connect
+  -t chrootdir:	 write a keyfile in chrootdir as well (requires -a)
+  -u user:	 set the keyfile owner to &quot;user&quot; (requires -a)
+</code></pre>
+<hr>
+<h3 id=bind9utils>bind9utils</h3>
+<p>This is a transitional package. It can safely be removed.</p>
+<p><strong>Installed size:</strong> <code>275 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install bind9utils</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bind9-utils
+</div></li>
+</ul>
+<hr>
+<h3 id=dnsutils>dnsutils</h3>
+<p>This is a transitional package. It can safely be removed.</p>
+<p><strong>Installed size:</strong> <code>275 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install dnsutils</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>bind9-dnsutils
+</div></li>
+</ul>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2022-Feb-10<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/bind9/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../beef-xss/index.html>
+<i class=ti-arrow-left></i>
+<span>beef-xss</span>
+</a>
+<a href=../bing-ip2hosts/index.html>
+<span>bing-ip2hosts</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/bind9/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:09:08 GMT -->
+</html>

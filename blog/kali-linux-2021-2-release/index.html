@@ -1,0 +1,525 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/blog/kali-linux-2021-2-release/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Feb 2022 07:22:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>Kali Linux 2021.2 Release (Kaboxer, Kali-Tweaks, Bleeding-Edge & Privileged Ports) | Kali Linux Blog</title>
+<meta itemprop=name content="Kali Linux 2021.2 Release (Kaboxer, Kali-Tweaks, Bleeding-Edge & Privileged Ports) | Kali Linux Blog">
+<meta name=application-name content="Kali Linux 2021.2 Release (Kaboxer, Kali-Tweaks, Bleeding-Edge & Privileged Ports) | Kali Linux Blog">
+<meta name=twitter:title content="Kali Linux 2021.2 Release (Kaboxer, Kali-Tweaks, Bleeding-Edge & Privileged Ports) | Kali Linux Blog">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="Kali Linux 2021.2 Release (Kaboxer, Kali-Tweaks, Bleeding-Edge & Privileged Ports) | Kali Linux Blog">
+<meta itemprop=description content="Say hello to Kali Linux 2021.2! This release welcomes a mixture of new items as well as enhancements of existing features, and is ready to be downloaded (from our updated page) or upgraded if you have an existing Kali Linux installation.
+A quick summary of the changelog since the 2021.1 release from February 2021 is:">
+<meta name=description content="Say hello to Kali Linux 2021.2! This release welcomes a mixture of new items as well as enhancements of existing features, and is ready to be downloaded (from our updated page) or upgraded if you have an existing Kali Linux installation.
+A quick summary of the changelog since the 2021.1 release from February 2021 is:">
+<meta name=twitter:description content="Say hello to Kali Linux 2021.2! This release welcomes a mixture of new items as well as enhancements of existing features, and is ready to be downloaded (from our updated page) or upgraded if you have an existing Kali Linux installation.
+A quick summary of the changelog since the 2021.1 release from February 2021 is:">
+<meta property="og:description" content="Say hello to Kali Linux 2021.2! This release welcomes a mixture of new items as well as enhancements of existing features, and is ready to be downloaded (from our updated page) or upgraded if you have an existing Kali Linux installation.
+A quick summary of the changelog since the 2021.1 release from February 2021 is:">
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="images/banner-2021.2-release.jpg">
+<meta property="og:image" content="images/banner-2021.2-release.jpg">
+<meta name=twitter:image content="images/banner-2021.2-release.jpg">
+<meta name=twitter:image:src content="images/banner-2021.2-release.jpg">
+<meta property="og:updated_time" content="2021-06-01T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=../../images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=../../sitemap.xml>
+<link href=../../rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=../../rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=../../index.html style=background-image:url(../../images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=../../get-kali/index.html>Get Kali</a>
+</li>
+<li>
+<a href=../index.html>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=../../docs/index.html>Kali Linux Documentation</a>
+<a href=../../tools/index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=../../community/index.html>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=../../newsletter/index.html>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=../../docs/community/contribute/index.html>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=../../features/index.html>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=../../about-us/index.html>Meet The Kali Team</a>
+<a href=../../partnerships-sponsorships/index.html>Partnerships & Friends</a>
+<a href=../../contact/index.html>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<div id=posts>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<article>
+<img src=images/banner-2021.2-release.jpg>
+<time datetime="2021-06-01 00:00:00 +0000 UTC"><i class=ti-alarm-clock></i>Tuesday, 01 June 2021</time>
+<h1>Kali Linux 2021.2 Release (Kaboxer, Kali-Tweaks, Bleeding-Edge & Privileged Ports)</h1>
+<div id=content><p>Say hello to <strong>Kali Linux 2021.2</strong>! This release welcomes a mixture of new items as well as enhancements of existing features, and is ready to be <a href=../../get-kali/index.html>downloaded <em>(from our updated page)</em></a> <em>or <a href=../../docs/general-use/updating-kali/index.html>upgraded if you have an existing Kali Linux installation</a></em>.</p>
+<p>A quick summary of the <a href=https://bugs.kali.org/changelog_page.php>changelog</a> since the <a href=../kali-linux-2021-1-release/index.html>2021.1 release from February 2021</a> is:</p>
+<ul>
+<li><strong><a href=#introducing-kaboxer-v10-again>Releasing Kaboxer v1.0</a></strong> - Introducing Kali Applications Boxer v1.0! Applications in containers</li>
+<li><strong><a href=#releasing-kali-tweaks-v10>Releasing Kali-Tweaks v1.0</a></strong> - Our way to make it easier to configure Kali Linux to your taste</li>
+<li><strong><a href=#refreshed-bleeding-edge-branc>Refreshed Bleeding-Edge branch</a></strong> - We did a complete make over for our backend that produces packages for the latest updates</li>
+<li><strong><a href=#disabled-privileged-ports>Disabled privileged ports</a></strong> - Opening a listener on ports 1024/TCP-UDP and below no longer requires super-user access</li>
+<li><strong><a href=#new-tools-in-kal>New tools added</a></strong> - Ghidra & Visual Studio Code. Along with CloudBrute, Dirsearch, Feroxbuster, pacu, peirates, & Quark-Engine</li>
+<li><strong><a href=#theme-enhancement>Theme enhancements</a></strong> - We added a way to quickly swap between double & one-line terminal prompt and made Xfce4 Quick launch + file manager tweaks</li>
+<li><strong><a href=#desktop-wallpaper--login-background>Desktop wallpaper & login background updates</a></strong> - Default images have changed with more to choose from</li>
+<li><strong><a href=#raspberry-pi-recharged>Raspberry Pi images recharged</a></strong> - RPi 400 fully supported, built-in bluetooth working, & first-run wait time dramatically reduced</li>
+<li><strong><a href=#kali-nethunter-updates>Kali NetHunter support for Android 11</a></strong> - Android 11 support and various other improvements for our NetHunter platform</li>
+<li><strong><a href=#more-docker-supportparallels-supportbug-fixes>More Docker support</a></strong> - Now supporting ARM64 & ARM v7 <em>(along with previous AMD64)</em></li>
+<li><strong><a href=#more-docker-supportparallels-supportbug-fixes>Parallels support</a></strong> - Kali is fully supported for Apple M1 users who have Parallels</li>
+<li><strong><a href=#more-docker-supportparallels-supportbug-fixes>Various bug fixes</a></strong> - Pkexec patched, Wireshark permissions, command-not-found issues, & more accessibility features are all resolved</li>
+</ul>
+<hr>
+<h2 id=introducing-kaboxer-v10-_again_>Introducing Kaboxer v1.0 <em>(Again)</em></h2>
+<p>In case you missed it, we have previously covered <a href=https://pkg.kali.org/pkg/kaboxer>Kaboxer</a> in it&rsquo;s own <a href=../introducing-kaboxer/index.html>dedicated blog post</a>, which goes into a lot more detail of why we love it so! For developers, this is a great new tool in the arsenal. Users will, hopefully, <strong>not realise that they are using it</strong>, only noticing that previously problematic tools now work correctly!</p>
+<p>Without repeating what has already been posted, this technology allows us to <strong>correctly</strong> package up programs that were previously difficult, with items such as <strong>complex dependencies</strong> or <strong>legacy programs & libraries</strong> <em>(such as <a href=../../docs/general-use/using-eol-python-versions/index.html>Python 2</a> or dated SSL/TLS)</em>.</p>
+<p>With Kaboxer&rsquo;s launch, we have released 3 packages using it:</p>
+<ul>
+<li><a href=https://pkg.kali.org/pkg/covenant-kbx>Covenant</a> - Daemon using server/client network model</li>
+<li><a href=https://pkg.kali.org/pkg/firefox-developer-edition-kbx>Firefox (Developer Edition)</a> - Big GUI desktop application</li>
+<li><a href=https://pkg.kali.org/pkg/zenmap-kbx>Zenmap</a> - Legacy libraries <em>(<a href=../../docs/general-use/using-eol-python-versions/index.html>Python 2</a>)</em> application</li>
+</ul>
+<p>If you want to read more, please see either our <a href=../introducing-kaboxer/index.html>blog post</a> covering it, or our <a href=../../docs/development/packaging-apps-with-kaboxer/index.html>documentation</a> around it.</p>
+<p><em>Kaboxer is still in its infancy, so please be nice & patient with it.</em></p>
+<h2 id=releasing-kali-tweaks-v10>Releasing Kali-Tweaks v1.0</h2>
+<p>Announcing <a href=https://pkg.kali.org/pkg/kali-tweaks>Kali-Tweaks</a>! This is our little helping hand for Kali users, with the idea to help <strong>customize Kali to your own personal taste</strong> quickly, simply, <em>and the correct way</em>. This should help you to <strong>stop doing repetitive tasks</strong>.</p>
+<p><img src=images/kali-tweaks.png alt></p>
+<p>Currently Kali-Tweaks will help out with:</p>
+<ul>
+<li><strong>Metapackages</strong> - Installing/removing <a href=../../docs/general-use/metapackages/index.html>groups of tools</a>, which may not have been available while installing Kali if you did not use the installer image</li>
+<li><strong>Network Repositories</strong> - Enabling/disabling &ldquo;bleeding-edge&rdquo; & &ldquo;experimental&rdquo; <a href=../../docs/general-use/kali-branches/index.html>branches</a></li>
+<li><strong>Shell & Prompt</strong> - Switch between <a href=../kali-linux-2020-4-release/index.html>two or one line prompt</a>, enable/disable the extra line before the prompt, or configure <a href=../kali-linux-2020-3-release/index.html>Bash or ZSH</a> as the default shell</li>
+<li><strong>Virtualization</strong> - Using Kali as a <a href=../../docs/virtualization/index.html>guest VM</a>? Do a few actions to make the experience easier!</li>
+</ul>
+<p>Our philosophy is to always <strong>understand what you are running</strong>, before you run it. That way, it reduces the chances of any undesirable nasty surprises. Which is why we will always encourage anyone to do actions <strong>manually before automating</strong> it, so you get to understand what is happening under the hood. On the flip side, we also understand there is so much to remember. Then when you sprinkle in people&rsquo;s bad habits, which often have long term implications and end up breaking Kali, there is room for improvement. So, we started developing Kali-Tweaks. Where possible, Kali-Tweaks will also <strong>display what commands are being executed to help educate users</strong>.</p>
+<p>We do want to mention a few things:</p>
+<ul>
+<li><code>kali-tweaks</code> has been <strong>marked as &ldquo;recommended&rdquo;</strong> rather than &ldquo;required&rdquo;. As a result, if you are upgrading Kali, it <strong>may not be included</strong>. On the other hand, you can remove <code>kali-tweaks</code> without removing anything else</li>
+<li>On the subject of upgrading; depending on how old your Kali installation is, you may need to <strong>reset your shell resource</strong> <em>(e.g. <code>.bashrc</code> & <code>.zshrc</code>)</em> before you can use the &ldquo;configure prompt&rdquo; section. This is because it will not have the necessary variables. Should you want to, make sure to <strong>backup, reset, and restore</strong></li>
+<li>The last thing to point out, when changing the default login shell; please <strong>log out and in again</strong> <em>(either graphically or remote console)</em> for it to have an effect</li>
+</ul>
+<p>It is still early days with Kali-Tweaks, and we already have ideas of what to expand into, but we welcome <a href=https://gitlab.com/kalilinux/packages/kali-tweaks/-/issues>any suggestions from you</a>!</p>
+<p><em>Kali-Tweaks is still in its infancy, so please be nice & patient with it.</em></p>
+<h2 id=refreshed-bleeding-edge-branch>Refreshed Bleeding-Edge Branch</h2>
+<p>Kali&rsquo;s Bleeding-Edge branch has been around since <a href=../bleeding-edge-kali-repositories/index.html>March 2013</a>, but we have recently completely <strong>restructured the backend</strong>.</p>
+<p>For those not too familiar with Bleeding-Edge branch, here is a breakdown:</p>
+<ul>
+<li>Kali by default opts to be <strong>stable where possible when packaging</strong>. This means some tools may <strong>appear</strong> to be &ldquo;out-dated&rdquo;</li>
+<li>We do this by looking to see when the <strong>tool author(s) signals</strong> &ldquo;everything up to to this point is good&rdquo;, by doing a &ldquo;<strong>point release</strong>&rdquo; <em>(e.g. <code>1.0</code> or <code>2.1</code>)</em></li>
+<li>Developers often use <strong>source-code version control</strong>, allowing them to track any changes</li>
+<li>How programmers use source-code version control depends on <strong>their work flow, experience, and team size</strong>
+<ul>
+<li>Developers can use a <strong>&ldquo;tag&rdquo; feature</strong> found in most source-code version control to signal when there is a new version <em>(this is what Kali prefers)</em></li>
+<li>However, some people may say <strong>if it makes it to &ldquo;master&rdquo; or &ldquo;main&rdquo; branch</strong>, then it is &ldquo;production ready&rdquo;</li>
+</ul>
+</li>
+<li>There are times where <strong>it has been &ldquo;a while&rdquo;</strong> <em>(months or even years)</em> <strong>since doing a tag</strong> for a stable release <em>(aka point release)</em>, and people get frustrated that there are no updates <em>(e.g. <a href=https://pkg.kali.org/pkg/hashcat>hashcat</a> or <a href=https://pkg.kali.org/pkg/impacket>impacket</a>)</em>.
+<ul>
+<li>In other cases, <strong>you want the latest code</strong> which may include an exploit 0day <em>(e.g. <a href=https://pkg.kali.org/pkg/metasploit-framework>Metasploit-framework</a>, <a href=https://pkg.kali.org/pkg/powershell-empire>Empire</a>, or <a href=https://pkg.kali.org/pkg/exploitdb>Exploit-DB</a>)</em> so waiting for a tag release may <strong>not be an option</strong></li>
+</ul>
+</li>
+</ul>
+<p>You may then end up skipping the Kali package and compiling your favorite tool&rsquo;s source-code. This might then conflict with Kali&rsquo;s packaging, and it is your responsibility to maintain the program. <strong>This is where bleeding-edge branch comes in.</strong></p>
+<p>Since <a href=../kali-linux-roadmap-2019-2020/index.html>moving over to GitLab</a>, we have been able to create <a href=../../docs/development/leveraging-the-kali-bot/index.html>Kali-Bot</a> to help with <strong>heavy lifting and automation</strong></p>
+<ul>
+<li>Automatically package <strong>tag&rsquo;d releases</strong> to kali-<strong>experimental branch</strong></li>
+<li>Automatically package the <strong>last commit</strong> to kali-<strong>bleeding-edge branch</strong></li>
+</ul>
+<p>This is a fully automated procedure, as a result, the testing that goes into our packaging is automated as well <em>(unlike anything that is in kali-rolling branch which has manual testing involved)</em>. If there has not been a unit test created, its not going to be tested for. This means there is <strong>a chance</strong> packages will be broken, and more trust goes into the tool author having correctly developed the tool.</p>
+<p>If you want to give it a try, have a look at our <strong><a href=../../docs/general-use/kali-bleeding-edge/index.html>kali-bleeding-edge documentation</a> to learn how to enable</strong> the repository and how to tell apt to select a package from this repository. <strong>Once the repository has been enabled</strong>, it looks like this:</p>
+<pre><code class=language-console>kali@kali:~$ dpkg -l \
+  | grep ffuf
+ii  ffuf             1.3.1-0kali1                        amd64        Fast web fuzzer written in Go (program)
+kali@kali:~$
+kali@kali:~$ sudo apt install -y ffuf/kali-bleeding-edge
+...
+kali@kali:~$
+kali@kali:~$ dpkg -l \
+  | grep ffuf
+ii  ffuf             1.3.1+git20210505.1.f032167-0kali1~jan+nus1 amd64        Fast web fuzzer written in Go (program)
+kali@kali:~$
+</code></pre>
+<p>Not every tool has made it to the new system yet as there are still many limitations to overcome, but to see what is supported and also how many:</p>
+<pre><code class=language-console>kali@kali:~$ curl -s -L 'http://http.kali.org/kali/dists/kali-bleeding-edge/main/binary-amd64/Packages' \
+  | awk -F ': ' '/^Package: /{print $2}'
+...
+kali@kali:~$
+kali@kali:~$ curl -s -L 'http://http.kali.org/kali/dists/kali-bleeding-edge/main/binary-amd64/Packages' \
+  | awk -F ': ' '/^Package: /{print $2}' \
+  | wc -l
+78
+kali@kali:~$
+kali@kali:~$ curl -s -L 'http://http.kali.org/kali/dists/kali-experimental/main/binary-amd64/Packages' \
+  | awk -F ': ' '/^Package: /{print $2}' \
+  | wc -l
+192
+kali@kali:~$
+kali@kali:~$ curl -s -L 'http://http.kali.org/kali/dists/kali-rolling/main/binary-amd64/Packages' \
+  | awk -F ': ' '/^Package: /{print $2}' \
+  | wc -l
+59518
+kali@kali:~$
+</code></pre>
+<p>The numbers will only grow bigger and better as time goes on, with less bugs in the code and more unit tests in place!</p>
+<p>If you are a tool author and want to get your software on the list, please <a href=https://forums.kali.org/>chat to us</a>, and we can show how to <a href=../../docs/development/leveraging-the-kali-bot/index.html>enable webhooks</a>!</p>
+<h2 id=disabled-privileged-ports>Disabled Privileged Ports</h2>
+<p>We have patched <strong>our kernel to remove the restriction</strong> of requiring privilege permission in order to use <strong>TCP & UDP ports under 1024</strong> <em>(meaning 0/TCP-UDP &lt;= 1023/TCP-UDP)</em>. This was done because:</p>
+<ul>
+<li>We see Kali as a <strong>desktop OS</strong>, rather than a server</li>
+<li>This &ldquo;well-known&rdquo; privileged port range is reserved for <strong>server services</strong> <em>(e.g. 80/TCP HTTP, 443/TCP HTTPS)</em></li>
+<li>With the switch from Kali&rsquo;s <a href=../kali-default-non-root-user/index.html>root to non-root user by default</a>, <strong>rather than doing a port forward</strong> from outside the privilege ports to a restricted port, people were just <strong>running the program with super-user permissions instead</strong>
+<ul>
+<li>We get it. It&rsquo;s quicker to run: <code>$ sudo &lt;program></code>,</li>
+<li>Rather than remembering something like: <code>$ sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8888</code></li>
+<li>It also can get complex and confusing with a lot of redirects setup in place</li>
+<li><em>Alternatively people were using <code>authbind</code> to allow certain users to use certain ports</em></li>
+</ul>
+</li>
+<li>This <strong>defeats the point of switching to non-root user</strong>!
+<ul>
+<li><em>Let&rsquo;s reduce any possible attack surface!</em></li>
+</ul>
+</li>
+</ul>
+<p>Now, this change won&rsquo;t appear in all instances as some flavors of Kali operate without our kernel. This depends on which platform you use <em>(such as Cloud instances, Docker or WSL)</em>. If you are on a platform that does not use our customized Kernel, this change will not be applied. For example, the top one uses Kali&rsquo;s kernel on a bare metal install, and below uses Kali in a docker container, so its using the host&rsquo;s kernel:</p>
+<pre><code class=language-console>kali@kali:~$ uname -r
+5.10.0-kali7-amd64
+kali@kali:~$
+
+...vs...
+
+$ docker run --rm --interactive --tty kalilinux/kali-rolling:latest uname -r
+5.10.25-linuxkit
+$
+</code></pre>
+<h2 id=new-tools-in-kali>New Tools in Kali</h2>
+<p>It would not be a Kali release if there were not any new tools added! A quick run down of what&rsquo;s been added <em>(to Kali&rsquo;s archive and network repositories)</em>:</p>
+<ul>
+<li><a href=https://pkg.kali.org/pkg/cloudbrute>CloudBrute</a> - Find a company infrastructure, files, and apps on the top cloud providers</li>
+<li><a href=https://pkg.kali.org/pkg/dirsearch>Dirsearch</a> - Brute force directories and files in web servers</li>
+<li><a href=https://pkg.kali.org/pkg/feroxbuster>Feroxbuster</a> - Simple, fast, recursive content discovery</li>
+<li><a href=https://pkg.kali.org/pkg/ghidra>Ghidra</a> - Reverse engineering framework</li>
+<li><a href=https://pkg.kali.org/pkg/pacu>Pacu</a> - AWS exploitation framework</li>
+<li><a href=https://pkg.kali.org/pkg/peirates>Peirates</a> - Kubernetes penetration</li>
+<li><a href=https://pkg.kali.org/pkg/quark-engine>Quark-Engine</a> - Android malware scoring system</li>
+<li><a href=https://pkg.kali.org/pkg/code-oss>VSCode</a> <em>a.k.a. Visual Studio Code Open Source (&ldquo;Code-OSS&rdquo;)</em> - Code editor</li>
+</ul>
+<p><strong>Ghidra</strong> and <strong>VSCode</strong> have been included into the <code>kali-linux-large</code> <a href=../../docs/general-use/metapackages/index.html>metapackage</a>, so they are <strong>included on the installer image</strong> for people doing a fresh install. Otherwise you will need to upgrade Kali <em>(if you already have the <strong>kali-linux-large</strong> install)</em> or manually install them <em>(if you want them!)</em>:</p>
+<pre><code class=language-console>kali@kali:~$ sudo apt update &amp;&amp; sudo apt install -y ghidra code-oss
+</code></pre>
+<p>A few notes about <code>code-oss</code> <em>(aka <strong>VSCode</strong>)</em>:</p>
+<ul>
+<li>We are <strong>compiling this from <a href=https://gitlab.com/kalilinux/packages/code-oss>source</a></strong>, rather than using the pre-built binaries
+<ul>
+<li>The upside to this is that <a href=https://code.visualstudio.com/docs/getstarted/telemetry><strong>telemetry data is disabled</strong> by default</a></li>
+<li>The downside is that <strong>some aspects of the marketplace may not work</strong>. If you find these limitations a problem, you may wish to uninstall the Kali package and switch to the VSCode pre-built binaries</li>
+</ul>
+</li>
+<li>You also may question <strong>why it was named <code>code-oss</code></strong>, rather than <code>code</code>
+<ul>
+<li>Code-OSS is what the <a href=https://github.com/microsoft/vscode/blob/8f11975c47c9d97b3248e14caf9f7bc4c372d84f/src/vs/platform/product/common/product.ts#L60>source-code</a> <strong>calls <a href=https://github.com/microsoft/vscode/blob/8f11975c47c9d97b3248e14caf9f7bc4c372d84f/product.json#L4>itself</a></strong>, which is used as the base before the configurations are applied for the pre-compiled binaries that gets distributed as &ldquo;code&rdquo;</li>
+<li>As we are using the source-code, we used the variables defined by it</li>
+<li>The <strong>two different names help to distinguish the differences</strong> between them <em>(also prevents any clashes and conflicts!)</em></li>
+<li>We also <strong>included various aliases in our package</strong> to help bridge between the two different versions. Meaning, calling <strong><code>vscode</code> and <code>code</code></strong> will <strong>use our package</strong>, <code>code-oss</code>, with a friendly notice <em>(when installed)</em></li>
+</ul>
+</li>
+<li>If you already have the pre-compiled version installed, <strong>upgrading Kali</strong> will <strong>not replace it</strong>
+<ul>
+<li>However, when <strong>manually installing</strong> <code>code-oss</code>, it will then <strong>replace</strong> it!</li>
+</ul>
+</li>
+</ul>
+<h2 id=theme-enhancement>Theme Enhancement</h2>
+<h4 id=command-line>Command Line</h4>
+<p>If you are using ZSH, with the latest Kali profile applied, you can <strong>toggle between the two-line prompt and one-line prompt</strong> by pressing: <strong><code>CTRL</code> + <code>p</code></strong> <em>(at the same time)</em>.
+This will only have an effect for the <strong>current session</strong>. If you would like to set it <strong>permanently, see <code>kali-tweaks</code></strong>.</p>
+<video class=video-shortcode preload=metadata autoplay muted loop>
+<source src=videos/cli-toggle-prompt.mp4>
+Your browser does not support the video tag.
+</video>
+<h4 id=xfc4>Xfc4</h4>
+<p>We have switched up the <strong>quick launch tray</strong> in the top left, by:</p>
+<ul>
+<li>Dropping the <strong>screen recorder</strong> button <em>(as a result package can also be removed, <code>kazam</code>)</em></li>
+<li>Adding a <strong>text editor</strong> shortcut (this uses <code>mousepad</code> as it is a quick and light)_
+<ul>
+<li><em>If you are looking for something that is more substantial, try <code>code-oss</code></em></li>
+</ul>
+</li>
+<li>Adding in a <strong>web browser</strong> icon, which starts the default browser <em>(often <code>FireFox</code>)</em></li>
+<li>Adding a drop-down menu to select the <strong>user for default terminal</strong> <em>(<code>terminal</code> or <code>root terminal</code> & Kali&rsquo;s default is <code>QTerminal</code>)</em></li>
+</ul>
+<p><img src=images/cli-tray.png alt></p>
+<p>To give you an idea of how the toggling between the <strong>terminal user</strong> works:</p>
+<video class=video-shortcode preload=metadata autoplay muted loop>
+<source src=videos/cli-toggle-terminal.mp4>
+Your browser does not support the video tag.
+</video>
+<hr>
+<p>Inside of <code>Thunar</code> <em>(Xfce&rsquo;s default <strong>file manager</strong>)</em>, if you right-click in the main window, you should have a new option, <strong>Open as Root</strong>:</p>
+<p><img src=images/cli-thunar.png alt></p>
+<hr>
+<p>With these theme changes, you <strong>may not get them if you upgrade</strong> Kali. This is because the <strong>theme settings</strong> are <strong>copied</strong> to your <strong>home folder</strong> when your <strong>user is first created</strong>. When you upgrade Kali, it is <strong>upgrading the operating system</strong>, so upgrading <strong>does not alter personal files</strong> <em>(just system files)</em>. As a result, in order to get these theme tweaks, you need to either:</p>
+<ul>
+<li>Do a fresh Kali install</li>
+<li>Create a new user and switch to that</li>
+<li>Delete your Xfce profile for the current user and force reboot</li>
+</ul>
+<pre><code class=language-console>kali@kali:~$ mv ~/.config/xfce4{,-$(date +%Y.%m.%d-%H.%M.%S)}
+kali@kali:~$ mv ~/.config/qterminal.org{,-$(date +%Y.%m.%d-%H.%M.%S)}
+kali@kali:~$ mv ~/.config/qt5ct{,-$(date +%Y.%m.%d-%H.%M.%S)}
+kali@kali:~$ mv ~/.config/Thunar{,-$(date +%Y.%m.%d-%H.%M.%S)}
+kali@kali:~$
+kali@kali:~$ cp -rbi /etc/skel/. ~
+kali@kali:~$
+kali@kali:~$ xfce4-session-logout --reboot --fast
+</code></pre>
+<h4 id=desktop-wallpaper--login-background>Desktop Wallpaper & Login Background</h4>
+<p>People who have upgraded, you may have spotted that there is a new <strong>default login wallpaper and desktop background</strong>, but there are extras as well in this release:</p>
+<p><img src=images/wallpapers.png alt></p>
+<p>Whilst on the subject of wallpapers, if you have not noticed, previously we had been operating on an refresh cycle about <strong>every 6 months</strong>, where we would change the default login and desktop as well as included other art work if they were not to your taste. Going forwards, we are aiming to <strong>change the defaults at every 20xx.1 release</strong> <em>(meaning it happens right at the start of every year)</em>. <em>So it will still change again in 6 months, but this will be the last time!</em> We will still aim to <strong>add extra wallpapers every 6 months</strong>, however, only <strong>change the defaults yearly</strong>.</p>
+<p>Finally, we have updated <code>kali-community-wallpapers</code> & <code>kali-wallpapers-legacy</code> packages as well!</p>
+<h2 id=raspberry-pi-recharged>Raspberry Pi Recharged</h2>
+<p>Two new packages:</p>
+<ul>
+<li><a href=http://pkg.kali.org/pkg/kalipi-config>kalipi-config</a> - <strong><code>raspi-config</code> on steroids</strong> to assist in the initial setup of Kali Linux on a Raspberry Pi</li>
+<li><a href=http://pkg.kali.org/pkg/kalipi-tft-config>kalipi-tft-config</a>- assist in the <strong>initial setup of TFT displays</strong> on a Raspberry Pi</li>
+</ul>
+<p>And other improvements:</p>
+<ul>
+<li>Got built-in Bluetooth working on Raspberry Pi 4 & Raspberry Pi 400 <em>(meaning <strong>all Raspberry Pi&rsquo;s built-in bluetooth work</strong>!)</em>
+<ul>
+<li><em>This is due to <code>bluez</code>, <code>bluez-firmware</code>, and <code>pi-bluetooth</code> packages forked and patched</em></li>
+</ul>
+</li>
+<li>Raspberry Pi kernel updated to <strong>5.4.83</strong></li>
+<li><strong>mt76 devices</strong> now work on Raspberry Pi 2 and 3 if you pass the option <code>disable_usb_sg=1</code> when loading the <code>mt76_usb</code> module</li>
+<li><strong>1500%</strong> performance improvement</li>
+<li>First boot from <strong>20 minutes to 15 seconds</strong></li>
+<li><strong>Console scrolling</strong> working</li>
+</ul>
+<h2 id=kali-nethunter-updates>Kali NetHunter Updates</h2>
+<p>Plenty of improvements under the hood, including:</p>
+<ul>
+<li>Improved compatibility with <strong>dynamic partitions</strong></li>
+<li>Improvements to persistence of <strong>Magisk root</strong></li>
+<li>Improvements to <strong>Bluetooth and settings menus</strong></li>
+<li>Inclusion of <code>rtl88xxau</code> <strong>patches for older kernels</strong> in the kernel builder</li>
+</ul>
+<p>And the highlight:</p>
+<p><strong>Android 11</strong> support for:</p>
+<ul>
+<li>Nokia 6.1</li>
+<li>OnePlus Nord</li>
+<li>OnePlus One</li>
+<li>Samsung Galaxy S20 FE 5G</li>
+<li>Xiaomi Mi A3</li>
+<li>Xiaomi Poco F1</li>
+</ul>
+<p>The Kali NetHunter repository now contains <strong><a href=https://kalilinux.gitlab.io/nethunter/build-scripts/kali-nethunter-devices/nethunter-kernelstats.html>179 kernels</a></strong> for <strong><a href=https://kalilinux.gitlab.io/nethunter/build-scripts/kali-nethunter-devices/nethunter-imagestats.html>72 devices</a></strong> and <strong>32 pre-built images</strong> are available on our <a href=../../kali-nethunter/index.html>download page</a></p>
+<p>Huge thanks to <a href=https://gitlab.com/kimoc0der>@kim0coder</a>, <a href=https://gitlab.com/yesimxev>@yesimxev</a>, <a href=https://gitlab.com/Svirusx>@Svirusx</a>, <a href=https://gitlab.com/Martinvlba>@Martinvlba</a>, <a href=https://gitlab.com/CaliBerrr>@CaliBerrr</a>, <a href=https://gitlab.com/maade69>@maade69</a> and the entire Kali NetHunter community for making this release happen. <strong>You absolutely rock</strong>!</p>
+<h2 id=more-docker-supportparallels-supportbug-fixes>More Docker support/Parallels support/Bug fixes</h2>
+<p>There are even more improvements to Kali, that are outside of the above text. Below are other note-worthy items:</p>
+<ul>
+<li>Our <a href=https://hub.docker.com/r/kalilinux/kali-rolling/tags><strong>Kali-Docker</strong> images</a> are now available for <strong>arm64 and armhf</strong> as well as <strong>amd64</strong></li>
+<li>We have patched <code>pkexec</code>, so now <strong>Qt applications</strong> which have been ran as <strong>root</strong> will <strong>maintain the dark theme and the HiDPI setting</strong></li>
+<li>On a fresh Kali install, <code>wireshark</code> can now be run by <strong>unprivileged users</strong></li>
+<li>A couple of <strong>bugs were fixed in <a href=../kali-linux-2021-1-release/index.html>command-not-found</a></strong>, which is the terminal helper that helps you installing missing programs</li>
+<li><strong>Accessibility features were not installed by default</strong> <em>(this was a mistake on our side that is now fixed)</em></li>
+<li>Fixed a <strong>terminal font issue with special characters</strong></li>
+<li><strong>Apple M1 users, <a href=https://kb.parallels.com/en/124805>Parallels</a></strong> is no longer in &ldquo;Technical Preview&rdquo; and as part of the release, they&rsquo;ve fixed Kali image detection.</li>
+<li><code>Win-KeX</code> v2.10 has been released which now <strong>supports multiscreen</strong></li>
+<li>Kali&rsquo;s logo is now included in the <a href=https://www.nerdfonts.com/>nerd-fonts</a> project, so, with their next release you&rsquo;ll be able to <strong>customize your terminal with the dragon</strong>. If you want to try it now, we&rsquo;ve created a <a href=fonts/Fira-Code-Regular-Nerd-Font-Complete.ttf>patched Fira-Code font</a> with these new changes <em>(the code for the logo is <code>\uF32B</code>)</em></li>
+</ul>
+<p><img src=images/nerd-fonts-kali.png alt></p>
+<hr>
+<h2 id=download-kali-linux-20212>Download Kali Linux 2021.2</h2>
+<p><strong>Fresh Images</strong>:
+So what are you waiting for? Start <a href=../../get-kali/index.html>grabbing Kali</a> already!</p>
+<p>Seasoned Kali Linux users are already aware of this, but for the ones who are not, we do also produce <strong><a href=https://cdimage.kali.org/kali-images/kali-weekly/>weekly builds</a></strong> that you can use as well. If you cannot wait for our next release and you want the latest packages <em>(or bug fixes)</em> when you download the image, you can just use the weekly image instead.</p>
+<p>This way you&rsquo;ll have fewer updates to do.</p>
+<p><em>Just know that these are automated builds that we do not QA like we do our standard <a href=../../releases/index.html>release images</a></em>. But we gladly take <a href=https://bugs.kali.org/>bug reports</a> about those images because we want any issues to be fixed before our next release!</p>
+<p><strong>Existing Installs</strong>:
+If you already have an existing Kali Linux installation, remember you can always do a quick <a href=../../docs/general-use/updating-kali/index.html>update</a>:</p>
+<pre><code class=language-console>┌──(kali㉿kali)-[~]
+└─$ echo &quot;deb http://http.kali.org/kali kali-rolling main non-free contrib&quot; | sudo tee /etc/apt/sources.list
+
+┌──(kali㉿kali)-[~]
+└─$ sudo apt update &amp;&amp; sudo apt -y full-upgrade
+
+┌──(kali㉿kali)-[~]
+└─$ for x in xfce4 qterminal.org qt5ct Thunar; do mv ~/.config/$x{,-$(date +%Y.%m.%d-%H.%M.%S)}; done
+
+┌──(kali㉿kali)-[~]
+└─$ cp -rbi /etc/skel/. ~
+
+┌──(kali㉿kali)-[~]
+└─$ sudo reboot -f
+</code></pre>
+<p>You should now be on Kali Linux 2021.2. We can do a quick check by doing:</p>
+<pre><code class=language-console>┌──(kali㉿kali)-[~]
+└─$ grep VERSION /etc/os-release
+VERSION=&quot;2021.2&quot;
+VERSION_ID=&quot;2021.2&quot;
+VERSION_CODENAME=&quot;kali-rolling&quot;
+
+┌──(kali㉿kali)-[~]
+└─$ uname -v
+#1 SMP Debian 5.10.28-1kali1 (2021-04-12)
+
+┌──(kali㉿kali)-[~]
+└─$ uname -r
+5.10.0-kali7-amd64
+</code></pre>
+<p><em>NOTE: The output of <code>uname -r</code> may be different depending on the system <a href=https://pkg.kali.org/pkg/linux>architecture</a>.</em></p>
+<p>As always, should you come across any bugs in Kali, please submit a report on our <a href=https://bugs.kali.org/>bug tracker</a>. <em>We&rsquo;ll never be able to fix what we do not know is broken!</em> <strong>And <a href=https://twitter.com/kalilinux>Twitter</a> is not a Bug Tracker!</strong></p>
+</div>
+</article>
+</div>
+<script src=../../plugins/highlight/highlight.pack.js></script>
+<script>hljs.registerLanguage('shell',a=>({name:'Shell Session',aliases:['console','shellsession'],contains:[{className:'prompt',begin:/^\s*([/~\w[\]()@:.-]+[>%$#]|\$)\s*$/},{className:'prompt',begin:/^\s*([/~\w[\]()@:.-]+[>%$#]|\$)\s*/,starts:{end:/[^\\]$/,subLanguage:'bash'}},{className:'prompt',begin:/┌──\([^)]+\)-\[~?[/\w-]*\]\n└─[#$]/,starts:{end:/[^\\]$/,subLanguage:'bash'}}]})),hljs.highlightAll(),window.addEventListener('DOMContentLoaded',()=>$$('.hljs-prompt').forEach(a=>{let c='#2777ff',b='#5EBDAB';/#\s*$/.test(a.innerHTML)&&(c='#EC0101',b='#367BF0'),a.innerHTML=a.innerHTML.replace(/([^)]+)(:)(~?[/\w.-]*)([#$])/,`<span style="color:${c};font-weight:bold">$1</span>`+`<span style="color:white;font-weight:bold">$2</span>`+`<span style="font-weight:bold;color:${b}">$3</span>`+`<span style="color:white;">$4</span>`),a.innerHTML=a.innerHTML.replace(/┌──\(([^)]+)\)-\[(~?[/\w.-]*)\]\n└─([#$])/,`<span style="color:${b}">┌──(</span>`+`<span style="color:${c};font-weight:bold">$1</span>`+`<span style="color:${b}">)-[</span>`+`<span style="color:white;font-weight:bold">$2</span>`+`<span style="color:${b}">]\n`+`└─</span><span style="color:${c};font-weight:bold">$3</span>`)}),!1)</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=../../get-kali/index.html rel=noopener target=_blank>Kali Linux</a>
+<a href=../../get-kali/index.html#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=../../index.html rel=noopener target=_blank>Home</a>
+<a href=../index.html rel=noopener target=_blank>Blog</a>
+<a href=../../docs/index.html rel=noopener target=_blank>Documentation</a>
+<a href=../../tools/index.html rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=../../docs/policy/cookie/index.html>Cookie Policy</a>
+<a href=../../docs/policy/privacy/index.html>Privacy Policy</a>
+<a href=../../docs/policy/trademark/index.html>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=../../rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/blog/kali-linux-2021-2-release/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Feb 2022 07:23:08 GMT -->
+</html>

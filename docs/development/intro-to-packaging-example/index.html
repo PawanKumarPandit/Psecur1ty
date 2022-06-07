@@ -1,0 +1,1200 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/docs/development/intro-to-packaging-example/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Feb 2022 07:56:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>Introduction to packaging step-by-step example | Kali Linux Documentation</title>
+<meta itemprop=name content="Introduction to packaging step-by-step example | Kali Linux Documentation">
+<meta name=application-name content="Introduction to packaging step-by-step example | Kali Linux Documentation">
+<meta name=twitter:title content="Introduction to packaging step-by-step example | Kali Linux Documentation">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="Introduction to packaging step-by-step example | Kali Linux Documentation">
+<meta itemprop=description content="Instaloader Instaloader is a Python 3 application with a single dependency (Python&rsquo;s requests). This makes it a relatively simple package, however not as straightforward as only packaging up a shell script would be. Because of the learning opportunities and simplicity, this makes it a good introduction package.
+GitHub Overview The first thing we do is look at the application&rsquo;s GitHub page.">
+<meta name=description content="Instaloader Instaloader is a Python 3 application with a single dependency (Python&rsquo;s requests). This makes it a relatively simple package, however not as straightforward as only packaging up a shell script would be. Because of the learning opportunities and simplicity, this makes it a good introduction package.
+GitHub Overview The first thing we do is look at the application&rsquo;s GitHub page.">
+<meta name=twitter:description content="Instaloader Instaloader is a Python 3 application with a single dependency (Python&rsquo;s requests). This makes it a relatively simple package, however not as straightforward as only packaging up a shell script would be. Because of the learning opportunities and simplicity, this makes it a good introduction package.
+GitHub Overview The first thing we do is look at the application&rsquo;s GitHub page.">
+<meta property="og:description" content="Instaloader Instaloader is a Python 3 application with a single dependency (Python&rsquo;s requests). This makes it a relatively simple package, however not as straightforward as only packaging up a shell script would be. Because of the learning opportunities and simplicity, this makes it a good introduction package.
+GitHub Overview The first thing we do is look at the application&rsquo;s GitHub page.">
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="../../../images/kali-logo.svg">
+<meta property="og:image" content="../../../images/kali-logo.svg">
+<meta name=twitter:image content="../../../images/kali-logo.svg">
+<meta name=twitter:image:src content="../../../images/kali-logo.svg">
+<meta property="og:updated_time" content="2022-01-21T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=../../../images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=../../../sitemap.xml>
+<link href=../../../rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=../../../rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=../../../index.html style=background-image:url(../../../images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=../../../get-kali/index.html>Get Kali</a>
+</li>
+<li>
+<a href=../../../blog/index.html>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=../../index.html>Kali Linux Documentation</a>
+<a href=../../../tools/index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=../../../community/index.html>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=../../../newsletter/index.html>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=../../community/contribute/index.html>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=../../../features/index.html>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=../../../about-us/index.html>Meet The Kali Team</a>
+<a href=../../../partnerships-sponsorships/index.html>Partnerships & Friends</a>
+<a href=../../../contact/index.html>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside class=card>
+<a href=../index.html title="↤ Go back"></a>
+<ul>
+<li>
+<a href=../index.html>Kali Development</a>
+<ul>
+<li>
+<a href=../contributing-runtime-tests/index.html>Contributing run-time tests with autopkgtest</a>
+</li>
+<li>
+<a href=../custom-beaglebone-black-image/index.html>Custom Beaglebone Black Image</a>
+</li>
+<li>
+<a href=../custom-chromebook-kernel-image/index.html>Custom Chromebook Image</a>
+</li>
+<li>
+<a href=../custom-cubox-image/index.html>Custom CuBox Image</a>
+</li>
+<li>
+<a href=../custom-efikamx-image/index.html>Custom EfikaMX Image</a>
+</li>
+<li>
+<a href=../custom-kali-arm-ss808-image/index.html>Custom MK/SS808 Image</a>
+</li>
+<li>
+<a href=../custom-odroid-kernel-image/index.html>Custom ODROID X2 U2 Image</a>
+</li>
+<li>
+<a href=../custom-raspberry-pi-image/index.html>Custom Raspberry Pi Image</a>
+</li>
+<li>
+<a href=../setting-up-packaging-system/index.html>Setting Uup a system for packaging</a>
+</li>
+<li class=active>
+<a href=index.html>Introduction to packaging step-by-step example</a>
+</li>
+<li>
+<a href=../intermediate-packaging-example/index.html>Intermediate packaging step-by-step example</a>
+</li>
+<li>
+<a href=../advanced-packaging-example/index.html>Advanced Packaging Step-By-Step Example (FinalRecon & Python-icmplib)</a>
+</li>
+<li>
+<a href=../leveraging-the-kali-bot/index.html>Getting the best out of the Kali Bot</a>
+</li>
+<li>
+<a href=../generate-updated-kali-iso/index.html>Generate an Updated Kali ISO</a>
+</li>
+<li>
+<a href=../live-build-a-custom-kali-iso/index.html>Creating A Custom Kali ISO</a>
+</li>
+<li>
+<a href=../dojo-mastering-live-build/index.html>Building Custom Kali ISOs</a>
+</li>
+<li>
+<a href=../rebuilding-a-package-from-source/index.html>Rebuilding a Source Package</a>
+</li>
+<li>
+<a href=../recompiling-the-kali-linux-kernel/index.html>Recompiling the Kali Linux Kernel</a>
+</li>
+<li>
+<a href=../kali-linux-arm-chroot/index.html>Preparing a Kali Linux ARM chroot</a>
+</li>
+<li>
+<a href=../arm-cross-compilation-environment/index.html>ARM Cross-Compilation</a>
+</li>
+<li>
+<a href=../packaging-apps-with-kaboxer/index.html>Packaging Applications with Kaboxer</a>
+</li>
+</ul>
+</li>
+</ul>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section>
+<article class=card>
+<h2>Introduction to packaging step-by-step example</h2>
+<div id=content><h1 id=instaloader>Instaloader</h1>
+<p><a href=https://github.com/instaloader/instaloader/>Instaloader</a> is a <strong>Python 3</strong> application with a single dependency (Python&rsquo;s <code>requests</code>). This makes it a relatively simple package, however not as straightforward as only packaging up a shell script would be. Because of the learning opportunities and simplicity, this makes it a good introduction package.</p>
+<h2 id=github-overview>GitHub Overview</h2>
+<p>The first thing we do is look at the application&rsquo;s <a href=https://github.com/instaloader/instaloader/>GitHub page</a>. A few things stand out which we take a note of:</p>
+<p><img src=instaloader-00.png alt></p>
+<p>What we notice here is some information that will come in handy later:</p>
+<ul>
+<li>The tool contains a <code>setup.py</code> script</li>
+<li>It has a release</li>
+<li>The license is MIT based</li>
+</ul>
+<p>We&rsquo;ll be digging into each of these more later, for now it is just information to know.</p>
+<h2 id=setting-up-the-environment>Setting Up The Environment</h2>
+<p>We will assume that we have already followed our <a href=../setting-up-packaging-system/index.html>documentation on setting up a packing environment</a>.</p>
+<p>Let&rsquo;s set up our directories now for this package:</p>
+<pre><code class=language-console>kali@kali:~$ mkdir -p ~/kali/packages/instaloader/ ~/kali/upstream/
+kali@kali:~$
+</code></pre>
+<p>Everything that relates to us building a package will be using <code>~/kali/</code>. In there will be two sub folders:</p>
+<ul>
+<li><code>packages/</code> will be a source code of the package we are going to create</li>
+<li><code>upstream/</code> will be a compressed file of the source code of the application <em>(ideally from a tag version release which we saw before)</em></li>
+</ul>
+<h2 id=downloading-tag-releases>Downloading Tag Releases</h2>
+<p>Because we are making a new package from scratch, we&rsquo;ll manually download the version of the tool we want to package up. If we were updating a package (and it was packaged correctly), there is a process to help speed it up. However, this will be covered in <a href=../advanced-packaging-example/index.html>another guide</a>.</p>
+<p>Going to the <a href=https://github.com/instaloader/instaloader/releases>GitHub&rsquo;s release page</a>, we can see the latest version (which at the time of writing is <code>4.4.4</code>). Here is the option to download <code>instaloader-v4.4.4-windows-standalone.zip</code>, as well as <code>Source Code (zip)</code>, and <code>Source Code (tar.gz)</code>. We are interested in the <code>tar.gz</code> option.</p>
+<p>We will use <code>wget</code> and make sure to format its name appropriately according to Debian&rsquo;s standards for source packages (take note of <code>.orig.tar.gz</code>):</p>
+<pre><code class=language-console>kali@kali:~$ wget https://github.com/instaloader/instaloader/archive/v4.4.4.tar.gz -O ~/kali/upstream/instaloader_4.4.4.orig.tar.gz
+kali@kali:~$
+</code></pre>
+<p>If there isn&rsquo;t a tag release for the software <em>(or it hasn&rsquo;t had an release in some time)</em>, we can use the latest git commit. This is covered in another guide. However, it is preferred to use a tag release when available.</p>
+<h2 id=creating-package-source-code>Creating Package Source Code</h2>
+<p>We need to switch paths to the working location of the package:</p>
+<pre><code class=language-console>kali@kali:~$ cd ~/kali/packages/instaloader/
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We are now going to create a new blank git repository:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git init
+Initialized empty Git repository in /home/kali/kali/packages/instaloader/.git/
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>If we wanted to, we can confirm this by looking at &ldquo;status&rdquo; and &ldquo;log&rdquo;:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use &quot;git add&quot; to track)
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git log
+fatal: your current branch 'master' does not have any commits yet
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Great. Everything is empty; we have a clean working area.</p>
+<p>We can now import the upstream version into our packing source code by using the file downloaded from <code>wget</code> before. Because of the filename format, <code>gbp</code> is able to detect the values <code>instaloader</code> as the package name, and <code>4.4.4</code> as the version. We just press enter to accept the default values:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ gbp import-orig ~/kali/upstream/instaloader_4.4.4.orig.tar.gz
+What will be the source package name? [instaloader]
+What is the upstream version? [4.4.4]
+gbp:info: Importing '/home/kali/kali/upstream/instaloader_4.4.4.orig.tar.gz' to branch 'upstream'...
+gbp:info: Source package is instaloader
+gbp:info: Upstream version is 4.4.4
+gbp:info: Successfully imported version 4.4.4 of /home/kali/kali/upstream/instaloader_4.4.4.orig.tar.gz
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>If we wanted to check everything is okay, once again, we can use git to do so:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git status
+On branch master
+nothing to commit, working tree clean
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git log
+commit 494f71875f10f8d1da69a8edf2fc75300e4485b9 (HEAD -&gt; master, tag: upstream/4.4.4, upstream)
+Author: Joseph O'Gorman &lt;gamb1t@kali.org&gt;
+
+    New upstream version 4.4.4
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git branch -v
+* master       494f718 New upstream version 4.4.4
+  pristine-tar 439fe30 pristine-tar data for instaloader_4.4.4.orig.tar.gz
+  upstream     494f718 New upstream version 4.4.4
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>So there is now an automatic commit created in the master branch <em>(which is the current active branch, shown by the <code>*</code>)</em>, as well as two other branches:</p>
+<ul>
+<li><code>pristine-tar</code> which is metadata from the import</li>
+<li><code>upstream</code> which is the source code of the application, without any of our package modifications</li>
+</ul>
+<p>We are creating a Kali package, and we don&rsquo;t use the <code>master</code> branch, but rather <code>kali/master</code>. So let&rsquo;s switch:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git checkout -b kali/master
+Switched to a new branch 'kali/master'
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git branch -D master
+Deleted branch master (was 494f718).
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git branch -v
+* kali/master  494f718 New upstream version 4.4.4
+  pristine-tar 439fe30 pristine-tar data for instaloader_4.4.4.orig.tar.gz
+  upstream     494f718 New upstream version 4.4.4
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Now we can generate the necessary files required to build a Debain-based package and also remove any example files created. During the process, we will be asked if its:</p>
+<ul>
+<li><code>Single binary</code></li>
+<li><code>Arch-Independent</code></li>
+<li><code>Library</code></li>
+<li><code>Python</code></li>
+</ul>
+<p>We are going to keep it simple, and go with &ldquo;<strong>S</strong>ingle&rdquo;. Then accept what&rsquo;s on the screen with <code>Y</code>. If you would like more information about when to use what option, please see the <a href=https://manpages.debian.org/jessie/dh-make/dh_make.8.en.html>manpage for dh_make</a>.:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ dh_make --file ~/kali/upstream/instaloader_4.4.4.orig.tar.gz -p instaloader_4.4.4
+Type of package: (single, indep, library, python)
+[s/i/l/p]?
+Maintainer Name     : Joseph O'Gorman
+Email-Address       : gamb1t@kali.org
+Date                : Thu, 02 Jul 2020 17:59:47 -0400
+Package Name        : instaloader
+Version             : 4.4.4
+License             : blank
+Package Type        : single
+Are the details correct? [Y/n/q]
+Currently there is not top level Makefile. This may require additional tuning
+Done. Please edit the files in the debian/ subdirectory now.
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ rm debian/*.docs debian/README* debian/*.ex debian/*.EX
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We use <code>--file</code> to say where the <code>orig.tar.gz</code> file is. If the file was one directory back (<code>../</code>), this would not be needed, however as we have created a separate location for the file it is.</p>
+<p>If you would like to see what got generated when using <code>dh_make</code>, we can use <code>git</code>:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git status
+On branch kali/master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        debian/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ ls -R debian/
+debian/:
+changelog  control  copyright  rules  source
+
+debian/source:
+format
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>A quick overview of each of those files:</p>
+<ul>
+<li><code>changelog</code> - tracks when the package gets an update (including why and by who). This is responsible for the package version</li>
+<li><code>control</code> - is the metadata for the package (often seen with <code>apt</code>)</li>
+<li><code>copyright</code> - what is under what license. The package can be under something different to the work we have put in to create the package</li>
+<li><code>rules</code> - how to install the package</li>
+<li><code>source/format</code> - is the source package format</li>
+</ul>
+<p>We now need to edit most of these to make sure the information is accurate. We can use what we found on GitHub to supply the correct info into the <code>debian/</code> files:</p>
+<ul>
+<li>License</li>
+<li>Dependencies</li>
+<li>Maintainers</li>
+<li>Description</li>
+</ul>
+<h2 id=collecting-information>Collecting Information</h2>
+<h3 id=licensemaintainers>License/Maintainers</h3>
+<p>For this package, its straight forward. GitHub has given us a helping hand, and detected the <a href=https://github.com/instaloader/instaloader/blob/master/LICENSE>license</a> as MIT. We can also see there is a license file:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ cat LICENSE
+The MIT License (MIT)
+
+Copyright (c) 2016-2019 Alexander Graf and André Koch-Kramer.
+...
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Reading the license, we can see there are two authors which are given credit too: <code>Alexander Graf</code> and <code>André Koch-Kramer</code>. However, we don&rsquo;t have a method of contact for them. We continue to explore the rest of the git repository, looking for something which may give us more authors so we can give credit to them. There isn&rsquo;t a fixed structure in place, however there are some things to check and look out for:</p>
+<ul>
+<li><code>README*</code> - authors may put contact information here
+<ul>
+<li>A few examples could be: <code>README</code>, <code>README.txt</code>, <code>README.MD</code> <code>README.MKDOCS</code>, or <code>Readme.txt</code></li>
+</ul>
+</li>
+<li><code>AUTHOR*</code> - They may have a dedicated file for author information</li>
+<li><code>CREDIT*</code> - They may have a dedicated file to who they give credit to</li>
+<li><code>LICENSE*</code> - Like mentioned above, the license file may give author information</li>
+<li><code>docs/</code> - They may place all their documentation in a separate folder</li>
+<li>The &ldquo;main&rdquo; starting point of the application may have comments at the top of the file - in this, <code>instaloader.py</code></li>
+<li>Git commits - <code>git --no-pager log -s --format="%ae" | sort -u</code></li>
+</ul>
+<p>For our package, we can see:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ ls
+AUTHORS.md  debian  deploy  docs  instaloader  instaloader.py  LICENSE  Pipfile  Pipfile.lock  README.rst  setup.py  test
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ ls docs/
+as-module.rst    codesnippets      contributing.rst  installation.rst  logo.svg   requirements.txt             _templates
+basic-usage.rst  codesnippets.rst  favicon.ico       logo_heading.png  Makefile   sphinx_autodoc_typehints.py  troubleshooting.rst
+cli-options.rst  conf.py           index.rst         logo.png          README.md  _static
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>As it turns out, there is: <code>AUTHORS.md</code>, <code>docs/</code>, <code>instaloader.py</code>, and <code>README.rst</code>, so we have a few places to look at. Starting with <code>AUTHORS.md</code>, we can see the authors name and their method of contact:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ cat AUTHORS.md
+Authors
+=======
+
+Instaloader is written by
+
+- Alexander Graf (@aandergr)
+- André Koch-Kramer (@Thammus)
+- Lars Lindqvist (@e5150)
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>So rather than an email address, it appears to be a username (could be just for GitHub, or a generic Internet handle). This is enough for us to go forward (even though its not ideal).</p>
+<p>Another trick we could try is looking to see if they used a &ldquo;legit&rdquo; email address with git:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git clone https://github.com/instaloader/instaloader/ /tmp/instaloader
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cd /tmp/instaloader/
+kali@kali:/tmp/instaloader$ git --no-pager log -s --format=&quot;%ae&quot; | sort -u | grep -v '@users.noreply.github.com'
+...
+kali@kali:/tmp/instaloader$
+kali@kali:/tmp/instaloader$ cd ~/kali/packages/instaloader/
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>It doesn&rsquo;t appear so. Was worth a try!</p>
+<h3 id=dependenciesmaintainers>Dependencies/Maintainers</h3>
+<p>We need to see what is required to be installed on the machine in order for the application to work. Either pre-installed or will be installed using the application.</p>
+<p>Some starting places to look at for this information:</p>
+<ul>
+<li><code>README*</code></li>
+<li><code>SETUP*</code></li>
+<li><code>INSTALL*</code></li>
+<li><code>docs/</code></li>
+</ul>
+<p>There is a README for this application, but it just says how to install the application, rather than how to build it/compile from source:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ grep -C 3 -i install README.rst
+
+::
+
+    $ pip3 install instaloader
+
+    $ instaloader profile [profile ...]
+
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Exploring the <a href=https://pypi.org/project/instaloader/>pip option</a> is something we could do, but out of scope for this guide.</p>
+<p>Next we spot <code>setup.py</code>, which contains a lot of useful information:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ cat setup.py
+#!/usr/bin/env python3
+...
+if sys.version_info &lt; (3, 5):
+    sys.exit('Instaloader requires Python &gt;= 3.5.')
+
+requirements = ['requests&gt;=2.4']
+
+if platform.system() == 'Windows' and sys.version_info &lt; (3, 6):
+    requirements.append('win_unicode_console')
+...
+    url='https://instaloader.github.io/',
+    license='MIT',
+    author='Alexander Graf, André Koch-Kramer',
+    author_email='mail@agraf.me, koch-kramer@web.de',
+    description='Download pictures (or videos) along with their captions and other metadata '
+                'from Instagram.',
+    long_description=open(os.path.join(SRC, 'README.rst')).read(),
+    install_requires=requirements,
+    python_requires='&gt;=3.5',
+...
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We managed to get the following information from this:</p>
+<ul>
+<li>From the shebang, we can see its Python 3 (<code>#!/usr/bin/env python3</code>).</li>
+<li>We can see it wants Python 3.5 or higher</li>
+<li>We can see it wants <code>requests</code> and for it to be <code>v2.4</code> or higher</li>
+<li>We can see if its on Windows, it requires another dependency, but we are Linux, so not the case</li>
+<li>We can see the program&rsquo;s home URL</li>
+<li>We can see the license (MIT)</li>
+<li>We can see the authors and their email addresses</li>
+<li>We can get a description of the program</li>
+</ul>
+<p>Handy!</p>
+<p>When packing, we are building a standalone package, which needs to be able to install offline. Something else which needs to be kept in mind, other systems package management systems, such as Python&rsquo;s pip, or ruby&rsquo;s gems. Any of these dependencies also need to be in the main OS package management. In our case, we need Python&rsquo;s <code>requests</code>.</p>
+<p>We have two ways of searching for it. We can use either:</p>
+<ul>
+<li><a href=https://pkg.kali.org/>pkg.kali.org</a></li>
+<li><code>apt-cache</code></li>
+</ul>
+<p>But we also need to know what we are searching for. There is a naming convention, but if you are un-sure, doing multiple searches may help:</p>
+<ul>
+<li><code>requests</code></li>
+<li><code>python-requests</code></li>
+<li><code>python3-requests</code></li>
+</ul>
+<p>We will stick with the command line option for the time being.</p>
+<p>Doing just <code>requests</code> gives a little too many results:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ apt-cache search requests | wc -l
+561
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>So we need to do better to shorten the list, by just searching <strong>the short version</strong> of the description (we will cover this more later, but its the visible part of the output):</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ apt-cache search --names-only requests | wc -l
+19
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ apt-cache search --names-only python-requests
+python-requests-cache-doc - persistent cache for requests library (doc)
+python-requests-doc - elegant and simple HTTP library for Python (Documentation)
+python-requests-mock-doc - mock out responses from the requests package - doc
+python-requests-oauthlib-doc - module providing OAuthlib auth support for requests (Common Documentation)
+python-requests-toolbelt-doc - Utility belt for python3-requests (documentation)
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ apt-cache search --names-only python-requests | grep -vi 'doc'
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>After removing the documentation from the results, we don&rsquo;t get any results. So on with the next search!:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ apt-cache search --names-only python3-requests
+python3-requests - elegant and simple HTTP library for Python3, built for human beings
+python3-requests-cache - persistent cache for requests library (Python 3)
+python3-requests-file - File transport adapter for Requests - Python 3.X
+python3-requests-futures - library for asynchronous HTTP requests (Python 3)
+python3-requests-kerberos - Kerberos/GSSAPI authentication handler for python-requests - Python 3.x
+python3-requests-mock - mock out responses from the requests package - Python 3.x
+python3-requests-ntlm - Adds support for NTLM authentication to the requests library
+python3-requests-oauthlib - module providing OAuthlib auth support for requests (Python 3)
+python3-requests-toolbelt - Utility belt for advanced users of python3-requests
+python3-requests-unixsocket - Use requests to talk HTTP via a UNIX domain socket - Python 3.x
+python3-requestsexceptions - import exceptions from bundled packages in requests. - Python 3.x
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>The first result, <code>python3-requests</code>, looks exactly right! We can look closer:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ apt-cache show python3-requests
+Package: python3-requests
+Source: requests
+Version: 2.23.0+dfsg-2
+...
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>And we can see its version is <code>2.23.0</code>, which is higher than than <code>2.4</code>, so we don&rsquo;t need to update the package. This will be covered in another guide when required.</p>
+<h3 id=maintainers>Maintainers</h3>
+<p>While doing the other parts, we have discovered the authors and maintainers of the software, so we don&rsquo;t need to do anything extra for this.</p>
+<h3 id=description>Description</h3>
+<p>There are two descriptions that we need to supply, a long description and a short description. When we look at the GitHub page we can see an about section that we can use for the short description. For the long description, we can use the description in the README.</p>
+<p><img src=instaloader-01.png alt></p>
+<p>We also have a value from the <code>setup.py</code>.</p>
+<h2 id=editing-package-source-code>Editing Package Source Code</h2>
+<p>Now that we have that information copied down, we can start to populate the files in the <code>debian/</code> folder we created with <code>dh_make</code>.</p>
+<p>More information on the subject can be found on the <a href=https://www.debian.org/doc/manuals/maint-guide/dreq.en.html>Debian documentation</a>.</p>
+<h3 id=changelog>Changelog</h3>
+<p>If we followed the documentation on <a href=../setting-up-packaging-system/index.html>setting up a packaging environment</a>, the only values we will need to alter would be <strong>distribution</strong> (from <code>unstable</code> to <code>kali-dev</code>), <strong>version</strong> (from <code>4.4.4-1</code> to <code>4.4.4-0kali1</code>) and the <strong>log entry</strong>:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ cat debian/changelog
+instaloader (4.4.4-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  &lt;nnnn is the bug number of your ITP&gt;
+
+ -- Joseph O'Gorman &lt;gamb1t@kali.org&gt;  Thu, 02 Jul 2020 17:59:47 -0400
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ vim debian/changelog
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/changelog
+instaloader (4.4.4-0kali1) kali-dev; urgency=medium
+
+  * Initial release
+
+ -- Joseph O'Gorman &lt;gamb1t@kali.org&gt;  Thu, 02 Jul 2020 17:59:47 -0400
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<h3 id=control>Control</h3>
+<p>This file is the metadata for the package, and contains a lot of information.</p>
+<p>More information on the subject can be found on the <a href=https://www.debian.org/doc/manuals/maint-guide/dreq.en.html>Debian documentation</a>.</p>
+<p>Out of the box, it will look a little like this:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ cat debian/control
+Source: instaloader
+Section: unknown
+Priority: optional
+Maintainer: Joseph O'Gorman &lt;gamb1t@kali.org&gt;
+Build-Depends: debhelper-compat (= 12)
+Standards-Version: 4.5.0
+Homepage: &lt;insert the upstream URL, if relevant&gt;
+#Vcs-Browser: https://salsa.debian.org/debian/instaloader
+#Vcs-Git: https://salsa.debian.org/debian/instaloader.git
+
+Package: instaloader
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: &lt;insert up to 60 chars description&gt;
+ &lt;insert long description, indented with spaces&gt;
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>So we can see a few things that need updating:</p>
+<ul>
+<li><code>Section</code> - we set this to be misc, or if we know for sure it should be another section based off of the sections in <a href=https://packages.debian.org/testing/>Debian testing</a> we can set it to that section</li>
+<li><code>Maintainer</code> - we switch to be the Kali team, rather than an individual</li>
+<li><code>Uploaders</code> - this is the individual(s) who are responsible for packaging up the application</li>
+<li><code>Build-Depends</code> - what packages are required to BUILD the package</li>
+<li><code>Homepage</code> - where is the tool located on the Internet</li>
+<li><code>Vcs-Browser</code> - package source code to view online</li>
+<li><code>Vcs-Git</code> - package source code location</li>
+<li><code>Architecture</code> - what machines can this work on</li>
+<li><code>Depends</code> - what other packages are required for this package to work</li>
+<li><code>Description</code> - short and long description</li>
+</ul>
+<p>Most of this we have now figured out from before, so it should make it easier to fill in. We went ahead and created a remote empty git repository on our GitLab account. In our example, this is the end result:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ vim debian/control
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/control
+Source: instaloader
+Section: misc
+Priority: optional
+Maintainer: Kali Developers &lt;devel@kali.org&gt;
+Uploaders: Joseph O'Gorman &lt;gamb1t@kali.org&gt;
+Build-Depends: debhelper-compat (= 12),
+               dh-python,
+               python3-all,
+               python3-setuptools,
+               python3-requests
+Standards-Version: 4.5.0
+Homepage: https://instaloader.github.io/
+Vcs-Browser: https://gitlab.com/kalilinux/packages/instaloader
+Vcs-Git: https://gitlab.com/kalilinux/packages/instaloader.git
+
+Package: instaloader
+Architecture: all
+Depends: ${python3:Depends},
+         ${misc:Depends},
+         python3-requests
+Description: Download media along with their metadata from Instagram
+ Downloads public and private profiles, hashtags, user stories, feeds
+   and saved media
+ Downloads comments, geotags and captions of each post.
+ Automatically detects profile name changes and renames the target
+   directory accordingly
+ Allows fine-grained customization of filters and where to store
+   downloaded media
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>NOTE: The <code>Build-Depends</code> & <code>Depends</code> are indented with tabs (and end with commas), but the <code>Description</code> is spaces.</p>
+<p>There is a lot going on here, so lets point out a few things</p>
+<p>Something to keep in mind with the formatting of the <strong>long descriptions</strong>, at about every 70 characters in (to the nearest whole word), we would put a new line, to help keep the formatting under control.</p>
+<p>Now onto the dependencies, of which we have: <strong>Build</strong> & <strong>Package</strong>. For the build-dependencies of Python 3 we will have to have four things:</p>
+<ul>
+<li><code>debhelper-compat</code></li>
+<li><code>dh-python</code></li>
+<li><code>python3-all</code></li>
+<li><code>python3-setuptools</code></li>
+</ul>
+<p>In a separate guide there will be an explanation as to why these are included, however only the first two are going to be a staple of Python 3 packaging as the latter two are for more specific cases.</p>
+<p>In our application, we have another one, <code>python3-requests</code>, which we got from <code>setup.py</code> and that is a requirement from the application. Typically, if there was not a <code>setup.py</code> file, we would not need to include <code>python3-requests</code> in our &ldquo;Build-Depends&rdquo;. However, due to the <code>setup.py</code> file, we will need to include <code>python3-requests</code> in both the &ldquo;Build-Depends&rdquo; as well as the package &ldquo;Depends&rdquo;. This ensures these packages are always on the system when we install our package (especially handy when using &ldquo;sbuild&rdquo;).</p>
+<p>The <code>debhelper-compat</code> level determines how the package will be built. The higher the compat level, the newer the version. Newer versions have certain menial tasks done automatically, so this should not be lowered.</p>
+<p>The package dependencies are relatively straightforward. We get rid of the <code>${shlibs:Depends}</code> as we are packaging up a Python tool, and instead replace it with the python3 depends version <code>${python3:Depends}</code>. We also ensure that <code>python3-requests</code> is included as the tool requires this. No other dependencies are needed by this tool, so we are done.</p>
+<p>The final thing we need to ensure we change is the architecture from <strong>any</strong> to <strong>all</strong>, as this tool can be installed on all architectures.</p>
+<h3 id=copyright>Copyright</h3>
+<p>Everything that gets created has an original author. They control what happens with it and it needs to be respected. We can call out this in the copyright file.</p>
+<p>More information on the subject can be found on the <a href=https://www.debian.org/doc/manuals/maint-guide/dreq.en.html>Debian documentation</a> and <a href=https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/>here</a>.</p>
+<p>Below is the skeleton template output (with comments removed):</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ grep -v '#' debian/copyright
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: instaloader
+Upstream-Contact: &lt;preferred name and address to reach the upstream project&gt;
+Source: &lt;url://example.com&gt;
+
+Files: *
+Copyright: &lt;years&gt; &lt;put author's name and email here&gt;
+           &lt;years&gt; &lt;likewise for another author&gt;
+License: &lt;special license&gt;
+ &lt;Put the license of the package here indented by 1 space&gt;
+ &lt;This follows the format of Description: lines in control file&gt;
+ .
+ &lt;Including paragraphs&gt;
+
+Files: debian/*
+Copyright: 2020 Joseph O'Gorman &lt;gamb1t@kali.org&gt;
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;
+ .
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in &quot;/usr/share/common-licenses/GPL-2&quot;.
+
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>The original tool&rsquo;s author has ownership on their work, and the work we have put into creating the package belongs to us.
+After updating it, it looks like the following:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ vim debian/copyright
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/copyright
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: instaloader
+Source: https://github.com/instaloader/instaloader
+
+Files: *
+Copyright: 2016-2020 Alexander Graf &lt;mail@agraf.me&gt;
+           2016-2020 André Koch-Kramer &lt;koch-kramer@web.de&gt;
+License: MIT
+
+Files: debian/*
+Copyright: 2020 Joseph O'Gorman &lt;gamb1t@kali.org&gt;
+License: MIT
+
+License: MIT
+ The MIT License
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the &quot;Software&quot;), to deal
+ in the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ of the Software, and to permit persons to whom the Software is furnished to do
+ so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We altered the following:</p>
+<ul>
+<li>We removed an optional parameter (<code>Upstream-Contact</code>), as that is touched on in the copyright file.</li>
+<li>We put in the homepage of the application to <code>Source</code></li>
+<li>Put the two authors name and addresses from <code>setup.py</code>. The dates came from the <code>LICENSE</code> file</li>
+<li>Rather than putting the whole block of MIT license text directly after, we placed it towards the end of the file, and gave a header to it.</li>
+<li>We replaced the <code>GPL-2+</code> used as default for the packaging section with the <strong>same</strong> <code>MIT</code> license, which is used in the application. This is the standard for Debian packages (packaging work should match the application&rsquo;s license).</li>
+</ul>
+<h3 id=rules>Rules</h3>
+<p>This file is a Makefile, for building the Debian package.</p>
+<p>More information on the subject can be found on the <a href=https://www.debian.org/doc/manuals/maint-guide/dreq.en.html>Debian documentation</a>.</p>
+<p>The output of the template looks like the following:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ cat debian/rules
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+
+# see FEATURE AREAS in dpkg-buildflags(1)
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# see ENVIRONMENT in dpkg-buildflags(1)
+# package maintainers to append CFLAGS
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+# package maintainers to append LDFLAGS
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+
+%:
+  dh $@
+
+
+# dh_make generated override targets
+# This is example for Cmake (See https://bugs.debian.org/641051 )
+#override_dh_auto_configure:
+# dh_auto_configure -- #  -DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
+
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>So there are a lot of items which are pre-commented out, that may be handy for debugging & troubleshooting.
+Other than the shebang (<code>#!/usr/bin/make -f</code>), there is only two other lines which are currently in use:</p>
+<pre><code class=language-plaintext>%:
+  dh $@
+</code></pre>
+<p>Which is a wildcard (<code>%</code>), and feed in all the arguments into <code>dh</code>.</p>
+<p>What needs to go here now starts to depend on the program and how complex it is. As our program is a python application we are going to have to tell it to build with <code>python3</code>. We also need to tell it to use <code>pybuild</code> to build, as we have a <code>setup.py</code> file included in the source of the application. If there was not a <code>setup.py</code> file, we would not add this flag. We also need to tell PyBuild the name of the application. This looks like:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ vim debian/rules
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/rules
+#!/usr/bin/make -f
+
+#export DH_VERBOSE = 1
+export PYBUILD_NAME=instaloader
+
+%:
+        dh $@ --with python3 --buildsystem=pybuild
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>NOTE: It uses TAB for indentation, as its a Makefile.</p>
+<h3 id=watch>Watch</h3>
+<p>An additional file which we highly recommend to include is a <code>watch</code> file. This points to upstream, and is then used to detect if there is a more recent version of the application than what is packaged. This is useful when doing updates to packages.</p>
+<p>For more information, and example formats, please see the <a href=https://wiki.debian.org/debian/watch>Debian wiki</a>.
+Using this wiki, we can see there is an example for GitHub which is where our project is stored - <a href=https://github.com/instaloader/instaloader/>github.com/instaloader/instaloader/</a>:</p>
+<pre><code class=language-plaintext>version=4
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/&lt;project&gt;-$1\.tar\.gz/ \
+  https://github.com/&lt;user&gt;/&lt;project&gt;/tags .*/v?(\d\S+)\.tar\.gz
+</code></pre>
+<p>So lets now alter it to fit our needs:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ vim debian/watch
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/watch
+version=4
+opts=filenamemangle=s/.+\/v?(\d\S+)\.tar\.gz/instaloader-$1\.tar\.gz/ \
+  https://github.com/instaloader/instaloader/tags .*/v?(\d\S+)\.tar\.gz
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>NOTE: This has two spaces for any indentation</p>
+<p>So let&rsquo;s do a quick check to see if its working right:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ uscan -vv --no-download
+...
+uscan info: Found the following matching hrefs on the web page (newest first):
+   /instaloader/instaloader/archive/v4.4.4rc3.tar.gz (4.4.4rc3) index=4.4.4rc3-1
+   /instaloader/instaloader/archive/v4.4.4rc2.tar.gz (4.4.4rc2) index=4.4.4rc2-1
+   /instaloader/instaloader/archive/v4.4.4rc1.tar.gz (4.4.4rc1) index=4.4.4rc1-1
+   /instaloader/instaloader/archive/v4.4.4.tar.gz (4.4.4) index=4.4.4-1
+   /instaloader/instaloader/archive/v4.4.3.tar.gz (4.4.3) index=4.4.3-1
+...
+    $newversion  = 4.4.4rc3
+    $lastversion = 4.4.4
+...
+uscan: Newest version of instaloader on remote site is 4.4.4rc3, local version is 4.4.4
+uscan:    =&gt; Newer package available from
+      https://github.com/instaloader/instaloader/archive/v4.4.4rc3.tar.gz
+uscan info: Scan finished
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Looks like its not! Its correctly detected all the versions, but its not sorted the order correctly (due to the release candidate). We know this by going to the <a href=https://github.com/instaloader/instaloader/tags>release page</a>:</p>
+<p><img src=instaloader-02.png alt></p>
+<p>Looking back at the <a href=https://wiki.debian.org/debian/watch>Debian wiki</a>, there is a section called <a href=https://wiki.debian.org/debian/watch#Common_mistakes>Common mistakes</a>:</p>
+<blockquote>
+<p>Not mangling upstream versions that are alphas, betas or release candidates to make them sort before the final release. The solution is to use &ldquo;uversionmangle&rdquo; like this:</p>
+</blockquote>
+<pre><code class=language-plaintext>opts=uversionmangle=s/(\d)[_\.\-\+]?((RC|rc|pre|dev|beta|alpha)\d*)$/$1~$2/
+</code></pre>
+<p>However, we need to edit it a bit to fit Instaloader. This can be figured out through trial and error using the above uversionmangle as the base.</p>
+<p>Let&rsquo;s see how it works:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ vim debian/watch
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/watch
+version=4
+opts=uversionmangle=s/(\d)[_\.\-\+]?((RC|rc|pre|dev|beta|alpha|a)\d*)$// \
+  https://github.com/instaloader/instaloader/tags .*/v?(\d\S+)\.tar\.gz
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ uscan -vv --no-download
+...
+uscan info: Newest version of instaloader on remote site is 4.4.4, local version is 4.4.4
+uscan info:    =&gt; Package is up to date for from
+      https://github.com/instaloader/instaloader/archive/v4.4.4.tar.gz
+uscan info: Scan finished
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Success!</p>
+<h2 id=install--helper-scripts>.Install & Helper-Scripts</h2>
+<p>Everything we have done so far would just be for building the package, but we haven&rsquo;t said how to install the application.</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ vim debian/instaloader.install
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/instaloader.install
+instaloader.py usr/share/instaloader/
+instaloader usr/share/instaloader/
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>NOTE: There is no leading slash in the target directory</p>
+<p>We can go forward with this, but it may not behave like we were expecting. This is because we don&rsquo;t have anything in <code>$PATH</code>, so if we went to the command line and tried typing in <code>instaloader.py</code> its not going to work (also it has the file extension, <code>.py</code>). The solution is to create a <strong>helper-script</strong>, which is placed into <code>$PATH</code> (and we include in the <code>.install</code> file):</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ mkdir -p debian/helper-script/
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ vim debian/helper-script/instaloader
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/helper-script/instaloader
+#!/bin/sh
+exec python3 /usr/share/instaloader/instaloader.py &quot;$@&quot;
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ vim debian/instaloader.install
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ cat debian/instaloader.install
+instaloader.py usr/share/instaloader/
+instaloader usr/share/instaloader/
+debian/helper-script/instaloader usr/bin/
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>With that, all the necessary <code>debian/</code> files are added. Time to build!</p>
+<h2 id=packing-up>Packing Up</h2>
+<p>Time to bundle everything into a file. We are going to use <strong>sbuild</strong> to create the package. This has its pros and cons. One of the pros is that if it builds here, it will also build elsewhere as its meant for build daemons. The down side is, it will require access to a network repository as it will try and handle detecting and installing any dependencies missing in the chroot, making it slower to build.</p>
+<p>If you don&rsquo;t want to use <strong>sbuild</strong>, just drop it from the arguments (e.g. <code>gbp buildpackage</code>), However, you will be required then to install what&rsquo;s in <code>debian/control</code> in the <code>Build-Depends</code> section (e..g <code>sudo apt install -y dh-python python3-all python3-setuptools python3-requests</code>).</p>
+<p>So lets give sbuild a try:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ gbp buildpackage --git-builder=sbuild
+gbp:error: Can't determine package type: Failed to read changelog: can't get HEAD:debian/changelog: fatal: path 'debian/changelog' exists on disk, but not in 'HEAD'
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Oops! We haven&rsquo;t committed our changes to git. Shame on us.</p>
+<p>If we wanted to, we could bypass this by doing <code>gbp buildpackage --git-builder=sbuild --git-export=WC</code>, which would allow us to test out our values in <code>debian/</code> before committing to it, rather than cluttering up the git history with various debugging/troubleshooting commits. Then when we have our package in a working state, we can then commit to git, and try again, like so:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git status
+On branch kali/master
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+        debian/
+
+nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git add debian/
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git commit -m &quot;Initial release&quot;
+[kali/master 10a9e96] Add debian/ files
+ 8 files changed, 94 insertions(+)
+ create mode 100644 debian/changelog
+ create mode 100644 debian/control
+ create mode 100644 debian/copyright
+ create mode 100755 debian/helper-script/instaloader
+ create mode 100644 debian/instaloader.install
+ create mode 100755 debian/rules
+ create mode 100644 debian/source/format
+ create mode 100644 debian/watch
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Let&rsquo;s try and build again:</p>
+<p>NOTE: You may not get the following error (as it depends on how &ldquo;clean&rdquo; your OS is):</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ gbp buildpackage --git-builder=sbuild
+gbp:info: Exporting 'HEAD' to '/home/kali/kali/build-area/instaloader-tmp'
+gbp:info: Moving '/home/kali/kali/build-area/instaloader-tmp' to '/home/kali/kali/build-area/instaloader-4.4.4'
+gbp:info: Performing the build
+dh clean --with python3 --buildsystem=pybuild
+dh: error: unable to load addon python3: Can't locate Debian/Debhelper/Sequence/python3.pm in @INC (you may need to install the Debian::Debhelper::Sequence::python3 module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.3 /usr/local/share/perl/5.30.3 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl) at (eval 25) line 1.
+BEGIN failed--compilation aborted at (eval 25) line 1.
+make: *** [debian/rules:7: clean] Error 255
+E: Failed to clean source directory /home/kali/kali/build-area/instaloader-4.4.4 (/home/kali/kali/build-area/instaloader_4.4.4-0kali1.dsc)
+gbp:error: 'sbuild' failed: it exited with 1
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>If you see the above error, this is because <code>dh-python</code> is missing from our OS. We can quickly fix this by doing:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ sudo apt install -y dh-python
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>So, one more try and building:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ gbp buildpackage --git-builder=sbuild
+gbp:info: Exporting 'HEAD' to '/home/kali/kali/build-area/instaloader-tmp'
+gbp:info: Moving '/home/kali/kali/build-area/instaloader-tmp' to '/home/kali/kali/build-area/instaloader-4.4.4'
+gbp:info: Performing the build
+dh clean --with python3 --buildsystem=pybuild
+...
+
++------------------------------------------------------------------------------+
+| Package contents                                                             |
++------------------------------------------------------------------------------+
+
+...
+
+Install lintian build dependencies (apt-based resolver)
+-------------------------------------------------------
+
+...
+
+E: instaloader source: source-is-missing docs/_static/bootstrap-4.1.3.bundle.min.js
+W: instaloader: binary-without-manpage usr/bin/instaloader
+I: instaloader source: testsuite-autopkgtest-missing
+
+I: Lintian run was successful.
+...
+
++------------------------------------------------------------------------------+
+| Summary                                                                      |
++------------------------------------------------------------------------------+
+
+Build Architecture: amd64
+Build Type: full
+Build-Space: 2460
+Build-Time: 5
+Distribution: kali-dev
+Host Architecture: amd64
+Install-Time: 37
+Job: /home/kali/kali/build-area/instaloader_4.4.4-0kali1.dsc
+Lintian: warn
+Machine Architecture: amd64
+Package: instaloader
+Package-Time: 45
+Source-Version: 4.4.4-0kali1
+Space: 2460
+Status: successful
+Version: 4.4.4-0kali1
+--------------------------------------------------------------------------------
+Finished at 2020-07-03T15:51:09Z
+Build needed 00:00:45, 2460k disk space
+
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>The output here is very long, so we have truncated it, but we can see its being built successfully. Even with an error, warning, and information from <code>lintian</code>!</p>
+<p>Let&rsquo;s double check to see what got created:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ ls ~/kali/build-area/instaloader*
+/home/kali/kali/build-area/instaloader_4.4.4-0kali1_all.deb          /home/kali/kali/build-area/instaloader_4.4.4-0kali1.debian.tar.xz
+/home/kali/kali/build-area/instaloader_4.4.4-0kali1_amd64.build      /home/kali/kali/build-area/instaloader_4.4.4-0kali1.dsc
+/home/kali/kali/build-area/instaloader_4.4.4-0kali1_amd64.buildinfo  /home/kali/kali/build-area/instaloader_4.4.4.orig.tar.gz
+/home/kali/kali/build-area/instaloader_4.4.4-0kali1_amd64.changes
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We have output!</p>
+<h2 id=making-lintian-happy>Making Lintian Happy</h2>
+<p>For more information, see <a href=https://www.debian.org/doc/manuals/maint-guide/checkit.en.html>Debian&rsquo;s documentation</a>.</p>
+<p>To fix this error <code>E: instaloader source: source-is-missing docs/_static/bootstrap-4.1.3.bundle.min.js</code>, which will make sure the package is a higher standard, we can resolve this by expanding the minified JavaScript (Beautifier/Unminify) file and put it into a new directory in <code>debian/</code> called <code>missing-sources</code>:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ apt-cache search beautifier js
+...
+jsbeautifier - JavaScript unobfuscator and beautifier
+...
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ sudo apt install -y jsbeautifier
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ mkdir -p debian/missing-sources/
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ js-beautify docs/_static/bootstrap-4.1.3.bundle.min.js &gt; debian/missing-sources/bootstrap-4.1.3.bundle.js
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git add debian/missing-sources/
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git commit -m &quot;Unminify JS to make lintian happy&quot;
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We can now rebuild the package with the same command and see that it was successful with no error</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ gbp buildpackage --git-builder=sbuild
+...
+
++------------------------------------------------------------------------------+
+| Package contents                                                             |
++------------------------------------------------------------------------------+
+
+...
+
+Install lintian build dependencies (apt-based resolver)
+-------------------------------------------------------
+
+...
+
+W: instaloader: binary-without-manpage usr/bin/instaloader
+I: instaloader source: testsuite-autopkgtest-missing
+
+I: Lintian run was successful.
+...
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>A way we can improve this package is to automate this stage by unminify the JavaScript file, but this will be covered in another guide.</p>
+<h2 id=manual-install>Manual Install</h2>
+<p>Let&rsquo;s now give our package a test drive:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ sudo apt install ~/kali/build-area/instaloader_4.4.4-0kali1_all.deb
+Selecting previously unselected package instaloader.
+(Reading database ... 154513 files and directories currently installed.)
+Preparing to unpack .../instaloader_4.4.4-0kali1_all.deb ...
+Unpacking instaloader (4.4.4-0kali1) ...
+Setting up instaloader (4.4.4-0kali1) ...
+Processing triggers for kali-menu (2020.3.0) ...
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ instaloader
+usage:
+instaloader.py [--comments] [--geotags]
+               [--stories] [--highlights] [--tagged] [--igtv]
+               [--login YOUR-USERNAME] [--fast-update]
+               profile | &quot;#hashtag&quot; | %%location_id | :stories | :feed | :saved
+instaloader.py --help
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Success!</p>
+<p>This is looking good (not perfect), and eagle eye spotters may be able to spot why (in the output) - there is the file extension in the output (<code>instaloader.py</code>), yet the command used to call it doesn&rsquo;t have it (<code>instaloader</code>).
+We are going to need to either patch the application or find a different way to call the application to address this. But this will be covered in another guide.</p>
+<h2 id=save--share>Save & Share</h2>
+<p>Let&rsquo;s now make sure everything is in git locally, before we push it out to the remote repository (the one we defined in <code>debian/control</code>):</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git status
+On branch kali/master
+nothing to commit, working tree clean
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git branch -v
+* kali/master  10a9e96 Unminify JS to make lintian happy
+  pristine-tar 439fe30 pristine-tar data for instaloader_4.4.4.orig.tar.gz
+  upstream     494f718 New upstream version 4.4.4
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git remote -v
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>We don&rsquo;t (yet) have a remote repository setup, so we go to GitLab and <a href=https://gitlab.com/projects/new>create a new project</a> before continuing.</p>
+<p>Afterwards:</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git remote add origin git@gitlab.com:kalilinux/packages/instaloader.git
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git remote -v
+origin  git@gitlab.com:kalilinux/packages/instaloader.git (fetch)
+origin  git@gitlab.com:kalilinux/packages/instaloader.git (push)
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>Now we need to send our local work to the new remote repository (and don&rsquo;t forget the tags):</p>
+<pre><code class=language-console>kali@kali:~/kali/packages/instaloader$ git push --all
+Enumerating objects: 95, done.
+Counting objects: 100% (95/95), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (88/88), done.
+Writing objects: 100% (95/95), 291.16 KiB | 7.46 MiB/s, done.
+Total 95 (delta 1), reused 0 (delta 0), pack-reused 0
+remote:
+remote: To create a merge request for pristine-tar, visit:
+remote:   https://gitlab.com/kalilinux/packages/instaloader/-/merge_requests/new?merge_request%5Bsource_branch%5D=pristine-tar
+remote:
+remote: To create a merge request for upstream, visit:
+remote:   https://gitlab.com/kalilinux/packages/instaloader/-/merge_requests/new?merge_request%5Bsource_branch%5D=upstream
+remote:
+To gitlab.com:kalilinux/packages/instaloader.git
+ * [new branch]      kali/master -&gt; kali/master
+ * [new branch]      pristine-tar -&gt; pristine-tar
+ * [new branch]      upstream -&gt; upstream
+kali@kali:~/kali/packages/instaloader$
+kali@kali:~/kali/packages/instaloader$ git push --tags
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 172 bytes | 172.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+To gitlab.com:kalilinux/packages/instaloader.git
+ * [new tag]         upstream/4.4.4 -&gt; upstream/4.4.4
+kali@kali:~/kali/packages/instaloader$
+</code></pre>
+<p>At this point now, a ticket can be opened up on the <a href=https://bugs.kali.org/>Kali Linux bug tracker</a>, with a suggestion of the tool & package which you have created, and our tool team will handle it from there.</p>
+</div>
+<hr>
+<p id=post-meta>
+Updated on: 2022-Jan-21<br>
+Author:
+<a href=https://gitlab.com/gamb1t rel=”nofollow” title="gamb1t's profile">gamb1t</a>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-docs/edit/master/development/intro-to-packaging-example/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../setting-up-packaging-system/index.html>
+<i class=ti-arrow-left></i>
+<span>Setting Uup a system for packaging</span>
+</a>
+<a href=../intermediate-packaging-example/index.html>
+<span>Intermediate packaging step-by-step example</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</article>
+</section>
+</main>
+<script src=../../../plugins/highlight/highlight.pack.js></script>
+<script>hljs.registerLanguage('shell',a=>({name:'Shell Session',aliases:['console','shellsession'],contains:[{className:'prompt',begin:/^\s*([/~\w[\]()@:.-]+[>%$#]|\$)\s*$/},{className:'prompt',begin:/^\s*([/~\w[\]()@:.-]+[>%$#]|\$)\s*/,starts:{end:/[^\\]$/,subLanguage:'bash'}},{className:'prompt',begin:/┌──\([^)]+\)-\[~?[/\w-]*\]\n└─[#$]/,starts:{end:/[^\\]$/,subLanguage:'bash'}}]})),hljs.highlightAll(),window.addEventListener('DOMContentLoaded',()=>$$('.hljs-prompt').forEach(a=>{let c='#2777ff',b='#5EBDAB';/#\s*$/.test(a.innerHTML)&&(c='#EC0101',b='#367BF0'),a.innerHTML=a.innerHTML.replace(/([^)]+)(:)(~?[/\w.-]*)([#$])/,`<span style="color:${c};font-weight:bold">$1</span>`+`<span style="color:white;font-weight:bold">$2</span>`+`<span style="font-weight:bold;color:${b}">$3</span>`+`<span style="color:white;">$4</span>`),a.innerHTML=a.innerHTML.replace(/┌──\(([^)]+)\)-\[(~?[/\w.-]*)\]\n└─([#$])/,`<span style="color:${b}">┌──(</span>`+`<span style="color:${c};font-weight:bold">$1</span>`+`<span style="color:${b}">)-[</span>`+`<span style="color:white;font-weight:bold">$2</span>`+`<span style="color:${b}">]\n`+`└─</span><span style="color:${c};font-weight:bold">$3</span>`)}),!1)</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=../../../get-kali/index.html rel=noopener target=_blank>Kali Linux</a>
+<a href=../../../get-kali/index.html#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=../../../index.html rel=noopener target=_blank>Home</a>
+<a href=../../../blog/index.html rel=noopener target=_blank>Blog</a>
+<a href=../../index.html rel=noopener target=_blank>Documentation</a>
+<a href=../../../tools/index.html rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=../../policy/cookie/index.html>Cookie Policy</a>
+<a href=../../policy/privacy/index.html>Privacy Policy</a>
+<a href=../../policy/trademark/index.html>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=../../../rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/docs/development/intro-to-packaging-example/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Feb 2022 07:56:49 GMT -->
+</html>

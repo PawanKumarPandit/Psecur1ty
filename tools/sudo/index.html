@@ -1,0 +1,3204 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/sudo/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:16:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>sudo | Kali Linux Tools</title>
+<meta itemprop=name content="sudo | Kali Linux Tools">
+<meta name=application-name content="sudo | Kali Linux Tools">
+<meta name=twitter:title content="sudo | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="sudo | Kali Linux Tools">
+<meta itemprop=description content>
+<meta name=description content>
+<meta name=twitter:description content>
+<meta property="og:description" content>
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2022-02-10T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>sudo</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 1.9.9</code> <code>arch: any</code>
+<hr>
+<div id=package-links>
+<a href=https://www.sudo.ws/><i class=ti-world></i> sudo Homepage</a><span><span>|</span><a href=http://pkg.kali.org/sudo><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://salsa.debian.org/sudo-team/sudo><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-default title=kali-linux-default>default</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-large title=kali-linux-large>large</a></li>
+</ul>
+</li>
+<li>
+Tools:
+<ul>
+<li><a href=../kali-meta/index.html#kali-tools-post-exploitation title=kali-tools-post-exploitation>post-exploitation</a></li>
+<li><a href=../kali-meta/index.html#kali-tools-reporting title=kali-tools-reporting>reporting</a></li>
+<li><a href=../kali-meta/index.html#kali-tools-social-engineering title=kali-tools-social-engineering>social-engineering</a></li>
+<li><a href=../kali-meta/index.html#kali-tools-vulnerability title=kali-tools-vulnerability>vulnerability</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#sudo title=sudo>
+<i class=ti-package></i>sudo
+</a>
+<ul>
+<li>
+<a href=#cvtsudoers title=cvtsudoers>
+cvtsudoers
+</a>
+</li>
+<li>
+<a href=#cvtsudoers-1 title=cvtsudoers>
+cvtsudoers
+</a>
+</li>
+<li>
+<a href=#sudo-1 title=sudo>
+sudo
+</a>
+</li>
+<li>
+<a href=#sudo-2 title=sudo>
+sudo
+</a>
+</li>
+<li>
+<a href=#sudo_logsrvd title=sudo_logsrvd>
+sudo_logsrvd
+</a>
+</li>
+<li>
+<a href=#sudo_logsrvd-1 title=sudo_logsrvd>
+sudo_logsrvd
+</a>
+</li>
+<li>
+<a href=#sudo_sendlog title=sudo_sendlog>
+sudo_sendlog
+</a>
+</li>
+<li>
+<a href=#sudo_sendlog-1 title=sudo_sendlog>
+sudo_sendlog
+</a>
+</li>
+<li>
+<a href=#sudoedit title=sudoedit>
+sudoedit
+</a>
+</li>
+<li>
+<a href=#sudoedit-1 title=sudoedit>
+sudoedit
+</a>
+</li>
+<li>
+<a href=#sudoreplay title=sudoreplay>
+sudoreplay
+</a>
+</li>
+<li>
+<a href=#sudoreplay-1 title=sudoreplay>
+sudoreplay
+</a>
+</li>
+<li>
+<a href=#visudo title=visudo>
+visudo
+</a>
+</li>
+<li>
+<a href=#visudo-1 title=visudo>
+visudo
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#sudo-ldap title=sudo-ldap>
+<i class=ti-package></i>sudo-ldap
+</a>
+<ul>
+<li>
+<a href=#cvtsudoers-2 title=cvtsudoers>
+cvtsudoers
+</a>
+</li>
+<li>
+<a href=#sudo-3 title=sudo>
+sudo
+</a>
+</li>
+<li>
+<a href=#sudo_logsrvd-2 title=sudo_logsrvd>
+sudo_logsrvd
+</a>
+</li>
+<li>
+<a href=#sudo_sendlog-2 title=sudo_sendlog>
+sudo_sendlog
+</a>
+</li>
+<li>
+<a href=#sudoedit-2 title=sudoedit>
+sudoedit
+</a>
+</li>
+<li>
+<a href=#sudoreplay-2 title=sudoreplay>
+sudoreplay
+</a>
+</li>
+<li>
+<a href=#visudo-2 title=visudo>
+visudo
+</a>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=sudo>sudo</h3>
+<p>Sudo is a program designed to allow a sysadmin to give limited root
+privileges to users and log root activity. The basic philosophy is to give
+as few privileges as possible but still allow people to get their work done.</p>
+<p>This version is built with minimal shared library dependencies, use the
+sudo-ldap package instead if you need LDAP support for sudoers.</p>
+<p><strong>Installed size:</strong> <code>5.64 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install sudo</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>init-system-helpers</li>
+<li>libaudit1</li>
+<li>libc6</li>
+<li>libpam-modules</li>
+<li>libpam0g</li>
+<li>libselinux1</li>
+<li>lsb-base</li>
+<li>zlib1g
+</div></li>
+</ul>
+<h5 id=cvtsudoers>cvtsudoers</h5>
+<p>Convert between sudoers file formats</p>
+<pre><code>root@kali:~# cvtsudoers -h
+cvtsudoers - convert between sudoers file formats
+
+usage: cvtsudoers [-ehMpV] [-b dn] [-c conf_file ] [-d deftypes] [-f output_format] [-i input_format] [-I increment] [-m filter] [-o output_file] [-O start_point] [-P padding] [-s sections] [input_file]
+
+Options:
+  -b, --base=dn              the base DN for sudo LDAP queries
+  -c, --config=conf_file     the path to the configuration file
+  -d, --defaults=deftypes    only convert Defaults of the specified types
+  -e, --expand-aliases       expand aliases when converting
+  -f, --output-format=format set output format: JSON, LDIF or sudoers
+  -i, --input-format=format  set input format: LDIF or sudoers
+  -I, --increment=num        amount to increase each sudoOrder by
+  -h, --help                 display help message and exit
+  -m, --match=filter         only convert entries that match the filter
+  -M, --match-local          match filter uses passwd and group databases
+  -o, --output=output_file   write converted sudoers to output_file
+  -O, --order-start=num      starting point for first sudoOrder
+  -p, --prune-matches        prune non-matching users, groups and hosts
+  -P, --padding=num          base padding for sudoOrder increment
+  -s, --suppress=sections    suppress output of certain sections
+  -V, --version              display version information and exit
+</code></pre>
+<hr>
+<h5 id=cvtsudoers-1>cvtsudoers</h5>
+<p>Convert between sudoers file formats</p>
+<pre><code>root@kali:~# cvtsudoers -h
+cvtsudoers - convert between sudoers file formats
+
+usage: cvtsudoers [-ehMpV] [-b dn] [-c conf_file ] [-d deftypes] [-f output_format] [-i input_format] [-I increment] [-m filter] [-o output_file] [-O start_point] [-P padding] [-s sections] [input_file]
+
+Options:
+  -b, --base=dn              the base DN for sudo LDAP queries
+  -c, --config=conf_file     the path to the configuration file
+  -d, --defaults=deftypes    only convert Defaults of the specified types
+  -e, --expand-aliases       expand aliases when converting
+  -f, --output-format=format set output format: JSON, LDIF or sudoers
+  -i, --input-format=format  set input format: LDIF or sudoers
+  -I, --increment=num        amount to increase each sudoOrder by
+  -h, --help                 display help message and exit
+  -m, --match=filter         only convert entries that match the filter
+  -M, --match-local          match filter uses passwd and group databases
+  -o, --output=output_file   write converted sudoers to output_file
+  -O, --order-start=num      starting point for first sudoOrder
+  -p, --prune-matches        prune non-matching users, groups and hosts
+  -P, --padding=num          base padding for sudoOrder increment
+  -s, --suppress=sections    suppress output of certain sections
+  -V, --version              display version information and exit
+</code></pre>
+<hr>
+<h5 id=sudo-1>sudo</h5>
+<p>Execute a command as another user</p>
+<pre><code>root@kali:~# sudo -h
+sudo - execute a command as another user
+
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+            [command]
+usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+            [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
+            [VAR=value] [-i|-s] [&lt;command&gt;]
+usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+            [-h host] [-p prompt] [-R directory] [-T timeout] [-u user] file ...
+
+Options:
+  -A, --askpass                 use a helper program for password prompting
+  -b, --background              run command in the background
+  -B, --bell                    ring bell when prompting
+  -C, --close-from=num          close all file descriptors &gt;= num
+  -D, --chdir=directory         change the working directory before running
+                                command
+  -E, --preserve-env            preserve user environment when running command
+      --preserve-env=list       preserve specific environment variables
+  -e, --edit                    edit files instead of running a command
+  -g, --group=group             run command as the specified group name or ID
+  -H, --set-home                set HOME variable to target user's home dir
+  -h, --help                    display help message and exit
+  -h, --host=host               run command on host (if supported by plugin)
+  -i, --login                   run login shell as the target user; a command
+                                may also be specified
+  -K, --remove-timestamp        remove timestamp file completely
+  -k, --reset-timestamp         invalidate timestamp file
+  -l, --list                    list user's privileges or check a specific
+                                command; use twice for longer format
+  -n, --non-interactive         non-interactive mode, no prompts are used
+  -P, --preserve-groups         preserve group vector instead of setting to
+                                target's
+  -p, --prompt=prompt           use the specified password prompt
+  -R, --chroot=directory        change the root directory before running command
+  -r, --role=role               create SELinux security context with specified
+                                role
+  -S, --stdin                   read password from standard input
+  -s, --shell                   run shell as the target user; a command may
+                                also be specified
+  -t, --type=type               create SELinux security context with specified
+                                type
+  -T, --command-timeout=timeout terminate command after the specified time limit
+  -U, --other-user=user         in list mode, display privileges for user
+  -u, --user=user               run command (or edit file) as specified user
+                                name or ID
+  -V, --version                 display version information and exit
+  -v, --validate                update user's timestamp without running a
+                                command
+  --                            stop processing command line arguments
+</code></pre>
+<hr>
+<h5 id=sudo-2>sudo</h5>
+<p>Execute a command as another user</p>
+<pre><code>root@kali:~# sudo -h
+sudo - execute a command as another user
+
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+            [command]
+usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+            [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
+            [VAR=value] [-i|-s] [&lt;command&gt;]
+usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+            [-h host] [-p prompt] [-R directory] [-T timeout] [-u user] file ...
+
+Options:
+  -A, --askpass                 use a helper program for password prompting
+  -b, --background              run command in the background
+  -B, --bell                    ring bell when prompting
+  -C, --close-from=num          close all file descriptors &gt;= num
+  -D, --chdir=directory         change the working directory before running
+                                command
+  -E, --preserve-env            preserve user environment when running command
+      --preserve-env=list       preserve specific environment variables
+  -e, --edit                    edit files instead of running a command
+  -g, --group=group             run command as the specified group name or ID
+  -H, --set-home                set HOME variable to target user's home dir
+  -h, --help                    display help message and exit
+  -h, --host=host               run command on host (if supported by plugin)
+  -i, --login                   run login shell as the target user; a command
+                                may also be specified
+  -K, --remove-timestamp        remove timestamp file completely
+  -k, --reset-timestamp         invalidate timestamp file
+  -l, --list                    list user's privileges or check a specific
+                                command; use twice for longer format
+  -n, --non-interactive         non-interactive mode, no prompts are used
+  -P, --preserve-groups         preserve group vector instead of setting to
+                                target's
+  -p, --prompt=prompt           use the specified password prompt
+  -R, --chroot=directory        change the root directory before running command
+  -r, --role=role               create SELinux security context with specified
+                                role
+  -S, --stdin                   read password from standard input
+  -s, --shell                   run shell as the target user; a command may
+                                also be specified
+  -t, --type=type               create SELinux security context with specified
+                                type
+  -T, --command-timeout=timeout terminate command after the specified time limit
+  -U, --other-user=user         in list mode, display privileges for user
+  -u, --user=user               run command (or edit file) as specified user
+                                name or ID
+  -V, --version                 display version information and exit
+  -v, --validate                update user's timestamp without running a
+                                command
+  --                            stop processing command line arguments
+</code></pre>
+<hr>
+<h5 id=sudo_logsrvd>sudo_logsrvd</h5>
+<p>Sudo event and I/O log server</p>
+<pre><code>root@kali:~# sudo_logsrvd -h
+sudo_logsrvd - sudo log server
+
+
+Options:
+  -f, --file            path to configuration file
+  -h, --help            display help message and exit
+  -n, --no-fork         do not fork, run in the foreground
+  -R, --random-drop     percent chance connections will drop
+  -V, --version         display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=sudo_logsrvd-1>sudo_logsrvd</h5>
+<p>Sudo event and I/O log server</p>
+<pre><code>root@kali:~# sudo_logsrvd -h
+sudo_logsrvd - sudo log server
+
+
+Options:
+  -f, --file            path to configuration file
+  -h, --help            display help message and exit
+  -n, --no-fork         do not fork, run in the foreground
+  -R, --random-drop     percent chance connections will drop
+  -V, --version         display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=sudo_sendlog>sudo_sendlog</h5>
+<p>Send sudo I/O log to log server</p>
+<pre><code>root@kali:~# sudo_sendlog --help
+sudo_sendlog - send sudo I/O log to remote server
+
+
+Options:
+      --help            display help message and exit
+  -A, --accept          only send an accept event (no I/O)
+  -h, --host            host to send logs to
+  -i, --iolog_id        remote ID of I/O log to be resumed
+  -p, --port            port to use when connecting to host
+  -r, --restart         restart previous I/O log transfer
+  -R, --reject          reject the command with the given reason
+  -s, --stop-after        stop transfer after reaching this time
+  -t, --test            test audit server by sending selected I/O log n times in parallel
+  -V, --version         display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=sudo_sendlog-1>sudo_sendlog</h5>
+<p>Send sudo I/O log to log server</p>
+<pre><code>root@kali:~# sudo_sendlog --help
+sudo_sendlog - send sudo I/O log to remote server
+
+
+Options:
+      --help            display help message and exit
+  -A, --accept          only send an accept event (no I/O)
+  -h, --host            host to send logs to
+  -i, --iolog_id        remote ID of I/O log to be resumed
+  -p, --port            port to use when connecting to host
+  -r, --restart         restart previous I/O log transfer
+  -R, --reject          reject the command with the given reason
+  -s, --stop-after        stop transfer after reaching this time
+  -t, --test            test audit server by sending selected I/O log n times in parallel
+  -V, --version         display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=sudoedit>sudoedit</h5>
+<p>Execute a command as another user</p>
+<pre><code>root@kali:~# man sudoedit
+SUDO(8)                   BSD System Manager's Manual                  SUDO(8)
+
+NAME
+     sudo, sudoedit -- execute a command as another user
+
+SYNOPSIS
+     sudo -h | -K | -k | -V
+     sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+     sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+          [command]
+     sudo [-ABbEHnPS] [-C num] [-D directory] [-g group] [-h host] [-p prompt]
+          [-R directory] [-r role] [-t type] [-T timeout] [-u user]
+          [VAR=value] [-i | -s] [command]
+     sudoedit [-ABknS] [-C num] [-D directory] [-g group] [-h host]
+          [-p prompt] [-R directory] [-r role] [-t type] [-T timeout]
+          [-u user] file ...
+
+DESCRIPTION
+     sudo allows a permitted user to execute a command as the superuser or an-
+     other user, as specified by the security policy.  The invoking user's
+     real (not effective) user-ID is used to determine the user name with
+     which to query the security policy.
+
+     sudo supports a plugin architecture for security policies, auditing, and
+     input/output logging.  Third parties can develop and distribute their own
+     plugins to work seamlessly with the sudo front-end.  The default security
+     policy is sudoers, which is configured via the file /etc/sudoers, or via
+     LDAP.  See the Plugins section for more information.
+
+     The security policy determines what privileges, if any, a user has to run
+     sudo.  The policy may require that users authenticate themselves with a
+     password or another authentication mechanism.  If authentication is re-
+     quired, sudo will exit if the user's password is not entered within a
+     configurable time limit.  This limit is policy-specific; the default
+     password prompt timeout for the sudoers security policy is 0 minutes.
+
+     Security policies may support credential caching to allow the user to run
+     sudo again for a period of time without requiring authentication.  By de-
+     fault, the sudoers policy caches credentials on a per-terminal basis for
+     15 minutes.  See the timestamp_type and timestamp_timeout options in
+     sudoers(5) for more information.  By running sudo with the -v option, a
+     user can update the cached credentials without running a command.
+
+     On systems where sudo is the primary method of gaining superuser privi-
+     leges, it is imperative to avoid syntax errors in the security policy
+     configuration files.  For the default security policy, sudoers(5),
+     changes to the configuration files should be made using the visudo(8)
+     utility which will ensure that no syntax errors are introduced.
+
+     When invoked as sudoedit, the -e option (described below), is implied.
+
+     Security policies and audit plugins may log successful and failed at-
+     tempts to run sudo.  If an I/O plugin is configured, the running com-
+     mand's input and output may be logged as well.
+
+     The options are as follows:
+
+     -A, --askpass
+                 Normally, if sudo requires a password, it will read it from
+                 the user's terminal.  If the -A (askpass) option is speci-
+                 fied, a (possibly graphical) helper program is executed to
+                 read the user's password and output the password to the stan-
+                 dard output.  If the SUDO_ASKPASS environment variable is
+                 set, it specifies the path to the helper program.  Otherwise,
+                 if sudo.conf(5) contains a line specifying the askpass pro-
+                 gram, that value will be used.  For example:
+
+                     # Path to askpass helper program
+                     Path askpass /usr/X11R6/bin/ssh-askpass
+
+                 If no askpass program is available, sudo will exit with an
+                 error.
+
+     -B, --bell  Ring the bell as part of the password prompt when a terminal
+                 is present.  This option has no effect if an askpass program
+                 is used.
+
+     -b, --background
+                 Run the given command in the background.  Note that it is not
+                 possible to use shell job control to manipulate background
+                 processes started by sudo.  Most interactive commands will
+                 fail to work properly in background mode.
+
+     -C num, --close-from=num
+                 Close all file descriptors greater than or equal to num be-
+                 fore executing a command.  Values less than three are not
+                 permitted.  By default, sudo will close all open file de-
+                 scriptors other than standard input, standard output, and
+                 standard error when executing a command.  The security policy
+                 may restrict the user's ability to use this option.  The
+                 sudoers policy only permits use of the -C option when the ad-
+                 ministrator has enabled the closefrom_override option.
+
+     -D directory, --chdir=directory
+                 Run the command in the specified directory instead of the
+                 current working directory.  The security policy may return an
+                 error if the user does not have permission to specify the
+                 working directory.
+
+     -E, --preserve-env
+                 Indicates to the security policy that the user wishes to pre-
+                 serve their existing environment variables.  The security
+                 policy may return an error if the user does not have permis-
+                 sion to preserve the environment.
+
+     --preserve-env=list
+                 Indicates to the security policy that the user wishes to add
+                 the comma-separated list of environment variables to those
+                 preserved from the user's environment.  The security policy
+                 may return an error if the user does not have permission to
+                 preserve the environment.  This option may be specified mul-
+                 tiple times.
+
+     -e, --edit  Edit one or more files instead of running a command.  In lieu
+                 of a path name, the string &quot;sudoedit&quot; is used when consulting
+                 the security policy.  If the user is authorized by the pol-
+                 icy, the following steps are taken:
+
+                 1.   Temporary copies are made of the files to be edited with
+                      the owner set to the invoking user.
+
+                 2.   The editor specified by the policy is run to edit the
+                      temporary files.  The sudoers policy uses the
+                      SUDO_EDITOR, VISUAL and EDITOR environment variables (in
+                      that order).  If none of SUDO_EDITOR, VISUAL or EDITOR
+                      are set, the first program listed in the editor
+                      sudoers(5) option is used.
+
+                 3.   If they have been modified, the temporary files are
+                      copied back to their original location and the temporary
+                      versions are removed.
+
+                 To help prevent the editing of unauthorized files, the fol-
+                 lowing restrictions are enforced unless explicitly allowed by
+                 the security policy:
+
+                 o  Symbolic links may not be edited (version 1.8.15 and
+                    higher).
+
+                 o  Symbolic links along the path to be edited are not fol-
+                    lowed when the parent directory is writable by the invok-
+                    ing user unless that user is root (version 1.8.16 and
+                    higher).
+
+                 o  Files located in a directory that is writable by the in-
+                    voking user may not be edited unless that user is root
+                    (version 1.8.16 and higher).
+
+                 Users are never allowed to edit device special files.
+
+                 If the specified file does not exist, it will be created.
+                 Note that unlike most commands run by sudo, the editor is run
+                 with the invoking user's environment unmodified.  If the tem-
+                 porary file becomes empty after editing, the user will be
+                 prompted before it is installed.  If, for some reason, sudo
+                 is unable to update a file with its edited version, the user
+                 will receive a warning and the edited copy will remain in a
+                 temporary file.
+
+     -g group, --group=group
+                 Run the command with the primary group set to group instead
+                 of the primary group specified by the target user's password
+                 database entry.  The group may be either a group name or a
+                 numeric group-ID (GID) prefixed with the '#' character (e.g.,
+                 #0 for GID 0).  When running a command as a GID, many shells
+                 require that the '#' be escaped with a backslash ('\').  If
+                 no -u option is specified, the command will be run as the in-
+                 voking user.  In either case, the primary group will be set
+                 to group.  The sudoers policy permits any of the target
+                 user's groups to be specified via the -g option as long as
+                 the -P option is not in use.
+
+     -H, --set-home
+                 Request that the security policy set the HOME environment
+                 variable to the home directory specified by the target user's
+                 password database entry.  Depending on the policy, this may
+                 be the default behavior.
+
+     -h, --help  Display a short help message to the standard output and exit.
+
+     -h host, --host=host
+                 Run the command on the specified host if the security policy
+                 plugin supports remote commands.  Note that the sudoers
+                 plugin does not currently support running remote commands.
+                 This may also be used in conjunction with the -l option to
+                 list a user's privileges for the remote host.
+
+     -i, --login
+                 Run the shell specified by the target user's password data-
+                 base entry as a login shell.  This means that login-specific
+                 resource files such as .profile, .bash_profile, or .login
+                 will be read by the shell.  If a command is specified, it is
+                 passed to the shell as a simple command using the -c option.
+                 The command and any arguments are concatenated, separated by
+                 spaces, after escaping each character (including white space)
+                 with a backslash ('\') except for alphanumerics, underscores,
+                 hyphens, and dollar signs.  If no command is specified, an
+                 interactive shell is executed.  sudo attempts to change to
+                 that user's home directory before running the shell.  The
+                 command is run with an environment similar to the one a user
+                 would receive at log in.  Note that most shells behave dif-
+                 ferently when a command is specified as compared to an inter-
+                 active session; consult the shell's manual for details.  The
+                 Command environment section in the sudoers(5) manual docu-
+                 ments how the -i option affects the environment in which a
+                 command is run when the sudoers policy is in use.
+
+     -K, --remove-timestamp
+                 Similar to the -k option, except that it removes the user's
+                 cached credentials entirely and may not be used in conjunc-
+                 tion with a command or other option.  This option does not
+                 require a password.  Not all security policies support cre-
+                 dential caching.
+
+     -k, --reset-timestamp
+                 When used without a command, invalidates the user's cached
+                 credentials.  In other words, the next time sudo is run a
+                 password will be required.  This option does not require a
+                 password, and was added to allow a user to revoke sudo per-
+                 missions from a .logout file.
+
+                 When used in conjunction with a command or an option that may
+                 require a password, this option will cause sudo to ignore the
+                 user's cached credentials.  As a result, sudo will prompt for
+                 a password (if one is required by the security policy) and
+                 will not update the user's cached credentials.
+
+                 Not all security policies support credential caching.
+
+     -l, --list  If no command is specified, list the allowed (and forbidden)
+                 commands for the invoking user (or the user specified by the
+                 -U option) on the current host.  A longer list format is used
+                 if this option is specified multiple times and the security
+                 policy supports a verbose output format.
+
+                 If a command is specified and is permitted by the security
+                 policy, the fully-qualified path to the command is displayed
+                 along with any command line arguments.  If a command is spec-
+                 ified but not allowed by the policy, sudo will exit with a
+                 status value of 1.
+
+     -n, --non-interactive
+                 Avoid prompting the user for input of any kind.  If a pass-
+                 word is required for the command to run, sudo will display an
+                 error message and exit.
+
+     -P, --preserve-groups
+                 Preserve the invoking user's group vector unaltered.  By de-
+                 fault, the sudoers policy will initialize the group vector to
+                 the list of groups the target user is a member of.  The real
+                 and effective group-IDs, however, are still set to match the
+                 target user.
+
+     -p prompt, --prompt=prompt
+                 Use a custom password prompt with optional escape sequences.
+                 The following percent ('%') escape sequences are supported by
+                 the sudoers policy:
+
+                 %H  expanded to the host name including the domain name (only
+                     if the machine's host name is fully qualified or the fqdn
+                     option is set in sudoers(5))
+
+                 %h  expanded to the local host name without the domain name
+
+                 %p  expanded to the name of the user whose password is being
+                     requested (respects the rootpw, targetpw, and runaspw
+                     flags in sudoers(5))
+
+                 %U  expanded to the login name of the user the command will
+                     be run as (defaults to root unless the -u option is also
+                     specified)
+
+                 %u  expanded to the invoking user's login name
+
+                 %%  two consecutive '%' characters are collapsed into a sin-
+                     gle '%' character
+
+                 The custom prompt will override the default prompt specified
+                 by either the security policy or the SUDO_PROMPT environment
+                 variable.  On systems that use PAM, the custom prompt will
+                 also override the prompt specified by a PAM module unless the
+                 passprompt_override flag is disabled in sudoers.
+
+     -R directory, --chroot=directory
+                 Change to the specified root directory (see chroot(8)) before
+                 running the command.  The security policy may return an error
+                 if the user does not have permission to specify the root di-
+                 rectory.
+
+     -r role, --role=role
+                 Run the command with an SELinux security context that in-
+                 cludes the specified role.
+
+     -S, --stdin
+                 Write the prompt to the standard error and read the password
+                 from the standard input instead of using the terminal device.
+
+     -s, --shell
+                 Run the shell specified by the SHELL environment variable if
+                 it is set or the shell specified by the invoking user's pass-
+                 word database entry.  If a command is specified, it is passed
+                 to the shell as a simple command using the -c option.  The
+                 command and any arguments are concatenated, separated by spa-
+                 ces, after escaping each character (including white space)
+                 with a backslash ('\') except for alphanumerics, underscores,
+                 hyphens, and dollar signs.  If no command is specified, an
+                 interactive shell is executed.  Note that most shells behave
+                 differently when a command is specified as compared to an in-
+                 teractive session; consult the shell's manual for details.
+
+     -t type, --type=type
+                 Run the command with an SELinux security context that in-
+                 cludes the specified type.  If no type is specified, the de-
+                 fault type is derived from the role.
+
+     -U user, --other-user=user
+                 Used in conjunction with the -l option to list the privileges
+                 for user instead of for the invoking user.  The security pol-
+                 icy may restrict listing other users' privileges.  The
+                 sudoers policy only allows root or a user with the ALL privi-
+                 lege on the current host to use this option.
+
+     -T timeout, --command-timeout=timeout
+                 Used to set a timeout for the command.  If the timeout ex-
+                 pires before the command has exited, the command will be ter-
+                 minated.  The security policy may restrict the ability to set
+                 command timeouts.  The sudoers policy requires that user-
+                 specified timeouts be explicitly enabled.
+
+     -u user, --user=user
+                 Run the command as a user other than the default target user
+                 (usually root).  The user may be either a user name or a nu-
+                 meric user-ID (UID) prefixed with the '#' character (e.g., #0
+                 for UID 0).  When running commands as a UID, many shells re-
+                 quire that the '#' be escaped with a backslash ('\').  Some
+                 security policies may restrict UIDs to those listed in the
+                 password database.  The sudoers policy allows UIDs that are
+                 not in the password database as long as the targetpw option
+                 is not set.  Other security policies may not support this.
+
+     -V, --version
+                 Print the sudo version string as well as the version string
+                 of any configured plugins.  If the invoking user is already
+                 root, the -V option will display the arguments passed to con-
+                 figure when sudo was built; plugins may display additional
+                 information such as default options.
+
+     -v, --validate
+                 Update the user's cached credentials, authenticating the user
+                 if necessary.  For the sudoers plugin, this extends the sudo
+                 timeout for another 15 minutes by default, but does not run a
+                 command.  Not all security policies support cached creden-
+                 tials.
+
+     --          The -- option indicates that sudo should stop processing com-
+                 mand line arguments.
+
+     Options that take a value may only be specified once unless otherwise in-
+     dicated in the description.  This is to help guard against problems
+     caused by poorly written scripts that invoke sudo with user-controlled
+     input.
+
+     Environment variables to be set for the command may also be passed on the
+     command line in the form of VAR=value, e.g.,
+     LD_LIBRARY_PATH=/usr/local/pkg/lib.  Variables passed on the command line
+     are subject to restrictions imposed by the security policy plugin.  The
+     sudoers policy subjects variables passed on the command line to the same
+     restrictions as normal environment variables with one important excep-
+     tion.  If the setenv option is set in sudoers, the command to be run has
+     the SETENV tag set or the command matched is ALL, the user may set vari-
+     ables that would otherwise be forbidden.  See sudoers(5) for more infor-
+     mation.
+
+COMMAND EXECUTION
+     When sudo executes a command, the security policy specifies the execution
+     environment for the command.  Typically, the real and effective user and
+     group and IDs are set to match those of the target user, as specified in
+     the password database, and the group vector is initialized based on the
+     group database (unless the -P option was specified).
+
+     The following parameters may be specified by security policy:
+
+     o  real and effective user-ID
+
+     o  real and effective group-ID
+
+     o  supplementary group-IDs
+
+     o  the environment list
+
+     o  current working directory
+
+     o  file creation mode mask (umask)
+
+     o  SELinux role and type
+
+     o  scheduling priority (aka nice value)
+
+   Process model
+     There are two distinct ways sudo can run a command.
+
+     If an I/O logging plugin is configured or if the security policy explic-
+     itly requests it, a new pseudo-terminal (&quot;pty&quot;) is allocated and fork(2)
+     is used to create a second sudo process, referred to as the monitor.  The
+     monitor creates a new terminal session with itself as the leader and the
+     pty as its controlling terminal, calls fork(2), sets up the execution en-
+     vironment as described above, and then uses the execve(2) system call to
+     run the command in the child process.  The monitor exists to relay job
+     control signals between the user's existing terminal and the pty the com-
+     mand is being run in.  This makes it possible to suspend and resume the
+     command.  Without the monitor, the command would be in what POSIX terms
+     an &quot;orphaned process group&quot; and it would not receive any job control sig-
+     nals from the kernel.  When the command exits or is terminated by a sig-
+     nal, the monitor passes the command's exit status to the main sudo
+     process and exits.  After receiving the command's exit status, the main
+     sudo passes the command's exit status to the security policy's close
+     function and exits.
+
+     If no pty is used, sudo calls fork(2), sets up the execution environment
+     as described above, and uses the execve(2) system call to run the command
+     in the child process.  The main sudo process waits until the command has
+     completed, then passes the command's exit status to the security policy's
+     close function and exits.  As a special case, if the policy plugin does
+     not define a close function, sudo will execute the command directly in-
+     stead of calling fork(2) first.  The sudoers policy plugin will only de-
+     fine a close function when I/O logging is enabled, a pty is required, an
+     SELinux role is specified, the command has an associated timeout, or the
+     pam_session or pam_setcred options are enabled.  Note that pam_session
+     and pam_setcred are enabled by default on systems using PAM.
+
+     On systems that use PAM, the security policy's close function is respon-
+     sible for closing the PAM session.  It may also log the command's exit
+     status.
+
+   Signal handling
+     When the command is run as a child of the sudo process, sudo will relay
+     signals it receives to the command.  The SIGINT and SIGQUIT signals are
+     only relayed when the command is being run in a new pty or when the sig-
+     nal was sent by a user process, not the kernel.  This prevents the com-
+     mand from receiving SIGINT twice each time the user enters control-C.
+     Some signals, such as SIGSTOP and SIGKILL, cannot be caught and thus will
+     not be relayed to the command.  As a general rule, SIGTSTP should be used
+     instead of SIGSTOP when you wish to suspend a command being run by sudo.
+
+     As a special case, sudo will not relay signals that were sent by the com-
+     mand it is running.  This prevents the command from accidentally killing
+     itself.  On some systems, the reboot(8) command sends SIGTERM to all non-
+     system processes other than itself before rebooting the system.  This
+     prevents sudo from relaying the SIGTERM signal it received back to
+     reboot(8), which might then exit before the system was actually rebooted,
+     leaving it in a half-dead state similar to single user mode.  Note, how-
+     ever, that this check only applies to the command run by sudo and not any
+     other processes that the command may create.  As a result, running a
+     script that calls reboot(8) or shutdown(8) via sudo may cause the system
+     to end up in this undefined state unless the reboot(8) or shutdown(8) are
+     run using the exec() family of functions instead of system() (which in-
+     terposes a shell between the command and the calling process).
+
+     If no I/O logging plugins are loaded and the policy plugin has not de-
+     fined a close() function, set a command timeout, or required that the
+     command be run in a new pty, sudo may execute the command directly in-
+     stead of running it as a child process.
+
+   Plugins
+     Plugins may be specified via Plugin directives in the sudo.conf(5) file.
+     They may be loaded as dynamic shared objects (on systems that support
+     them), or compiled directly into the sudo binary.  If no sudo.conf(5)
+     file is present, or if it doesn't contain any Plugin lines, sudo will use
+     sudoers(5) for the policy, auditing, and I/O logging plugins.  See the
+     sudo.conf(5) manual for details of the /etc/sudo.conf file and the
+     sudo_plugin(5) manual for more information about the sudo plugin archi-
+     tecture.
+
+EXIT VALUE
+     Upon successful execution of a command, the exit status from sudo will be
+     the exit status of the program that was executed.  If the command termi-
+     nated due to receipt of a signal, sudo will send itself the same signal
+     that terminated the command.
+
+     If the -l option was specified without a command, sudo will exit with a
+     value of 0 if the user is allowed to run sudo and they authenticated suc-
+     cessfully (as required by the security policy).  If a command is speci-
+     fied with the -l option, the exit value will only be 0 if the command is
+     permitted by the security policy, otherwise it will be 1.
+
+     If there is an authentication failure, a configuration/permission prob-
+     lem, or if the given command cannot be executed, sudo exits with a value
+     of 1.  In the latter case, the error string is printed to the standard
+     error.  If sudo cannot stat(2) one or more entries in the user's PATH, an
+     error is printed to the standard error.  (If the directory does not exist
+     or if it is not really a directory, the entry is ignored and no error is
+     printed.)  This should not happen under normal circumstances.  The most
+     common reason for stat(2) to return &quot;permission denied&quot; is if you are
+     running an automounter and one of the directories in your PATH is on a
+     machine that is currently unreachable.
+
+SECURITY NOTES
+     sudo tries to be safe when executing external commands.
+
+     To prevent command spoofing, sudo checks &quot;.&quot; and &quot;&quot; (both denoting cur-
+     rent directory) last when searching for a command in the user's PATH (if
+     one or both are in the PATH).  Depending on the security policy, the
+     user's PATH environment variable may be modified, replaced, or passed un-
+     changed to the program that sudo executes.
+
+     Users should never be granted sudo privileges to execute files that are
+     writable by the user or that reside in a directory that is writable by
+     the user.  If the user can modify or replace the command there is no way
+     to limit what additional commands they can run.
+
+     Please note that sudo will normally only log the command it explicitly
+     runs.  If a user runs a command such as sudo su or sudo sh, subsequent
+     commands run from that shell are not subject to sudo's security policy.
+     The same is true for commands that offer shell escapes (including most
+     editors).  If I/O logging is enabled, subsequent commands will have their
+     input and/or output logged, but there will not be traditional logs for
+     those commands.  Because of this, care must be taken when giving users
+     access to commands via sudo to verify that the command does not inadver-
+     tently give the user an effective root shell.  For information on ways to
+     address this, please see the Preventing shell escapes section in
+     sudoers(5).
+
+     To prevent the disclosure of potentially sensitive information, sudo dis-
+     ables core dumps by default while it is executing (they are re-enabled
+     for the command that is run).  This historical practice dates from a time
+     when most operating systems allowed set-user-ID processes to dump core by
+     default.  To aid in debugging sudo crashes, you may wish to re-enable
+     core dumps by setting &quot;disable_coredump&quot; to false in the sudo.conf(5)
+     file as follows:
+
+           Set disable_coredump false
+
+     See the sudo.conf(5) manual for more information.
+
+ENVIRONMENT
+     sudo utilizes the following environment variables.  The security policy
+     has control over the actual content of the command's environment.
+
+     EDITOR           Default editor to use in -e (sudoedit) mode if neither
+                      SUDO_EDITOR nor VISUAL is set.
+
+     MAIL             Set to the mail spool of the target user when the -i op-
+                      tion is specified, or when env_reset is enabled in
+                      sudoers (unless MAIL is present in the env_keep list).
+
+     HOME             Set to the home directory of the target user when the -i
+                      or -H options are specified, when the -s option is spec-
+                      ified and set_home is set in sudoers, when
+                      always_set_home is enabled in sudoers, or when env_reset
+                      is enabled in sudoers and HOME is not present in the
+                      env_keep list.
+
+     LOGNAME          Set to the login name of the target user when the -i op-
+                      tion is specified, when the set_logname option is en-
+                      abled in sudoers, or when the env_reset option is en-
+                      abled in sudoers (unless LOGNAME is present in the
+                      env_keep list).
+
+     PATH             May be overridden by the security policy.
+
+     SHELL            Used to determine shell to run with -s option.
+
+     SUDO_ASKPASS     Specifies the path to a helper program used to read the
+                      password if no terminal is available or if the -A option
+                      is specified.
+
+     SUDO_COMMAND     Set to the command run by sudo, including command line
+                      arguments.  The command line arguments are truncated at
+                      4096 characters to prevent a potential execution error.
+
+     SUDO_EDITOR      Default editor to use in -e (sudoedit) mode.
+
+     SUDO_GID         Set to the group-ID of the user who invoked sudo.
+
+     SUDO_PROMPT      Used as the default password prompt unless the -p option
+                      was specified.
+
+     SUDO_PS1         If set, PS1 will be set to its value for the program be-
+                      ing run.
+
+     SUDO_UID         Set to the user-ID of the user who invoked sudo.
+
+     SUDO_USER        Set to the login name of the user who invoked sudo.
+
+     USER             Set to the same value as LOGNAME, described above.
+
+     VISUAL           Default editor to use in -e (sudoedit) mode if
+                      SUDO_EDITOR is not set.
+
+FILES
+     /etc/sudo.conf            sudo front-end configuration
+
+EXAMPLES
+     Note: the following examples assume a properly configured security pol-
+     icy.
+
+     To get a file listing of an unreadable directory:
+
+           $ sudo ls /usr/local/protected
+
+     To list the home directory of user yaz on a machine where the file system
+     holding ~yaz is not exported as root:
+
+           $ sudo -u yaz ls ~yaz
+
+     To edit the index.html file as user www:
+
+           $ sudoedit -u www ~www/htdocs/index.html
+
+     To view system logs only accessible to root and users in the adm group:
+
+           $ sudo -g adm more /var/log/syslog
+
+     To run an editor as jim with a different primary group:
+
+           $ sudoedit -u jim -g audio ~jim/sound.txt
+
+     To shut down a machine:
+
+           $ sudo shutdown -r +15 &quot;quick reboot&quot;
+
+     To make a usage listing of the directories in the /home partition.  Note
+     that this runs the commands in a sub-shell to make the cd and file redi-
+     rection work.
+
+           $ sudo sh -c &quot;cd /home ; du -s * | sort -rn &gt; USAGE&quot;
+
+DIAGNOSTICS
+     Error messages produced by sudo include:
+
+     editing files in a writable directory is not permitted
+           By default, sudoedit does not permit editing a file when any of the
+           parent directories are writable by the invoking user.  This avoids
+           a race condition that could allow the user to overwrite an arbi-
+           trary file.  See the sudoedit_checkdir option in sudoers(5) for
+           more information.
+
+     editing symbolic links is not permitted
+           By default, sudoedit does not follow symbolic links when opening
+           files.  See the sudoedit_follow option in sudoers(5) for more in-
+           formation.
+
+     effective uid is not 0, is sudo installed setuid root?
+           sudo was not run with root privileges.  The sudo binary must be
+           owned by the root user and have the set-user-ID bit set.  Also, it
+           must not be located on a file system mounted with the 'nosuid' op-
+           tion or on an NFS file system that maps uid 0 to an unprivileged
+           uid.
+
+     effective uid is not 0, is sudo on a file system with the 'nosuid' option
+           set or an NFS file system without root privileges?
+           sudo was not run with root privileges.  The sudo binary has the
+           proper owner and permissions but it still did not run with root
+           privileges.  The most common reason for this is that the file sys-
+           tem the sudo binary is located on is mounted with the 'nosuid' op-
+           tion or it is an NFS file system that maps uid 0 to an unprivileged
+           uid.
+
+     fatal error, unable to load plugins
+           An error occurred while loading or initializing the plugins speci-
+           fied in sudo.conf(5).
+
+     invalid environment variable name
+           One or more environment variable names specified via the -E option
+           contained an equal sign ('=').  The arguments to the -E option
+           should be environment variable names without an associated value.
+
+     no password was provided
+           When sudo tried to read the password, it did not receive any char-
+           acters.  This may happen if no terminal is available (or the -S op-
+           tion is specified) and the standard input has been redirected from
+           /dev/null.
+
+     a terminal is required to read the password
+           sudo needs to read the password but there is no mechanism available
+           for it to do so.  A terminal is not present to read the password
+           from, sudo has not been configured to read from the standard input,
+           the -S option was not used, and no askpass helper has been speci-
+           fied either via the sudo.conf(5) file or the SUDO_ASKPASS environ-
+           ment variable.
+
+     no writable temporary directory found
+           sudoedit was unable to find a usable temporary directory in which
+           to store its intermediate files.
+
+     The &quot;no new privileges&quot; flag is set, which prevents sudo from running as
+           root.
+           sudo was run by a process that has the Linux &quot;no new privileges&quot;
+           flag is set.  This causes the set-user-ID bit to be ignored when
+           running an executable, which will prevent sudo from functioning.
+           The most likely cause for this is running sudo within a container
+           that sets this flag.  Check the documentation to see if it is pos-
+           sible to configure the container such that the flag is not set.
+
+     sudo must be owned by uid 0 and have the setuid bit set
+           sudo was not run with root privileges.  The sudo binary does not
+           have the correct owner or permissions.  It must be owned by the
+           root user and have the set-user-ID bit set.
+
+     sudoedit is not supported on this platform
+           It is only possible to run sudoedit on systems that support setting
+           the effective user-ID.
+
+     timed out reading password
+           The user did not enter a password before the password timeout (5
+           minutes by default) expired.
+
+     you do not exist in the passwd database
+           Your user-ID does not appear in the system passwd database.
+
+     you may not specify environment variables in edit mode
+           It is only possible to specify environment variables when running a
+           command.  When editing a file, the editor is run with the user's
+           environment unmodified.
+
+SEE ALSO
+     su(1), stat(2), login_cap(3), passwd(5), sudo.conf(5), sudo_plugin(5),
+     sudoers(5), sudoers_timestamp(5), sudoreplay(8), visudo(8)
+
+HISTORY
+     See the HISTORY file in the sudo distribution (https://www.sudo.ws/his-
+     tory.html) for a brief history of sudo.
+
+AUTHORS
+     Many people have worked on sudo over the years; this version consists of
+     code written primarily by:
+
+           Todd C. Miller
+
+     See the CONTRIBUTORS file in the sudo distribution
+     (https://www.sudo.ws/contributors.html) for an exhaustive list of people
+     who have contributed to sudo.
+
+CAVEATS
+     There is no easy way to prevent a user from gaining a root shell if that
+     user is allowed to run arbitrary commands via sudo.  Also, many programs
+     (such as editors) allow the user to run commands via shell escapes, thus
+     avoiding sudo's checks.  However, on most systems it is possible to pre-
+     vent shell escapes with the sudoers(5) plugin's noexec functionality.
+
+     It is not meaningful to run the cd command directly via sudo, e.g.,
+
+           $ sudo cd /usr/local/protected
+
+     since when the command exits the parent process (your shell) will still
+     be the same.  Please see the EXAMPLES section for more information.
+
+     Running shell scripts via sudo can expose the same kernel bugs that make
+     set-user-ID shell scripts unsafe on some operating systems (if your OS
+     has a /dev/fd/ directory, set-user-ID shell scripts are generally safe).
+
+BUGS
+     If you feel you have found a bug in sudo, please submit a bug report at
+     https://bugzilla.sudo.ws/
+
+SUPPORT
+     Limited free support is available via the sudo-users mailing list, see
+     https://www.sudo.ws/mailman/listinfo/sudo-users to subscribe or search
+     the archives.
+
+DISCLAIMER
+     sudo is provided &quot;AS IS&quot; and any express or implied warranties, includ-
+     ing, but not limited to, the implied warranties of merchantability and
+     fitness for a particular purpose are disclaimed.  See the LICENSE file
+     distributed with sudo or https://www.sudo.ws/license.html for complete
+     details.
+
+Sudo 1.9.9                     January 19, 2022                     Sudo 1.9.9
+</code></pre>
+<hr>
+<h5 id=sudoedit-1>sudoedit</h5>
+<p>Execute a command as another user</p>
+<pre><code>root@kali:~# man sudoedit
+SUDO(8)                   BSD System Manager's Manual                  SUDO(8)
+
+NAME
+     sudo, sudoedit -- execute a command as another user
+
+SYNOPSIS
+     sudo -h | -K | -k | -V
+     sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+     sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+          [command]
+     sudo [-ABbEHnPS] [-C num] [-D directory] [-g group] [-h host] [-p prompt]
+          [-R directory] [-r role] [-t type] [-T timeout] [-u user]
+          [VAR=value] [-i | -s] [command]
+     sudoedit [-ABknS] [-C num] [-D directory] [-g group] [-h host]
+          [-p prompt] [-R directory] [-r role] [-t type] [-T timeout]
+          [-u user] file ...
+
+DESCRIPTION
+     sudo allows a permitted user to execute a command as the superuser or an-
+     other user, as specified by the security policy.  The invoking user's
+     real (not effective) user-ID is used to determine the user name with
+     which to query the security policy.
+
+     sudo supports a plugin architecture for security policies, auditing, and
+     input/output logging.  Third parties can develop and distribute their own
+     plugins to work seamlessly with the sudo front-end.  The default security
+     policy is sudoers, which is configured via the file /etc/sudoers, or via
+     LDAP.  See the Plugins section for more information.
+
+     The security policy determines what privileges, if any, a user has to run
+     sudo.  The policy may require that users authenticate themselves with a
+     password or another authentication mechanism.  If authentication is re-
+     quired, sudo will exit if the user's password is not entered within a
+     configurable time limit.  This limit is policy-specific; the default
+     password prompt timeout for the sudoers security policy is 0 minutes.
+
+     Security policies may support credential caching to allow the user to run
+     sudo again for a period of time without requiring authentication.  By de-
+     fault, the sudoers policy caches credentials on a per-terminal basis for
+     15 minutes.  See the timestamp_type and timestamp_timeout options in
+     sudoers(5) for more information.  By running sudo with the -v option, a
+     user can update the cached credentials without running a command.
+
+     On systems where sudo is the primary method of gaining superuser privi-
+     leges, it is imperative to avoid syntax errors in the security policy
+     configuration files.  For the default security policy, sudoers(5),
+     changes to the configuration files should be made using the visudo(8)
+     utility which will ensure that no syntax errors are introduced.
+
+     When invoked as sudoedit, the -e option (described below), is implied.
+
+     Security policies and audit plugins may log successful and failed at-
+     tempts to run sudo.  If an I/O plugin is configured, the running com-
+     mand's input and output may be logged as well.
+
+     The options are as follows:
+
+     -A, --askpass
+                 Normally, if sudo requires a password, it will read it from
+                 the user's terminal.  If the -A (askpass) option is speci-
+                 fied, a (possibly graphical) helper program is executed to
+                 read the user's password and output the password to the stan-
+                 dard output.  If the SUDO_ASKPASS environment variable is
+                 set, it specifies the path to the helper program.  Otherwise,
+                 if sudo.conf(5) contains a line specifying the askpass pro-
+                 gram, that value will be used.  For example:
+
+                     # Path to askpass helper program
+                     Path askpass /usr/X11R6/bin/ssh-askpass
+
+                 If no askpass program is available, sudo will exit with an
+                 error.
+
+     -B, --bell  Ring the bell as part of the password prompt when a terminal
+                 is present.  This option has no effect if an askpass program
+                 is used.
+
+     -b, --background
+                 Run the given command in the background.  Note that it is not
+                 possible to use shell job control to manipulate background
+                 processes started by sudo.  Most interactive commands will
+                 fail to work properly in background mode.
+
+     -C num, --close-from=num
+                 Close all file descriptors greater than or equal to num be-
+                 fore executing a command.  Values less than three are not
+                 permitted.  By default, sudo will close all open file de-
+                 scriptors other than standard input, standard output, and
+                 standard error when executing a command.  The security policy
+                 may restrict the user's ability to use this option.  The
+                 sudoers policy only permits use of the -C option when the ad-
+                 ministrator has enabled the closefrom_override option.
+
+     -D directory, --chdir=directory
+                 Run the command in the specified directory instead of the
+                 current working directory.  The security policy may return an
+                 error if the user does not have permission to specify the
+                 working directory.
+
+     -E, --preserve-env
+                 Indicates to the security policy that the user wishes to pre-
+                 serve their existing environment variables.  The security
+                 policy may return an error if the user does not have permis-
+                 sion to preserve the environment.
+
+     --preserve-env=list
+                 Indicates to the security policy that the user wishes to add
+                 the comma-separated list of environment variables to those
+                 preserved from the user's environment.  The security policy
+                 may return an error if the user does not have permission to
+                 preserve the environment.  This option may be specified mul-
+                 tiple times.
+
+     -e, --edit  Edit one or more files instead of running a command.  In lieu
+                 of a path name, the string &quot;sudoedit&quot; is used when consulting
+                 the security policy.  If the user is authorized by the pol-
+                 icy, the following steps are taken:
+
+                 1.   Temporary copies are made of the files to be edited with
+                      the owner set to the invoking user.
+
+                 2.   The editor specified by the policy is run to edit the
+                      temporary files.  The sudoers policy uses the
+                      SUDO_EDITOR, VISUAL and EDITOR environment variables (in
+                      that order).  If none of SUDO_EDITOR, VISUAL or EDITOR
+                      are set, the first program listed in the editor
+                      sudoers(5) option is used.
+
+                 3.   If they have been modified, the temporary files are
+                      copied back to their original location and the temporary
+                      versions are removed.
+
+                 To help prevent the editing of unauthorized files, the fol-
+                 lowing restrictions are enforced unless explicitly allowed by
+                 the security policy:
+
+                 o  Symbolic links may not be edited (version 1.8.15 and
+                    higher).
+
+                 o  Symbolic links along the path to be edited are not fol-
+                    lowed when the parent directory is writable by the invok-
+                    ing user unless that user is root (version 1.8.16 and
+                    higher).
+
+                 o  Files located in a directory that is writable by the in-
+                    voking user may not be edited unless that user is root
+                    (version 1.8.16 and higher).
+
+                 Users are never allowed to edit device special files.
+
+                 If the specified file does not exist, it will be created.
+                 Note that unlike most commands run by sudo, the editor is run
+                 with the invoking user's environment unmodified.  If the tem-
+                 porary file becomes empty after editing, the user will be
+                 prompted before it is installed.  If, for some reason, sudo
+                 is unable to update a file with its edited version, the user
+                 will receive a warning and the edited copy will remain in a
+                 temporary file.
+
+     -g group, --group=group
+                 Run the command with the primary group set to group instead
+                 of the primary group specified by the target user's password
+                 database entry.  The group may be either a group name or a
+                 numeric group-ID (GID) prefixed with the '#' character (e.g.,
+                 #0 for GID 0).  When running a command as a GID, many shells
+                 require that the '#' be escaped with a backslash ('\').  If
+                 no -u option is specified, the command will be run as the in-
+                 voking user.  In either case, the primary group will be set
+                 to group.  The sudoers policy permits any of the target
+                 user's groups to be specified via the -g option as long as
+                 the -P option is not in use.
+
+     -H, --set-home
+                 Request that the security policy set the HOME environment
+                 variable to the home directory specified by the target user's
+                 password database entry.  Depending on the policy, this may
+                 be the default behavior.
+
+     -h, --help  Display a short help message to the standard output and exit.
+
+     -h host, --host=host
+                 Run the command on the specified host if the security policy
+                 plugin supports remote commands.  Note that the sudoers
+                 plugin does not currently support running remote commands.
+                 This may also be used in conjunction with the -l option to
+                 list a user's privileges for the remote host.
+
+     -i, --login
+                 Run the shell specified by the target user's password data-
+                 base entry as a login shell.  This means that login-specific
+                 resource files such as .profile, .bash_profile, or .login
+                 will be read by the shell.  If a command is specified, it is
+                 passed to the shell as a simple command using the -c option.
+                 The command and any arguments are concatenated, separated by
+                 spaces, after escaping each character (including white space)
+                 with a backslash ('\') except for alphanumerics, underscores,
+                 hyphens, and dollar signs.  If no command is specified, an
+                 interactive shell is executed.  sudo attempts to change to
+                 that user's home directory before running the shell.  The
+                 command is run with an environment similar to the one a user
+                 would receive at log in.  Note that most shells behave dif-
+                 ferently when a command is specified as compared to an inter-
+                 active session; consult the shell's manual for details.  The
+                 Command environment section in the sudoers(5) manual docu-
+                 ments how the -i option affects the environment in which a
+                 command is run when the sudoers policy is in use.
+
+     -K, --remove-timestamp
+                 Similar to the -k option, except that it removes the user's
+                 cached credentials entirely and may not be used in conjunc-
+                 tion with a command or other option.  This option does not
+                 require a password.  Not all security policies support cre-
+                 dential caching.
+
+     -k, --reset-timestamp
+                 When used without a command, invalidates the user's cached
+                 credentials.  In other words, the next time sudo is run a
+                 password will be required.  This option does not require a
+                 password, and was added to allow a user to revoke sudo per-
+                 missions from a .logout file.
+
+                 When used in conjunction with a command or an option that may
+                 require a password, this option will cause sudo to ignore the
+                 user's cached credentials.  As a result, sudo will prompt for
+                 a password (if one is required by the security policy) and
+                 will not update the user's cached credentials.
+
+                 Not all security policies support credential caching.
+
+     -l, --list  If no command is specified, list the allowed (and forbidden)
+                 commands for the invoking user (or the user specified by the
+                 -U option) on the current host.  A longer list format is used
+                 if this option is specified multiple times and the security
+                 policy supports a verbose output format.
+
+                 If a command is specified and is permitted by the security
+                 policy, the fully-qualified path to the command is displayed
+                 along with any command line arguments.  If a command is spec-
+                 ified but not allowed by the policy, sudo will exit with a
+                 status value of 1.
+
+     -n, --non-interactive
+                 Avoid prompting the user for input of any kind.  If a pass-
+                 word is required for the command to run, sudo will display an
+                 error message and exit.
+
+     -P, --preserve-groups
+                 Preserve the invoking user's group vector unaltered.  By de-
+                 fault, the sudoers policy will initialize the group vector to
+                 the list of groups the target user is a member of.  The real
+                 and effective group-IDs, however, are still set to match the
+                 target user.
+
+     -p prompt, --prompt=prompt
+                 Use a custom password prompt with optional escape sequences.
+                 The following percent ('%') escape sequences are supported by
+                 the sudoers policy:
+
+                 %H  expanded to the host name including the domain name (only
+                     if the machine's host name is fully qualified or the fqdn
+                     option is set in sudoers(5))
+
+                 %h  expanded to the local host name without the domain name
+
+                 %p  expanded to the name of the user whose password is being
+                     requested (respects the rootpw, targetpw, and runaspw
+                     flags in sudoers(5))
+
+                 %U  expanded to the login name of the user the command will
+                     be run as (defaults to root unless the -u option is also
+                     specified)
+
+                 %u  expanded to the invoking user's login name
+
+                 %%  two consecutive '%' characters are collapsed into a sin-
+                     gle '%' character
+
+                 The custom prompt will override the default prompt specified
+                 by either the security policy or the SUDO_PROMPT environment
+                 variable.  On systems that use PAM, the custom prompt will
+                 also override the prompt specified by a PAM module unless the
+                 passprompt_override flag is disabled in sudoers.
+
+     -R directory, --chroot=directory
+                 Change to the specified root directory (see chroot(8)) before
+                 running the command.  The security policy may return an error
+                 if the user does not have permission to specify the root di-
+                 rectory.
+
+     -r role, --role=role
+                 Run the command with an SELinux security context that in-
+                 cludes the specified role.
+
+     -S, --stdin
+                 Write the prompt to the standard error and read the password
+                 from the standard input instead of using the terminal device.
+
+     -s, --shell
+                 Run the shell specified by the SHELL environment variable if
+                 it is set or the shell specified by the invoking user's pass-
+                 word database entry.  If a command is specified, it is passed
+                 to the shell as a simple command using the -c option.  The
+                 command and any arguments are concatenated, separated by spa-
+                 ces, after escaping each character (including white space)
+                 with a backslash ('\') except for alphanumerics, underscores,
+                 hyphens, and dollar signs.  If no command is specified, an
+                 interactive shell is executed.  Note that most shells behave
+                 differently when a command is specified as compared to an in-
+                 teractive session; consult the shell's manual for details.
+
+     -t type, --type=type
+                 Run the command with an SELinux security context that in-
+                 cludes the specified type.  If no type is specified, the de-
+                 fault type is derived from the role.
+
+     -U user, --other-user=user
+                 Used in conjunction with the -l option to list the privileges
+                 for user instead of for the invoking user.  The security pol-
+                 icy may restrict listing other users' privileges.  The
+                 sudoers policy only allows root or a user with the ALL privi-
+                 lege on the current host to use this option.
+
+     -T timeout, --command-timeout=timeout
+                 Used to set a timeout for the command.  If the timeout ex-
+                 pires before the command has exited, the command will be ter-
+                 minated.  The security policy may restrict the ability to set
+                 command timeouts.  The sudoers policy requires that user-
+                 specified timeouts be explicitly enabled.
+
+     -u user, --user=user
+                 Run the command as a user other than the default target user
+                 (usually root).  The user may be either a user name or a nu-
+                 meric user-ID (UID) prefixed with the '#' character (e.g., #0
+                 for UID 0).  When running commands as a UID, many shells re-
+                 quire that the '#' be escaped with a backslash ('\').  Some
+                 security policies may restrict UIDs to those listed in the
+                 password database.  The sudoers policy allows UIDs that are
+                 not in the password database as long as the targetpw option
+                 is not set.  Other security policies may not support this.
+
+     -V, --version
+                 Print the sudo version string as well as the version string
+                 of any configured plugins.  If the invoking user is already
+                 root, the -V option will display the arguments passed to con-
+                 figure when sudo was built; plugins may display additional
+                 information such as default options.
+
+     -v, --validate
+                 Update the user's cached credentials, authenticating the user
+                 if necessary.  For the sudoers plugin, this extends the sudo
+                 timeout for another 15 minutes by default, but does not run a
+                 command.  Not all security policies support cached creden-
+                 tials.
+
+     --          The -- option indicates that sudo should stop processing com-
+                 mand line arguments.
+
+     Options that take a value may only be specified once unless otherwise in-
+     dicated in the description.  This is to help guard against problems
+     caused by poorly written scripts that invoke sudo with user-controlled
+     input.
+
+     Environment variables to be set for the command may also be passed on the
+     command line in the form of VAR=value, e.g.,
+     LD_LIBRARY_PATH=/usr/local/pkg/lib.  Variables passed on the command line
+     are subject to restrictions imposed by the security policy plugin.  The
+     sudoers policy subjects variables passed on the command line to the same
+     restrictions as normal environment variables with one important excep-
+     tion.  If the setenv option is set in sudoers, the command to be run has
+     the SETENV tag set or the command matched is ALL, the user may set vari-
+     ables that would otherwise be forbidden.  See sudoers(5) for more infor-
+     mation.
+
+COMMAND EXECUTION
+     When sudo executes a command, the security policy specifies the execution
+     environment for the command.  Typically, the real and effective user and
+     group and IDs are set to match those of the target user, as specified in
+     the password database, and the group vector is initialized based on the
+     group database (unless the -P option was specified).
+
+     The following parameters may be specified by security policy:
+
+     o  real and effective user-ID
+
+     o  real and effective group-ID
+
+     o  supplementary group-IDs
+
+     o  the environment list
+
+     o  current working directory
+
+     o  file creation mode mask (umask)
+
+     o  SELinux role and type
+
+     o  scheduling priority (aka nice value)
+
+   Process model
+     There are two distinct ways sudo can run a command.
+
+     If an I/O logging plugin is configured or if the security policy explic-
+     itly requests it, a new pseudo-terminal (&quot;pty&quot;) is allocated and fork(2)
+     is used to create a second sudo process, referred to as the monitor.  The
+     monitor creates a new terminal session with itself as the leader and the
+     pty as its controlling terminal, calls fork(2), sets up the execution en-
+     vironment as described above, and then uses the execve(2) system call to
+     run the command in the child process.  The monitor exists to relay job
+     control signals between the user's existing terminal and the pty the com-
+     mand is being run in.  This makes it possible to suspend and resume the
+     command.  Without the monitor, the command would be in what POSIX terms
+     an &quot;orphaned process group&quot; and it would not receive any job control sig-
+     nals from the kernel.  When the command exits or is terminated by a sig-
+     nal, the monitor passes the command's exit status to the main sudo
+     process and exits.  After receiving the command's exit status, the main
+     sudo passes the command's exit status to the security policy's close
+     function and exits.
+
+     If no pty is used, sudo calls fork(2), sets up the execution environment
+     as described above, and uses the execve(2) system call to run the command
+     in the child process.  The main sudo process waits until the command has
+     completed, then passes the command's exit status to the security policy's
+     close function and exits.  As a special case, if the policy plugin does
+     not define a close function, sudo will execute the command directly in-
+     stead of calling fork(2) first.  The sudoers policy plugin will only de-
+     fine a close function when I/O logging is enabled, a pty is required, an
+     SELinux role is specified, the command has an associated timeout, or the
+     pam_session or pam_setcred options are enabled.  Note that pam_session
+     and pam_setcred are enabled by default on systems using PAM.
+
+     On systems that use PAM, the security policy's close function is respon-
+     sible for closing the PAM session.  It may also log the command's exit
+     status.
+
+   Signal handling
+     When the command is run as a child of the sudo process, sudo will relay
+     signals it receives to the command.  The SIGINT and SIGQUIT signals are
+     only relayed when the command is being run in a new pty or when the sig-
+     nal was sent by a user process, not the kernel.  This prevents the com-
+     mand from receiving SIGINT twice each time the user enters control-C.
+     Some signals, such as SIGSTOP and SIGKILL, cannot be caught and thus will
+     not be relayed to the command.  As a general rule, SIGTSTP should be used
+     instead of SIGSTOP when you wish to suspend a command being run by sudo.
+
+     As a special case, sudo will not relay signals that were sent by the com-
+     mand it is running.  This prevents the command from accidentally killing
+     itself.  On some systems, the reboot(8) command sends SIGTERM to all non-
+     system processes other than itself before rebooting the system.  This
+     prevents sudo from relaying the SIGTERM signal it received back to
+     reboot(8), which might then exit before the system was actually rebooted,
+     leaving it in a half-dead state similar to single user mode.  Note, how-
+     ever, that this check only applies to the command run by sudo and not any
+     other processes that the command may create.  As a result, running a
+     script that calls reboot(8) or shutdown(8) via sudo may cause the system
+     to end up in this undefined state unless the reboot(8) or shutdown(8) are
+     run using the exec() family of functions instead of system() (which in-
+     terposes a shell between the command and the calling process).
+
+     If no I/O logging plugins are loaded and the policy plugin has not de-
+     fined a close() function, set a command timeout, or required that the
+     command be run in a new pty, sudo may execute the command directly in-
+     stead of running it as a child process.
+
+   Plugins
+     Plugins may be specified via Plugin directives in the sudo.conf(5) file.
+     They may be loaded as dynamic shared objects (on systems that support
+     them), or compiled directly into the sudo binary.  If no sudo.conf(5)
+     file is present, or if it doesn't contain any Plugin lines, sudo will use
+     sudoers(5) for the policy, auditing, and I/O logging plugins.  See the
+     sudo.conf(5) manual for details of the /etc/sudo.conf file and the
+     sudo_plugin(5) manual for more information about the sudo plugin archi-
+     tecture.
+
+EXIT VALUE
+     Upon successful execution of a command, the exit status from sudo will be
+     the exit status of the program that was executed.  If the command termi-
+     nated due to receipt of a signal, sudo will send itself the same signal
+     that terminated the command.
+
+     If the -l option was specified without a command, sudo will exit with a
+     value of 0 if the user is allowed to run sudo and they authenticated suc-
+     cessfully (as required by the security policy).  If a command is speci-
+     fied with the -l option, the exit value will only be 0 if the command is
+     permitted by the security policy, otherwise it will be 1.
+
+     If there is an authentication failure, a configuration/permission prob-
+     lem, or if the given command cannot be executed, sudo exits with a value
+     of 1.  In the latter case, the error string is printed to the standard
+     error.  If sudo cannot stat(2) one or more entries in the user's PATH, an
+     error is printed to the standard error.  (If the directory does not exist
+     or if it is not really a directory, the entry is ignored and no error is
+     printed.)  This should not happen under normal circumstances.  The most
+     common reason for stat(2) to return &quot;permission denied&quot; is if you are
+     running an automounter and one of the directories in your PATH is on a
+     machine that is currently unreachable.
+
+SECURITY NOTES
+     sudo tries to be safe when executing external commands.
+
+     To prevent command spoofing, sudo checks &quot;.&quot; and &quot;&quot; (both denoting cur-
+     rent directory) last when searching for a command in the user's PATH (if
+     one or both are in the PATH).  Depending on the security policy, the
+     user's PATH environment variable may be modified, replaced, or passed un-
+     changed to the program that sudo executes.
+
+     Users should never be granted sudo privileges to execute files that are
+     writable by the user or that reside in a directory that is writable by
+     the user.  If the user can modify or replace the command there is no way
+     to limit what additional commands they can run.
+
+     Please note that sudo will normally only log the command it explicitly
+     runs.  If a user runs a command such as sudo su or sudo sh, subsequent
+     commands run from that shell are not subject to sudo's security policy.
+     The same is true for commands that offer shell escapes (including most
+     editors).  If I/O logging is enabled, subsequent commands will have their
+     input and/or output logged, but there will not be traditional logs for
+     those commands.  Because of this, care must be taken when giving users
+     access to commands via sudo to verify that the command does not inadver-
+     tently give the user an effective root shell.  For information on ways to
+     address this, please see the Preventing shell escapes section in
+     sudoers(5).
+
+     To prevent the disclosure of potentially sensitive information, sudo dis-
+     ables core dumps by default while it is executing (they are re-enabled
+     for the command that is run).  This historical practice dates from a time
+     when most operating systems allowed set-user-ID processes to dump core by
+     default.  To aid in debugging sudo crashes, you may wish to re-enable
+     core dumps by setting &quot;disable_coredump&quot; to false in the sudo.conf(5)
+     file as follows:
+
+           Set disable_coredump false
+
+     See the sudo.conf(5) manual for more information.
+
+ENVIRONMENT
+     sudo utilizes the following environment variables.  The security policy
+     has control over the actual content of the command's environment.
+
+     EDITOR           Default editor to use in -e (sudoedit) mode if neither
+                      SUDO_EDITOR nor VISUAL is set.
+
+     MAIL             Set to the mail spool of the target user when the -i op-
+                      tion is specified, or when env_reset is enabled in
+                      sudoers (unless MAIL is present in the env_keep list).
+
+     HOME             Set to the home directory of the target user when the -i
+                      or -H options are specified, when the -s option is spec-
+                      ified and set_home is set in sudoers, when
+                      always_set_home is enabled in sudoers, or when env_reset
+                      is enabled in sudoers and HOME is not present in the
+                      env_keep list.
+
+     LOGNAME          Set to the login name of the target user when the -i op-
+                      tion is specified, when the set_logname option is en-
+                      abled in sudoers, or when the env_reset option is en-
+                      abled in sudoers (unless LOGNAME is present in the
+                      env_keep list).
+
+     PATH             May be overridden by the security policy.
+
+     SHELL            Used to determine shell to run with -s option.
+
+     SUDO_ASKPASS     Specifies the path to a helper program used to read the
+                      password if no terminal is available or if the -A option
+                      is specified.
+
+     SUDO_COMMAND     Set to the command run by sudo, including command line
+                      arguments.  The command line arguments are truncated at
+                      4096 characters to prevent a potential execution error.
+
+     SUDO_EDITOR      Default editor to use in -e (sudoedit) mode.
+
+     SUDO_GID         Set to the group-ID of the user who invoked sudo.
+
+     SUDO_PROMPT      Used as the default password prompt unless the -p option
+                      was specified.
+
+     SUDO_PS1         If set, PS1 will be set to its value for the program be-
+                      ing run.
+
+     SUDO_UID         Set to the user-ID of the user who invoked sudo.
+
+     SUDO_USER        Set to the login name of the user who invoked sudo.
+
+     USER             Set to the same value as LOGNAME, described above.
+
+     VISUAL           Default editor to use in -e (sudoedit) mode if
+                      SUDO_EDITOR is not set.
+
+FILES
+     /etc/sudo.conf            sudo front-end configuration
+
+EXAMPLES
+     Note: the following examples assume a properly configured security pol-
+     icy.
+
+     To get a file listing of an unreadable directory:
+
+           $ sudo ls /usr/local/protected
+
+     To list the home directory of user yaz on a machine where the file system
+     holding ~yaz is not exported as root:
+
+           $ sudo -u yaz ls ~yaz
+
+     To edit the index.html file as user www:
+
+           $ sudoedit -u www ~www/htdocs/index.html
+
+     To view system logs only accessible to root and users in the adm group:
+
+           $ sudo -g adm more /var/log/syslog
+
+     To run an editor as jim with a different primary group:
+
+           $ sudoedit -u jim -g audio ~jim/sound.txt
+
+     To shut down a machine:
+
+           $ sudo shutdown -r +15 &quot;quick reboot&quot;
+
+     To make a usage listing of the directories in the /home partition.  Note
+     that this runs the commands in a sub-shell to make the cd and file redi-
+     rection work.
+
+           $ sudo sh -c &quot;cd /home ; du -s * | sort -rn &gt; USAGE&quot;
+
+DIAGNOSTICS
+     Error messages produced by sudo include:
+
+     editing files in a writable directory is not permitted
+           By default, sudoedit does not permit editing a file when any of the
+           parent directories are writable by the invoking user.  This avoids
+           a race condition that could allow the user to overwrite an arbi-
+           trary file.  See the sudoedit_checkdir option in sudoers(5) for
+           more information.
+
+     editing symbolic links is not permitted
+           By default, sudoedit does not follow symbolic links when opening
+           files.  See the sudoedit_follow option in sudoers(5) for more in-
+           formation.
+
+     effective uid is not 0, is sudo installed setuid root?
+           sudo was not run with root privileges.  The sudo binary must be
+           owned by the root user and have the set-user-ID bit set.  Also, it
+           must not be located on a file system mounted with the 'nosuid' op-
+           tion or on an NFS file system that maps uid 0 to an unprivileged
+           uid.
+
+     effective uid is not 0, is sudo on a file system with the 'nosuid' option
+           set or an NFS file system without root privileges?
+           sudo was not run with root privileges.  The sudo binary has the
+           proper owner and permissions but it still did not run with root
+           privileges.  The most common reason for this is that the file sys-
+           tem the sudo binary is located on is mounted with the 'nosuid' op-
+           tion or it is an NFS file system that maps uid 0 to an unprivileged
+           uid.
+
+     fatal error, unable to load plugins
+           An error occurred while loading or initializing the plugins speci-
+           fied in sudo.conf(5).
+
+     invalid environment variable name
+           One or more environment variable names specified via the -E option
+           contained an equal sign ('=').  The arguments to the -E option
+           should be environment variable names without an associated value.
+
+     no password was provided
+           When sudo tried to read the password, it did not receive any char-
+           acters.  This may happen if no terminal is available (or the -S op-
+           tion is specified) and the standard input has been redirected from
+           /dev/null.
+
+     a terminal is required to read the password
+           sudo needs to read the password but there is no mechanism available
+           for it to do so.  A terminal is not present to read the password
+           from, sudo has not been configured to read from the standard input,
+           the -S option was not used, and no askpass helper has been speci-
+           fied either via the sudo.conf(5) file or the SUDO_ASKPASS environ-
+           ment variable.
+
+     no writable temporary directory found
+           sudoedit was unable to find a usable temporary directory in which
+           to store its intermediate files.
+
+     The &quot;no new privileges&quot; flag is set, which prevents sudo from running as
+           root.
+           sudo was run by a process that has the Linux &quot;no new privileges&quot;
+           flag is set.  This causes the set-user-ID bit to be ignored when
+           running an executable, which will prevent sudo from functioning.
+           The most likely cause for this is running sudo within a container
+           that sets this flag.  Check the documentation to see if it is pos-
+           sible to configure the container such that the flag is not set.
+
+     sudo must be owned by uid 0 and have the setuid bit set
+           sudo was not run with root privileges.  The sudo binary does not
+           have the correct owner or permissions.  It must be owned by the
+           root user and have the set-user-ID bit set.
+
+     sudoedit is not supported on this platform
+           It is only possible to run sudoedit on systems that support setting
+           the effective user-ID.
+
+     timed out reading password
+           The user did not enter a password before the password timeout (5
+           minutes by default) expired.
+
+     you do not exist in the passwd database
+           Your user-ID does not appear in the system passwd database.
+
+     you may not specify environment variables in edit mode
+           It is only possible to specify environment variables when running a
+           command.  When editing a file, the editor is run with the user's
+           environment unmodified.
+
+SEE ALSO
+     su(1), stat(2), login_cap(3), passwd(5), sudo.conf(5), sudo_plugin(5),
+     sudoers(5), sudoers_timestamp(5), sudoreplay(8), visudo(8)
+
+HISTORY
+     See the HISTORY file in the sudo distribution (https://www.sudo.ws/his-
+     tory.html) for a brief history of sudo.
+
+AUTHORS
+     Many people have worked on sudo over the years; this version consists of
+     code written primarily by:
+
+           Todd C. Miller
+
+     See the CONTRIBUTORS file in the sudo distribution
+     (https://www.sudo.ws/contributors.html) for an exhaustive list of people
+     who have contributed to sudo.
+
+CAVEATS
+     There is no easy way to prevent a user from gaining a root shell if that
+     user is allowed to run arbitrary commands via sudo.  Also, many programs
+     (such as editors) allow the user to run commands via shell escapes, thus
+     avoiding sudo's checks.  However, on most systems it is possible to pre-
+     vent shell escapes with the sudoers(5) plugin's noexec functionality.
+
+     It is not meaningful to run the cd command directly via sudo, e.g.,
+
+           $ sudo cd /usr/local/protected
+
+     since when the command exits the parent process (your shell) will still
+     be the same.  Please see the EXAMPLES section for more information.
+
+     Running shell scripts via sudo can expose the same kernel bugs that make
+     set-user-ID shell scripts unsafe on some operating systems (if your OS
+     has a /dev/fd/ directory, set-user-ID shell scripts are generally safe).
+
+BUGS
+     If you feel you have found a bug in sudo, please submit a bug report at
+     https://bugzilla.sudo.ws/
+
+SUPPORT
+     Limited free support is available via the sudo-users mailing list, see
+     https://www.sudo.ws/mailman/listinfo/sudo-users to subscribe or search
+     the archives.
+
+DISCLAIMER
+     sudo is provided &quot;AS IS&quot; and any express or implied warranties, includ-
+     ing, but not limited to, the implied warranties of merchantability and
+     fitness for a particular purpose are disclaimed.  See the LICENSE file
+     distributed with sudo or https://www.sudo.ws/license.html for complete
+     details.
+
+Sudo 1.9.9                     January 19, 2022                     Sudo 1.9.9
+</code></pre>
+<hr>
+<h5 id=sudoreplay>sudoreplay</h5>
+<p>Replay sudo session logs</p>
+<pre><code>root@kali:~# sudoreplay -h
+sudoreplay - replay sudo session logs
+
+usage: sudoreplay [-hnRS] [-d dir] [-m num] [-s num] ID
+usage: sudoreplay [-h] [-d dir] -l [search expression]
+
+Options:
+  -d, --directory=dir    specify directory for session logs
+  -f, --filter=filter    specify which I/O type(s) to display
+  -h, --help             display help message and exit
+  -l, --list             list available session IDs, with optional expression
+  -m, --max-wait=num     max number of seconds to wait between events
+  -n, --non-interactive  no prompts, session is sent to the standard output
+  -R, --no-resize        do not attempt to re-size the terminal
+  -S, --suspend-wait     wait while the command was suspended
+  -s, --speed=num        speed up or slow down output
+  -V, --version          display version information and exit
+</code></pre>
+<hr>
+<h5 id=sudoreplay-1>sudoreplay</h5>
+<p>Replay sudo session logs</p>
+<pre><code>root@kali:~# sudoreplay -h
+sudoreplay - replay sudo session logs
+
+usage: sudoreplay [-hnRS] [-d dir] [-m num] [-s num] ID
+usage: sudoreplay [-h] [-d dir] -l [search expression]
+
+Options:
+  -d, --directory=dir    specify directory for session logs
+  -f, --filter=filter    specify which I/O type(s) to display
+  -h, --help             display help message and exit
+  -l, --list             list available session IDs, with optional expression
+  -m, --max-wait=num     max number of seconds to wait between events
+  -n, --non-interactive  no prompts, session is sent to the standard output
+  -R, --no-resize        do not attempt to re-size the terminal
+  -S, --suspend-wait     wait while the command was suspended
+  -s, --speed=num        speed up or slow down output
+  -V, --version          display version information and exit
+</code></pre>
+<hr>
+<h5 id=visudo>visudo</h5>
+<p>Edit the sudoers file</p>
+<pre><code>root@kali:~# visudo -h
+visudo - safely edit the sudoers file
+
+usage: visudo [-chqsV] [[-f] sudoers ]
+
+Options:
+  -c, --check              check-only mode
+  -f, --file=sudoers       specify sudoers file location
+  -h, --help               display help message and exit
+  -q, --quiet              less verbose (quiet) syntax error messages
+  -s, --strict             strict syntax checking
+  -V, --version            display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=visudo-1>visudo</h5>
+<p>Edit the sudoers file</p>
+<pre><code>root@kali:~# visudo -h
+visudo - safely edit the sudoers file
+
+usage: visudo [-chqsV] [[-f] sudoers ]
+
+Options:
+  -c, --check              check-only mode
+  -f, --file=sudoers       specify sudoers file location
+  -h, --help               display help message and exit
+  -q, --quiet              less verbose (quiet) syntax error messages
+  -s, --strict             strict syntax checking
+  -V, --version            display version information and exit
+
+</code></pre>
+<hr>
+<h3 id=sudo-ldap>sudo-ldap</h3>
+<p>Sudo is a program designed to allow a sysadmin to give limited root
+privileges to users and log root activity. The basic philosophy is to give
+as few privileges as possible but still allow people to get their work done.</p>
+<p>This version is built with LDAP support, which allows an equivalent of the
+sudoers database to be distributed via LDAP. Authentication is still
+performed via pam.</p>
+<p><strong>Installed size:</strong> <code>5.72 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install sudo-ldap</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>init-system-helpers</li>
+<li>libaudit1</li>
+<li>libc6</li>
+<li>libldap-2.4-2</li>
+<li>libpam-modules</li>
+<li>libpam0g</li>
+<li>libselinux1</li>
+<li>lsb-base</li>
+<li>zlib1g
+</div></li>
+</ul>
+<h5 id=cvtsudoers-2>cvtsudoers</h5>
+<p>Convert between sudoers file formats</p>
+<pre><code>root@kali:~# cvtsudoers -h
+cvtsudoers - convert between sudoers file formats
+
+usage: cvtsudoers [-ehMpV] [-b dn] [-c conf_file ] [-d deftypes] [-f output_format] [-i input_format] [-I increment] [-m filter] [-o output_file] [-O start_point] [-P padding] [-s sections] [input_file]
+
+Options:
+  -b, --base=dn              the base DN for sudo LDAP queries
+  -c, --config=conf_file     the path to the configuration file
+  -d, --defaults=deftypes    only convert Defaults of the specified types
+  -e, --expand-aliases       expand aliases when converting
+  -f, --output-format=format set output format: JSON, LDIF or sudoers
+  -i, --input-format=format  set input format: LDIF or sudoers
+  -I, --increment=num        amount to increase each sudoOrder by
+  -h, --help                 display help message and exit
+  -m, --match=filter         only convert entries that match the filter
+  -M, --match-local          match filter uses passwd and group databases
+  -o, --output=output_file   write converted sudoers to output_file
+  -O, --order-start=num      starting point for first sudoOrder
+  -p, --prune-matches        prune non-matching users, groups and hosts
+  -P, --padding=num          base padding for sudoOrder increment
+  -s, --suppress=sections    suppress output of certain sections
+  -V, --version              display version information and exit
+</code></pre>
+<hr>
+<h5 id=sudo-3>sudo</h5>
+<p>Execute a command as another user</p>
+<pre><code>root@kali:~# sudo -h
+sudo - execute a command as another user
+
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+            [command]
+usage: sudo [-ABbEHknPS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+            [-h host] [-p prompt] [-R directory] [-T timeout] [-u user]
+            [VAR=value] [-i|-s] [&lt;command&gt;]
+usage: sudo -e [-ABknS] [-r role] [-t type] [-C num] [-D directory] [-g group]
+            [-h host] [-p prompt] [-R directory] [-T timeout] [-u user] file ...
+
+Options:
+  -A, --askpass                 use a helper program for password prompting
+  -b, --background              run command in the background
+  -B, --bell                    ring bell when prompting
+  -C, --close-from=num          close all file descriptors &gt;= num
+  -D, --chdir=directory         change the working directory before running
+                                command
+  -E, --preserve-env            preserve user environment when running command
+      --preserve-env=list       preserve specific environment variables
+  -e, --edit                    edit files instead of running a command
+  -g, --group=group             run command as the specified group name or ID
+  -H, --set-home                set HOME variable to target user's home dir
+  -h, --help                    display help message and exit
+  -h, --host=host               run command on host (if supported by plugin)
+  -i, --login                   run login shell as the target user; a command
+                                may also be specified
+  -K, --remove-timestamp        remove timestamp file completely
+  -k, --reset-timestamp         invalidate timestamp file
+  -l, --list                    list user's privileges or check a specific
+                                command; use twice for longer format
+  -n, --non-interactive         non-interactive mode, no prompts are used
+  -P, --preserve-groups         preserve group vector instead of setting to
+                                target's
+  -p, --prompt=prompt           use the specified password prompt
+  -R, --chroot=directory        change the root directory before running command
+  -r, --role=role               create SELinux security context with specified
+                                role
+  -S, --stdin                   read password from standard input
+  -s, --shell                   run shell as the target user; a command may
+                                also be specified
+  -t, --type=type               create SELinux security context with specified
+                                type
+  -T, --command-timeout=timeout terminate command after the specified time limit
+  -U, --other-user=user         in list mode, display privileges for user
+  -u, --user=user               run command (or edit file) as specified user
+                                name or ID
+  -V, --version                 display version information and exit
+  -v, --validate                update user's timestamp without running a
+                                command
+  --                            stop processing command line arguments
+</code></pre>
+<hr>
+<h5 id=sudo_logsrvd-2>sudo_logsrvd</h5>
+<p>Sudo event and I/O log server</p>
+<pre><code>root@kali:~# sudo_logsrvd -h
+sudo_logsrvd - sudo log server
+
+
+Options:
+  -f, --file            path to configuration file
+  -h, --help            display help message and exit
+  -n, --no-fork         do not fork, run in the foreground
+  -R, --random-drop     percent chance connections will drop
+  -V, --version         display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=sudo_sendlog-2>sudo_sendlog</h5>
+<p>Send sudo I/O log to log server</p>
+<pre><code>root@kali:~# sudo_sendlog --help
+sudo_sendlog - send sudo I/O log to remote server
+
+
+Options:
+      --help            display help message and exit
+  -A, --accept          only send an accept event (no I/O)
+  -h, --host            host to send logs to
+  -i, --iolog_id        remote ID of I/O log to be resumed
+  -p, --port            port to use when connecting to host
+  -r, --restart         restart previous I/O log transfer
+  -R, --reject          reject the command with the given reason
+  -s, --stop-after        stop transfer after reaching this time
+  -t, --test            test audit server by sending selected I/O log n times in parallel
+  -V, --version         display version information and exit
+
+</code></pre>
+<hr>
+<h5 id=sudoedit-2>sudoedit</h5>
+<p>Execute a command as another user</p>
+<pre><code>root@kali:~# man sudoedit
+SUDO(8)                   BSD System Manager's Manual                  SUDO(8)
+
+NAME
+     sudo, sudoedit -- execute a command as another user
+
+SYNOPSIS
+     sudo -h | -K | -k | -V
+     sudo -v [-ABknS] [-g group] [-h host] [-p prompt] [-u user]
+     sudo -l [-ABknS] [-g group] [-h host] [-p prompt] [-U user] [-u user]
+          [command]
+     sudo [-ABbEHnPS] [-C num] [-D directory] [-g group] [-h host] [-p prompt]
+          [-R directory] [-r role] [-t type] [-T timeout] [-u user]
+          [VAR=value] [-i | -s] [command]
+     sudoedit [-ABknS] [-C num] [-D directory] [-g group] [-h host]
+          [-p prompt] [-R directory] [-r role] [-t type] [-T timeout]
+          [-u user] file ...
+
+DESCRIPTION
+     sudo allows a permitted user to execute a command as the superuser or an-
+     other user, as specified by the security policy.  The invoking user's
+     real (not effective) user-ID is used to determine the user name with
+     which to query the security policy.
+
+     sudo supports a plugin architecture for security policies, auditing, and
+     input/output logging.  Third parties can develop and distribute their own
+     plugins to work seamlessly with the sudo front-end.  The default security
+     policy is sudoers, which is configured via the file /etc/sudoers, or via
+     LDAP.  See the Plugins section for more information.
+
+     The security policy determines what privileges, if any, a user has to run
+     sudo.  The policy may require that users authenticate themselves with a
+     password or another authentication mechanism.  If authentication is re-
+     quired, sudo will exit if the user's password is not entered within a
+     configurable time limit.  This limit is policy-specific; the default
+     password prompt timeout for the sudoers security policy is 0 minutes.
+
+     Security policies may support credential caching to allow the user to run
+     sudo again for a period of time without requiring authentication.  By de-
+     fault, the sudoers policy caches credentials on a per-terminal basis for
+     15 minutes.  See the timestamp_type and timestamp_timeout options in
+     sudoers(5) for more information.  By running sudo with the -v option, a
+     user can update the cached credentials without running a command.
+
+     On systems where sudo is the primary method of gaining superuser privi-
+     leges, it is imperative to avoid syntax errors in the security policy
+     configuration files.  For the default security policy, sudoers(5),
+     changes to the configuration files should be made using the visudo(8)
+     utility which will ensure that no syntax errors are introduced.
+
+     When invoked as sudoedit, the -e option (described below), is implied.
+
+     Security policies and audit plugins may log successful and failed at-
+     tempts to run sudo.  If an I/O plugin is configured, the running com-
+     mand's input and output may be logged as well.
+
+     The options are as follows:
+
+     -A, --askpass
+                 Normally, if sudo requires a password, it will read it from
+                 the user's terminal.  If the -A (askpass) option is speci-
+                 fied, a (possibly graphical) helper program is executed to
+                 read the user's password and output the password to the stan-
+                 dard output.  If the SUDO_ASKPASS environment variable is
+                 set, it specifies the path to the helper program.  Otherwise,
+                 if sudo.conf(5) contains a line specifying the askpass pro-
+                 gram, that value will be used.  For example:
+
+                     # Path to askpass helper program
+                     Path askpass /usr/X11R6/bin/ssh-askpass
+
+                 If no askpass program is available, sudo will exit with an
+                 error.
+
+     -B, --bell  Ring the bell as part of the password prompt when a terminal
+                 is present.  This option has no effect if an askpass program
+                 is used.
+
+     -b, --background
+                 Run the given command in the background.  Note that it is not
+                 possible to use shell job control to manipulate background
+                 processes started by sudo.  Most interactive commands will
+                 fail to work properly in background mode.
+
+     -C num, --close-from=num
+                 Close all file descriptors greater than or equal to num be-
+                 fore executing a command.  Values less than three are not
+                 permitted.  By default, sudo will close all open file de-
+                 scriptors other than standard input, standard output, and
+                 standard error when executing a command.  The security policy
+                 may restrict the user's ability to use this option.  The
+                 sudoers policy only permits use of the -C option when the ad-
+                 ministrator has enabled the closefrom_override option.
+
+     -D directory, --chdir=directory
+                 Run the command in the specified directory instead of the
+                 current working directory.  The security policy may return an
+                 error if the user does not have permission to specify the
+                 working directory.
+
+     -E, --preserve-env
+                 Indicates to the security policy that the user wishes to pre-
+                 serve their existing environment variables.  The security
+                 policy may return an error if the user does not have permis-
+                 sion to preserve the environment.
+
+     --preserve-env=list
+                 Indicates to the security policy that the user wishes to add
+                 the comma-separated list of environment variables to those
+                 preserved from the user's environment.  The security policy
+                 may return an error if the user does not have permission to
+                 preserve the environment.  This option may be specified mul-
+                 tiple times.
+
+     -e, --edit  Edit one or more files instead of running a command.  In lieu
+                 of a path name, the string &quot;sudoedit&quot; is used when consulting
+                 the security policy.  If the user is authorized by the pol-
+                 icy, the following steps are taken:
+
+                 1.   Temporary copies are made of the files to be edited with
+                      the owner set to the invoking user.
+
+                 2.   The editor specified by the policy is run to edit the
+                      temporary files.  The sudoers policy uses the
+                      SUDO_EDITOR, VISUAL and EDITOR environment variables (in
+                      that order).  If none of SUDO_EDITOR, VISUAL or EDITOR
+                      are set, the first program listed in the editor
+                      sudoers(5) option is used.
+
+                 3.   If they have been modified, the temporary files are
+                      copied back to their original location and the temporary
+                      versions are removed.
+
+                 To help prevent the editing of unauthorized files, the fol-
+                 lowing restrictions are enforced unless explicitly allowed by
+                 the security policy:
+
+                 o  Symbolic links may not be edited (version 1.8.15 and
+                    higher).
+
+                 o  Symbolic links along the path to be edited are not fol-
+                    lowed when the parent directory is writable by the invok-
+                    ing user unless that user is root (version 1.8.16 and
+                    higher).
+
+                 o  Files located in a directory that is writable by the in-
+                    voking user may not be edited unless that user is root
+                    (version 1.8.16 and higher).
+
+                 Users are never allowed to edit device special files.
+
+                 If the specified file does not exist, it will be created.
+                 Note that unlike most commands run by sudo, the editor is run
+                 with the invoking user's environment unmodified.  If the tem-
+                 porary file becomes empty after editing, the user will be
+                 prompted before it is installed.  If, for some reason, sudo
+                 is unable to update a file with its edited version, the user
+                 will receive a warning and the edited copy will remain in a
+                 temporary file.
+
+     -g group, --group=group
+                 Run the command with the primary group set to group instead
+                 of the primary group specified by the target user's password
+                 database entry.  The group may be either a group name or a
+                 numeric group-ID (GID) prefixed with the '#' character (e.g.,
+                 #0 for GID 0).  When running a command as a GID, many shells
+                 require that the '#' be escaped with a backslash ('\').  If
+                 no -u option is specified, the command will be run as the in-
+                 voking user.  In either case, the primary group will be set
+                 to group.  The sudoers policy permits any of the target
+                 user's groups to be specified via the -g option as long as
+                 the -P option is not in use.
+
+     -H, --set-home
+                 Request that the security policy set the HOME environment
+                 variable to the home directory specified by the target user's
+                 password database entry.  Depending on the policy, this may
+                 be the default behavior.
+
+     -h, --help  Display a short help message to the standard output and exit.
+
+     -h host, --host=host
+                 Run the command on the specified host if the security policy
+                 plugin supports remote commands.  Note that the sudoers
+                 plugin does not currently support running remote commands.
+                 This may also be used in conjunction with the -l option to
+                 list a user's privileges for the remote host.
+
+     -i, --login
+                 Run the shell specified by the target user's password data-
+                 base entry as a login shell.  This means that login-specific
+                 resource files such as .profile, .bash_profile, or .login
+                 will be read by the shell.  If a command is specified, it is
+                 passed to the shell as a simple command using the -c option.
+                 The command and any arguments are concatenated, separated by
+                 spaces, after escaping each character (including white space)
+                 with a backslash ('\') except for alphanumerics, underscores,
+                 hyphens, and dollar signs.  If no command is specified, an
+                 interactive shell is executed.  sudo attempts to change to
+                 that user's home directory before running the shell.  The
+                 command is run with an environment similar to the one a user
+                 would receive at log in.  Note that most shells behave dif-
+                 ferently when a command is specified as compared to an inter-
+                 active session; consult the shell's manual for details.  The
+                 Command environment section in the sudoers(5) manual docu-
+                 ments how the -i option affects the environment in which a
+                 command is run when the sudoers policy is in use.
+
+     -K, --remove-timestamp
+                 Similar to the -k option, except that it removes the user's
+                 cached credentials entirely and may not be used in conjunc-
+                 tion with a command or other option.  This option does not
+                 require a password.  Not all security policies support cre-
+                 dential caching.
+
+     -k, --reset-timestamp
+                 When used without a command, invalidates the user's cached
+                 credentials.  In other words, the next time sudo is run a
+                 password will be required.  This option does not require a
+                 password, and was added to allow a user to revoke sudo per-
+                 missions from a .logout file.
+
+                 When used in conjunction with a command or an option that may
+                 require a password, this option will cause sudo to ignore the
+                 user's cached credentials.  As a result, sudo will prompt for
+                 a password (if one is required by the security policy) and
+                 will not update the user's cached credentials.
+
+                 Not all security policies support credential caching.
+
+     -l, --list  If no command is specified, list the allowed (and forbidden)
+                 commands for the invoking user (or the user specified by the
+                 -U option) on the current host.  A longer list format is used
+                 if this option is specified multiple times and the security
+                 policy supports a verbose output format.
+
+                 If a command is specified and is permitted by the security
+                 policy, the fully-qualified path to the command is displayed
+                 along with any command line arguments.  If a command is spec-
+                 ified but not allowed by the policy, sudo will exit with a
+                 status value of 1.
+
+     -n, --non-interactive
+                 Avoid prompting the user for input of any kind.  If a pass-
+                 word is required for the command to run, sudo will display an
+                 error message and exit.
+
+     -P, --preserve-groups
+                 Preserve the invoking user's group vector unaltered.  By de-
+                 fault, the sudoers policy will initialize the group vector to
+                 the list of groups the target user is a member of.  The real
+                 and effective group-IDs, however, are still set to match the
+                 target user.
+
+     -p prompt, --prompt=prompt
+                 Use a custom password prompt with optional escape sequences.
+                 The following percent ('%') escape sequences are supported by
+                 the sudoers policy:
+
+                 %H  expanded to the host name including the domain name (only
+                     if the machine's host name is fully qualified or the fqdn
+                     option is set in sudoers(5))
+
+                 %h  expanded to the local host name without the domain name
+
+                 %p  expanded to the name of the user whose password is being
+                     requested (respects the rootpw, targetpw, and runaspw
+                     flags in sudoers(5))
+
+                 %U  expanded to the login name of the user the command will
+                     be run as (defaults to root unless the -u option is also
+                     specified)
+
+                 %u  expanded to the invoking user's login name
+
+                 %%  two consecutive '%' characters are collapsed into a sin-
+                     gle '%' character
+
+                 The custom prompt will override the default prompt specified
+                 by either the security policy or the SUDO_PROMPT environment
+                 variable.  On systems that use PAM, the custom prompt will
+                 also override the prompt specified by a PAM module unless the
+                 passprompt_override flag is disabled in sudoers.
+
+     -R directory, --chroot=directory
+                 Change to the specified root directory (see chroot(8)) before
+                 running the command.  The security policy may return an error
+                 if the user does not have permission to specify the root di-
+                 rectory.
+
+     -r role, --role=role
+                 Run the command with an SELinux security context that in-
+                 cludes the specified role.
+
+     -S, --stdin
+                 Write the prompt to the standard error and read the password
+                 from the standard input instead of using the terminal device.
+
+     -s, --shell
+                 Run the shell specified by the SHELL environment variable if
+                 it is set or the shell specified by the invoking user's pass-
+                 word database entry.  If a command is specified, it is passed
+                 to the shell as a simple command using the -c option.  The
+                 command and any arguments are concatenated, separated by spa-
+                 ces, after escaping each character (including white space)
+                 with a backslash ('\') except for alphanumerics, underscores,
+                 hyphens, and dollar signs.  If no command is specified, an
+                 interactive shell is executed.  Note that most shells behave
+                 differently when a command is specified as compared to an in-
+                 teractive session; consult the shell's manual for details.
+
+     -t type, --type=type
+                 Run the command with an SELinux security context that in-
+                 cludes the specified type.  If no type is specified, the de-
+                 fault type is derived from the role.
+
+     -U user, --other-user=user
+                 Used in conjunction with the -l option to list the privileges
+                 for user instead of for the invoking user.  The security pol-
+                 icy may restrict listing other users' privileges.  The
+                 sudoers policy only allows root or a user with the ALL privi-
+                 lege on the current host to use this option.
+
+     -T timeout, --command-timeout=timeout
+                 Used to set a timeout for the command.  If the timeout ex-
+                 pires before the command has exited, the command will be ter-
+                 minated.  The security policy may restrict the ability to set
+                 command timeouts.  The sudoers policy requires that user-
+                 specified timeouts be explicitly enabled.
+
+     -u user, --user=user
+                 Run the command as a user other than the default target user
+                 (usually root).  The user may be either a user name or a nu-
+                 meric user-ID (UID) prefixed with the '#' character (e.g., #0
+                 for UID 0).  When running commands as a UID, many shells re-
+                 quire that the '#' be escaped with a backslash ('\').  Some
+                 security policies may restrict UIDs to those listed in the
+                 password database.  The sudoers policy allows UIDs that are
+                 not in the password database as long as the targetpw option
+                 is not set.  Other security policies may not support this.
+
+     -V, --version
+                 Print the sudo version string as well as the version string
+                 of any configured plugins.  If the invoking user is already
+                 root, the -V option will display the arguments passed to con-
+                 figure when sudo was built; plugins may display additional
+                 information such as default options.
+
+     -v, --validate
+                 Update the user's cached credentials, authenticating the user
+                 if necessary.  For the sudoers plugin, this extends the sudo
+                 timeout for another 15 minutes by default, but does not run a
+                 command.  Not all security policies support cached creden-
+                 tials.
+
+     --          The -- option indicates that sudo should stop processing com-
+                 mand line arguments.
+
+     Options that take a value may only be specified once unless otherwise in-
+     dicated in the description.  This is to help guard against problems
+     caused by poorly written scripts that invoke sudo with user-controlled
+     input.
+
+     Environment variables to be set for the command may also be passed on the
+     command line in the form of VAR=value, e.g.,
+     LD_LIBRARY_PATH=/usr/local/pkg/lib.  Variables passed on the command line
+     are subject to restrictions imposed by the security policy plugin.  The
+     sudoers policy subjects variables passed on the command line to the same
+     restrictions as normal environment variables with one important excep-
+     tion.  If the setenv option is set in sudoers, the command to be run has
+     the SETENV tag set or the command matched is ALL, the user may set vari-
+     ables that would otherwise be forbidden.  See sudoers(5) for more infor-
+     mation.
+
+COMMAND EXECUTION
+     When sudo executes a command, the security policy specifies the execution
+     environment for the command.  Typically, the real and effective user and
+     group and IDs are set to match those of the target user, as specified in
+     the password database, and the group vector is initialized based on the
+     group database (unless the -P option was specified).
+
+     The following parameters may be specified by security policy:
+
+     o  real and effective user-ID
+
+     o  real and effective group-ID
+
+     o  supplementary group-IDs
+
+     o  the environment list
+
+     o  current working directory
+
+     o  file creation mode mask (umask)
+
+     o  SELinux role and type
+
+     o  scheduling priority (aka nice value)
+
+   Process model
+     There are two distinct ways sudo can run a command.
+
+     If an I/O logging plugin is configured or if the security policy explic-
+     itly requests it, a new pseudo-terminal (&quot;pty&quot;) is allocated and fork(2)
+     is used to create a second sudo process, referred to as the monitor.  The
+     monitor creates a new terminal session with itself as the leader and the
+     pty as its controlling terminal, calls fork(2), sets up the execution en-
+     vironment as described above, and then uses the execve(2) system call to
+     run the command in the child process.  The monitor exists to relay job
+     control signals between the user's existing terminal and the pty the com-
+     mand is being run in.  This makes it possible to suspend and resume the
+     command.  Without the monitor, the command would be in what POSIX terms
+     an &quot;orphaned process group&quot; and it would not receive any job control sig-
+     nals from the kernel.  When the command exits or is terminated by a sig-
+     nal, the monitor passes the command's exit status to the main sudo
+     process and exits.  After receiving the command's exit status, the main
+     sudo passes the command's exit status to the security policy's close
+     function and exits.
+
+     If no pty is used, sudo calls fork(2), sets up the execution environment
+     as described above, and uses the execve(2) system call to run the command
+     in the child process.  The main sudo process waits until the command has
+     completed, then passes the command's exit status to the security policy's
+     close function and exits.  As a special case, if the policy plugin does
+     not define a close function, sudo will execute the command directly in-
+     stead of calling fork(2) first.  The sudoers policy plugin will only de-
+     fine a close function when I/O logging is enabled, a pty is required, an
+     SELinux role is specified, the command has an associated timeout, or the
+     pam_session or pam_setcred options are enabled.  Note that pam_session
+     and pam_setcred are enabled by default on systems using PAM.
+
+     On systems that use PAM, the security policy's close function is respon-
+     sible for closing the PAM session.  It may also log the command's exit
+     status.
+
+   Signal handling
+     When the command is run as a child of the sudo process, sudo will relay
+     signals it receives to the command.  The SIGINT and SIGQUIT signals are
+     only relayed when the command is being run in a new pty or when the sig-
+     nal was sent by a user process, not the kernel.  This prevents the com-
+     mand from receiving SIGINT twice each time the user enters control-C.
+     Some signals, such as SIGSTOP and SIGKILL, cannot be caught and thus will
+     not be relayed to the command.  As a general rule, SIGTSTP should be used
+     instead of SIGSTOP when you wish to suspend a command being run by sudo.
+
+     As a special case, sudo will not relay signals that were sent by the com-
+     mand it is running.  This prevents the command from accidentally killing
+     itself.  On some systems, the reboot(8) command sends SIGTERM to all non-
+     system processes other than itself before rebooting the system.  This
+     prevents sudo from relaying the SIGTERM signal it received back to
+     reboot(8), which might then exit before the system was actually rebooted,
+     leaving it in a half-dead state similar to single user mode.  Note, how-
+     ever, that this check only applies to the command run by sudo and not any
+     other processes that the command may create.  As a result, running a
+     script that calls reboot(8) or shutdown(8) via sudo may cause the system
+     to end up in this undefined state unless the reboot(8) or shutdown(8) are
+     run using the exec() family of functions instead of system() (which in-
+     terposes a shell between the command and the calling process).
+
+     If no I/O logging plugins are loaded and the policy plugin has not de-
+     fined a close() function, set a command timeout, or required that the
+     command be run in a new pty, sudo may execute the command directly in-
+     stead of running it as a child process.
+
+   Plugins
+     Plugins may be specified via Plugin directives in the sudo.conf(5) file.
+     They may be loaded as dynamic shared objects (on systems that support
+     them), or compiled directly into the sudo binary.  If no sudo.conf(5)
+     file is present, or if it doesn't contain any Plugin lines, sudo will use
+     sudoers(5) for the policy, auditing, and I/O logging plugins.  See the
+     sudo.conf(5) manual for details of the /etc/sudo.conf file and the
+     sudo_plugin(5) manual for more information about the sudo plugin archi-
+     tecture.
+
+EXIT VALUE
+     Upon successful execution of a command, the exit status from sudo will be
+     the exit status of the program that was executed.  If the command termi-
+     nated due to receipt of a signal, sudo will send itself the same signal
+     that terminated the command.
+
+     If the -l option was specified without a command, sudo will exit with a
+     value of 0 if the user is allowed to run sudo and they authenticated suc-
+     cessfully (as required by the security policy).  If a command is speci-
+     fied with the -l option, the exit value will only be 0 if the command is
+     permitted by the security policy, otherwise it will be 1.
+
+     If there is an authentication failure, a configuration/permission prob-
+     lem, or if the given command cannot be executed, sudo exits with a value
+     of 1.  In the latter case, the error string is printed to the standard
+     error.  If sudo cannot stat(2) one or more entries in the user's PATH, an
+     error is printed to the standard error.  (If the directory does not exist
+     or if it is not really a directory, the entry is ignored and no error is
+     printed.)  This should not happen under normal circumstances.  The most
+     common reason for stat(2) to return &quot;permission denied&quot; is if you are
+     running an automounter and one of the directories in your PATH is on a
+     machine that is currently unreachable.
+
+SECURITY NOTES
+     sudo tries to be safe when executing external commands.
+
+     To prevent command spoofing, sudo checks &quot;.&quot; and &quot;&quot; (both denoting cur-
+     rent directory) last when searching for a command in the user's PATH (if
+     one or both are in the PATH).  Depending on the security policy, the
+     user's PATH environment variable may be modified, replaced, or passed un-
+     changed to the program that sudo executes.
+
+     Users should never be granted sudo privileges to execute files that are
+     writable by the user or that reside in a directory that is writable by
+     the user.  If the user can modify or replace the command there is no way
+     to limit what additional commands they can run.
+
+     Please note that sudo will normally only log the command it explicitly
+     runs.  If a user runs a command such as sudo su or sudo sh, subsequent
+     commands run from that shell are not subject to sudo's security policy.
+     The same is true for commands that offer shell escapes (including most
+     editors).  If I/O logging is enabled, subsequent commands will have their
+     input and/or output logged, but there will not be traditional logs for
+     those commands.  Because of this, care must be taken when giving users
+     access to commands via sudo to verify that the command does not inadver-
+     tently give the user an effective root shell.  For information on ways to
+     address this, please see the Preventing shell escapes section in
+     sudoers(5).
+
+     To prevent the disclosure of potentially sensitive information, sudo dis-
+     ables core dumps by default while it is executing (they are re-enabled
+     for the command that is run).  This historical practice dates from a time
+     when most operating systems allowed set-user-ID processes to dump core by
+     default.  To aid in debugging sudo crashes, you may wish to re-enable
+     core dumps by setting &quot;disable_coredump&quot; to false in the sudo.conf(5)
+     file as follows:
+
+           Set disable_coredump false
+
+     See the sudo.conf(5) manual for more information.
+
+ENVIRONMENT
+     sudo utilizes the following environment variables.  The security policy
+     has control over the actual content of the command's environment.
+
+     EDITOR           Default editor to use in -e (sudoedit) mode if neither
+                      SUDO_EDITOR nor VISUAL is set.
+
+     MAIL             Set to the mail spool of the target user when the -i op-
+                      tion is specified, or when env_reset is enabled in
+                      sudoers (unless MAIL is present in the env_keep list).
+
+     HOME             Set to the home directory of the target user when the -i
+                      or -H options are specified, when the -s option is spec-
+                      ified and set_home is set in sudoers, when
+                      always_set_home is enabled in sudoers, or when env_reset
+                      is enabled in sudoers and HOME is not present in the
+                      env_keep list.
+
+     LOGNAME          Set to the login name of the target user when the -i op-
+                      tion is specified, when the set_logname option is en-
+                      abled in sudoers, or when the env_reset option is en-
+                      abled in sudoers (unless LOGNAME is present in the
+                      env_keep list).
+
+     PATH             May be overridden by the security policy.
+
+     SHELL            Used to determine shell to run with -s option.
+
+     SUDO_ASKPASS     Specifies the path to a helper program used to read the
+                      password if no terminal is available or if the -A option
+                      is specified.
+
+     SUDO_COMMAND     Set to the command run by sudo, including command line
+                      arguments.  The command line arguments are truncated at
+                      4096 characters to prevent a potential execution error.
+
+     SUDO_EDITOR      Default editor to use in -e (sudoedit) mode.
+
+     SUDO_GID         Set to the group-ID of the user who invoked sudo.
+
+     SUDO_PROMPT      Used as the default password prompt unless the -p option
+                      was specified.
+
+     SUDO_PS1         If set, PS1 will be set to its value for the program be-
+                      ing run.
+
+     SUDO_UID         Set to the user-ID of the user who invoked sudo.
+
+     SUDO_USER        Set to the login name of the user who invoked sudo.
+
+     USER             Set to the same value as LOGNAME, described above.
+
+     VISUAL           Default editor to use in -e (sudoedit) mode if
+                      SUDO_EDITOR is not set.
+
+FILES
+     /etc/sudo.conf            sudo front-end configuration
+
+EXAMPLES
+     Note: the following examples assume a properly configured security pol-
+     icy.
+
+     To get a file listing of an unreadable directory:
+
+           $ sudo ls /usr/local/protected
+
+     To list the home directory of user yaz on a machine where the file system
+     holding ~yaz is not exported as root:
+
+           $ sudo -u yaz ls ~yaz
+
+     To edit the index.html file as user www:
+
+           $ sudoedit -u www ~www/htdocs/index.html
+
+     To view system logs only accessible to root and users in the adm group:
+
+           $ sudo -g adm more /var/log/syslog
+
+     To run an editor as jim with a different primary group:
+
+           $ sudoedit -u jim -g audio ~jim/sound.txt
+
+     To shut down a machine:
+
+           $ sudo shutdown -r +15 &quot;quick reboot&quot;
+
+     To make a usage listing of the directories in the /home partition.  Note
+     that this runs the commands in a sub-shell to make the cd and file redi-
+     rection work.
+
+           $ sudo sh -c &quot;cd /home ; du -s * | sort -rn &gt; USAGE&quot;
+
+DIAGNOSTICS
+     Error messages produced by sudo include:
+
+     editing files in a writable directory is not permitted
+           By default, sudoedit does not permit editing a file when any of the
+           parent directories are writable by the invoking user.  This avoids
+           a race condition that could allow the user to overwrite an arbi-
+           trary file.  See the sudoedit_checkdir option in sudoers(5) for
+           more information.
+
+     editing symbolic links is not permitted
+           By default, sudoedit does not follow symbolic links when opening
+           files.  See the sudoedit_follow option in sudoers(5) for more in-
+           formation.
+
+     effective uid is not 0, is sudo installed setuid root?
+           sudo was not run with root privileges.  The sudo binary must be
+           owned by the root user and have the set-user-ID bit set.  Also, it
+           must not be located on a file system mounted with the 'nosuid' op-
+           tion or on an NFS file system that maps uid 0 to an unprivileged
+           uid.
+
+     effective uid is not 0, is sudo on a file system with the 'nosuid' option
+           set or an NFS file system without root privileges?
+           sudo was not run with root privileges.  The sudo binary has the
+           proper owner and permissions but it still did not run with root
+           privileges.  The most common reason for this is that the file sys-
+           tem the sudo binary is located on is mounted with the 'nosuid' op-
+           tion or it is an NFS file system that maps uid 0 to an unprivileged
+           uid.
+
+     fatal error, unable to load plugins
+           An error occurred while loading or initializing the plugins speci-
+           fied in sudo.conf(5).
+
+     invalid environment variable name
+           One or more environment variable names specified via the -E option
+           contained an equal sign ('=').  The arguments to the -E option
+           should be environment variable names without an associated value.
+
+     no password was provided
+           When sudo tried to read the password, it did not receive any char-
+           acters.  This may happen if no terminal is available (or the -S op-
+           tion is specified) and the standard input has been redirected from
+           /dev/null.
+
+     a terminal is required to read the password
+           sudo needs to read the password but there is no mechanism available
+           for it to do so.  A terminal is not present to read the password
+           from, sudo has not been configured to read from the standard input,
+           the -S option was not used, and no askpass helper has been speci-
+           fied either via the sudo.conf(5) file or the SUDO_ASKPASS environ-
+           ment variable.
+
+     no writable temporary directory found
+           sudoedit was unable to find a usable temporary directory in which
+           to store its intermediate files.
+
+     The &quot;no new privileges&quot; flag is set, which prevents sudo from running as
+           root.
+           sudo was run by a process that has the Linux &quot;no new privileges&quot;
+           flag is set.  This causes the set-user-ID bit to be ignored when
+           running an executable, which will prevent sudo from functioning.
+           The most likely cause for this is running sudo within a container
+           that sets this flag.  Check the documentation to see if it is pos-
+           sible to configure the container such that the flag is not set.
+
+     sudo must be owned by uid 0 and have the setuid bit set
+           sudo was not run with root privileges.  The sudo binary does not
+           have the correct owner or permissions.  It must be owned by the
+           root user and have the set-user-ID bit set.
+
+     sudoedit is not supported on this platform
+           It is only possible to run sudoedit on systems that support setting
+           the effective user-ID.
+
+     timed out reading password
+           The user did not enter a password before the password timeout (5
+           minutes by default) expired.
+
+     you do not exist in the passwd database
+           Your user-ID does not appear in the system passwd database.
+
+     you may not specify environment variables in edit mode
+           It is only possible to specify environment variables when running a
+           command.  When editing a file, the editor is run with the user's
+           environment unmodified.
+
+SEE ALSO
+     su(1), stat(2), login_cap(3), passwd(5), sudo.conf(5), sudo_plugin(5),
+     sudoers(5), sudoers_timestamp(5), sudoreplay(8), visudo(8)
+
+HISTORY
+     See the HISTORY file in the sudo distribution (https://www.sudo.ws/his-
+     tory.html) for a brief history of sudo.
+
+AUTHORS
+     Many people have worked on sudo over the years; this version consists of
+     code written primarily by:
+
+           Todd C. Miller
+
+     See the CONTRIBUTORS file in the sudo distribution
+     (https://www.sudo.ws/contributors.html) for an exhaustive list of people
+     who have contributed to sudo.
+
+CAVEATS
+     There is no easy way to prevent a user from gaining a root shell if that
+     user is allowed to run arbitrary commands via sudo.  Also, many programs
+     (such as editors) allow the user to run commands via shell escapes, thus
+     avoiding sudo's checks.  However, on most systems it is possible to pre-
+     vent shell escapes with the sudoers(5) plugin's noexec functionality.
+
+     It is not meaningful to run the cd command directly via sudo, e.g.,
+
+           $ sudo cd /usr/local/protected
+
+     since when the command exits the parent process (your shell) will still
+     be the same.  Please see the EXAMPLES section for more information.
+
+     Running shell scripts via sudo can expose the same kernel bugs that make
+     set-user-ID shell scripts unsafe on some operating systems (if your OS
+     has a /dev/fd/ directory, set-user-ID shell scripts are generally safe).
+
+BUGS
+     If you feel you have found a bug in sudo, please submit a bug report at
+     https://bugzilla.sudo.ws/
+
+SUPPORT
+     Limited free support is available via the sudo-users mailing list, see
+     https://www.sudo.ws/mailman/listinfo/sudo-users to subscribe or search
+     the archives.
+
+DISCLAIMER
+     sudo is provided &quot;AS IS&quot; and any express or implied warranties, includ-
+     ing, but not limited to, the implied warranties of merchantability and
+     fitness for a particular purpose are disclaimed.  See the LICENSE file
+     distributed with sudo or https://www.sudo.ws/license.html for complete
+     details.
+
+Sudo 1.9.9                     January 19, 2022                     Sudo 1.9.9
+</code></pre>
+<hr>
+<h5 id=sudoreplay-2>sudoreplay</h5>
+<p>Replay sudo session logs</p>
+<pre><code>root@kali:~# sudoreplay -h
+sudoreplay - replay sudo session logs
+
+usage: sudoreplay [-hnRS] [-d dir] [-m num] [-s num] ID
+usage: sudoreplay [-h] [-d dir] -l [search expression]
+
+Options:
+  -d, --directory=dir    specify directory for session logs
+  -f, --filter=filter    specify which I/O type(s) to display
+  -h, --help             display help message and exit
+  -l, --list             list available session IDs, with optional expression
+  -m, --max-wait=num     max number of seconds to wait between events
+  -n, --non-interactive  no prompts, session is sent to the standard output
+  -R, --no-resize        do not attempt to re-size the terminal
+  -S, --suspend-wait     wait while the command was suspended
+  -s, --speed=num        speed up or slow down output
+  -V, --version          display version information and exit
+</code></pre>
+<hr>
+<h5 id=visudo-2>visudo</h5>
+<p>Edit the sudoers file</p>
+<pre><code>root@kali:~# visudo -h
+visudo - safely edit the sudoers file
+
+usage: visudo [-chqsV] [[-f] sudoers ]
+
+Options:
+  -c, --check              check-only mode
+  -f, --file=sudoers       specify sudoers file location
+  -h, --help               display help message and exit
+  -q, --quiet              less verbose (quiet) syntax error messages
+  -s, --strict             strict syntax checking
+  -V, --version            display version information and exit
+
+</code></pre>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2022-Feb-10<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/sudo/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../subversion/index.html>
+<i class=ti-arrow-left></i>
+<span>subversion</span>
+</a>
+<a href=../swaks/index.html>
+<span>swaks</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/sudo/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:16:33 GMT -->
+</html>

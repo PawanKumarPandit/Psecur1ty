@@ -1,0 +1,1828 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/gnuradio/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:13:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>gnuradio | Kali Linux Tools</title>
+<meta itemprop=name content="gnuradio | Kali Linux Tools">
+<meta name=application-name content="gnuradio | Kali Linux Tools">
+<meta name=twitter:title content="gnuradio | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="gnuradio | Kali Linux Tools">
+<meta itemprop=description content>
+<meta name=description content>
+<meta name=twitter:description content>
+<meta property="og:description" content>
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2022-02-10T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>gnuradio</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 3.10.1.0</code> <code>arch: any all</code>
+<hr>
+<div id=package-links>
+<a href=https://www.gnuradio.org/><i class=ti-world></i> gnuradio Homepage</a><span><span>|</span><a href=http://pkg.kali.org/gnuradio><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://salsa.debian.org/bottoms/pkg-gnuradio><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+</ul>
+</li>
+<li>
+Tools:
+<ul>
+<li><a href=../kali-meta/index.html#kali-tools-rfid title=kali-tools-rfid>rfid</a></li>
+<li><a href=../kali-meta/index.html#kali-tools-sdr title=kali-tools-sdr>sdr</a></li>
+<li><a href=../kali-meta/index.html#kali-tools-wireless title=kali-tools-wireless>wireless</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#gnuradio title=gnuradio>
+<i class=ti-package></i>gnuradio
+</a>
+<ul>
+<li>
+<a href=#dial_tone title=dial_tone>
+dial_tone
+</a>
+</li>
+<li>
+<a href=#display_qt title=display_qt>
+display_qt
+</a>
+</li>
+<li>
+<a href=#gnuradio-companion title=gnuradio-companion>
+gnuradio-companion
+</a>
+</li>
+<li>
+<a href=#gnuradio-config-info title=gnuradio-config-info>
+gnuradio-config-info
+</a>
+</li>
+<li>
+<a href=#gr-ctrlport-monitor title=gr-ctrlport-monitor>
+gr-ctrlport-monitor
+</a>
+</li>
+<li>
+<a href=#gr-perf-monitorx title=gr-perf-monitorx>
+gr-perf-monitorx
+</a>
+</li>
+<li>
+<a href=#gr_filter_design title=gr_filter_design>
+gr_filter_design
+</a>
+</li>
+<li>
+<a href=#gr_modtool title=gr_modtool>
+gr_modtool
+</a>
+</li>
+<li>
+<a href=#gr_plot title=gr_plot>
+gr_plot
+</a>
+</li>
+<li>
+<a href=#gr_plot_const title=gr_plot_const>
+gr_plot_const
+</a>
+</li>
+<li>
+<a href=#gr_plot_fft title=gr_plot_fft>
+gr_plot_fft
+</a>
+</li>
+<li>
+<a href=#gr_plot_iq title=gr_plot_iq>
+gr_plot_iq
+</a>
+</li>
+<li>
+<a href=#gr_plot_psd title=gr_plot_psd>
+gr_plot_psd
+</a>
+</li>
+<li>
+<a href=#gr_plot_qt title=gr_plot_qt>
+gr_plot_qt
+</a>
+</li>
+<li>
+<a href=#gr_read_file_metadata title=gr_read_file_metadata>
+gr_read_file_metadata
+</a>
+</li>
+<li>
+<a href=#grcc title=grcc>
+grcc
+</a>
+</li>
+<li>
+<a href=#polar_channel_construction title=polar_channel_construction>
+polar_channel_construction
+</a>
+</li>
+<li>
+<a href=#tags_demo title=tags_demo>
+tags_demo
+</a>
+</li>
+<li>
+<a href=#uhd_fft title=uhd_fft>
+uhd_fft
+</a>
+</li>
+<li>
+<a href=#uhd_rx_cfile title=uhd_rx_cfile>
+uhd_rx_cfile
+</a>
+</li>
+<li>
+<a href=#uhd_rx_nogui title=uhd_rx_nogui>
+uhd_rx_nogui
+</a>
+</li>
+<li>
+<a href=#uhd_siggen title=uhd_siggen>
+uhd_siggen
+</a>
+</li>
+<li>
+<a href=#uhd_siggen_gui title=uhd_siggen_gui>
+uhd_siggen_gui
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#gnuradio-dev title=gnuradio-dev>
+<i class=ti-package></i>gnuradio-dev
+</a>
+</li>
+<li>
+<a href=#gnuradio-doc title=gnuradio-doc>
+<i class=ti-package></i>gnuradio-doc
+</a>
+</li>
+<li>
+<a href=#libgnuradio-analog3101 title=libgnuradio-analog3.10.1>
+<i class=ti-package></i>libgnuradio-analog3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-audio3101 title=libgnuradio-audio3.10.1>
+<i class=ti-package></i>libgnuradio-audio3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-blocks3101 title=libgnuradio-blocks3.10.1>
+<i class=ti-package></i>libgnuradio-blocks3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-channels3101 title=libgnuradio-channels3.10.1>
+<i class=ti-package></i>libgnuradio-channels3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-digital3101 title=libgnuradio-digital3.10.1>
+<i class=ti-package></i>libgnuradio-digital3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-dtv3101 title=libgnuradio-dtv3.10.1>
+<i class=ti-package></i>libgnuradio-dtv3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-fec3101 title=libgnuradio-fec3.10.1>
+<i class=ti-package></i>libgnuradio-fec3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-fft3101 title=libgnuradio-fft3.10.1>
+<i class=ti-package></i>libgnuradio-fft3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-filter3101 title=libgnuradio-filter3.10.1>
+<i class=ti-package></i>libgnuradio-filter3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-iio3101 title=libgnuradio-iio3.10.1>
+<i class=ti-package></i>libgnuradio-iio3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-network3101 title=libgnuradio-network3.10.1>
+<i class=ti-package></i>libgnuradio-network3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-pdu3101 title=libgnuradio-pdu3.10.1>
+<i class=ti-package></i>libgnuradio-pdu3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-pmt3101 title=libgnuradio-pmt3.10.1>
+<i class=ti-package></i>libgnuradio-pmt3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-qtgui3101 title=libgnuradio-qtgui3.10.1>
+<i class=ti-package></i>libgnuradio-qtgui3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-runtime3101 title=libgnuradio-runtime3.10.1>
+<i class=ti-package></i>libgnuradio-runtime3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-soapy3101 title=libgnuradio-soapy3.10.1>
+<i class=ti-package></i>libgnuradio-soapy3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-trellis3101 title=libgnuradio-trellis3.10.1>
+<i class=ti-package></i>libgnuradio-trellis3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-uhd3101 title=libgnuradio-uhd3.10.1>
+<i class=ti-package></i>libgnuradio-uhd3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-video-sdl3101 title=libgnuradio-video-sdl3.10.1>
+<i class=ti-package></i>libgnuradio-video-sdl3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-vocoder3101 title=libgnuradio-vocoder3.10.1>
+<i class=ti-package></i>libgnuradio-vocoder3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-wavelet3101 title=libgnuradio-wavelet3.10.1>
+<i class=ti-package></i>libgnuradio-wavelet3.10.1
+</a>
+</li>
+<li>
+<a href=#libgnuradio-zeromq3101 title=libgnuradio-zeromq3.10.1>
+<i class=ti-package></i>libgnuradio-zeromq3.10.1
+</a>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=gnuradio>gnuradio</h3>
+<p>GNU Radio provides signal processing blocks to implement software
+radios. It can be used with readily-available low-cost external RF
+hardware to create software-defined radios, or without hardware in a
+simulation-like environment. It is widely used in hobbyist, academic
+and commercial environments to support both wireless communications
+research and real-world radio systems.</p>
+<p>GNU Radio applications are primarily written using the Python
+programming language, while the supplied performance-critical signal
+processing path is implemented in C++ using processor floating-point
+extensions, where available. Thus, the developer is able to implement
+real-time, high-throughput radio systems in a simple-to-use,
+rapid-application-development environment.</p>
+<p>While not primarily a simulation tool, GNU Radio does support
+development of signal processing algorithms using pre-recorded or
+generated data, avoiding the need for actual RF hardware.</p>
+<p>This package contains the gnuradio-companion, a graphical tool for
+creating signal flow graphs and generating flow-graph source code.
+Also included are a variety of tools and utility programs.</p>
+<p><strong>Installed size:</strong> <code>20.26 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install gnuradio</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-program-options1.74.0</li>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgmp10</li>
+<li>libgnuradio-analog3.10.1</li>
+<li>libgnuradio-audio3.10.1</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-channels3.10.1</li>
+<li>libgnuradio-digital3.10.1</li>
+<li>libgnuradio-dtv3.10.1</li>
+<li>libgnuradio-fec3.10.1</li>
+<li>libgnuradio-fft3.10.1</li>
+<li>libgnuradio-filter3.10.1</li>
+<li>libgnuradio-iio3.10.1</li>
+<li>libgnuradio-network3.10.1</li>
+<li>libgnuradio-pdu3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-qtgui3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libgnuradio-soapy3.10.1</li>
+<li>libgnuradio-trellis3.10.1</li>
+<li>libgnuradio-uhd3.10.1</li>
+<li>libgnuradio-video-sdl3.10.1</li>
+<li>libgnuradio-vocoder3.10.1</li>
+<li>libgnuradio-wavelet3.10.1</li>
+<li>libgnuradio-zeromq3.10.1</li>
+<li>libjs-mathjax</li>
+<li>libqt5core5a</li>
+<li>libqt5widgets5</li>
+<li>libsoapysdr0.8</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libuhd4.1.0</li>
+<li>libvolk2-bin</li>
+<li>libvolk2.5</li>
+<li>python3</li>
+<li>python3</li>
+<li>python3-click</li>
+<li>python3-click-plugins</li>
+<li>python3-gi</li>
+<li>python3-gi-cairo</li>
+<li>python3-lxml</li>
+<li>python3-mako</li>
+<li>python3-numpy</li>
+<li>python3-numpy-abi9</li>
+<li>python3-opengl</li>
+<li>python3-packaging</li>
+<li>python3-pygccxml</li>
+<li>python3-pyqt5</li>
+<li>python3-pyqtgraph</li>
+<li>python3-sip</li>
+<li>python3-thrift</li>
+<li>python3-yaml</li>
+<li>python3-zmq
+</div></li>
+</ul>
+<h5 id=dial_tone>dial_tone</h5>
+<p>Dial tone example</p>
+<pre><code>root@kali:~# man dial_tone
+DIAL_TONE(1)                     User Commands                    DIAL_TONE(1)
+
+NAME
+       dial_tone - dial tone example
+
+DESCRIPTION
+       GnuRadio Dial Tone example
+
+OPTIONS
+       None
+
+       Play a Dial Tone on the sound card output device.
+
+SEE ALSO
+       The  c++ gnuradio example programs are in /usr/bin. There are also many
+       Python and GnuRadio  Companion  examples  in  /usr/share/gnuradio/exam-
+       ples/...
+
+       tags_demo(1)      uhd_rx_cfile(1)     uhd_rx_nogui(1)     uhd_siggen(1)
+       uhd_siggen_gui(1)
+
+DIAL_TONE 3.10.1.0                2022-02-01                      DIAL_TONE(1)
+</code></pre>
+<hr>
+<h5 id=display_qt>display_qt</h5>
+<p>A Gnu Radio Example gr-qtgui</p>
+<pre><code>root@kali:~# man display_qt
+DISPLAY_QT(1)                    User Commands                   DISPLAY_QT(1)
+
+NAME
+       display_qt - a Gnu Radio Example gr-qtgui
+
+DESCRIPTION
+       Display a GUI using QT of a sine wave in noise.
+
+       Example  program  instantiates a GNU Radio flow graph using a sine wave
+       source, a noise source, and  gr-qtgui  blocks.  This  new  (in  version
+       3.7.10) example shows how to build a C++ only QT based application.
+
+SEE ALSO
+       http://gnuradio.squarespace.com/examples/tag/qt
+
+display_qt 3.10.1.0               2022-02-01                     DISPLAY_QT(1)
+</code></pre>
+<hr>
+<h5 id=gnuradio-companion>gnuradio-companion</h5>
+<p>GNU Radio Companion (GRC) is a graphical tool for creating GNU Radio signal flowgraphs.</p>
+<pre><code>root@kali:~# gnuradio-companion -h
+usage: gnuradio-companion [-h] [--log {debug,info,warning,error,critical}]
+                          [flow_graphs ...]
+
+GNU Radio Companion 3.10.1.0 This program is part of GNU Radio GRC comes with
+ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to
+redistribute it.
+
+positional arguments:
+  flow_graphs
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --log {debug,info,warning,error,critical}
+</code></pre>
+<hr>
+<h5 id=gnuradio-config-info>gnuradio-config-info</h5>
+<p>Show details on installed GNU radio</p>
+<pre><code>root@kali:~# gnuradio-config-info -h
+Program options: gnuradio-config-info [options]:
+  -h [ --help ]         print help message
+  --print-all           print all information
+  --prefix              print GNU Radio installation prefix
+  --sysconfdir          print GNU Radio system configuration directory
+  --prefsdir            print GNU Radio preferences directory
+  --userprefsdir        print GNU Radio user preferences directory
+  --prefs               print GNU Radio preferences
+  --builddate           print GNU Radio build date (RFC2822 format)
+  --enabled-components  print GNU Radio build time enabled components
+  --cc                  print GNU Radio C compiler version
+  --cxx                 print GNU Radio C++ compiler version
+  --cflags              print GNU Radio CFLAGS
+  -v [ --version ]      print GNU Radio version
+  --pybind              print pybind11 version used in this build
+
+</code></pre>
+<hr>
+<h5 id=gr-ctrlport-monitor>gr-ctrlport-monitor</h5>
+<p>Gnuradio control port gui</p>
+<pre><code>root@kali:~# gr-ctrlport-monitor -h
+usage: gr-ctrlport-monitor [-h] [host] port
+
+GNU Radio Control Port Monitor
+
+positional arguments:
+  host        host name or IP
+  port        port
+
+optional arguments:
+  -h, --help  show this help message and exit
+</code></pre>
+<hr>
+<h5 id=gr-perf-monitorx>gr-perf-monitorx</h5>
+<p>Gnuradio control port gui</p>
+<pre><code>root@kali:~# man gr-perf-monitorx
+GR-CTRLPORT-MONITOR(1)           User Commands          GR-CTRLPORT-MONITOR(1)
+
+NAME
+       gr-ctrlport-monitor - gnuradio control port gui
+
+SYNOPSIS
+       gr-ctrlport-monitor [options]
+
+OPTIONS
+       -h, --help
+              show this help message and exit
+
+       -H HOST, --host=HOST
+              Hostname of ControlPort server.
+
+       -p PORT, --port=PORT
+              Port number of host's ControlPort endpoint.
+
+       -i INTERFACES, --interfaces=INTERFACES
+              Interfaces to use. [default=['lo']]
+
+       -P PROTOCOL, --protocol=PROTOCOL
+              Type of protocol to use (usually tcp). [default=tcp]
+
+       -a APP, --app=APP
+              Name of application [default=gnuradio]
+
+       gr-ctrlport-monitor: error: no such option: --version
+
+SEE ALSO
+       The  full  documentation  for Usage: is maintained as a Texinfo manual.
+       If the info and Usage: programs are properly installed  at  your  site,
+       the command
+
+              info Usage:
+
+       should give you access to the complete manual.
+
+GNU Radio Companion 3.10.1.0      2022-02-01            GR-CTRLPORT-MONITOR(1)
+</code></pre>
+<hr>
+<h5 id=gr_filter_design>gr_filter_design</h5>
+<p>GUI for creating filters for GNU Radio</p>
+<pre><code>root@kali:~# gr_filter_design -h
+Usage: gr_filter_design: [options] (input_filename)
+
+Options:
+  -h, --help  show this help message and exit
+</code></pre>
+<hr>
+<h5 id=gr_modtool>gr_modtool</h5>
+<p>The swiss army knife of module editing</p>
+<pre><code>root@kali:~# gr_modtool --help
+Usage: gr_modtool [OPTIONS] COMMAND [ARGS]...
+
+  A tool for editing GNU Radio out-of-tree modules.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  add       Adds a block to the out-of-tree module.
+  bind      Generate Python bindings for GR block
+  disable   Disable selected block in module.
+  info      Return information about a given module
+  makeyaml  Generate YAML files for GRC block bindings.
+  newmod    Create new empty module, use add to add blocks.
+  rename    Rename a block inside a module.
+  rm        Remove a block from a module.
+  update    Update the grc bindings for a block
+
+  Manipulate with GNU Radio modules source code tree. Call it without options
+  to run specified command interactively
+</code></pre>
+<hr>
+<h5 id=gr_plot>gr_plot</h5>
+<p>Display time series of samples from a file</p>
+<pre><code>root@kali:~# gr_plot -h
+usage: gr_plot [-h]
+               [-d {complex64,float32,uint32,int32,uint16,int16,uint8,int8}]
+               [-B BLOCK] [-s START] [-R SAMPLE_RATE]
+               FILE [FILE ...]
+
+Takes a GNU Radio binary file and displays the samples versus time. You can
+set the block size to specify how many points to read in at a time and the
+start position in the file. By default, the system assumes a sample rate of 1,
+so in time, each sample is plotted versus the sample number. To set a true
+time axis, set the sample rate (-R or --sample-rate) to the sample rate used
+when capturing the samples.
+
+positional arguments:
+  FILE                  Input file with samples
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d {complex64,float32,uint32,int32,uint16,int16,uint8,int8}, --data-type {complex64,float32,uint32,int32,uint16,int16,uint8,int8}
+                        Specify the data type [default='complex64']
+  -B BLOCK, --block BLOCK
+                        Specify the block size [default=1000]
+  -s START, --start START
+                        Specify where to start in the file [default=0]
+  -R SAMPLE_RATE, --sample-rate SAMPLE_RATE
+                        Set the sampler rate of the data [default=1.0]
+</code></pre>
+<hr>
+<h5 id=gr_plot_const>gr_plot_const</h5>
+<p>Constellation plot of I&Q data using GNU Radio</p>
+<pre><code>root@kali:~# gr_plot_const -h
+usage: gr_plot_const [-h] [-B BLOCK] [-s START] [-R SAMPLE_RATE] FILE
+
+Takes a GNU Radio complex binary file and displays the I&amp;Q data versus time
+and the constellation plot (I vs. Q). You can set the block size to specify
+how many points to read in at a time and the start position in the file. By
+default, the system assumes a sample rate of 1, so in time, each sample is
+plotted versus the sample number. To set a true time axis, set the sample rate
+(-R or --sample-rate) to the sample rate used when capturing the samples.
+
+positional arguments:
+  FILE                  Input file with complex samples
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -B BLOCK, --block BLOCK
+                        Specify the block size [default=1000]
+  -s START, --start START
+                        Specify where to start in the file [default=0]
+  -R SAMPLE_RATE, --sample-rate SAMPLE_RATE
+                        Set the sampler rate of the data [default=1.0]
+</code></pre>
+<hr>
+<h5 id=gr_plot_fft>gr_plot_fft</h5>
+<p>Frequency domain GNU Radio plotting</p>
+<pre><code>root@kali:~# gr_plot_fft -h
+usage: gr_plot_fft [-h]
+                   [-d {complex64,float32,uint32,int32,uint16,int16,uint8,int8}]
+                   [-B BLOCK] [-s START] [-R SAMPLE_RATE]
+                   FILE
+
+Takes a GNU Radio complex binary file and displays the I&amp;Q data versus time as
+well as the frequency domain (FFT) plot. The y-axis values are plotted
+assuming volts as the amplitude of the I&amp;Q streams and converted into dBm in
+the frequency domain (the 1/N power adjustment out of the FFT is performed
+internally). The script plots a certain block of data at a time, specified on
+the command line as -B or --block. This value defaults to 1000. The start
+position in the file can be set by specifying -s or --start and defaults to 0
+(the start of the file). By default, the system assumes a sample rate of 1, so
+in time, each sample is plotted versus the sample number. To set a true time
+and frequency axis, set the sample rate (-R or --sample-rate) to the sample
+rate used when capturing the samples.
+
+positional arguments:
+  FILE                  Input file with samples
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d {complex64,float32,uint32,int32,uint16,int16,uint8,int8}, --data-type {complex64,float32,uint32,int32,uint16,int16,uint8,int8}
+                        Specify the data type [default='complex64']
+  -B BLOCK, --block BLOCK
+                        Specify the block size [default=1000]
+  -s START, --start START
+                        Specify where to start in the file [default=0]
+  -R SAMPLE_RATE, --sample-rate SAMPLE_RATE
+                        Set the sampler rate of the data [default=1.0]
+</code></pre>
+<hr>
+<h5 id=gr_plot_iq>gr_plot_iq</h5>
+<p>Plot complex binary I&Q data versus time using GNU Radio</p>
+<pre><code>root@kali:~# gr_plot_iq -h
+usage: gr_plot_iq [-h] [-B BLOCK] [-s START] [-R SAMPLE_RATE] FILE
+
+Takes a GNU Radio complex binary file and displays the I&amp;Q data versus time.
+You can set the block size to specify how many points to read in at a time and
+the start position in the file. By default, the system assumes a sample rate
+of 1, so in time, each sample is plotted versus the sample number. To set a
+true time axis, set the sample rate (-R or --sample-rate) to the sample rate
+used when capturing the samples.
+
+positional arguments:
+  FILE                  Input file with complex samples
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -B BLOCK, --block BLOCK
+                        Specify the block size [default=1000]
+  -s START, --start START
+                        Specify where to start in the file [default=0]
+  -R SAMPLE_RATE, --sample-rate SAMPLE_RATE
+                        Set the sampler rate of the data [default=1.0]
+</code></pre>
+<hr>
+<h5 id=gr_plot_psd>gr_plot_psd</h5>
+<p>GNU Radio power spectrum plotting</p>
+<pre><code>root@kali:~# gr_plot_psd -h
+usage: gr_plot_psd [-h]
+                   [-d {complex64,float32,int32,uint32,int16,uint16,int8,uint8}]
+                   [-B BLOCK] [-s START] [-R SAMPLE_RATE]
+                   [--psd-size PSD_SIZE] [--spec-size SPEC_SIZE] [-S]
+                   FILE
+
+Takes a GNU Radio binary file (with specified data type using --data-type) and
+displays the I&amp;Q data versus time as well as the power spectral density (PSD)
+plot. The y-axis values are plotted assuming volts as the amplitude of the I&amp;Q
+streams and converted into dBm in the frequency domain (the 1/N power
+adjustment out of the FFT is performed internally). The script plots a certain
+block of data at a time, specified on the command line as -B or --block. The
+start position in the file can be set by specifying -s or --start and defaults
+to 0 (the start of the file). By default, the system assumes a sample rate of
+1, so in time, each sample is plotted versus the sample number. To set a true
+time and frequency axis, set the sample rate (-R or --sample-rate) to the
+sample rate used when capturing the samples. Finally, the size of the FFT to
+use for the PSD and spectrogram plots can be set independently with --psd-size
+and --spec-size, respectively. The spectrogram plot does not display by
+default and is turned on with -S or --enable-spec.
+
+positional arguments:
+  FILE                  Input file with samples
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d {complex64,float32,int32,uint32,int16,uint16,int8,uint8}, --data-type {complex64,float32,int32,uint32,int16,uint16,int8,uint8}
+                        Specify the data type [default='complex64']
+  -B BLOCK, --block BLOCK
+                        Specify the block size [default=8192]
+  -s START, --start START
+                        Specify where to start in the file [default=0]
+  -R SAMPLE_RATE, --sample-rate SAMPLE_RATE
+                        Set the sampler rate of the data [default=1.0]
+  --psd-size PSD_SIZE   Set the size of the PSD FFT [default=1024]
+  --spec-size SPEC_SIZE
+                        Set the size of the spectrogram FFT [default=256]
+  -S, --enable-spec     Turn on plotting the spectrogram [default=False]
+</code></pre>
+<hr>
+<h5 id=gr_plot_qt>gr_plot_qt</h5>
+<p>Plot data using Qt graphics and GNU Radio</p>
+<pre><code>root@kali:~# man gr_plot_qt
+GR_PLOT_QT(1)                    User Commands                   GR_PLOT_QT(1)
+
+NAME
+       gr_plot_qt - plot data using Qt graphics and GNU Radio
+
+DESCRIPTION
+       Fancy plot display.
+
+SEE ALSO
+       gr_plot_char(1)   gr_plot_const(1)   gr_plot_fft_c(1)  gr_plot_fft_f(1)
+       gr_plot_float(1)    gr_plot_int(1)    gr_plot_iq(1)    gr_plot_psd_c(1)
+       gr_plot_psd_f(1)  gr_plot_qt(1)  gr_plot_short(1)
+
+gr_plot_qt 3.10.1.0               2022-02-01                     GR_PLOT_QT(1)
+</code></pre>
+<hr>
+<h5 id=gr_read_file_metadata>gr_read_file_metadata</h5>
+<p>A Gnu Radio Utility</p>
+<pre><code>root@kali:~# gr_read_file_metadata -h
+usage: gr_read_file_metadata [-h] [-D] FILE
+
+Read in a GNU Radio file with meta data, extracts the header and prints it.
+
+positional arguments:
+  FILE            Input file
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -D, --detached  Used if header is detached.
+</code></pre>
+<hr>
+<h5 id=grcc>grcc</h5>
+<p>Gnu Radio Companion Compiler</p>
+<pre><code>root@kali:~# grcc -h
+usage: grcc [-h] [-o DIR] [-u] [-r] GRC_FILE [GRC_FILE ...]
+
+Compile a GRC file (.grc) into a GNU Radio Python program and run it.
+
+positional arguments:
+  GRC_FILE              .grc file to compile
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o DIR, --output DIR  Output directory for compiled program [default=.]
+  -u, --user-lib-dir    Output to default hier_block library (overwrites -o)
+  -r, --run             Run the program after compiling [default=False]
+</code></pre>
+<hr>
+<h5 id=polar_channel_construction>polar_channel_construction</h5>
+<p>Gnu Radio Polar Configurator</p>
+<pre><code>root@kali:~# polar_channel_construction -h
+POLAR code channel constructor commandline tool
+usage: polar_channel_construction [-h] [-c {BEC,AWGN}] [-b BLOCK_SIZE]
+                                  [-s DESIGN_SNR] [-k MU]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c {BEC,AWGN}, --channel {BEC,AWGN}
+                        specify channel, currently BEC or AWGN (default='BEC')
+  -b BLOCK_SIZE, --blocksize BLOCK_SIZE
+                        specify block size of polar code (default=16)
+  -s DESIGN_SNR, --design-snr DESIGN_SNR
+                        specify design SNR of polar code (default=0.0)
+  -k MU, --mu MU        specify block size of polar code (default=2)
+</code></pre>
+<hr>
+<h5 id=tags_demo>tags_demo</h5>
+<p>GNURadio and UHD tags example</p>
+<pre><code>root@kali:~# tags_demo --help
+UHD Tags Demo Allowed options:
+  --help                             help message
+  --addr arg                         the device address in string format
+  --rate arg (=1000000)              the sample rate in samples per second
+  --freq arg (=10000000)             the center frequency in Hz
+  --burst arg (=0.10000000000000001) the duration of each burst in seconds
+  --idle arg (=0.050000000000000003) idle time between bursts in seconds
+  --length_tag arg                   the length tag key name
+
+The tags sink demo block will print USRP source time stamps.
+The tags source demo block will send bursts to the USRP sink.
+Look at the USRP output on a scope to see the timed bursts.
+
+</code></pre>
+<hr>
+<h5 id=uhd_fft>uhd_fft</h5>
+<p>Display spectrum from UHD receiver</p>
+<pre><code>root@kali:~# uhd_fft -h
+usage: uhd_fft [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
+               [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
+               [-c CHANNELS] [--lo-export LO_EXPORT] [--lo-source LO_SOURCE]
+               [--otw-format {sc16,sc12,sc8}] [--stream-args STREAM_ARGS] [-v]
+               [--show-async-msg] [--sync {default,pps,auto}]
+               [--clock-source CLOCK_SOURCE] [--time-source TIME_SOURCE]
+               [--fft-size FFT_SIZE] [--fft-average {off,low,medium,high}]
+               [--avg-alpha AVG_ALPHA] [--update-rate UPDATE_RATE]
+               [--phase-relations]
+
+UHD FFT
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+USRP Arguments:
+  -a ARGS, --args ARGS  UHD device address args
+  --spec SPEC           Subdevice(s) of UHD device where appropriate. Use a
+                        comma-separated list to set different boards to
+                        different specs.
+  -A ANTENNA, --antenna ANTENNA
+                        Select Rx antenna(s) where appropriate
+  -s SAMP_RATE, --samp-rate SAMP_RATE
+                        Sample rate
+  -g GAIN, --gain GAIN  Gain (default is midpoint)
+  -p POWER, --power POWER
+                        (Reference) power level (in dBm). Not supported by all
+                        devices (see UHD manual). Will fail if not supported.
+                        Precludes --gain. Behaviour may differ between
+                        applications.
+  -f FREQ, --freq FREQ  Set carrier frequency to FREQ
+  --lo-offset LO_OFFSET
+                        Set daughterboard LO offset to OFFSET [default=hw
+                        default]
+  -c CHANNELS, --channels CHANNELS
+                        Select Rx Channels
+  --lo-export LO_EXPORT
+                        Set TwinRX LO export {None, True, False} for each
+                        channel with a comma-separated list. None skips a
+                        channel.
+  --lo-source LO_SOURCE
+                        Set TwinRX LO source {None, internal, companion,
+                        external} for each channel with a comma-separated
+                        list. None skips this channel.
+  --otw-format {sc16,sc12,sc8}
+                        Choose over-the-wire data format
+  --stream-args STREAM_ARGS
+                        Set additional stream arguments
+  -v, --verbose         Use verbose console output
+  --show-async-msg      Show asynchronous message notifications from UHD
+  --sync {default,pps,auto}
+                        Set to 'pps' to sync devices to PPS
+  --clock-source CLOCK_SOURCE
+                        Set the clock source; typically 'internal', 'external'
+                        or 'gpsdo'
+  --time-source TIME_SOURCE
+                        Set the time source
+
+UHD FFT Arguments:
+  --fft-size FFT_SIZE   Set number of FFT bins
+  --fft-average {off,low,medium,high}
+                        Set FFT averaging
+  --avg-alpha AVG_ALPHA
+                        Specify FFT average alpha (overrides --fft-average)
+  --update-rate UPDATE_RATE
+                        Set GUI widget update period in seconds
+  --phase-relations     Plot relative phases between multiple channels
+</code></pre>
+<hr>
+<h5 id=uhd_rx_cfile>uhd_rx_cfile</h5>
+<p>Save UHD received data</p>
+<pre><code>root@kali:~# uhd_rx_cfile -h
+Usage: uhd_rx_cfile: [options] output_filename
+
+Options:
+  -h, --help            show this help message and exit
+  -a ARGS, --args=ARGS  UHD device address args , [default=]
+  --spec=SPEC           Subdevice of UHD device where appropriate
+  -c CHANNELS, --channels=CHANNELS
+                        Select receive channels
+  -A ANTENNA, --antenna=ANTENNA
+                        Select Rx Antenna(s) where appropriate. Use a comma-
+                        delimited list if different channels have different
+                        antenna ports.
+  -r SAMP_RATE, --samp-rate=SAMP_RATE
+                        Set sample rate (bandwidth) [default=1000000.0]
+  -f FREQ, --freq=FREQ  Set frequency to FREQ
+  --lo-offset=LO_OFFSET
+                        Set daughterboard LO offset to OFFSET [default=hw
+                        default]
+  -g GAIN, --gain=GAIN  Set gain in dB (default is midpoint)
+  --normalized-gain     Specify gain as normalized value (in [0, 1])
+  -m, --metafile        output metadata to file [default=False]
+  -s, --output-shorts   Output interleaved shorts instead of complex floats
+  -N NSAMPLES, --nsamples=NSAMPLES
+                        Number of samples to collect [default=+inf]
+  -v, --verbose         verbose output
+  --wire-format=WIRE_FORMAT
+                        Set wire format from USRP [default=sc16
+  --stream-args=STREAM_ARGS
+                        Set additional stream arguments
+  --show-async-msg      Show asynchronous message notifications from UHD
+                        [default=False]
+  --sync=SYNC           Set to 'pps' to sync devices to PPS instead of
+                        internal.
+</code></pre>
+<hr>
+<h5 id=uhd_rx_nogui>uhd_rx_nogui</h5>
+<p>GNU Radio receiver</p>
+<pre><code>root@kali:~# uhd_rx_nogui -h
+usage: uhd_rx_nogui [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-f Hz] [-c Hz]
+                    [-g dB] [-m TYPE] [-o RATE] [-r dB] [-p FREQ]
+                    [-O AUDIO_OUTPUT] [--show-async-msg]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a ARGS, --args ARGS  UHD device address args
+  --spec SPEC           Subdevice of UHD device where appropriate
+  -A ANTENNA, --antenna ANTENNA
+                        select Rx Antenna where appropriate
+  -f Hz, --frequency Hz
+                        set receive frequency to Hz
+  -c Hz, --calibration Hz
+                        set frequency offset to Hz
+  -g dB, --gain dB      set RF gain [default is midpoint]
+  -m TYPE, --modulation TYPE
+                        set modulation type (AM,FM,WFM)
+  -o RATE, --output-rate RATE
+                        set audio output rate to RATE
+  -r dB, --rf-squelch dB
+                        set RF squelch to dB [default=-50.0]
+  -p FREQ, --ctcss FREQ
+                        set CTCSS squelch to FREQ
+  -O AUDIO_OUTPUT, --audio-output AUDIO_OUTPUT
+                        pcm device name. E.g., hw:0,0 or surround51 or
+                        /dev/dsp
+  --show-async-msg      Show asynchronous message notifications from UHD
+</code></pre>
+<hr>
+<h5 id=uhd_siggen>uhd_siggen</h5>
+<p>Signal Generator using UHD hardware</p>
+<pre><code>root@kali:~# uhd_siggen -h
+usage: uhd_siggen [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
+                  [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
+                  [-c CHANNELS] [--lo-export LO_EXPORT]
+                  [--lo-source LO_SOURCE] [--otw-format {sc16,sc12,sc8}]
+                  [--stream-args STREAM_ARGS] [-v] [--show-async-msg]
+                  [--sync {default,pps,auto}] [--clock-source CLOCK_SOURCE]
+                  [--time-source TIME_SOURCE] [-m AMPL] [-x WAVEFORM_FREQ]
+                  [-y WAVEFORM2_FREQ] [--sine] [--const] [--offset OFFSET]
+                  [--gaussian] [--uniform] [--2tone] [--sweep]
+
+USRP Signal Generator.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+USRP Arguments:
+  -a ARGS, --args ARGS  UHD device address args
+  --spec SPEC           Subdevice(s) of UHD device where appropriate. Use a
+                        comma-separated list to set different boards to
+                        different specs.
+  -A ANTENNA, --antenna ANTENNA
+                        Select Tx antenna(s) where appropriate
+  -s SAMP_RATE, --samp-rate SAMP_RATE
+                        Sample rate
+  -g GAIN, --gain GAIN  Gain (default is midpoint)
+  -p POWER, --power POWER
+                        (Reference) power level (in dBm). Not supported by all
+                        devices (see UHD manual). Will fail if not supported.
+                        Precludes --gain. Behaviour may differ between
+                        applications.
+  -f FREQ, --freq FREQ  Set carrier frequency to FREQ
+  --lo-offset LO_OFFSET
+                        Set daughterboard LO offset to OFFSET [default=hw
+                        default]
+  -c CHANNELS, --channels CHANNELS
+                        Select Tx Channels
+  --lo-export LO_EXPORT
+                        Set TwinRX LO export {None, True, False} for each
+                        channel with a comma-separated list. None skips a
+                        channel.
+  --lo-source LO_SOURCE
+                        Set TwinRX LO source {None, internal, companion,
+                        external} for each channel with a comma-separated
+                        list. None skips this channel.
+  --otw-format {sc16,sc12,sc8}
+                        Choose over-the-wire data format
+  --stream-args STREAM_ARGS
+                        Set additional stream arguments
+  -v, --verbose         Use verbose console output
+  --show-async-msg      Show asynchronous message notifications from UHD
+  --sync {default,pps,auto}
+                        Set to 'pps' to sync devices to PPS
+  --clock-source CLOCK_SOURCE
+                        Set the clock source; typically 'internal', 'external'
+                        or 'gpsdo'
+  --time-source TIME_SOURCE
+                        Set the time source
+
+Siggen Arguments:
+  -m AMPL, --amplitude AMPL
+                        Set output amplitude to AMPL (0.0-1.0). Note that if
+                        --power is given, UHD will attempt to match the output
+                        power regardless of the amplitude.
+  -x WAVEFORM_FREQ, --waveform-freq WAVEFORM_FREQ
+                        Set baseband waveform frequency to FREQ
+  -y WAVEFORM2_FREQ, --waveform2-freq WAVEFORM2_FREQ
+                        Set 2nd waveform frequency to FREQ
+  --sine                Generate a carrier modulated by a complex sine wave
+  --const               Generate a constant carrier
+  --offset OFFSET       Set waveform phase offset to OFFSET
+  --gaussian            Generate Gaussian random output
+  --uniform             Generate Uniform random output
+  --2tone               Generate Two Tone signal for IMD testing
+  --sweep               Generate a swept sine wave
+</code></pre>
+<hr>
+<h5 id=uhd_siggen_gui>uhd_siggen_gui</h5>
+<p>GNU Radio signal generator using UHD hardware</p>
+<pre><code>root@kali:~# uhd_siggen_gui -h
+usage: uhd_siggen_gui [-h] [-a ARGS] [--spec SPEC] [-A ANTENNA] [-s SAMP_RATE]
+                      [-g GAIN] [-p POWER] -f FREQ [--lo-offset LO_OFFSET]
+                      [-c CHANNELS] [--lo-export LO_EXPORT]
+                      [--lo-source LO_SOURCE] [--otw-format {sc16,sc12,sc8}]
+                      [--stream-args STREAM_ARGS] [-v] [--show-async-msg]
+                      [--sync {default,pps,auto}]
+                      [--clock-source CLOCK_SOURCE]
+                      [--time-source TIME_SOURCE] [-m AMPL] [-x WAVEFORM_FREQ]
+                      [-y WAVEFORM2_FREQ] [--sine] [--const] [--offset OFFSET]
+                      [--gaussian] [--uniform] [--2tone] [--sweep] [-q]
+
+USRP Signal Generator.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+USRP Arguments:
+  -a ARGS, --args ARGS  UHD device address args
+  --spec SPEC           Subdevice(s) of UHD device where appropriate. Use a
+                        comma-separated list to set different boards to
+                        different specs.
+  -A ANTENNA, --antenna ANTENNA
+                        Select Tx antenna(s) where appropriate
+  -s SAMP_RATE, --samp-rate SAMP_RATE
+                        Sample rate
+  -g GAIN, --gain GAIN  Gain (default is midpoint)
+  -p POWER, --power POWER
+                        (Reference) power level (in dBm). Not supported by all
+                        devices (see UHD manual). Will fail if not supported.
+                        Precludes --gain. Behaviour may differ between
+                        applications.
+  -f FREQ, --freq FREQ  Set carrier frequency to FREQ
+  --lo-offset LO_OFFSET
+                        Set daughterboard LO offset to OFFSET [default=hw
+                        default]
+  -c CHANNELS, --channels CHANNELS
+                        Select Tx Channels
+  --lo-export LO_EXPORT
+                        Set TwinRX LO export {None, True, False} for each
+                        channel with a comma-separated list. None skips a
+                        channel.
+  --lo-source LO_SOURCE
+                        Set TwinRX LO source {None, internal, companion,
+                        external} for each channel with a comma-separated
+                        list. None skips this channel.
+  --otw-format {sc16,sc12,sc8}
+                        Choose over-the-wire data format
+  --stream-args STREAM_ARGS
+                        Set additional stream arguments
+  -v, --verbose         Use verbose console output
+  --show-async-msg      Show asynchronous message notifications from UHD
+  --sync {default,pps,auto}
+                        Set to 'pps' to sync devices to PPS
+  --clock-source CLOCK_SOURCE
+                        Set the clock source; typically 'internal', 'external'
+                        or 'gpsdo'
+  --time-source TIME_SOURCE
+                        Set the time source
+
+Siggen Arguments:
+  -m AMPL, --amplitude AMPL
+                        Set output amplitude to AMPL (0.0-1.0). Note that if
+                        --power is given, UHD will attempt to match the output
+                        power regardless of the amplitude.
+  -x WAVEFORM_FREQ, --waveform-freq WAVEFORM_FREQ
+                        Set baseband waveform frequency to FREQ
+  -y WAVEFORM2_FREQ, --waveform2-freq WAVEFORM2_FREQ
+                        Set 2nd waveform frequency to FREQ
+  --sine                Generate a carrier modulated by a complex sine wave
+  --const               Generate a constant carrier
+  --offset OFFSET       Set waveform phase offset to OFFSET
+  --gaussian            Generate Gaussian random output
+  --uniform             Generate Uniform random output
+  --2tone               Generate Two Tone signal for IMD testing
+  --sweep               Generate a swept sine wave
+
+GUI Arguments:
+  -q, --show-freq-sink  Show QT Frequency Widget
+</code></pre>
+<hr>
+<h3 id=gnuradio-dev>gnuradio-dev</h3>
+<p>Header files for the GNU Radio software defined radio system.
+Since GNU Radio is a framework for development of SDR
+applications, you are likely to need this installed.</p>
+<p>Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>2.51 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install gnuradio-dev</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>gnuradio</li>
+<li>libboost-date-time1.74-dev</li>
+<li>libboost-filesystem1.74-dev</li>
+<li>libboost-program-options1.74-dev</li>
+<li>libboost-regex1.74-dev</li>
+<li>libboost-system1.74-dev</li>
+<li>libboost-test1.74-dev</li>
+<li>libboost-thread1.74-dev</li>
+<li>libcppunit-dev</li>
+<li>libfftw3-dev</li>
+<li>libgmp-dev</li>
+<li>libgsm1-dev</li>
+<li>libspdlog-dev</li>
+<li>libthrift-dev</li>
+<li>libvolk2-dev</li>
+<li>pybind11-dev</li>
+<li>python3-dev
+</div></li>
+</ul>
+<hr>
+<h3 id=gnuradio-doc>gnuradio-doc</h3>
+<p>Documentation for the GNU Radio software defined radio system
+in html and xml form.</p>
+<p>Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>250.42 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install gnuradio-doc</code></p>
+<hr>
+<h3 id=libgnuradio-analog3101>libgnuradio-analog3.10.1</h3>
+<p>Library for handling analog signal processing functions.
+These functions are also in gnuradio-core.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>662 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-analog3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-fft3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-audio3101>libgnuradio-audio3.10.1</h3>
+<p>This is the gr-audio library, used to connect to audio sources
+(mic-in) and sinks (speaker-out) ports on a computer. The underlying
+hardware driver is system and OS dependent and this module should
+automatically discover the correct one to use. Part of the main
+gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>515 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-audio3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libasound2</li>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libjack-jackd2-0 | libjack-0.125</li>
+<li>libportaudio2</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-blocks3101>libgnuradio-blocks3.10.1</h3>
+<p>Some non-signal processing blocks.
+These functions are also in gnuradio-core.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>2.90 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-blocks3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libsndfile1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-channels3101>libgnuradio-channels3.10.1</h3>
+<p>Some channel oriented processing blocks.
+These functions are also in gnuradio-core.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>470 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-channels3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-analog3.10.1</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-filter3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-digital3101>libgnuradio-digital3.10.1</h3>
+<p>All the functions for doing digital modulation and demodulation,
+including bpsk, qpsk, gmsk and ofdm signals.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>1.59 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-digital3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-analog3.10.1</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-filter3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-dtv3101>libgnuradio-dtv3.10.1</h3>
+<p>ATSC support, gr-atsc ported to a new framework, as well as
+DVB-S2, DVB-T, DVB-T2 digital video broadcast standards.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>1.40 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-dtv3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-fec3.10.1</li>
+<li>libgnuradio-fft3.10.1</li>
+<li>libgnuradio-filter3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-fec3101>libgnuradio-fec3.10.1</h3>
+<p>Handle forward error correction processing in gnuradio.
+Implements the GNU Radio FEC API, supporting encoders and
+decoders for no-op dummmy, repetition, and convolutional classes.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>897 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-fec3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libgsl27</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-fft3101>libgnuradio-fft3.10.1</h3>
+<p>Library for Fourier transform techniques used in gnuradio.
+Uses single precision FFT from libfftw3-single3.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>394 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-fft3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfftw3-single3</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-filter3101>libgnuradio-filter3.10.1</h3>
+<p>Library of filter blocks used in gnuradio. Implements
+FIR, IIR and FFT filters, as well as Polyphase filterbank and
+PFB arbitrary resampler methods.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>1.08 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-filter3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-fft3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-iio3101>libgnuradio-iio3.10.1</h3>
+<p>Libiio is a library that has been conceived to ease the development of
+applications interfacing Industrial Input/Output (IIO) devices through
+the IIO subsystem of the Linux kernel.</p>
+<p>The IIO blocks for GnuRadio can be used to create flowgraphs that interface
+IIO devices through libiio.</p>
+<p>Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>571 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-iio3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libad9361-0</li>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libiio0</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-network3101>libgnuradio-network3.10.1</h3>
+<p>Library of blocks that implement UDP and TCP source and
+sink blocks supporting both IPv4 and IPv6.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>607 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-network3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-pdu3101>libgnuradio-pdu3.10.1</h3>
+<p>Protocol Data Units library provides signal processing
+blocks that operate on Protocol Data Unit format messages. Many
+such blocks are analogs of streaming API functionality.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>687 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-pdu3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-atomic1.74.0</li>
+<li>libboost-program-options1.74.0</li>
+<li>libboost-regex1.74.0-icu67</li>
+<li>libboost-system1.74.0</li>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfftw3-single3</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgmp10</li>
+<li>libgmpxx4ldbl</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-fft3.10.1</li>
+<li>libgnuradio-filter3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libsndfile1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-pmt3101>libgnuradio-pmt3.10.1</h3>
+<p>Polymorphic Types are opaque data types that are designed as generic
+containers of data that can be safely passed around between blocks
+and threads in GNU Radio.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>466 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-pmt3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libgcc-s1</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-qtgui3101>libgnuradio-qtgui3.10.1</h3>
+<p>QT-based graphical sinks for gnuradio applications.
+Implements opengl, raster and native plotting methods, and
+supports a QT Style Sheet (QSS) file to adjust the look.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>1.85 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-qtgui3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-fft3.10.1</li>
+<li>libgnuradio-filter3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libqt5core5a</li>
+<li>libqt5gui5 | libqt5gui5-gles</li>
+<li>libqt5widgets5</li>
+<li>libqwt-qt5-6</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-runtime3101>libgnuradio-runtime3.10.1</h3>
+<p>Top level component library. Defines core blocks. Handles
+settings for logging, performance counters, and control port.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>2.00 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-runtime3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-program-options1.74.0</li>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgmp10</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libpython3.9</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libthrift-0.13.0</li>
+<li>libunwind8</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-soapy3101>libgnuradio-soapy3.10.1</h3>
+<p>Soapy hardware drivers using the SoapySDR driver framework.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>478 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-soapy3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgmp10</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libsoapysdr0.8</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-trellis3101>libgnuradio-trellis3.10.1</h3>
+<p>Library for trellis coding modulation, including the Viterbi
+Algorithm, Concatenated Coding and Turbo Decoding
+based upon finite state machine (FSM) class.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>1.02 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-trellis3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-uhd3101>libgnuradio-uhd3.10.1</h3>
+<p>The gnuradio interface to the UHD library to connect to and send and
+receive data between to the Ettus Research, LLC product line -
+including the USRP family of software radio peripheral devices.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>631 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-uhd3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libuhd4.1.0
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-video-sdl3101>libgnuradio-video-sdl3.10.1</h3>
+<p>Library for handling SDL (Simple DirectMedia Layer) video data.
+Implements input and output blocks.
+Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>282 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-video-sdl3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libsdl1.2debian</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-vocoder3101>libgnuradio-vocoder3.10.1</h3>
+<p>Library of vocoder blocks, including ulaw, alaw, gsm and codec2.
+Debian uses external libraries for gsm and codec2.</p>
+<p>Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>358 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-vocoder3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libcodec2-1.0</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libgsm1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-wavelet3101>libgnuradio-wavelet3.10.1</h3>
+<p>Library of Daubechies wavelet function blocks.
+wvps computes the Wavelet Power Spectrum from
+a set of wavelet coefficients.</p>
+<p>Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>125 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-wavelet3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-atomic1.74.0</li>
+<li>libboost-program-options1.74.0</li>
+<li>libboost-regex1.74.0-icu67</li>
+<li>libboost-system1.74.0</li>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libfmt8</li>
+<li>libgcc-s1</li>
+<li>libgmp10</li>
+<li>libgmpxx4ldbl</li>
+<li>libgnuradio-blocks3.10.1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libgsl27</li>
+<li>libgslcblas0</li>
+<li>libsndfile1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libvolk2.5
+</div></li>
+</ul>
+<hr>
+<h3 id=libgnuradio-zeromq3101>libgnuradio-zeromq3.10.1</h3>
+<p>0MQ messaging library support. Provide network socket
+endpoints for gnuradio data and message streams.
+PUB/SUB, PUSH/PULL, REP/REQ models supported.</p>
+<p>Part of the main gnuradio build.</p>
+<p><strong>Installed size:</strong> <code>302 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libgnuradio-zeromq3.10.1</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libboost-thread1.74.0</li>
+<li>libc6</li>
+<li>libgcc-s1</li>
+<li>libgnuradio-pmt3.10.1</li>
+<li>libgnuradio-runtime3.10.1</li>
+<li>libspdlog1-fmt8</li>
+<li>libstdc++6</li>
+<li>libzmq5
+</div></li>
+</ul>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2022-Feb-10<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/gnuradio/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../gitleaks/index.html>
+<i class=ti-arrow-left></i>
+<span>gitleaks</span>
+</a>
+<a href=../gqrx-sdr/index.html>
+<span>gqrx-sdr</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/gnuradio/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:13:33 GMT -->
+</html>

@@ -1,0 +1,823 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/openvpn/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:15:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>openvpn | Kali Linux Tools</title>
+<meta itemprop=name content="openvpn | Kali Linux Tools">
+<meta name=application-name content="openvpn | Kali Linux Tools">
+<meta name=twitter:title content="openvpn | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="openvpn | Kali Linux Tools">
+<meta itemprop=description content>
+<meta name=description content>
+<meta name=twitter:description content>
+<meta property="og:description" content>
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2021-09-13T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>openvpn</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 2.5.1</code> <code>arch: any</code>
+<hr>
+<div id=package-links>
+<a href=https://openvpn.net/><i class=ti-world></i> openvpn Homepage</a><span><span>|</span><a href=http://pkg.kali.org/openvpn><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://salsa.debian.org/debian/openvpn><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-default title=kali-linux-default>default</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-large title=kali-linux-large>large</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#openvpn title=openvpn>
+<i class=ti-package></i>openvpn
+</a>
+<ul>
+<li>
+<a href=#openvpn-1 title=openvpn>
+openvpn
+</a>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=openvpn>openvpn</h3>
+<p>OpenVPN is an application to securely tunnel IP networks over a
+single UDP or TCP port. It can be used to access remote sites, make
+secure point-to-point connections, enhance wireless security, etc.</p>
+<p>OpenVPN uses all of the encryption, authentication, and certification
+features provided by the OpenSSL library (any cipher, key size, or
+HMAC digest).</p>
+<p>OpenVPN may use static, pre-shared keys or TLS-based dynamic key exchange. It
+also supports VPNs with dynamic endpoints (DHCP or dial-up clients), tunnels
+over NAT or connection-oriented stateful firewalls (such as Linux&rsquo;s iptables).</p>
+<p><strong>Installed size:</strong> <code>1.58 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install openvpn</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>debconf | debconf-2.0</li>
+<li>iproute2</li>
+<li>libc6</li>
+<li>liblz4-1</li>
+<li>liblzo2-2</li>
+<li>libpam0g</li>
+<li>libpkcs11-helper1</li>
+<li>libssl1.1</li>
+<li>libsystemd0</li>
+<li>lsb-base
+</div></li>
+</ul>
+<h5 id=openvpn-1>openvpn</h5>
+<p>Secure IP tunnel daemon</p>
+<pre><code>root@kali:~# openvpn --help
+OpenVPN 2.5.1 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on May 14 2021
+
+General Options:
+--config file   : Read configuration options from file.
+--help          : Show options.
+--version       : Show copyright and version information.
+
+Tunnel Options:
+--local host    : Local host name or ip address. Implies --bind.
+--remote host [port] : Remote host name or ip address.
+--remote-random : If multiple --remote options specified, choose one randomly.
+--remote-random-hostname : Add a random string to remote DNS name.
+--mode m        : Major mode, m = 'p2p' (default, point-to-point) or 'server'.
+--proto p       : Use protocol p for communicating with peer.
+                  p = udp (default), tcp-server, or tcp-client
+--proto-force p : only consider protocol p in list of connection profiles.
+                  p = udp6, tcp6-server, or tcp6-client (ipv6)
+--connect-retry n [m] : For client, number of seconds to wait between
+                  connection retries (default=5). On repeated retries
+                  the wait time is exponentially increased to a maximum of m
+                  (default=300).
+--connect-retry-max n : Maximum connection attempt retries, default infinite.
+--http-proxy s p [up] [auth] : Connect to remote host
+                  through an HTTP proxy at address s and port p.
+                  If proxy authentication is required,
+                  up is a file containing username/password on 2 lines, or
+                  'stdin' to prompt from console.  Add auth='ntlm' if
+                  the proxy requires NTLM authentication.
+--http-proxy s p 'auto[-nct]' : Like the above directive, but automatically
+                  determine auth method and query for username/password
+                  if needed.  auto-nct disables weak proxy auth methods.
+--http-proxy-option type [parm] : Set extended HTTP proxy options.
+                                  Repeat to set multiple options.
+                  VERSION version (default=1.0)
+                  AGENT user-agent
+--socks-proxy s [p] [up] : Connect to remote host through a Socks5 proxy at
+                  address s and port p (default port = 1080).
+                  If proxy authentication is required,
+                  up is a file containing username/password on 2 lines, or
+                  'stdin' to prompt for console.
+--socks-proxy-retry : Retry indefinitely on Socks proxy errors.
+--resolv-retry n: If hostname resolve fails for --remote, retry
+                  resolve for n seconds before failing (disabled by default).
+                  Set n=&quot;infinite&quot; to retry indefinitely.
+--float         : Allow remote to change its IP address/port, such as through
+                  DHCP (this is the default if --remote is not used).
+--ipchange cmd  : Run command cmd on remote ip address initial
+                  setting or change -- execute as: cmd ip-address port#
+--port port     : TCP/UDP port # for both local and remote.
+--lport port    : TCP/UDP port # for local (default=1194). Implies --bind.
+--rport port    : TCP/UDP port # for remote (default=1194).
+--bind          : Bind to local address and port. (This is the default unless
+                  --proto tcp-client or --http-proxy or --socks-proxy is used).
+--nobind        : Do not bind to local address and port.
+--dev tunX|tapX : tun/tap device (X can be omitted for dynamic device.
+--dev-type dt   : Which device type are we using? (dt = tun or tap) Use
+                  this option only if the tun/tap device used with --dev
+                  does not begin with &quot;tun&quot; or &quot;tap&quot;.
+--dev-node node : Explicitly set the device node rather than using
+                  /dev/net/tun, /dev/tun, /dev/tap, etc.
+--lladdr hw     : Set the link layer address of the tap device.
+--topology t    : Set --dev tun topology: 'net30', 'p2p', or 'subnet'.
+--ifconfig l rn : TUN: configure device to use IP address l as a local
+                  endpoint and rn as a remote endpoint.  l &amp; rn should be
+                  swapped on the other peer.  l &amp; rn must be private
+                  addresses outside of the subnets used by either peer.
+                  TAP: configure device to use IP address l as a local
+                  endpoint and rn as a subnet mask.
+--ifconfig-ipv6 l r : configure device to use IPv6 address l as local
+                      endpoint (as a /64) and r as remote endpoint
+--ifconfig-noexec : Don't actually execute ifconfig/netsh command, instead
+                    pass --ifconfig parms by environment to scripts.
+--ifconfig-nowarn : Don't warn if the --ifconfig option on this side of the
+                    connection doesn't match the remote side.
+--route network [netmask] [gateway] [metric] :
+                  Add route to routing table after connection
+                  is established.  Multiple routes can be specified.
+                  netmask default: 255.255.255.255
+                  gateway default: taken from --route-gateway or --ifconfig
+                  Specify default by leaving blank or setting to &quot;default&quot;.
+--route-ipv6 network/bits [gateway] [metric] :
+                  Add IPv6 route to routing table after connection
+                  is established.  Multiple routes can be specified.
+                  gateway default: taken from --route-ipv6-gateway or 'remote'
+                  in --ifconfig-ipv6
+--route-gateway gw|'dhcp' : Specify a default gateway for use with --route.
+--route-ipv6-gateway gw : Specify a default gateway for use with --route-ipv6.
+--route-metric m : Specify a default metric for use with --route.
+--route-delay n [w] : Delay n seconds after connection initiation before
+                  adding routes (may be 0).  If not specified, routes will
+                  be added immediately after tun/tap open.  On Windows, wait
+                  up to w seconds for TUN/TAP adapter to come up.
+--route-up cmd  : Run command cmd after routes are added.
+--route-pre-down cmd : Run command cmd before routes are removed.
+--route-noexec  : Don't add routes automatically.  Instead pass routes to
+                  --route-up script using environmental variables.
+--route-nopull  : When used with --client or --pull, accept options pushed
+                  by server EXCEPT for routes and dhcp options.
+--allow-pull-fqdn : Allow client to pull DNS names from server for
+                    --ifconfig, --route, and --route-gateway.
+--redirect-gateway [flags]: Automatically execute routing
+                  commands to redirect all outgoing IP traffic through the
+                  VPN.  Add 'local' flag if both OpenVPN servers are directly
+                  connected via a common subnet, such as with WiFi.
+                  Add 'def1' flag to set default route using using 0.0.0.0/1
+                  and 128.0.0.0/1 rather than 0.0.0.0/0.  Add 'bypass-dhcp'
+                  flag to add a direct route to DHCP server, bypassing tunnel.
+                  Add 'bypass-dns' flag to similarly bypass tunnel for DNS.
+--redirect-private [flags]: Like --redirect-gateway, but omit actually changing
+                  the default gateway.  Useful when pushing private subnets.
+--block-ipv6     : (Client) Instead sending IPv6 to the server generate
+                   ICMPv6 host unreachable messages on the client.
+                   (Server) Instead of forwarding IPv6 packets send
+                   ICMPv6 host unreachable packets to the client.
+--client-nat snat|dnat network netmask alias : on client add 1-to-1 NAT rule.
+--push-peer-info : (client only) push client info to server.
+--setenv name value : Set a custom environmental variable to pass to script.
+--setenv FORWARD_COMPATIBLE 1 : Relax config file syntax checking to allow
+                  directives for future OpenVPN versions to be ignored.
+--ignore-unkown-option opt1 opt2 ...: Relax config file syntax. Allow
+                  these options to be ignored when unknown
+--script-security level: Where level can be:
+                  0 -- strictly no calling of external programs
+                  1 -- (default) only call built-ins such as ifconfig
+                  2 -- allow calling of built-ins and scripts
+                  3 -- allow password to be passed to scripts via env
+--shaper n      : Restrict output to peer to n bytes per second.
+--keepalive n m : Helper option for setting timeouts in server mode.  Send
+                  ping once every n seconds, restart if ping not received
+                  for m seconds.
+--inactive n [bytes] : Exit after n seconds of activity on tun/tap device
+                  produces a combined in/out byte count &lt; bytes.
+--ping-exit n   : Exit if n seconds pass without reception of remote ping.
+--ping-restart n: Restart if n seconds pass without reception of remote ping.
+--ping-timer-rem: Run the --ping-exit/--ping-restart timer only if we have a
+                  remote address.
+--ping n        : Ping remote once every n seconds over TCP/UDP port.
+--multihome     : Configure a multi-homed UDP server.
+--fast-io       : (experimental) Optimize TUN/TAP/UDP writes.
+--remap-usr1 s  : On SIGUSR1 signals, remap signal (s='SIGHUP' or 'SIGTERM').
+--persist-tun   : Keep tun/tap device open across SIGUSR1 or --ping-restart.
+--persist-remote-ip : Keep remote IP address across SIGUSR1 or --ping-restart.
+--persist-local-ip  : Keep local IP address across SIGUSR1 or --ping-restart.
+--persist-key   : Don't re-read key files across SIGUSR1 or --ping-restart.
+--passtos       : TOS passthrough (applies to IPv4 only).
+--tun-mtu n     : Take the tun/tap device MTU to be n and derive the
+                  TCP/UDP MTU from it (default=1500).
+--tun-mtu-extra n : Assume that tun/tap device might return as many
+                  as n bytes more than the tun-mtu size on read
+                  (default TUN=0 TAP=32).
+--link-mtu n    : Take the TCP/UDP device MTU to be n and derive the tun MTU
+                  from it.
+--mtu-disc type : Should we do Path MTU discovery on TCP/UDP channel?
+                  'no'    -- Never send DF (Don't Fragment) frames
+                  'maybe' -- Use per-route hints
+                  'yes'   -- Always DF (Don't Fragment)
+--mtu-test      : Empirically measure and report MTU.
+--fragment max  : Enable internal datagram fragmentation so that no UDP
+                  datagrams are sent which are larger than max bytes.
+                  Adds 4 bytes of overhead per datagram.
+--mssfix [n]    : Set upper bound on TCP MSS, default = tun-mtu size
+                  or --fragment max value, whichever is lower.
+--sndbuf size   : Set the TCP/UDP send buffer size.
+--rcvbuf size   : Set the TCP/UDP receive buffer size.
+--mark value    : Mark encrypted packets being sent with value. The mark value
+                  can be matched in policy routing and packetfilter rules.
+--bind-dev dev  : Bind to the given device when making connection to a peer or
+                  listening for connections. This allows sending encrypted packets
+                  via a VRF present on the system.
+--txqueuelen n  : Set the tun/tap TX queue length to n (Linux only).
+--memstats file : Write live usage stats to memory mapped binary file.
+--mlock         : Disable Paging -- ensures key material and tunnel
+                  data will never be written to disk.
+--up cmd        : Run command cmd after successful tun device open.
+                  Execute as: cmd tun/tap-dev tun-mtu link-mtu \
+                              ifconfig-local-ip ifconfig-remote-ip
+                  (pre --user or --group UID/GID change)
+--up-delay      : Delay tun/tap open and possible --up script execution
+                  until after TCP/UDP connection establishment with peer.
+--down cmd      : Run command cmd after tun device close.
+                  (post --user/--group UID/GID change and/or --chroot)
+                  (command parameters are same as --up option)
+--down-pre      : Run --down command before TUN/TAP close.
+--up-restart    : Run up/down commands for all restarts including those
+                  caused by --ping-restart or SIGUSR1
+--user user     : Set UID to user after initialization.
+--group group   : Set GID to group after initialization.
+--chroot dir    : Chroot to this directory after initialization.
+--cd dir        : Change to this directory before initialization.
+--daemon [name] : Become a daemon after initialization.
+                  The optional 'name' parameter will be passed
+                  as the program name to the system logger.
+--syslog [name] : Output to syslog, but do not become a daemon.
+                  See --daemon above for a description of the 'name' parm.
+--inetd [name] ['wait'|'nowait'] : Run as an inetd or xinetd server.
+                  See --daemon above for a description of the 'name' parm.
+--log file      : Output log to file which is created/truncated on open.
+--log-append file : Append log to file, or create file if nonexistent.
+--suppress-timestamps : Don't log timestamps to stdout/stderr.
+--machine-readable-output : Always log timestamp, message flags to stdout/stderr.
+--writepid file : Write main process ID to file.
+--nice n        : Change process priority (&gt;0 = lower, &lt;0 = higher).
+--echo [parms ...] : Echo parameters to log output.
+--verb n        : Set output verbosity to n (default=1):
+                  (Level 3 is recommended if you want a good summary
+                  of what's happening without being swamped by output).
+                : 0 -- no output except fatal errors
+                : 1 -- startup info + connection initiated messages +
+                       non-fatal encryption &amp; net errors
+                : 2,3 -- show TLS negotiations &amp; route info
+                : 4 -- show parameters
+                : 5 -- show 'RrWw' chars on console for each packet sent
+                       and received from TCP/UDP (caps) or tun/tap (lc)
+                : 6 to 11 -- debug messages of increasing verbosity
+--mute n        : Log at most n consecutive messages in the same category.
+--status file n : Write operational status to file every n seconds.
+--status-version [n] : Choose the status file format version number.
+                  Currently, n can be 1, 2, or 3 (default=1).
+--disable-occ   : Disable options consistency check between peers.
+--gremlin mask  : Special stress testing mode (for debugging only).
+--compress alg  : Use compression algorithm alg
+--allow-compression: Specify whether compression should be allowed
+--comp-lzo      : Use LZO compression -- may add up to 1 byte per
+                  packet for incompressible data.
+--comp-noadapt  : Don't use adaptive compression when --comp-lzo
+                  is specified.
+--management ip port [pass] : Enable a TCP server on ip:port to handle
+                  management functions.  pass is a password file
+                  or 'stdin' to prompt from console.
+                  To listen on a unix domain socket, specific the pathname
+                  in place of ip and use 'unix' as the port number.
+--management-client : Management interface will connect as a TCP client to
+                      ip/port rather than listen as a TCP server.
+--management-query-passwords : Query management channel for private key
+                  and auth-user-pass passwords.
+--management-query-proxy : Query management channel for proxy information.
+--management-query-remote : Query management channel for --remote directive.
+--management-hold : Start OpenVPN in a hibernating state, until a client
+                    of the management interface explicitly starts it.
+--management-signal : Issue SIGUSR1 when management disconnect event occurs.
+--management-forget-disconnect : Forget passwords when management disconnect
+                                 event occurs.
+--management-up-down : Report tunnel up/down events to management interface.
+--management-log-cache n : Cache n lines of log file history for usage
+                  by the management channel.
+--management-client-user u  : When management interface is a unix socket, only
+                              allow connections from user u.
+--management-client-group g : When management interface is a unix socket, only
+                              allow connections from group g.
+--management-client-auth : gives management interface client the responsibility
+                           to authenticate clients after their client certificate
+			      has been verified.
+--management-client-pf : management interface clients must specify a packet
+                         filter file for each connecting client.
+--plugin m [str]: Load plug-in module m passing str as an argument
+                  to its initialization function.
+--vlan-tagging  : Enable 802.1Q-based VLAN tagging.
+--vlan-accept tagged|untagged|all : Set VLAN tagging mode. Default is 'all'.
+--vlan-pvid v   : Sets the Port VLAN Identifier. Defaults to 1.
+
+Multi-Client Server options (when --mode server is used):
+--server network netmask : Helper option to easily configure server mode.
+--server-ipv6 network/bits : Configure IPv6 server mode.
+--server-bridge [IP netmask pool-start-IP pool-end-IP] : Helper option to
+                    easily configure ethernet bridging server mode.
+--push &quot;option&quot; : Push a config file option back to the peer for remote
+                  execution.  Peer must specify --pull in its config file.
+--push-reset    : Don't inherit global push list for specific
+                  client instance.
+--ifconfig-pool start-IP end-IP [netmask] : Set aside a pool of subnets
+                  to be dynamically allocated to connecting clients.
+--ifconfig-pool-persist file [seconds] : Persist/unpersist ifconfig-pool
+                  data to file, at seconds intervals (default=600).
+                  If seconds=0, file will be treated as read-only.
+--ifconfig-ipv6-pool base-IP/bits : set aside an IPv6 network block
+                  to be dynamically allocated to connecting clients.
+--ifconfig-push local remote-netmask : Push an ifconfig option to remote,
+                  overrides --ifconfig-pool dynamic allocation.
+                  Only valid in a client-specific config file.
+--ifconfig-ipv6-push local/bits remote : Push an ifconfig-ipv6 option to
+                  remote, overrides --ifconfig-ipv6-pool allocation.
+                  Only valid in a client-specific config file.
+--iroute network [netmask] : Route subnet to client.
+--iroute-ipv6 network/bits : Route IPv6 subnet to client.
+                  Sets up internal routes only.
+                  Only valid in a client-specific config file.
+--disable       : Client is disabled.
+                  Only valid in a client-specific config file.
+--verify-client-cert [none|optional|require] : perform no, optional or
+                  mandatory client certificate verification.
+                  Default is to require the client to supply a certificate.
+--username-as-common-name  : For auth-user-pass authentication, use
+                  the authenticated username as the common name,
+                  rather than the common name from the client cert.
+--auth-user-pass-verify cmd method: Query client for username/password and
+                  run command cmd to verify.  If method='via-env', pass
+                  user/pass via environment, if method='via-file', pass
+                  user/pass via temporary file.
+--auth-gen-token  [lifetime] Generate a random authentication token which is pushed
+                  to each client, replacing the password.  Useful when
+                  OTP based two-factor auth mechanisms are in use and
+                  --reneg-* options are enabled. Optionally a lifetime in seconds
+                  for generated tokens can be set.
+--opt-verify    : Clients that connect with options that are incompatible
+                  with those of the server will be disconnected.
+--auth-user-pass-optional : Allow connections by clients that don't
+                  specify a username/password.
+--no-name-remapping : (DEPRECATED) Allow Common Name and X509 Subject to include
+                      any printable character.
+--client-to-client : Internally route client-to-client traffic.
+--duplicate-cn  : Allow multiple clients with the same common name to
+                  concurrently connect.
+--client-connect cmd : Run command cmd on client connection.
+--client-disconnect cmd : Run command cmd on client disconnection.
+--client-config-dir dir : Directory for custom client config files.
+--ccd-exclusive : Refuse connection unless custom client config is found.
+--tmp-dir dir   : Temporary directory, used for --client-connect return file and plugin communication.
+--hash-size r v : Set the size of the real address hash table to r and the
+                  virtual address table to v.
+--bcast-buffers n : Allocate n broadcast buffers.
+--tcp-queue-limit n : Maximum number of queued TCP output packets.
+--tcp-nodelay   : Macro that sets TCP_NODELAY socket flag on the server
+                  as well as pushes it to connecting clients.
+--learn-address cmd : Run command cmd to validate client virtual addresses.
+--connect-freq n s : Allow a maximum of n new connections per s seconds.
+--max-clients n : Allow a maximum of n simultaneously connected clients.
+--max-routes-per-client n : Allow a maximum of n internal routes per client.
+--stale-routes-check n [t] : Remove routes with a last activity timestamp
+                             older than n seconds. Run this check every t
+                             seconds (defaults to n).
+--explicit-exit-notify [n] : In UDP server mode send [RESTART] command on exit/restart to connected
+                             clients. n = 1 - reconnect to same server,
+                             2 - advance to next server, default=1.
+--port-share host port [dir] : When run in TCP mode, proxy incoming HTTPS
+                  sessions to a web server at host:port.  dir specifies an
+                  optional directory to write origin IP:port data.
+
+Client options (when connecting to a multi-client server):
+--client         : Helper option to easily configure client mode.
+--auth-user-pass [up] : Authenticate with server using username/password.
+                  up is a file containing the username on the first line,
+                  and a password on the second. If either the password or both
+                  the username and the password are omitted OpenVPN will prompt
+                  for them from console.
+--pull           : Accept certain config file options from the peer as if they
+                  were part of the local config file.  Must be specified
+                  when connecting to a '--mode server' remote host.
+--pull-filter accept|ignore|reject t : Filter each option received from the
+                  server if it starts with the text t. The action flag accept,
+                  ignore or reject causes the option to be allowed, removed or
+                  rejected with error. May be specified multiple times, and
+                  each filter is applied in the order of appearance.
+--auth-retry t  : How to handle auth failures.  Set t to
+                  none (default), interact, or nointeract.
+--static-challenge t e : Enable static challenge/response protocol using
+                  challenge text t, with e indicating echo flag (0|1)
+--connect-timeout n : when polling possible remote servers to connect to
+                  in a round-robin fashion, spend no more than n seconds
+                  waiting for a response before trying the next server.
+--allow-recursive-routing : When this option is set, OpenVPN will not drop
+                  incoming tun packets with same destination as host.
+--explicit-exit-notify [n] : On exit/restart, send exit signal to
+                  server/remote. n = # of retries, default=1.
+
+Data Channel Encryption Options (must be compatible between peers):
+(These options are meaningful for both Static Key &amp; TLS-mode)
+--secret f [d]  : Enable Static Key encryption mode (non-TLS).
+                  Use shared secret file f, generate with --genkey.
+                  The optional d parameter controls key directionality.
+                  If d is specified, use separate keys for each
+                  direction, set d=0 on one side of the connection,
+                  and d=1 on the other side.
+--auth alg      : Authenticate packets with HMAC using message
+                  digest algorithm alg (default=SHA1).
+                  (usually adds 16 or 20 bytes per packet)
+                  Set alg=none to disable authentication.
+--cipher alg    : Encrypt packets with cipher algorithm alg
+                  (default=(null)).
+                  Set alg=none to disable encryption.
+--data-ciphers list : List of ciphers that are allowed to be negotiated.
+--ncp-disable   : (DEPRECATED) Disable cipher negotiation.
+--prng alg [nsl] : For PRNG, use digest algorithm alg, and
+                   nonce_secret_len=nsl.  Set alg=none to disable PRNG.
+--keysize n     : (DEPRECATED) Size of cipher key in bits (optional).
+                  If unspecified, defaults to cipher-specific default.
+--engine [name] : Enable OpenSSL hardware crypto engine functionality.
+--no-replay     : (DEPRECATED) Disable replay protection.
+--mute-replay-warnings : Silence the output of replay warnings to log file.
+--replay-window n [t]  : Use a replay protection sliding window of size n
+                         and a time window of t seconds.
+                         Default n=64 t=15
+--replay-persist file : Persist replay-protection state across sessions
+                  using file.
+--test-crypto   : Run a self-test of crypto features enabled.
+                  For debugging only.
+
+TLS Key Negotiation Options:
+(These options are meaningful only for TLS-mode)
+--tls-server    : Enable TLS and assume server role during TLS handshake.
+--tls-client    : Enable TLS and assume client role during TLS handshake.
+--key-method m  : (DEPRECATED) Data channel key exchange method.  m should be a method
+                  number, such as 1 (default), 2, etc.
+--ca file       : Certificate authority file in .pem format containing
+                  root certificate.
+--capath dir    : A directory of trusted certificates (CAs and CRLs).
+--dh file       : File containing Diffie Hellman parameters
+                  in .pem format (for --tls-server only).
+                  Use &quot;openssl dhparam -out dh1024.pem 1024&quot; to generate.
+--cert file     : Local certificate in .pem format -- must be signed
+                  by a Certificate Authority in --ca file.
+--extra-certs file : one or more PEM certs that complete the cert chain.
+--key file      : Local private key in .pem format.
+--tls-version-min &lt;version&gt; ['or-highest'] : sets the minimum TLS version we
+    will accept from the peer.  If version is unrecognized and 'or-highest'
+    is specified, require max TLS version supported by SSL implementation.
+--tls-version-max &lt;version&gt; : sets the maximum TLS version we will use.
+--pkcs12 file   : PKCS#12 file containing local private key, local certificate
+                  and optionally the root CA certificate.
+--x509-username-field : Field in x509 certificate containing the username.
+                        Default is CN in the Subject field.
+--verify-hash hash [algo] : Specify fingerprint for level-1 certificate.
+                            Valid algo flags are SHA1 and SHA256. 
+--tls-cipher l  : A list l of allowable TLS ciphers separated by : (optional).
+--tls-ciphersuites l: A list of allowed TLS 1.3 cipher suites seperated by : (optional)
+                : Use --show-tls to see a list of supported TLS ciphers (suites).
+--tls-cert-profile p : Set the allowed certificate crypto algorithm profile
+                  (default=legacy).
+--tls-timeout n : Packet retransmit timeout on TLS control channel
+                  if no ACK from remote within n seconds (default=2).
+--reneg-bytes n : Renegotiate data chan. key after n bytes sent and recvd.
+--reneg-pkts n  : Renegotiate data chan. key after n packets sent and recvd.
+--reneg-sec max [min] : Renegotiate data chan. key after at most max (default=3600)
+                  and at least min (defaults to 90% of max on servers and equal
+                  to max on clients).
+--hand-window n : Data channel key exchange must finalize within n seconds
+                  of handshake initiation by any peer (default=60).
+--tran-window n : Transition window -- old key can live this many seconds
+                  after new key renegotiation begins (default=3600).
+--single-session: Allow only one session (reset state on restart).
+--tls-exit      : Exit on TLS negotiation failure.
+--tls-auth f [d]: Add an additional layer of authentication on top of the TLS
+                  control channel to protect against attacks on the TLS stack
+                  and DoS attacks.
+                  f (required) is a shared-secret key file.
+                  The optional d parameter controls key directionality,
+                  see --secret option for more info.
+--tls-crypt key : Add an additional layer of authenticated encryption on top
+                  of the TLS control channel to hide the TLS certificate,
+                  provide basic post-quantum security and protect against
+                  attacks on the TLS stack and DoS attacks.
+                  key (required) provides the pre-shared key file.
+                  see --secret option for more info.
+--tls-crypt-v2 key : For clients: use key as a client-specific tls-crypt key.
+                  For servers: use key to decrypt client-specific keys.  For
+                  key generation (--tls-crypt-v2-genkey): use key to
+                  encrypt generated client-specific key.  (See --tls-crypt.)
+--genkey tls-crypt-v2-client [keyfile] [base64 metadata]: Generate a
+                  fresh tls-crypt-v2 client key, and store to
+                  keyfile.  If supplied, include metadata in wrapped key.
+--genkey tls-crypt-v2-server [keyfile] [base64 metadata]: Generate a
+                  fresh tls-crypt-v2 server key, and store to keyfile
+--tls-crypt-v2-verify cmd : Run command cmd to verify the metadata of the
+                  client-supplied tls-crypt-v2 client key
+--askpass [file]: Get PEM password from controlling tty before we daemonize.
+--auth-nocache  : Don't cache --askpass or --auth-user-pass passwords.
+--crl-verify crl ['dir']: Check peer certificate against a CRL.
+--tls-verify cmd: Run command cmd to verify the X509 name of a
+                  pending TLS connection that has otherwise passed all other
+                  tests of certification.  cmd should return 0 to allow
+                  TLS handshake to proceed, or 1 to fail.  (cmd is
+                  executed as 'cmd certificate_depth subject')
+--tls-export-cert [directory] : Get peer cert in PEM format and store it 
+                  in an openvpn temporary file in [directory]. Peer cert is 
+                  stored before tls-verify script execution and deleted after.
+--verify-x509-name name: Accept connections only from a host with X509 subject
+                  DN name. The remote host must also pass all other tests
+                  of verification.
+--ns-cert-type t: (DEPRECATED) Require that peer certificate was signed with 
+                  an explicit nsCertType designation t = 'client' | 'server'.
+--x509-track x  : Save peer X509 attribute x in environment for use by
+                  plugins and management interface.
+--keying-material-exporter label len : Save Exported Keying Material (RFC5705)
+                  of len bytes (min. 16 bytes) using label in environment for use by plugins.
+--remote-cert-ku v ... : Require that the peer certificate was signed with
+                  explicit key usage, you can specify more than one value.
+                  value should be given in hex format.
+--remote-cert-eku oid : Require that the peer certificate was signed with
+                  explicit extended key usage. Extended key usage can be encoded
+                  as an object identifier or OpenSSL string representation.
+--remote-cert-tls t: Require that peer certificate was signed with explicit
+                  key usage and extended key usage based on RFC3280 TLS rules.
+                  t = 'client' | 'server'.
+
+PKCS#11 Options:
+--pkcs11-providers provider ... : PKCS#11 provider to load.
+--pkcs11-protected-authentication [0|1] ... : Use PKCS#11 protected authentication
+                              path. Set for each provider.
+--pkcs11-private-mode hex ...   : PKCS#11 private key mode mask.
+                              0       : Try  to determine automatically (default).
+                              1       : Use Sign.
+                              2       : Use SignRecover.
+                              4       : Use Decrypt.
+                              8       : Use Unwrap.
+--pkcs11-cert-private [0|1] ... : Set if login should be performed before
+                                  certificate can be accessed. Set for each provider.
+--pkcs11-pin-cache seconds      : Number of seconds to cache PIN. The default is -1
+                                  cache until token is removed.
+--pkcs11-id-management          : Acquire identity from management interface.
+--pkcs11-id serialized-id 'id'  : Identity to use, get using standalone --show-pkcs11-ids
+
+SSL Library information:
+--show-ciphers  : Show cipher algorithms to use with --cipher option.
+--show-digests  : Show message digest algorithms to use with --auth option.
+--show-engines  : Show hardware crypto accelerator engines (if available).
+--show-tls      : Show all TLS ciphers (TLS used only as a control channel).
+
+Generate a new key :
+--genkey secret file   : Generate a new random key of type and write to file
+                         (for use with --secret, --tls-auth or --tls-crypt).
+Tun/tap config mode (available with linux 2.4+):
+--mktun         : Create a persistent tunnel.
+--rmtun         : Remove a persistent tunnel.
+--dev tunX|tapX : tun/tap device
+--dev-type dt   : Device type.  See tunnel options above for details.
+--user user     : User to set privilege to.
+--group group   : Group to set privilege to.
+
+PKCS#11 standalone options:
+--show-pkcs11-ids [provider] [cert_private] : Show PKCS#11 available ids.
+                                            --verb option can be added *BEFORE* this.
+
+General Standalone Options:
+--show-gateway : Show info about default gateway.
+</code></pre>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2021-Sep-13<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/openvpn/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../openocd/index.html>
+<i class=ti-arrow-left></i>
+<span>openocd</span>
+</a>
+<a href=../oscanner/index.html>
+<span>oscanner</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/openvpn/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:15:03 GMT -->
+</html>

@@ -1,0 +1,2471 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/thc-ipv6/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:16:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>thc-ipv6 | Kali Linux Tools</title>
+<meta itemprop=name content="thc-ipv6 | Kali Linux Tools">
+<meta name=application-name content="thc-ipv6 | Kali Linux Tools">
+<meta name=twitter:title content="thc-ipv6 | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="thc-ipv6 | Kali Linux Tools">
+<meta itemprop=description content="address6 Usage Example Convert an IPv6 address to a MAC address and vice-versa:
+root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8 74:d4:35:4e:39:c8 root@kali:~# address6 74:d4:35:4e:39:c8 fe80::76d4:35ff:fe4e:39c8  alive6 Usage Example root@kali:~# alive6 eth0 Alive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem] Alive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply] Alive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply] Alive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply] Alive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]  detect-new-ip6 Usage Example root@kali:~# detect-new-ip6 eth0 Started ICMP6 DAD detection (Press Control-C to end) .">
+<meta name=description content="address6 Usage Example Convert an IPv6 address to a MAC address and vice-versa:
+root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8 74:d4:35:4e:39:c8 root@kali:~# address6 74:d4:35:4e:39:c8 fe80::76d4:35ff:fe4e:39c8  alive6 Usage Example root@kali:~# alive6 eth0 Alive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem] Alive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply] Alive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply] Alive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply] Alive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]  detect-new-ip6 Usage Example root@kali:~# detect-new-ip6 eth0 Started ICMP6 DAD detection (Press Control-C to end) .">
+<meta name=twitter:description content="address6 Usage Example Convert an IPv6 address to a MAC address and vice-versa:
+root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8 74:d4:35:4e:39:c8 root@kali:~# address6 74:d4:35:4e:39:c8 fe80::76d4:35ff:fe4e:39c8  alive6 Usage Example root@kali:~# alive6 eth0 Alive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem] Alive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply] Alive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply] Alive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply] Alive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]  detect-new-ip6 Usage Example root@kali:~# detect-new-ip6 eth0 Started ICMP6 DAD detection (Press Control-C to end) .">
+<meta property="og:description" content="address6 Usage Example Convert an IPv6 address to a MAC address and vice-versa:
+root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8 74:d4:35:4e:39:c8 root@kali:~# address6 74:d4:35:4e:39:c8 fe80::76d4:35ff:fe4e:39c8  alive6 Usage Example root@kali:~# alive6 eth0 Alive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem] Alive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply] Alive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply] Alive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply] Alive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]  detect-new-ip6 Usage Example root@kali:~# detect-new-ip6 eth0 Started ICMP6 DAD detection (Press Control-C to end) .">
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2021-09-13T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>thc-ipv6</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 3.8</code> <code>arch: linux-any</code>
+<hr>
+<div id=package-links>
+<a href=http://www.thc.org/thc-ipv6/><i class=ti-world></i> thc-ipv6 Homepage</a><span><span>|</span><a href=http://pkg.kali.org/thc-ipv6><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://salsa.debian.org/pkg-security-team/thc-ipv6><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-default title=kali-linux-default>default</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-large title=kali-linux-large>large</a></li>
+</ul>
+</li>
+<li>
+Tools:
+<ul>
+<li><a href=../kali-meta/index.html#kali-tools-information-gathering title=kali-tools-information-gathering>information-gathering</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#thc-ipv6 title=thc-ipv6>
+<i class=ti-package></i>thc-ipv6
+</a>
+<ul>
+<li>
+<a href=#atk6-address6 title=atk6-address6>
+atk6-address6
+</a>
+</li>
+<li>
+<a href=#atk6-alive6 title=atk6-alive6>
+atk6-alive6
+</a>
+</li>
+<li>
+<a href=#atk6-connect6 title=atk6-connect6>
+atk6-connect6
+</a>
+</li>
+<li>
+<a href=#atk6-connsplit6 title=atk6-connsplit6>
+atk6-connsplit6
+</a>
+</li>
+<li>
+<a href=#atk6-covert_send6 title=atk6-covert_send6>
+atk6-covert_send6
+</a>
+</li>
+<li>
+<a href=#atk6-covert_send6d title=atk6-covert_send6d>
+atk6-covert_send6d
+</a>
+</li>
+<li>
+<a href=#atk6-denial6 title=atk6-denial6>
+atk6-denial6
+</a>
+</li>
+<li>
+<a href=#atk6-detect-new-ip6 title=atk6-detect-new-ip6>
+atk6-detect-new-ip6
+</a>
+</li>
+<li>
+<a href=#atk6-detect_sniffer6 title=atk6-detect_sniffer6>
+atk6-detect_sniffer6
+</a>
+</li>
+<li>
+<a href=#atk6-dnsdict6 title=atk6-dnsdict6>
+atk6-dnsdict6
+</a>
+</li>
+<li>
+<a href=#atk6-dnsrevenum6 title=atk6-dnsrevenum6>
+atk6-dnsrevenum6
+</a>
+</li>
+<li>
+<a href=#atk6-dnssecwalk title=atk6-dnssecwalk>
+atk6-dnssecwalk
+</a>
+</li>
+<li>
+<a href=#atk6-dos-new-ip6 title=atk6-dos-new-ip6>
+atk6-dos-new-ip6
+</a>
+</li>
+<li>
+<a href=#atk6-dump_dhcp6 title=atk6-dump_dhcp6>
+atk6-dump_dhcp6
+</a>
+</li>
+<li>
+<a href=#atk6-dump_router6 title=atk6-dump_router6>
+atk6-dump_router6
+</a>
+</li>
+<li>
+<a href=#atk6-exploit6 title=atk6-exploit6>
+atk6-exploit6
+</a>
+</li>
+<li>
+<a href=#atk6-extract_hosts6 title=atk6-extract_hosts6>
+atk6-extract_hosts6
+</a>
+</li>
+<li>
+<a href=#atk6-extract_networks6 title=atk6-extract_networks6>
+atk6-extract_networks6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_advertise6 title=atk6-fake_advertise6>
+atk6-fake_advertise6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_dhcps6 title=atk6-fake_dhcps6>
+atk6-fake_dhcps6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_dns6d title=atk6-fake_dns6d>
+atk6-fake_dns6d
+</a>
+</li>
+<li>
+<a href=#atk6-fake_dnsupdate6 title=atk6-fake_dnsupdate6>
+atk6-fake_dnsupdate6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_mipv6 title=atk6-fake_mipv6>
+atk6-fake_mipv6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_mld26 title=atk6-fake_mld26>
+atk6-fake_mld26
+</a>
+</li>
+<li>
+<a href=#atk6-fake_mld6 title=atk6-fake_mld6>
+atk6-fake_mld6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_mldrouter6 title=atk6-fake_mldrouter6>
+atk6-fake_mldrouter6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_pim6 title=atk6-fake_pim6>
+atk6-fake_pim6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_router26 title=atk6-fake_router26>
+atk6-fake_router26
+</a>
+</li>
+<li>
+<a href=#atk6-fake_router6 title=atk6-fake_router6>
+atk6-fake_router6
+</a>
+</li>
+<li>
+<a href=#atk6-fake_solicitate6 title=atk6-fake_solicitate6>
+atk6-fake_solicitate6
+</a>
+</li>
+<li>
+<a href=#atk6-firewall6 title=atk6-firewall6>
+atk6-firewall6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_advertise6 title=atk6-flood_advertise6>
+atk6-flood_advertise6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_dhcpc6 title=atk6-flood_dhcpc6>
+atk6-flood_dhcpc6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_mld26 title=atk6-flood_mld26>
+atk6-flood_mld26
+</a>
+</li>
+<li>
+<a href=#atk6-flood_mld6 title=atk6-flood_mld6>
+atk6-flood_mld6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_mldrouter6 title=atk6-flood_mldrouter6>
+atk6-flood_mldrouter6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_redir6 title=atk6-flood_redir6>
+atk6-flood_redir6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_router26 title=atk6-flood_router26>
+atk6-flood_router26
+</a>
+</li>
+<li>
+<a href=#atk6-flood_router6 title=atk6-flood_router6>
+atk6-flood_router6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_rs6 title=atk6-flood_rs6>
+atk6-flood_rs6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_solicitate6 title=atk6-flood_solicitate6>
+atk6-flood_solicitate6
+</a>
+</li>
+<li>
+<a href=#atk6-flood_unreach6 title=atk6-flood_unreach6>
+atk6-flood_unreach6
+</a>
+</li>
+<li>
+<a href=#atk6-four2six title=atk6-four2six>
+atk6-four2six
+</a>
+</li>
+<li>
+<a href=#atk6-fragmentation6 title=atk6-fragmentation6>
+atk6-fragmentation6
+</a>
+</li>
+<li>
+<a href=#atk6-fragrouter6 title=atk6-fragrouter6>
+atk6-fragrouter6
+</a>
+</li>
+<li>
+<a href=#atk6-fuzz_dhcpc6 title=atk6-fuzz_dhcpc6>
+atk6-fuzz_dhcpc6
+</a>
+</li>
+<li>
+<a href=#atk6-fuzz_dhcps6 title=atk6-fuzz_dhcps6>
+atk6-fuzz_dhcps6
+</a>
+</li>
+<li>
+<a href=#atk6-fuzz_ip6 title=atk6-fuzz_ip6>
+atk6-fuzz_ip6
+</a>
+</li>
+<li>
+<a href=#atk6-implementation6 title=atk6-implementation6>
+atk6-implementation6
+</a>
+</li>
+<li>
+<a href=#atk6-implementation6d title=atk6-implementation6d>
+atk6-implementation6d
+</a>
+</li>
+<li>
+<a href=#atk6-inject_alive6 title=atk6-inject_alive6>
+atk6-inject_alive6
+</a>
+</li>
+<li>
+<a href=#atk6-inverse_lookup6 title=atk6-inverse_lookup6>
+atk6-inverse_lookup6
+</a>
+</li>
+<li>
+<a href=#atk6-kill_router6 title=atk6-kill_router6>
+atk6-kill_router6
+</a>
+</li>
+<li>
+<a href=#atk6-ndpexhaust26 title=atk6-ndpexhaust26>
+atk6-ndpexhaust26
+</a>
+</li>
+<li>
+<a href=#atk6-ndpexhaust6 title=atk6-ndpexhaust6>
+atk6-ndpexhaust6
+</a>
+</li>
+<li>
+<a href=#atk6-node_query6 title=atk6-node_query6>
+atk6-node_query6
+</a>
+</li>
+<li>
+<a href=#atk6-parasite6 title=atk6-parasite6>
+atk6-parasite6
+</a>
+</li>
+<li>
+<a href=#atk6-passive_discovery6 title=atk6-passive_discovery6>
+atk6-passive_discovery6
+</a>
+</li>
+<li>
+<a href=#atk6-randicmp6 title=atk6-randicmp6>
+atk6-randicmp6
+</a>
+</li>
+<li>
+<a href=#atk6-redir6 title=atk6-redir6>
+atk6-redir6
+</a>
+</li>
+<li>
+<a href=#atk6-redirsniff6 title=atk6-redirsniff6>
+atk6-redirsniff6
+</a>
+</li>
+<li>
+<a href=#atk6-rsmurf6 title=atk6-rsmurf6>
+atk6-rsmurf6
+</a>
+</li>
+<li>
+<a href=#atk6-sendpees6 title=atk6-sendpees6>
+atk6-sendpees6
+</a>
+</li>
+<li>
+<a href=#atk6-sendpeesmp6 title=atk6-sendpeesmp6>
+atk6-sendpeesmp6
+</a>
+</li>
+<li>
+<a href=#atk6-smurf6 title=atk6-smurf6>
+atk6-smurf6
+</a>
+</li>
+<li>
+<a href=#atk6-thcping6 title=atk6-thcping6>
+atk6-thcping6
+</a>
+</li>
+<li>
+<a href=#atk6-thcsyn6 title=atk6-thcsyn6>
+atk6-thcsyn6
+</a>
+</li>
+<li>
+<a href=#atk6-toobig6 title=atk6-toobig6>
+atk6-toobig6
+</a>
+</li>
+<li>
+<a href=#atk6-toobigsniff6 title=atk6-toobigsniff6>
+atk6-toobigsniff6
+</a>
+</li>
+<li>
+<a href=#atk6-trace6 title=atk6-trace6>
+atk6-trace6
+</a>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h2 id=address6-usage-example>address6 Usage Example</h2>
+<p>Convert an IPv6 address to a MAC address and vice-versa:</p>
+<pre><code>root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8
+74:d4:35:4e:39:c8
+root@kali:~# address6 74:d4:35:4e:39:c8
+fe80::76d4:35ff:fe4e:39c8
+</code></pre>
+<h2 id=alive6-usage-example>alive6 Usage Example</h2>
+<pre><code>root@kali:~# alive6 eth0
+Alive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem]
+Alive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply]
+Alive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply]
+Alive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply]
+Alive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]
+</code></pre>
+<h2 id=detect-new-ip6-usage-example>detect-new-ip6 Usage Example</h2>
+<pre><code>root@kali:~# detect-new-ip6 eth0
+Started ICMP6 DAD detection (Press Control-C to end) ...
+Detected new ip6 address: fe80::85d:9879:9251:853a
+</code></pre>
+<h2 id=dnsdict6-usage-example>dnsdict6 Usage Example</h2>
+<pre><code>root@kali:~# dnsdict6 example.com
+Starting DNS enumeration work on example.com. ...
+Starting enumerating example.com. - creating 8 threads for 798 words...
+Estimated time to completion: 1 to 2 minutes
+www.example.com. =&gt; 2606:2800:220:6d:26bf:1447:1097:aa7
+</code></pre>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=thc-ipv6>thc-ipv6</h3>
+<p>Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses.</p>
+<p>Some of the tools included:</p>
+<p>alive6: an effective alive scanning.</p>
+<p>denial6: try a collection of denial-of-service tests against a
+target.</p>
+<p>detect-new-ip6: detect new ip6 devices which join the network.</p>
+<p>dnsdict6: parallelized dns ipv6 dictionary bruteforcer.</p>
+<p>dos-new-ip6: detect new ip6 devices and tell them that their chosen
+IP collides on the network (DOS).</p>
+<p>exploit6: test known ipv6 vulnerabilities against a target.</p>
+<p>fake_mld6: announce yourself in a multicast group of your choice on
+the net.</p>
+<p>fake_router6: announce yourself as a router on the network.</p>
+<p>flood_advertise6: flood a target with random neighbor advertisements.</p>
+<p>flood_router6: flood a target with random router advertisements.</p>
+<p>implementation6: performs various implementation checks on ipv6.</p>
+<p>parasite6: icmp neighbor solitication/advertisement spoofer.</p>
+<p>redir6: redirect traffic to you intelligently (man-in-the-middle)
+with a clever icmp6 redirect spoofer.</p>
+<p>rsmurf6: remote smurfer (known to work only against Linux at the
+moment).</p>
+<p>thcping6: sends a hand crafted ping6 packet.</p>
+<p>toobig6: mtu decreaser with the same intelligence as redir6.</p>
+<p><strong>Installed size:</strong> <code>3.63 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install thc-ipv6</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libnetfilter-queue1</li>
+<li>libpcap0.8</li>
+<li>libssl1.1
+</div></li>
+</ul>
+<h5 id=atk6-address6>atk6-address6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-address6 -h
+atk6-address6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax:
+	atk6-address6 mac-address [ipv6-prefix]
+	atk6-address6 ipv4-address [ipv6-prefix]
+	atk6-address6 ipv6-address
+
+Converts a mac or IPv4 address to an IPv6 address (link local if no prefix is
+given as 2nd option) or, when given an IPv6 address, prints the mac or IPv4
+address. Prints all possible variations. Returns -1 on errors or the number of
+variations found
+</code></pre>
+<hr>
+<h5 id=atk6-alive6>atk6-alive6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-alive6 -h
+atk6-alive6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-alive6 [-CFHLMPSdlpvV] [-I srcip6] [-i file] [-o file] [-e opt] [-s port,..] [-a port,..] [-u port,..] [-T tag] [-W TIME] interface [unicast-or-multicast-address [remote-router]]
+
+Options:
+ Output Options:
+  -i file    check systems from input file
+  -o file    write results to output file
+  -v         verbose information (twice: detailed, thrice: dumping packets)
+  -d         DNS resolve alive IPv6 addresses
+ Enumerate Options:
+  -M         enumerate hardware addresses (MAC) from input addresses (slow!)
+  -C         enumerate common addresses of input networks, -CC for large scan
+  -4 ipv4/range  test various IPv4 address encodings per network (eg 1.2.3.4/24)
+ Alive Technique Options:
+  -p         send a ping packet for alive check (default)
+  -e dst,hop send an errornous packets: destination (default), hop-by-hop
+  -s port,port,..  TCP-SYN packet to ports for alive check or &quot;portscan&quot;
+  -a port,port,..  TCP-ACK packet to ports for alive check
+  -u port,port,..  UDP packet to ports for alive check
+  -F         firewall mode: -p -e dst -u 53 -s 22,25,80,443,9511 -a 9511
+ Sending Options
+  -n number  how often to send each packet (default: local 1, remote 2)
+  -W time    time in ms to wait after sending a packet (default: 1)
+  -S         slow mode, get best router for each remote target or when proxy-NA
+  -I src[/mask]  use the specified IPv6 address as source. Use mask for random.
+  -l         use link-local address for multicast addresses instead of global
+  -P         only print addresses that would be scanned, no packets are sent!
+  -m         raw mode (for network adapters where you do not have Ethernet)
+ Help Options:
+  -hh        show even more options
+
+Target address on command line or in input file can include ranges in the form
+of 2001:db8::1-fff or 2001:db8::1-2:0-ffff:0:0-ffff, etc.
+Do not use the ranges (from-to) option with -M, -C or -4.
+If you use SYN packets (-s/-F option), automatic OS detection is performed.
+Returns -1 on errors, 0 if a system was found alive or 1 if nothing was found.
+</code></pre>
+<hr>
+<h5 id=atk6-connect6>atk6-connect6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-connect6 -h
+connect6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-connect6 [-a | -A type] [-i] target-ip target-port
+
+Options:
+  -a       send Hop-by-Hop Router Alert option
+  -A type  like -a but lets you define the alarmtype (number)
+  -i       interactive mode (like telnet)
+  -I       end a linefeed, wait for a string, print it
+  -O       try TCP Fast Open connection
+  -w ms    wait time for connect in ms (default: 1000)
+  -p       ping mode
+You can supply a %interface identifier to the target-ip
+Returns 0 on successful connect, 1 on timeout/reset
+</code></pre>
+<hr>
+<h5 id=atk6-connsplit6>atk6-connsplit6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-connsplit6 -h
+splitconnect6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: [-vd] atk6-connsplit6 INTERFACE client|server
+
+Options:
+  -v   verbose mode
+  -d   debug mode
+
+Manipulates all incoming (client) or outgoing (server) TCP connections that are
+from (server) or to (client) port 64446, and sets a new destinatin (server) or
+source (client) address.
+The purpose of this is a proof of concept to make connect analysis difficult.
+It is recommended to use the splitconnect6.sh script to control this tool.
+</code></pre>
+<hr>
+<h5 id=atk6-covert_send6>atk6-covert_send6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-covert_send6 -h
+atk6-covert_send6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-covert_send6 [-m mtu] [-k key] [-s resend] interface target file [port]
+
+Options:
+  -m mtu     specifies the maximum MTU (default: interface MTU, min: 1000)
+  -k key     encrypt the content with Blowfish-160
+  -s resend  send each packet RESEND number of times, default: 1
+
+Sends the content of FILE covertly to the target, And its POC - don't except
+too much sophistication - its just put into the destination header.
+</code></pre>
+<hr>
+<h5 id=atk6-covert_send6d>atk6-covert_send6d</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-covert_send6d -h
+atk6-covert_send6d 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-covert_send6d [-k key] interface file
+
+Options:
+  -k key     decrypt the content with Blowfish-160
+
+Writes covertly received content to FILE.
+</code></pre>
+<hr>
+<h5 id=atk6-denial6>atk6-denial6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-denial6 -h
+atk6-denial6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-denial6 interface destination test-case-number
+
+Performs various denial of service attacks on a target
+If a system is vulnerable, it can crash or be under heavy load, so be careful!
+The following test cases are currently implemented:
+  1 : large hop-by-hop header with router-alert and filled with unknown options
+  2 : large destination header filled with unknown options
+  3 : hop-by-hop header with router alert option plus 180 headers
+  4 : hop-by-hop header with router alert option plus 178 headers + ping
+  5 : AH header + ping
+  6 : first fragments of a ping with a hop-by-hop header with router alert
+  7 : large hop-by-hop header filled with unknown options (no router alert)
+
+</code></pre>
+<hr>
+<h5 id=atk6-detect-new-ip6>atk6-detect-new-ip6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-detect-new-ip6 -h
+atk6-detect-new-ip6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-detect-new-ip6 interface [script]
+
+This tools detects new IPv6 addresses joining the local network.
+If script is supplied, it is executed with the detected IPv6 address as first
+and the interface as second command line option.
+
+</code></pre>
+<hr>
+<h5 id=atk6-detect_sniffer6>atk6-detect_sniffer6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-detect_sniffer6 -h
+atk6-detect_sniffer6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-detect_sniffer6 interface [target6]
+
+Tests if systems on the local LAN are sniffing.
+Works against Windows, Linux, OS/X and *BSD
+If no target is given, the link-local-all-nodes address is used, which
+however not always works.
+</code></pre>
+<hr>
+<h5 id=atk6-dnsdict6>atk6-dnsdict6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-dnsdict6 -h
+atk6-dnsdict6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-dnsdict6 [-d4] [-s|-m|-l|-x|-u] [-t THREADS] [-D] domain [dictionary-file]
+
+Enumerates a domain for DNS entries, it uses a dictionary file if supplied
+or a built-in list otherwise. This tool is based on dnsmap by gnucitizen.org.
+
+Options:
+ -4      do also dump IPv4 addresses
+ -t NO   specify the number of threads to use (default: 8, max: 32).
+ -D      dump the selected built-in wordlist, no scanning.
+ -d      display IPv6 information on NS and MX DNS domain information.
+ -e      ignore no NS for domain errors
+ -S      perform SRV service name guessing
+ -[smlxu] choose the dictionary size by -s(mall=100), -m(edium=1419) (DEFAULT)
+           -l(arge=2601), -x(treme=5886) or -u(ber=16724)
+
+</code></pre>
+<hr>
+<h5 id=atk6-dnsrevenum6>atk6-dnsrevenum6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-dnsrevenum6 -h
+atk6-dnsrevenum6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-dnsrevenum6 [-t] dns-server ipv6address
+
+Performs a fast reverse DNS enumeration and is able to cope with slow servers.
+Option -t enables TCP instead of UDP (use this if you get many timeouts)
+Examples:
+  atk6-dnsrevenum6 dns.test.com 2001:db8:42a8::/48
+  atk6-dnsrevenum6 -t dns.test.com 8.a.2.4.8.b.d.0.1.0.0.2.ip6.arpa
+</code></pre>
+<hr>
+<h5 id=atk6-dnssecwalk>atk6-dnssecwalk</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-dnssecwalk -h
+atk6-dnssecwalk 3.8 (c) 2020 by Marc Heuse &lt;mh@mh-sec.de&gt; http://www.mh-sec.de
+
+Syntax: atk6-dnssecwalk [-e46t] dns-server domain
+
+Options:
+ -e  ensure that the domain is present in found addresses, quit otherwise
+ -4  resolve found entries to IPv4 addresses
+ -6  resolve found entries to IPv6 addresses
+ -t  use TCP instead of UDP
+
+Perform DNSSEC NSEC walking.
+
+Example: atk6-dnssecwalk dns.test.com test.com
+</code></pre>
+<hr>
+<h5 id=atk6-dos-new-ip6>atk6-dos-new-ip6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-dos-new-ip6 -h
+atk6-dos-new-ip6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-dos-new-ip6 [-S] interface
+
+This tools prevents new IPv6 interfaces to come up, by sending answers to
+duplicate ip6 checks (DAD). This results in a DOS for new IPv6 devices.
+
+Option -S sends conflicting NS query instead of NA reply, but it restricts
+source randomization.
+
+</code></pre>
+<hr>
+<h5 id=atk6-dump_dhcp6>atk6-dump_dhcp6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-dump_dhcp6 -h
+atk6-dump_dhcp6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-dump_dhcp6 [-V vendorid] interface [target]
+
+Options:
+  -V vendorid  send vendorid number,string (e.g. 11,test)
+  -N           use fe80:: as source
+  -n           use empty mac as source
+
+DHCPv6 information tool. Dumps the available servers and their setup.
+You can specify a specific DHCPv6 server as destination.
+</code></pre>
+<hr>
+<h5 id=atk6-dump_router6>atk6-dump_router6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-dump_router6 -h
+atk6-dump_router6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-dump_router6 interface [target]
+
+Dumps all local routers and their information
+
+</code></pre>
+<hr>
+<h5 id=atk6-exploit6>atk6-exploit6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-exploit6 -h
+atk6-exploit6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-exploit6 interface destination [test-case-number]
+
+Performs exploits of various CVE known IPv6 vulnerabilities on the destination
+Note that for exploitable overflows only 'AAA...' strings are used.
+If a system is vulnerable, it will crash, so be careful!
+</code></pre>
+<hr>
+<h5 id=atk6-extract_hosts6>atk6-extract_hosts6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# man atk6-extract_hosts6
+THC-IPv6(8)                 System Manager's Manual                THC-IPv6(8)
+
+NAME
+       The Hacker Choice's IPv6 Attack Toolkit (aka thc-ipv6)
+
+SYNOPSIS
+       tool [options] ...
+
+       DESCRIPTION
+              This  manual  page briefly documents each of the attack-toolkit6
+              tools. Not all options are listed here, to see the full list  of
+              options of each tool please invoke them with -h.
+
+              Note  that  on Debian (if you read this on Debian) command names
+              are prefixed with atk6- , so for example the tool alive6  should
+              be invoked as atk6-alive6.  This is a Debian-only modification.
+
+       address6 &lt;mac-address/ipv4-address/ipv6-address&gt; [ipv6-prefix]
+              Converts a mac or ipv4 address to an ipv6 address (link local if
+              no prefix is given as 2nd option) or, when  given  an  ipv6  ad-
+              dress, prints the mac or ipv4 address. Prints all possible vari-
+              ations. Returns -1 on errors or the number of variations found.
+
+       alive6 &lt;interface&gt; [unicast-or-multicast-address [remote-router]]
+              Shows alive addresses in the segment. If you  specify  a  remote
+              router,  the  packets are sent with a routing header prefixed by
+              fragmentation.
+
+       covert_send6 &lt;interface&gt; &lt;target&gt; &lt;file&gt; [port]
+              Sends the content of FILE covertly to the target.
+
+       covert_send6d &lt;interface&gt; &lt;file&gt;
+              Writes received covertly content to FILE.
+
+       denial6 &lt;interface&gt; &lt;destination&gt; &lt;test-case-number&gt;
+              Performs various denial of service attacks on a target.
+
+       detect_sniffer6 &lt;interface&gt; [target-ip]
+              Tests if systems on the local LAN are  sniffing.  Works  against
+              Windows, Linux, OS/X and *BSD systems.
+
+       dnssecwalk [-e46] &lt;dns-server&gt; &lt;domain&gt;
+              Performs DNSSEC NSEC walking.
+
+       dos_mld &lt;interface&gt;
+              This  tools  prevents new ipv6 interfaces to come up, by sending
+              answers to duplicate ip6 checks (DAD). This results in a DOS for
+              new ipv6 devices.
+
+       dos-new-ip6 &lt;interface&gt;
+              This  tools  prevents new ipv6 interfaces to come up, by sending
+              answers to duplicate ip6 checks (DAD). This results in a DOS for
+              new ipv6 devices.
+
+       detect-new-ip6 &lt;interface&gt; [scriptname]
+              This tools detects new ipv6 addresses joining the local network.
+              If scriptname is supplied, it is executed with the detected IPv6
+              address as option.
+
+       dnsdict6 [-t THREADS] &lt;domain&gt; [dictionary-file]
+              Enumerates  a  domain for DNS entries, it uses a dictionary file
+              if supplied or a built-in list otherwise.
+
+       dnsrevenum6 &lt;dns-server&gt; &lt;ipv6-address&gt;
+              Performs a fast reverse DNS enumeration.
+
+       dump_router6 &lt;interface&gt;
+              Dumps all local routers and their information.
+
+       dump_dhcp6 &lt;interface&gt;
+              Dumps all DHCPv6 servers and their information
+
+       exploit6 &lt;interface&gt; &lt;destination&gt; [test-case-number]
+              Performs exploits of various CVE known IPv6  vulnerabilities  on
+              the destination.
+
+       extract_hosts6 &lt;file&gt;
+              Prints the host parts of ipv6 addresses in file.
+
+       extract_networks6 &lt;interface&gt;
+              Prints the networks found in file.
+
+       fake_advertise6  &lt;interface&gt;  &lt;ip-address&gt; [target-address [own-mac-ad-
+       dress]]
+              Advertise ipv6 address on the network (with own mac if  not  de-
+              fined)  sending it to the all-nodes multicast address if no tar-
+              get specified.
+
+       fake_dhcps6 &lt;interface&gt; &lt;network-address/prefix-length&gt; &lt;dns-server&gt;
+              Fake DHCPv6 server. Used to configure an address and set  a  DNS
+              server.
+
+       fake_dns6d &lt;interface&gt; &lt;ipv6-address&gt;
+              Fake  DNS server that serves the same IPv6 address to any lookup
+              request.
+
+       fake_dnsupdate6 &lt;dns-server&gt; &lt;fqdn&gt; &lt;ipv6-address&gt;
+              Send false DNS update requests.
+
+       fake_mipv6 &lt;interface&gt; &lt;home-address&gt; &lt;home-agent-address&gt; &lt;care-of-ad-
+       dress&gt;
+              If  the mobile IPv6 home-agent is mis-configured to accept MIPV6
+              updates without IPSEC, this will redirect all packets for  home-
+              address to care-of-address.
+
+       fake_mld6   &lt;interface&gt;  &lt;multicast-address&gt;  [[target-address]  [[ttl]
+       [[own-ip] [own-mac-address]]]]
+              Advertise yourself in a multicast group of your choice.
+
+       fake_mld26 [-l] &lt;interface&gt; &lt;add|delete|query&gt; [multicast-address [tar-
+       get-address    [ttl   [own-ip   [own-mac-address   [destination-mac-ad-
+       dress]]]]]]
+              This uses the MLDv2 protocol. Only a subset of what the protocol
+              is able to do is possible to implement via a command line.
+
+       fake_mldrouter6 [-l] &lt;interface&gt; &lt;advertise|solicitate|terminate&gt; [own-
+       ip [own-mac-address]]
+              Announce, delete or solicitate MLD router - yourself or others.
+
+       fake_pim6 [-t ttl] [-s src6] [-d dst6] &lt;interface&gt; {&lt;hello&gt;  [dr_prior-
+       ity]|{join|prune} &lt;neighbor6&gt; &lt;multicast6&gt; &lt;target6&gt;}
+              The hello command takes optionally the DR priority (default: 0).
+
+       fake_router6 &lt;interface&gt; &lt;router-ip-link-local
+              network-address/prefix-length&gt;   &lt;mtu&gt;   [mac-address]  Announce
+              yourself as a router and try to become the default router.  If a
+              non-existing mac-address is supplied, this results in a DOS.
+
+       fake_router26 &lt;interface&gt;
+              Like fake_router6 with more options available.
+
+       fake_solicitate6 &lt;interface&gt; &lt;solicited-ip&gt;
+              Solicits  IPv6  address  on  the network, sending it to the all-
+              nodes multicast address.
+
+       firewall6 [-u] &lt;interface&gt; &lt;destination&gt; &lt;port&gt; [test-case-no]
+              Performs various ACL bypass attempts to  check  implementations.
+              Defaults  to TCP ports, option -u switches to UDP.  For all test
+              cases to work, ICMPv6 ping to the destination must be allowed.
+
+       flood_advertise6 &lt;interface&gt;
+              Flood the local network with neighbor advertisements.
+
+       flood_dhcpc6 &lt;interface&gt; [domain-name]
+              DHCP client flooder. Use to deplete the IP address pool a  DHCP6
+              server  is  offering.  Note:  if the pool is very large, this is
+              rather senseless.
+
+       flood_mld6 &lt;interface&gt;
+              Flood the local network with MLD reports.
+
+       flood_mld26 &lt;interface&gt;
+              Flood the local network with MLDv2 reports.
+
+       flood_mldrouter6 &lt;interface&gt;
+              Flood the local network with MLD router advertisements.
+
+       flood_redir6 [-HFD] interface [target] [oldrouter [newrouter]]
+              Flood a target with ICMPv6 redirects
+
+       flood_router6 &lt;interface&gt;
+              Flood the local network with router advertisements.
+
+       flood_router26 &lt;interface&gt;
+              Similar to flood_router6 but with more options available.
+
+       flood_rs6 [-sS] interface [target]
+              Flood a network with ICMPv6 router solicitation messages
+
+       flood_solicitate6 &lt;interface&gt; [target-ip]
+              Flood the network with neighbor solicitations.
+
+       four2six  [-FHD]  [-s  src6]  interface  ipv6-to-ipv4-gateway  ipv4-src
+       ipv4-dst [port]
+              Send  (spoofed)  packets  over  a 4to6 tunnel (IPv4 packets over
+              IPv6 networks)
+
+       fragmentation6 &lt;interface&gt; &lt;target-ip&gt;
+              Performs fragment firewall and implementation checks,  including
+              denial-of-service.
+
+       fuzz_ip6   [-x]   [-t  number  |  -T  number]  [-p  number]  [-IFSDHRJ]
+       [-1|-2|-3|-4|-5|-6|-7] &lt;interface&gt; &lt;unicast-or-multicast-address&gt;  [ad-
+       dress-in-data-pkt]
+              Fuzzes an icmp6 packet.
+
+       fuzz_dhcpc6  [-1|-2|-3|-4|-5|-6|-7|-8|-9|-A|-B|-C|-D|-m]  [-f  mac] [-l
+       link] [-v ipv6] [-x xid] [-c client] [-o options] interface
+              Fuzzes messages sent to a DHCPv6 client.
+
+       fuzz_dhcps6 [-t number | -T number] [-e number | -T number] [-p number]
+       [-md] [-1|-2|-3|-4|-5|-6|-7|-8] interface [domain-name]
+              Fuzzes  a  DHCPv6 server on specified packet types.  implementa-
+              tion6 &lt;interface&gt; &lt;destination&gt; [test-case-number] Performs some
+              ipv6 implementation checks, can be used to test firewalls too.
+
+       implementation6d &lt;interface&gt;
+              Identifies  test  packets by the implementation6 tool, useful to
+              check what packets passed a firewall.
+
+       inject_alive6 [-ap] &lt;interface&gt;
+              This tool answers to keep-alive requests on PPPoE and 6in4  tun-
+              nels; for PPPoE0t also sends keep-alive requests.  Note that the
+              appropriate environment variable THC_IPV6_{PPPOE|6IN4}  must  be
+              set.   Option -a will actively send alive requests every 15 sec-
+              onds.  Option -p will not send replies to alive requests.
+
+       inverse_lookup6 &lt;interface&gt; &lt;mac-address&gt;
+              Performs an inverse address query, to  get  the  IPv6  addresses
+              that  are  assigned to a MAC address. Note that only few systems
+              support this yet.
+
+       kill_router6 &lt;interface&gt; &lt;target-ip&gt;
+              Announce that target router is going down to delete it from  the
+              routing tables. If you supply a '*' as target-ip, this tool will
+              sniff the network for RAs and immediately send the kill packet.
+
+       ndpexhaust26 &lt;interface&gt; [-acpPTUrR] [-s sourceip6] &lt;target-network&gt;
+              Flood the target /64 network with ICMPv6 TooBig error  messages.
+              This  tool  version is manyfold more effective than ndpexhaust6.
+              -a      add a hop-by-hop header with router alert.   -c       do
+              not  calculate  the  checksum to save time.  -p      send ICMPv6
+              Echo Requests.  -P      send ICMPv6 Echo  Reply.   -T       send
+              ICMPv6  Time-to-live-exceeded.   -U      send ICMPv6 Unreachable
+              (no route).  -r      randomize the source from your /64  prefix.
+              -R       randomize  the source fully.  -s sourceip6  use this as
+              source ipv6 address.
+
+       ndpexhaust6 &lt;interface&gt; &lt;target-network&gt;
+              Randomly pings IPs in target network.
+
+       node_query6 &lt;interface&gt; &lt;target-ip&gt;
+              Sends an ICMPv6 node query request to the target and  dumps  the
+              replies.
+
+       parasite6 &lt;interface&gt; [fake-mac]
+              This is an &quot;ARP spoofer&quot; for IPv6, redirecting all local traffic
+              to your own system (or nirvana if fake-mac does  not  exist)  by
+              answering  falsely to Neighbor Solicitation requests, specifying
+              FAKE-MAC results in a local DOS.
+
+       passive_discovery6 &lt;interface&gt; [scriptname]
+              Passively sniffs the network and  dump  all  client's  IPv6  ad-
+              dresses  detected.  If scriptname is supplied, it is called with
+              the detected IPv6 address as first and the interface  as  second
+              parameters.
+
+       randicmp6 &lt;interface&gt; &lt;target-ip&gt;
+              Sends all ICMPv6 type and code combinations to target.
+
+       redir6  &lt;interface&gt; &lt;src-ip&gt; &lt;target-ip&gt; &lt;original-router&gt; &lt;new-router&gt;
+       [new-router-mac]
+              Implant a route into src-ip, which redirects all traffic to tar-
+              get-ip  to  new-ip.  You must know the router which would handle
+              the route.  If the new-router-mac does not exist,  this  results
+              in a DOS.
+
+       redirsniff6  &lt;interface&gt; &lt;victim-ip&gt; &lt;destination-ip&gt; &lt;original-router&gt;
+       [&lt;new-router&gt; [new-router-mac]]
+              Implant a route into victim-ip, which redirects all  traffic  to
+              destination-ip  to  new-router.  You  must know the router which
+              would handle the route.  If the  new-router  and  new-router-mac
+              does not exist, this results in a DoS.
+
+       rsmurf6 &lt;interface&gt; &lt;victim-ip&gt;
+              Smurfs the local network of the victim. Note: this depends on an
+              implementation error, currently only verified on Linux (fixed in
+              current  versions).  Evil: &quot;ff02::1&quot; as victim will DOS your lo-
+              cal LAN completely.
+
+       smurf6 &lt;interface&gt; &lt;victim-ip&gt; [multicast-network-address]
+              Smurf the target with ICMPv6 echo replies. Target  of  echo  re-
+              quest is the local all-nodes multicast address if not specified.
+
+       sendpees6 &lt;interface&gt; &lt;key_length&gt; &lt;prefix&gt; &lt;victim-ip&gt;
+              Send SEND neighbor solicitation messages and make target to ver-
+              ify a lota CGA and RSA signatures.
+
+       sendpeesmp6 &lt;interface&gt; &lt;key_length&gt; &lt;prefix&gt; &lt;victim-ip&gt;
+              Multithreaded version of sendpees6.
+
+       trace6 [-d] &lt;interface&gt; targetaddress [port]
+              A basic but very fast traceroute6 program.
+
+       thcping6 &lt;interface&gt; &lt;src6&gt; &lt;dst6&gt; &lt;srcmac&gt; &lt;dstmac&gt; &lt;data&gt;
+              Craft your special ICMPv6 echo request packet.
+
+       thcsyn6 [-AcDrRS] [-p port] [-s source-ip6] &lt;interface&gt; &lt;target&gt; &lt;port&gt;
+              Flood the target port with TCP-SYN packets. If you supply &quot;x&quot; as
+              port, it is randomized.
+
+       toobig6 &lt;interface&gt; &lt;target-ip&gt; &lt;existing-ip&gt; &lt;mtu&gt;
+              Implants the specified mtu on the target
+
+SEE ALSO
+       nmap(1), amap(1), dsniff(8).
+
+AUTHOR
+       thc-ipv6 was written by van Hauser &lt;vh@thc.org&gt; / THC
+
+       The homepage for this toolkit is: https://github.com/vanhauser-thc/thc-
+       ipv6
+
+       This manual page was written by Maykel Moya &lt;mmoya@mmoya.org&gt;  and  Ar-
+       turo  Borrero Gonzalez &lt;arturo@debian.org&gt;, for the Debian project (but
+       may be used by others). It's based on previous work by  Michael  Gebet-
+       sroither &lt;gebi@grml.org&gt;.
+
+Summer 2015                     ATTACK-TOOLKIT6                    THC-IPv6(8)
+</code></pre>
+<hr>
+<h5 id=atk6-extract_networks6>atk6-extract_networks6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# man atk6-extract_networks6
+THC-IPv6(8)                 System Manager's Manual                THC-IPv6(8)
+
+NAME
+       The Hacker Choice's IPv6 Attack Toolkit (aka thc-ipv6)
+
+SYNOPSIS
+       tool [options] ...
+
+       DESCRIPTION
+              This  manual  page briefly documents each of the attack-toolkit6
+              tools. Not all options are listed here, to see the full list  of
+              options of each tool please invoke them with -h.
+
+              Note  that  on Debian (if you read this on Debian) command names
+              are prefixed with atk6- , so for example the tool alive6  should
+              be invoked as atk6-alive6.  This is a Debian-only modification.
+
+       address6 &lt;mac-address/ipv4-address/ipv6-address&gt; [ipv6-prefix]
+              Converts a mac or ipv4 address to an ipv6 address (link local if
+              no prefix is given as 2nd option) or, when  given  an  ipv6  ad-
+              dress, prints the mac or ipv4 address. Prints all possible vari-
+              ations. Returns -1 on errors or the number of variations found.
+
+       alive6 &lt;interface&gt; [unicast-or-multicast-address [remote-router]]
+              Shows alive addresses in the segment. If you  specify  a  remote
+              router,  the  packets are sent with a routing header prefixed by
+              fragmentation.
+
+       covert_send6 &lt;interface&gt; &lt;target&gt; &lt;file&gt; [port]
+              Sends the content of FILE covertly to the target.
+
+       covert_send6d &lt;interface&gt; &lt;file&gt;
+              Writes received covertly content to FILE.
+
+       denial6 &lt;interface&gt; &lt;destination&gt; &lt;test-case-number&gt;
+              Performs various denial of service attacks on a target.
+
+       detect_sniffer6 &lt;interface&gt; [target-ip]
+              Tests if systems on the local LAN are  sniffing.  Works  against
+              Windows, Linux, OS/X and *BSD systems.
+
+       dnssecwalk [-e46] &lt;dns-server&gt; &lt;domain&gt;
+              Performs DNSSEC NSEC walking.
+
+       dos_mld &lt;interface&gt;
+              This  tools  prevents new ipv6 interfaces to come up, by sending
+              answers to duplicate ip6 checks (DAD). This results in a DOS for
+              new ipv6 devices.
+
+       dos-new-ip6 &lt;interface&gt;
+              This  tools  prevents new ipv6 interfaces to come up, by sending
+              answers to duplicate ip6 checks (DAD). This results in a DOS for
+              new ipv6 devices.
+
+       detect-new-ip6 &lt;interface&gt; [scriptname]
+              This tools detects new ipv6 addresses joining the local network.
+              If scriptname is supplied, it is executed with the detected IPv6
+              address as option.
+
+       dnsdict6 [-t THREADS] &lt;domain&gt; [dictionary-file]
+              Enumerates  a  domain for DNS entries, it uses a dictionary file
+              if supplied or a built-in list otherwise.
+
+       dnsrevenum6 &lt;dns-server&gt; &lt;ipv6-address&gt;
+              Performs a fast reverse DNS enumeration.
+
+       dump_router6 &lt;interface&gt;
+              Dumps all local routers and their information.
+
+       dump_dhcp6 &lt;interface&gt;
+              Dumps all DHCPv6 servers and their information
+
+       exploit6 &lt;interface&gt; &lt;destination&gt; [test-case-number]
+              Performs exploits of various CVE known IPv6  vulnerabilities  on
+              the destination.
+
+       extract_hosts6 &lt;file&gt;
+              Prints the host parts of ipv6 addresses in file.
+
+       extract_networks6 &lt;interface&gt;
+              Prints the networks found in file.
+
+       fake_advertise6  &lt;interface&gt;  &lt;ip-address&gt; [target-address [own-mac-ad-
+       dress]]
+              Advertise ipv6 address on the network (with own mac if  not  de-
+              fined)  sending it to the all-nodes multicast address if no tar-
+              get specified.
+
+       fake_dhcps6 &lt;interface&gt; &lt;network-address/prefix-length&gt; &lt;dns-server&gt;
+              Fake DHCPv6 server. Used to configure an address and set  a  DNS
+              server.
+
+       fake_dns6d &lt;interface&gt; &lt;ipv6-address&gt;
+              Fake  DNS server that serves the same IPv6 address to any lookup
+              request.
+
+       fake_dnsupdate6 &lt;dns-server&gt; &lt;fqdn&gt; &lt;ipv6-address&gt;
+              Send false DNS update requests.
+
+       fake_mipv6 &lt;interface&gt; &lt;home-address&gt; &lt;home-agent-address&gt; &lt;care-of-ad-
+       dress&gt;
+              If  the mobile IPv6 home-agent is mis-configured to accept MIPV6
+              updates without IPSEC, this will redirect all packets for  home-
+              address to care-of-address.
+
+       fake_mld6   &lt;interface&gt;  &lt;multicast-address&gt;  [[target-address]  [[ttl]
+       [[own-ip] [own-mac-address]]]]
+              Advertise yourself in a multicast group of your choice.
+
+       fake_mld26 [-l] &lt;interface&gt; &lt;add|delete|query&gt; [multicast-address [tar-
+       get-address    [ttl   [own-ip   [own-mac-address   [destination-mac-ad-
+       dress]]]]]]
+              This uses the MLDv2 protocol. Only a subset of what the protocol
+              is able to do is possible to implement via a command line.
+
+       fake_mldrouter6 [-l] &lt;interface&gt; &lt;advertise|solicitate|terminate&gt; [own-
+       ip [own-mac-address]]
+              Announce, delete or solicitate MLD router - yourself or others.
+
+       fake_pim6 [-t ttl] [-s src6] [-d dst6] &lt;interface&gt; {&lt;hello&gt;  [dr_prior-
+       ity]|{join|prune} &lt;neighbor6&gt; &lt;multicast6&gt; &lt;target6&gt;}
+              The hello command takes optionally the DR priority (default: 0).
+
+       fake_router6 &lt;interface&gt; &lt;router-ip-link-local
+              network-address/prefix-length&gt;   &lt;mtu&gt;   [mac-address]  Announce
+              yourself as a router and try to become the default router.  If a
+              non-existing mac-address is supplied, this results in a DOS.
+
+       fake_router26 &lt;interface&gt;
+              Like fake_router6 with more options available.
+
+       fake_solicitate6 &lt;interface&gt; &lt;solicited-ip&gt;
+              Solicits  IPv6  address  on  the network, sending it to the all-
+              nodes multicast address.
+
+       firewall6 [-u] &lt;interface&gt; &lt;destination&gt; &lt;port&gt; [test-case-no]
+              Performs various ACL bypass attempts to  check  implementations.
+              Defaults  to TCP ports, option -u switches to UDP.  For all test
+              cases to work, ICMPv6 ping to the destination must be allowed.
+
+       flood_advertise6 &lt;interface&gt;
+              Flood the local network with neighbor advertisements.
+
+       flood_dhcpc6 &lt;interface&gt; [domain-name]
+              DHCP client flooder. Use to deplete the IP address pool a  DHCP6
+              server  is  offering.  Note:  if the pool is very large, this is
+              rather senseless.
+
+       flood_mld6 &lt;interface&gt;
+              Flood the local network with MLD reports.
+
+       flood_mld26 &lt;interface&gt;
+              Flood the local network with MLDv2 reports.
+
+       flood_mldrouter6 &lt;interface&gt;
+              Flood the local network with MLD router advertisements.
+
+       flood_redir6 [-HFD] interface [target] [oldrouter [newrouter]]
+              Flood a target with ICMPv6 redirects
+
+       flood_router6 &lt;interface&gt;
+              Flood the local network with router advertisements.
+
+       flood_router26 &lt;interface&gt;
+              Similar to flood_router6 but with more options available.
+
+       flood_rs6 [-sS] interface [target]
+              Flood a network with ICMPv6 router solicitation messages
+
+       flood_solicitate6 &lt;interface&gt; [target-ip]
+              Flood the network with neighbor solicitations.
+
+       four2six  [-FHD]  [-s  src6]  interface  ipv6-to-ipv4-gateway  ipv4-src
+       ipv4-dst [port]
+              Send  (spoofed)  packets  over  a 4to6 tunnel (IPv4 packets over
+              IPv6 networks)
+
+       fragmentation6 &lt;interface&gt; &lt;target-ip&gt;
+              Performs fragment firewall and implementation checks,  including
+              denial-of-service.
+
+       fuzz_ip6   [-x]   [-t  number  |  -T  number]  [-p  number]  [-IFSDHRJ]
+       [-1|-2|-3|-4|-5|-6|-7] &lt;interface&gt; &lt;unicast-or-multicast-address&gt;  [ad-
+       dress-in-data-pkt]
+              Fuzzes an icmp6 packet.
+
+       fuzz_dhcpc6  [-1|-2|-3|-4|-5|-6|-7|-8|-9|-A|-B|-C|-D|-m]  [-f  mac] [-l
+       link] [-v ipv6] [-x xid] [-c client] [-o options] interface
+              Fuzzes messages sent to a DHCPv6 client.
+
+       fuzz_dhcps6 [-t number | -T number] [-e number | -T number] [-p number]
+       [-md] [-1|-2|-3|-4|-5|-6|-7|-8] interface [domain-name]
+              Fuzzes  a  DHCPv6 server on specified packet types.  implementa-
+              tion6 &lt;interface&gt; &lt;destination&gt; [test-case-number] Performs some
+              ipv6 implementation checks, can be used to test firewalls too.
+
+       implementation6d &lt;interface&gt;
+              Identifies  test  packets by the implementation6 tool, useful to
+              check what packets passed a firewall.
+
+       inject_alive6 [-ap] &lt;interface&gt;
+              This tool answers to keep-alive requests on PPPoE and 6in4  tun-
+              nels; for PPPoE0t also sends keep-alive requests.  Note that the
+              appropriate environment variable THC_IPV6_{PPPOE|6IN4}  must  be
+              set.   Option -a will actively send alive requests every 15 sec-
+              onds.  Option -p will not send replies to alive requests.
+
+       inverse_lookup6 &lt;interface&gt; &lt;mac-address&gt;
+              Performs an inverse address query, to  get  the  IPv6  addresses
+              that  are  assigned to a MAC address. Note that only few systems
+              support this yet.
+
+       kill_router6 &lt;interface&gt; &lt;target-ip&gt;
+              Announce that target router is going down to delete it from  the
+              routing tables. If you supply a '*' as target-ip, this tool will
+              sniff the network for RAs and immediately send the kill packet.
+
+       ndpexhaust26 &lt;interface&gt; [-acpPTUrR] [-s sourceip6] &lt;target-network&gt;
+              Flood the target /64 network with ICMPv6 TooBig error  messages.
+              This  tool  version is manyfold more effective than ndpexhaust6.
+              -a      add a hop-by-hop header with router alert.   -c       do
+              not  calculate  the  checksum to save time.  -p      send ICMPv6
+              Echo Requests.  -P      send ICMPv6 Echo  Reply.   -T       send
+              ICMPv6  Time-to-live-exceeded.   -U      send ICMPv6 Unreachable
+              (no route).  -r      randomize the source from your /64  prefix.
+              -R       randomize  the source fully.  -s sourceip6  use this as
+              source ipv6 address.
+
+       ndpexhaust6 &lt;interface&gt; &lt;target-network&gt;
+              Randomly pings IPs in target network.
+
+       node_query6 &lt;interface&gt; &lt;target-ip&gt;
+              Sends an ICMPv6 node query request to the target and  dumps  the
+              replies.
+
+       parasite6 &lt;interface&gt; [fake-mac]
+              This is an &quot;ARP spoofer&quot; for IPv6, redirecting all local traffic
+              to your own system (or nirvana if fake-mac does  not  exist)  by
+              answering  falsely to Neighbor Solicitation requests, specifying
+              FAKE-MAC results in a local DOS.
+
+       passive_discovery6 &lt;interface&gt; [scriptname]
+              Passively sniffs the network and  dump  all  client's  IPv6  ad-
+              dresses  detected.  If scriptname is supplied, it is called with
+              the detected IPv6 address as first and the interface  as  second
+              parameters.
+
+       randicmp6 &lt;interface&gt; &lt;target-ip&gt;
+              Sends all ICMPv6 type and code combinations to target.
+
+       redir6  &lt;interface&gt; &lt;src-ip&gt; &lt;target-ip&gt; &lt;original-router&gt; &lt;new-router&gt;
+       [new-router-mac]
+              Implant a route into src-ip, which redirects all traffic to tar-
+              get-ip  to  new-ip.  You must know the router which would handle
+              the route.  If the new-router-mac does not exist,  this  results
+              in a DOS.
+
+       redirsniff6  &lt;interface&gt; &lt;victim-ip&gt; &lt;destination-ip&gt; &lt;original-router&gt;
+       [&lt;new-router&gt; [new-router-mac]]
+              Implant a route into victim-ip, which redirects all  traffic  to
+              destination-ip  to  new-router.  You  must know the router which
+              would handle the route.  If the  new-router  and  new-router-mac
+              does not exist, this results in a DoS.
+
+       rsmurf6 &lt;interface&gt; &lt;victim-ip&gt;
+              Smurfs the local network of the victim. Note: this depends on an
+              implementation error, currently only verified on Linux (fixed in
+              current  versions).  Evil: &quot;ff02::1&quot; as victim will DOS your lo-
+              cal LAN completely.
+
+       smurf6 &lt;interface&gt; &lt;victim-ip&gt; [multicast-network-address]
+              Smurf the target with ICMPv6 echo replies. Target  of  echo  re-
+              quest is the local all-nodes multicast address if not specified.
+
+       sendpees6 &lt;interface&gt; &lt;key_length&gt; &lt;prefix&gt; &lt;victim-ip&gt;
+              Send SEND neighbor solicitation messages and make target to ver-
+              ify a lota CGA and RSA signatures.
+
+       sendpeesmp6 &lt;interface&gt; &lt;key_length&gt; &lt;prefix&gt; &lt;victim-ip&gt;
+              Multithreaded version of sendpees6.
+
+       trace6 [-d] &lt;interface&gt; targetaddress [port]
+              A basic but very fast traceroute6 program.
+
+       thcping6 &lt;interface&gt; &lt;src6&gt; &lt;dst6&gt; &lt;srcmac&gt; &lt;dstmac&gt; &lt;data&gt;
+              Craft your special ICMPv6 echo request packet.
+
+       thcsyn6 [-AcDrRS] [-p port] [-s source-ip6] &lt;interface&gt; &lt;target&gt; &lt;port&gt;
+              Flood the target port with TCP-SYN packets. If you supply &quot;x&quot; as
+              port, it is randomized.
+
+       toobig6 &lt;interface&gt; &lt;target-ip&gt; &lt;existing-ip&gt; &lt;mtu&gt;
+              Implants the specified mtu on the target
+
+SEE ALSO
+       nmap(1), amap(1), dsniff(8).
+
+AUTHOR
+       thc-ipv6 was written by van Hauser &lt;vh@thc.org&gt; / THC
+
+       The homepage for this toolkit is: https://github.com/vanhauser-thc/thc-
+       ipv6
+
+       This manual page was written by Maykel Moya &lt;mmoya@mmoya.org&gt;  and  Ar-
+       turo  Borrero Gonzalez &lt;arturo@debian.org&gt;, for the Debian project (but
+       may be used by others). It's based on previous work by  Michael  Gebet-
+       sroither &lt;gebi@grml.org&gt;.
+
+Summer 2015                     ATTACK-TOOLKIT6                    THC-IPv6(8)
+</code></pre>
+<hr>
+<h5 id=atk6-fake_advertise6>atk6-fake_advertise6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_advertise6 -h
+atk6-fake_advertise6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_advertise6 [-DHF] [-Ors] [-n count] [-w seconds] interface ip-address-advertised [target-address [mac-address-advertised [source-ip-address]]]
+
+Advertise IPv6 address on the network (with own mac if not specified),
+sending it to the all-nodes multicast address if no target address is set.
+Source ip address is the address advertised if not set.
+
+Sending options:
+  -n count    send how many packets (default: forever)
+  -w seconds  wait time between the packets sent (default: 5)
+  -m srcmac   the srcmac address to send from (not what is advertised!
+Flag options:
+  -O  do NOT set the override flag (default: on)
+  -r  DO set the router flag (default: off)
+  -s  DO set the solicitate flag (default: off)
+ND Security evasion options (can be combined):
+  -F  full evasion attack (no other evasion options allowed)
+  -H  add a hop-by-hop header
+  -f  add a one shot fragment header (can be specified multiple times)
+  -D  add a large destination header which fragments the packet.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_dhcps6>atk6-fake_dhcps6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_dhcps6 -h
+atk6-fake_dhcps6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_dhcps6 interface network-address/prefix-length dns-server [dhcp-server-ip-address [mac-address]]
+
+Fake DHCPv6 server. Use to configure an address and set a DNS server
+</code></pre>
+<hr>
+<h5 id=atk6-fake_dns6d>atk6-fake_dns6d</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_dns6d -h
+atk6-fake_dns6d 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_dns6d interface ipv6-address [fake-ipv6-address [fake-mac]]
+Fake DNS server that serves the same IPv6 address to any lookup request
+You can use this together with parasite6 if clients have a fixed DNS server
+Note: very simple server. Does not honor multiple queries in a packet, norNS, MX, etc. lookups.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_dnsupdate6>atk6-fake_dnsupdate6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_dnsupdate6 -h
+atk6-fake_dnsupdate6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_dnsupdate6 dns-server full-qualified-host-dns-name ipv6address
+
+Example: atk6-fake_dnsupdate6 dns.test.com myhost.sub.test.com ::1
+
+</code></pre>
+<hr>
+<h5 id=atk6-fake_mipv6>atk6-fake_mipv6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_mipv6 -h
+atk6-fake_mipv6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_mipv6 interface home-address home-agent-address care-of-address
+
+If the mobile IPv6 home-agent is mis-configured to accept MIPV6 updates without
+IPSEC, this will redirect all packets for home-address to care-of-address
+</code></pre>
+<hr>
+<h5 id=atk6-fake_mld26>atk6-fake_mld26</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_mld26 -h
+atk6-fake_mld26 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_mld26 [-l] interface add|delete|query [multicast-address [target-address-to-subscribe-from [ttl [own-ip [own-mac-address [destination-mac-address]]]]]]
+
+This uses the MLDv2 protocol. Only a subset of what the protocol is able to
+do is possible to implement via a command line. Code it if you need something.
+Ad(d)vertise or delete yourself - or anyone you want - in a multicast group of your choice
+Query ask on the network who is listening to multicast addresses
+Use -l to loop and send (in 5s intervals) until Control-C is pressed.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_mld6>atk6-fake_mld6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_mld6 -h
+atk6-fake_mld6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_mld6 [-l] interface add|delete|query [multicast-address [ttl [own-ip [own-mac-address [destination-mac-address]]]]]
+
+Ad(d)vertise or delete yourself - or anyone you want - in a multicast group of your choice
+Query ask on the network who is listening to multicast addresses
+Use -l to loop and send (in 5s intervals) until Control-C is pressed.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_mldrouter6>atk6-fake_mldrouter6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_mldrouter6 -h
+atk6-fake_mldrouter6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_mldrouter6 [-l] interface advertise|solicitate|terminate [own-ip [own-mac-address]]
+
+Announce, delete or soliciated MLD router - sourself or others.
+Use -l to loop and send (in 5s intervals) until Control-C is pressed.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_pim6>atk6-fake_pim6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_pim6 -h
+atk6-fake_pim6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax:
+  atk6-fake_pim6 [-l|-f] [-t ttl] [-s src6] [-d dst6] interface hello [dr_priority]
+  atk6-fake_pim6 [-l|-f] [-t ttl] [-s src6] [-d dst6] interface bootstrap bsr6 [bsr_prio [rp6]]
+  atk6-fake_pim6 [-l|-f] [-t ttl] [-s src6] [-d dst6] interface assert multicast6 [metric [sender6]]
+  atk6-fake_pim6 [-l|-f] [-t ttl] [-s src6] [-d dst6] interface join|prune neighbor6 multicast6 target6
+
+Options:
+  -l       loop packet every 5 seconds
+  -f       flood packet (with random values where useful, e.g src)
+  -t ttl   specify a non-standard ttl
+  -s src6  specify the source IPv6 address
+  -d dst6  specify a non-standard destination IPv6 address
+
+The hello command takes optionally the DR priority (default: 0).
+The join and prune commands need the multicast group to modify, the target
+address that joins or leavs and the neighbor PIM router
+The bootstrap command needs the bootstraprouter address and optional its
+priority and the rendevouz-point.
+The assert command needs the concerning multicast address and optional its
+metric and multicast sender.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_router26>atk6-fake_router26</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_router26 -h
+atk6-fake_router26 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_router26 [-E type] [-A network/prefix] [-R network/prefix] [-D dns-server] [-s sourceip] [-S sourcemac] [-ardl seconds] [-Tt ms] [-n no] [-i interval] interface [target]
+
+Options:
+ -A network/prefix  add autoconfiguration network (up to 16 times)
+ -a seconds         valid lifetime of prefix -A (defaults to 99999)
+ -R network/prefix  add a route entry (up to 16 times)
+ -r seconds         route entry lifetime of -R (defaults to 4096)
+ -D dns-server      specify a DNS server (up to 16 times)
+ -L searchlist      specify the DNS domain search list, separate entries with ,
+ -d seconds         dns entry lifetime of -D (defaults to 4096
+ -M mtu             the MTU to send, defaults to the interface setting
+ -s sourceip        the source ip of the router, defaults to your link local
+ -S sourcemac       the source mac of the router, defaults to your interface
+ -f ethernetmac     the ethernet mac address to use to send the frames
+ -l seconds         router lifetime (defaults to 2048)
+ -T ms              reachable timer (defaults to 0)
+ -t ms              retrans timer (defaults to 0)
+ -p priority        priority &quot;low&quot;, &quot;medium&quot;, &quot;high&quot; (default), &quot;reserved&quot;
+ -F flags           Set one or more of the following flags: managed, other,
+                    homeagent, proxy, reserved; separate by comma
+ -E type            Router Advertisement Guard Evasion option. Types: 
+     F              full evasion (Windows and FreeBSD)
+     H              simple hop-by-hop header
+     1              simple one-shot fragmentation header (can add multiple)
+     D              insert a large destination header so that it fragments
+     O              overlapping fragments for keep-first targets (Win, BSD, Mac)
+     o              overlapping fragments for keep-last targets (Linux, Solaris)
+                    Examples: -E H111, -E D
+ -m mac-address     if only one machine should receive the RAs (not with -E DoO)
+ -i interval        time between RA packets (default: 5)
+ -n number          number of RAs to send (default: unlimited)
+ -X                 clean up by de-announcing fake router (default: disabled)
+
+Announce yourself as a router and try to become the default router.
+If a non-existing link-local or mac address is supplied, this results in a DOS.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_router6>atk6-fake_router6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_router6 -h
+atk6-fake_router6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_router6 [-HFD] interface network-address/prefix-length [dns-server [router-ip-link-local [mtu [mac-address]]]]
+
+Announce yourself as a router and try to become the default router.
+If a non-existing link-local or mac address is supplied, this results in a DOS.
+Option -H adds hop-by-hop, -F fragmentation header and -D dst header.
+</code></pre>
+<hr>
+<h5 id=atk6-fake_solicitate6>atk6-fake_solicitate6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fake_solicitate6 -h
+atk6-fake_solicitate6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fake_solicitate6 [-DHF] interface ip-address-solicitated [target-address [mac-address-solicitated [source-ip-address]]]
+
+Solicate IPv6 address on the network, sending it to the all-nodes multicast address
+</code></pre>
+<hr>
+<h5 id=atk6-firewall6>atk6-firewall6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-firewall6 -h
+atk6-firewall6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-firewall6 [-Hu] interface destination port [test-case-no]
+
+Performs various ACL bypass attempts to check implementations.
+Defaults to TCP ports, option -u switches to UDP.
+Option -H prints the hop count.
+For all test cases to work, ICMPv6 ping to the destination must be allowed.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_advertise6>atk6-flood_advertise6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_advertise6 -h
+atk6-flood_advertise6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_advertise6 [-k | -m mac] interface [target]
+
+Flood the local network with neighbor advertisements.
+Option -k sends with your real src mac, -m with a specified src mac, random for each packet otherwise.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_dhcpc6>atk6-flood_dhcpc6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_dhcpc6 -h
+atk6-flood_dhcpc6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_dhcpc6 [-n|-N] [-1] [-d domain-name] interface [dhcpserver]
+
+DHCP client flooder. Use to deplete the IP address pool a DHCP6 server is
+offering. Note: if the pool is very large, this is rather senseless. :-)
+
+By default the link-local IP MAC address is random, however this won't work
+in some circumstances. -n will use the real MAC, -N the real MAC and
+link-local address. -1 will only solicate an address but not request it.
+If -N is not used, you should run parasite6 in parallel.
+Use -d to force DNS updates, you must specify a domain name.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_mld26>atk6-flood_mld26</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_mld26 -h
+atk6-flood_mld26 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_mld26 interface [target] [max_count]
+
+Flood the local network with MLDv2 reports.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_mld6>atk6-flood_mld6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_mld6 -h
+atk6-flood_mld6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_mld6 interface [target]
+
+Flood the local network with MLD reports.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_mldrouter6>atk6-flood_mldrouter6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_mldrouter6 -h
+atk6-flood_mldrouter6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_mldrouter6 interface [target]
+
+Flood the local network with MLD router advertisements.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_redir6>atk6-flood_redir6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_redir6 -h
+atk6-flood_redir6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_redir6 [-HFD] interface [target] [oldrouter [newrouter]]
+
+Flood the local network with ICMPv6 redirect packets.
+-F/-D/-H add fragment/destination/hopbyhop header to bypass simple filters
+-a adds hopbyhop with router alert
+</code></pre>
+<hr>
+<h5 id=atk6-flood_router26>atk6-flood_router26</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_router26 -h
+atk6-flood_router26 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_router26 [-HFD] [-sSG] [-RPA] interface [target]
+
+Flood the local network with router advertisements.
+Each packet contains ~25 prefix and route enries
+Modes:
+  default  sends both routing entries and prefix information
+  -R       does only send routing entries, no prefix information
+  -P       does only send prefix information, no routing entries
+  -A       an attack to disable privacy extensions
+Options:
+  -a       add a hopbyhop header with router alert
+  -H       add a hopbyhop header to bypass RA guard security
+  -f       add an atomic fragment header to bypass RA guard security
+  -D       add a large destination header to bypass RA guard security
+  -F       perform full RA guard evasion (disallows all other bypass options)
+  -s       use small lifetimes, resulting in a more devasting impact
+  -S       performs a slow start, which can increases the impact
+  -G       gigantic packet of 64kb of prefix/route entries
+  -m       add DHCPv6 managed/other flags to RA
+</code></pre>
+<hr>
+<h5 id=atk6-flood_router6>atk6-flood_router6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_router6 -h
+atk6-flood_router6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_router6 [-HFD] interface
+
+Flood the local network with router advertisements.
+-F/-D/-H add fragment/destination/hopbyhop header to bypass RA guard security.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_rs6>atk6-flood_rs6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_rs6 -h
+atk6-flood_rs6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_rs6 [-sS] interface [target]
+
+Flood the local network with ICMPv6 Router Soliciation packets.
+Option -s uses random source IPv6 addresses. Option -S also randomizes the MAC.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_solicitate6>atk6-flood_solicitate6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_solicitate6 -h
+atk6-flood_solicitate6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_solicitate6 [-k | -m mac] [-a] interface [target [query-address]]
+
+Flood the network with neighbor solicitations.
+if not supplied, target is random and query address is ff02::1
+Use -a to add a hopbyhop header with router alert, -k to send with your real
+mac, -m to specify a mac or its randomized otherwise.
+</code></pre>
+<hr>
+<h5 id=atk6-flood_unreach6>atk6-flood_unreach6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-flood_unreach6 -h
+atk6-flood_unreach6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-flood_unreach6 [-HFD] [-p|-h] [-r|-R] interface target
+
+Flood the target with ICMPv6 unreachable packets.
+-F/-D/-H add fragment/destination/hopbyhop header to bypass simple filters
+-p/-h    send port/host unreachable instead of network unreachable
+-r/-R    randomize source from /64 / randomize source completely
+</code></pre>
+<hr>
+<h5 id=atk6-four2six>atk6-four2six</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-four2six -h
+atk6-four2six 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-four2six [-FHD] [-m srcmac] [-s src6] [-p srcport] interface ipv6-to-ipv4-gateway ipv4-src ipv4-dst [port]
+
+Options:
+  -F         insert atomic fragment header (can be set multiple times)
+  -H         insert and empty hop-by-hop header
+  -D         insert a large destination header that fragments the packet
+  -p srcport  set a specific UDP source port or Ping ID
+  -s src6    set a specific IPv6 source address
+  -m srcmac  set a specific MAC source address
+
+Send an IPv4 packet to an IPv6 4to6 gateway. If a port is specified, a UDP packet is sent, otherwise an ICMPv4 ping.
+</code></pre>
+<hr>
+<h5 id=atk6-fragmentation6>atk6-fragmentation6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fragmentation6 -h
+atk6-fragmentation6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fragmentation6 [-fp] [-n number] interface destination [test-case-no]
+
+-f activates flooding mode, no pauses between sends; -p disables first and
+final pings, -n number specifies how often each test is performed
+
+Performs fragment firewall and implementation checks, incl. denial-of-service.
+</code></pre>
+<hr>
+<h5 id=atk6-fragrouter6>atk6-fragrouter6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fragrouter6 -h
+fragrouter6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fragrouter6 [-dv -f len -e count -t count] INTERFACE EVASION-METHOD
+
+Options:
+  -f len    size of mini fragments (option 64, default 8)
+  -e count  hop count to the IDS for evading (option 256 &amp; 512)
+  -t count  hop count to the target that reaches it
+  -v        verbose mode, print all packets processed for evasion
+Evasion Methods:
+  0     no manipulation
+  1-31  the number of atomic fragmentation headers to insert
+  32    use destination headers for 1-31 instead of fragmentation headers
+  64    fragment each packet to 8 byte length pieces (or change with -f)
+  128   a large destination header that fragments the packet
+  256   insert fake TCP data with a hop count just for the IDS (-e)
+  512   insert TCP connection reset packet with a hop count just to the IDS (-e)
+ 1024   insert fake fragmentation data with a hop count just for the IDS (-e)
+ 2048   insert faked seq/ack data TCP packet
+
+Performs NIDS/NIPS evasion to all defined packets that originate from your
+system or pass through it. All evasion methods can be combined (add together)
+with the exception that only either one of 64 or 128 can be used at once.
+Option 1024 can be used with 1..31 and 64. The evasion methods are processed in the following order: 256, 512, 2048, 1..31/33..63 then either 64 or 128 then 1024.
+Requires to set up ip6table rules that jump to NFQUEUE, use fragrouter6.sh
+which is a wrapper for ip6tables and fragrouter6!
+</code></pre>
+<hr>
+<h5 id=atk6-fuzz_dhcpc6>atk6-fuzz_dhcpc6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fuzz_dhcpc6 -h
+atk6-fuzz_dhcpc6 3.8 (c) 2020 by Darrell Ambro www.github.com/vanhauser-thc/thc-ipv6
+Partially based on code by Brandon Hutcheson and Graeme Neilson
+
+Syntax: atk6-fuzz_dhcpc6  [-1|-2|-3|-4|-5|-6|-7|-8|-9|-A|-B|-C|-D|-m] -f mac -l link -v ipv6 -x xid -c client -o options interface
+
+Options:
+  -1         fuzz DHCPv6 Solicit
+  -2         fuzz DHCPv6 Advertise (default)
+  -3         fuzz DHCPv6 Request
+  -4         fuzz DHCPv6 Confirm
+  -5         fuzz DHCPv6 Renew
+  -6         fuzz DHCPv6 Rebind
+  -7         fuzz DHCPv6 Reply
+  -8         fuzz DHCPv6 Release
+  -9         fuzz DHCPv6 Decline
+  -A         fuzz DHCPv6 Reconfigure
+  -B         fuzz DHCPv6 Information Request
+  -C         fuzz DHCPv6 Relay-Forward
+  -D         fuzz DHCPv6 Relay-reply
+  -m         fuzz the message type as well
+  -v ipv6    IPv6 address of victim (if not specified DHCP clients sending messages are attacked)
+  -x xid     Transaction ID of victim - zero for random (ignored if -v not specified) 
+  -c client  Client ID of victim - zero for random (ignored if -v not specified) 
+  -f mac     spoof the mac address
+  -l link    spoof the link address
+  -o options DHCPv6 message options to send (default: abcdefghijklmonpqr)
+       a  OPTION_SERVERID
+       b  OPTION_IA_NA
+       c  OPTION_IA_TA
+       d  OPTION_IAADR
+       e  OPTION_ORO
+       f  OPTION_PREFERENCE
+       g  OPTION_ELAPSED_TIME
+       h  OPTION_RELAY_MSG
+       i  OPTION_AUTH
+       j  OPTION_UNICAST
+       k  OPTION_STATUS_CODE
+       l  OPTION_RAPID_COMMIT
+       m  OPTION_USER_CLASS
+       n  OPTION_VENDOR_CLASS
+       o  OPTION_VENDOR_OPTS
+       p  OPTION_INTERFACE_ID
+       q  OPTION_RECONF_MSG
+       r  OPTION_RECONF_ACCEPT
+
+Fuzz messages sent to a DHCPv6 client
+</code></pre>
+<hr>
+<h5 id=atk6-fuzz_dhcps6>atk6-fuzz_dhcps6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fuzz_dhcps6 -h
+atk6-fuzz_dhcps6 3.8 (c) 2020 by Brandon Hutcheson, Graeme Neilson and Ryan Ko www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fuzz_dhcps6 [-t number | -T number] [-e number | -T number] [-p number] [-md] [-1|-2|-3|-4|-5|-6|-7|-8] interface [domain-name]
+
+Options:
+ -1         fuzz DHCPv6 Solicit (default)
+ -2         fuzz DHCPv6 Request
+ -3         fuzz DHCPv6 Confirm
+ -4         fuzz DHCPv6 Renew
+ -5         fuzz DHCPv6 Rebind
+ -6         fuzz DHCPv6 Release
+ -7         fuzz DHCPv6 Decline
+ -8         fuzz DHCPv6 Information Request
+ -m         fuzz the message type as well
+ -t number  continue from test no. number
+ -e number  continue to test no. number
+ -T number  only performs test no. number
+ -n number  how many times to send each packet (default: 1)
+ -f         spoof mac
+ -F         spoof link address
+ -w sec     wait number of seconds between packets (default: 0)
+ -p number  perform an alive check every number of tests (default: none)
+ -d         Use -d to force DNS updates, you can specify a domain name on the commandline.
+
+Fuzzes a DHCPv6 packets to a server
+You can only define one of -0 ... -4 types, defaults to -1.
+Returns -1 on error, 0 on tests done and targt alive or 1 on target crash.
+</code></pre>
+<hr>
+<h5 id=atk6-fuzz_ip6>atk6-fuzz_ip6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-fuzz_ip6 -h
+atk6-fuzz_ip6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-fuzz_ip6 [-x] [-t number | -T number] [-p number] [-IFSDHRJ] [-X|-1|-2|-3|-4|-5|-6|-7|-8|-9|-0 port|-P type] interface unicast-or-multicast-address [address-in-data-pkt]
+
+Fuzzes an IPv6 packet with optional EHs and upper layer transport
+Options:
+ -X         do not add any ICMP/TCP header (transport layer)
+ -1         fuzz ICMP6 echo request (default)
+ -2         fuzz ICMP6 neighbor solicitation
+ -3         fuzz ICMP6 neighbor advertisement
+ -4         fuzz ICMP6 router advertisement
+ -5         fuzz multicast listener report packet
+ -6         fuzz multicast listener done packet
+ -7         fuzz multicast listener query packet
+ -8         fuzz multicast listener v2 report packet
+ -9         fuzz multicast listener v2 query packet
+ -0         fuzz node query packet
+ -s port    fuzz TCP-SYN packet against port
+ -P type    fuzz PIMv2 type packet (hello, bootstrap, assert)
+ -x         tries all 256 values for flag and byte types
+ -t number  continue from test no. number
+ -T number  only performs test no. number
+ -p number  perform an alive check every number of tests (default: none)
+ -a         do not perform initial and final alive test
+ -n number  how many times to send each packet (default: 1)
+ -I         fuzz the IP header too
+ -F         add one-shot fragmentation, and fuzz it too (for 1)
+ -S         add source-routing, and fuzz it too (for 1)
+ -D         add destination header, and fuzz it too (for 1)
+ -H         add hop-by-hop header, and fuzz it too (for 1 and 5-9)
+ -R         add router alert header, and fuzz it too (for 5-9 and all)
+ -J         add jumbo packet header, and fuzz it too (for 1)
+You can only define one of -0 ... -9, -P and -s, defaults to -1.
+Note that the -P fuzzing target should be ff02::d
+Returns -1 on error, 0 on tests done and targt alive or 1 on target crash.
+</code></pre>
+<hr>
+<h5 id=atk6-implementation6>atk6-implementation6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-implementation6 -h
+atk6-implementation6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-implementation6 [-p] [-s sourceip6] interface destination [test-case-number]
+
+Options:
+  -s sourceip6  use the specified source IPv6 address
+  -p            do not perform an alive check at the beginning and end
+
+Performs some IPv6 implementation checks, can be used to test some
+firewall features too. Takes approx. 2 minutes to complete.
+</code></pre>
+<hr>
+<h5 id=atk6-implementation6d>atk6-implementation6d</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-implementation6d -h
+atk6-implementation6d 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-implementation6d interface
+
+Identifies test packets by the implementation6 tool, useful to check what
+packets passed a firewall
+</code></pre>
+<hr>
+<h5 id=atk6-inject_alive6>atk6-inject_alive6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-inject_alive6 -h
+atk6-inject_alive6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-inject_alive6 [-ap] interface
+
+This tool answers to keep-alive requests on PPPoE and 6in4 tunnels; for PPPoE
+it also sends keep-alive requests.
+Note that the appropriate environment variable THC_IPV6_{PPPOE|6IN4} must be set
+Option -a will actively send alive requests every 15 seconds.
+Option -p will not send replies to alive requests.
+</code></pre>
+<hr>
+<h5 id=atk6-inverse_lookup6>atk6-inverse_lookup6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-inverse_lookup6 -h
+atk6-inverse_lookup6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-inverse_lookup6 interface mac-address
+
+Performs an inverse address query, to get the IPv6 addresses that are assigned
+to a MAC address. Note that only few systems support this yet.
+</code></pre>
+<hr>
+<h5 id=atk6-kill_router6>atk6-kill_router6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-kill_router6 -h
+atk6-kill_router6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-kill_router6 [-HFD] interface router-address [srcmac [dstmac]]
+
+Announce that a target a router going down to delete it from the routing tables.
+If you supply a '*' as router-address, this tool will sniff the network for any
+RA packet and immediately send the kill packet.
+Option -H adds hop-by-hop, -F fragmentation header and -D dst header.
+</code></pre>
+<hr>
+<h5 id=atk6-ndpexhaust26>atk6-ndpexhaust26</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-ndpexhaust26 -h
+atk6-ndpexhaust26 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-ndpexhaust26 [-acpPTUrRm] [-s sourceip6] interface target-network
+
+Options:
+ -a      add a hop-by-hop header with router alert
+ -c      do not calculate the checksum to save time
+ -p      send ICMPv6 Echo Requests
+ -P      send ICMPv6 Echo Reply
+ -T      send ICMPv6 Time-to-live-exeeded
+ -U      send ICMPv6 Unreachable (no route)
+ -r      randomize the source from your /64 prefix
+ -R      randomize the source fully
+ -m      generate a maximum size packet
+ -s sourceip6  use this as source IPv6 address
+
+Flood the target /64 network with ICMPv6 TooBig error messages.
+This tool version is manyfold more effective than ndpexhaust6.
+</code></pre>
+<hr>
+<h5 id=atk6-ndpexhaust6>atk6-ndpexhaust6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-ndpexhaust6 -h
+!
+! Please note: ndpexhaust6 is deprecated, please use ndpexhaust26!
+!
+
+atk6-ndpexhaust6 by mario fleischmann &lt;mario.fleischmann@1und1.de&gt;
+
+Syntax: atk6-ndpexhaust6 interface destination-network [sourceip]
+
+Randomly pings IPs in target network
+
+</code></pre>
+<hr>
+<h5 id=atk6-node_query6>atk6-node_query6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-node_query6 -h
+atk6-node_query6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-node_query6 interface target
+
+Sends an ICMPv6 node query request to the target and dumps the replies.
+
+</code></pre>
+<hr>
+<h5 id=atk6-parasite6>atk6-parasite6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-parasite6 -h
+atk6-parasite6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-parasite6 [-lRFHD] interface [fake-mac]
+
+This is an &quot;ARP spoofer&quot; for IPv6, redirecting all local traffic to your own
+system (or nirvana if fake-mac does not exist) by answering falsely to
+Neighbor Solitication requests
+Option -l loops and resends the packets per target every 5 seconds.
+Option -R will also try to inject the destination of the solicitation
+NS security bypass: -F fragment, -H hop-by-hop and -D large destination header
+</code></pre>
+<hr>
+<h5 id=atk6-passive_discovery6>atk6-passive_discovery6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-passive_discovery6 -h
+atk6-passive_discovery6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-passive_discovery6 [-Ds] [-m maxhop] [-R prefix] interface [script]
+
+Options:
+ -D          do also dump destination addresses (does not work with -m)
+ -s          do only print the addresses, no other output
+ -m maxhop   the maximum number of hops a target which is dumped may be away.
+             0 means local only, the maximum amount to make sense is usually 5
+ -R prefix   exchange the defined prefix with the link local prefix
+
+Passivly sniffs the network and dump all client's IPv6 addresses detected.
+Note that in a switched environment you get better results when additionally
+starting parasite6, however this will impact the network.
+If a script name is specified after the interface, it is called with the
+detected ipv6 address as first and the interface as second option.
+</code></pre>
+<hr>
+<h5 id=atk6-randicmp6>atk6-randicmp6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-randicmp6 -h
+Syntax: atk6-randicmp6 [-p] [-s sourceip] interface destination [type [code]]
+
+Sends all ICMPv6 type and code combinations to destination.
+Option -s  sets the source IPv6 address.
+Option -p  will not print answers received.
+</code></pre>
+<hr>
+<h5 id=atk6-redir6>atk6-redir6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-redir6 -h
+atk6-redir6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-redir6 interface victim-ip target-ip original-router new-router [new-router-mac] [hop-limit]
+
+Implant a route into victim-ip, which redirects all traffic to target-ip to
+new-ip. You must know the router which would handle the route.
+If the new-router-mac does not exist, this results in a DOS.
+If the TTL of the target is not 64, then specify this is the last option.
+</code></pre>
+<hr>
+<h5 id=atk6-redirsniff6>atk6-redirsniff6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-redirsniff6 -h
+atk6-redirsniff6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-redirsniff6 interface victim-ip destination-ip original-router [new-router [new-router-mac]]
+
+Implant a route into victim-ip, which redirects all traffic to destination-ip to
+new-router. This is done on all traffic that flows by that matches
+victim-&gt;target. You must know the router which would handle the route.
+If the new-router/-mac does not exist, this results in a DOS.
+You can supply a wildcard ('*') for victim-ip and/or destination-ip.
+</code></pre>
+<hr>
+<h5 id=atk6-rsmurf6>atk6-rsmurf6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-rsmurf6 -h
+atk6-rsmurf6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-rsmurf6 interface victim-ip
+
+Smurfs the local network of the victim. Note: this depends on an
+implementation error, currently only verified on Linux.
+Evil: &quot;ff02::1&quot; as victim will DOS your local LAN completely
+</code></pre>
+<hr>
+<h5 id=atk6-sendpees6>atk6-sendpees6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-sendpees6 -h
+sendpees6 by willdamn &lt;willdamn@gmail.com&gt;
+
+Syntax: atk6-sendpees6 interface key_length prefix victim
+
+Send SEND neighbor solicitation messages and make target to verify a lota CGA and RSA signatures
+
+</code></pre>
+<hr>
+<h5 id=atk6-sendpeesmp6>atk6-sendpeesmp6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-sendpeesmp6 -h
+original sendpees by willdamn &lt;willdamn@gmail.com&gt;
+modified sendpeesMP by Marcin Pohl &lt;marcinpohl@gmail.com&gt;
+Code based on thc-ipv6
+
+Syntax: atk6-sendpeesmp6 interface key_length prefix victim
+
+Send SEND neighbor solicitation messages and make target to verify a lota CGA and RSA signatures
+Example: atk6-sendpeesmp6 eth0 2048 fe80:: fe80::1
+
+</code></pre>
+<hr>
+<h5 id=atk6-smurf6>atk6-smurf6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-smurf6 -h
+atk6-smurf6 3.8 (c) 2013 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-smurf6 [-i microseconds] interface victim-ip [multicast-network-address]
+
+Smurf the target with icmp echo replies. Target of echo request is the
+local all-nodes multicast address if not specified
+</code></pre>
+<hr>
+<h5 id=atk6-thcping6>atk6-thcping6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-thcping6 -h
+atk6-thcping6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-thcping6 [-EafqxO] [-e ethertype] [-H t:l:v] [-D t:l:v] [-F dst] [-e ethertype] [-L length] [-N nextheader] [-V version] [-t ttl] [-c class] [-l label] [-d size] [-S port|-U port|-T type -C code] interface src6 dst6 [srcmac [dstmac [data]]]
+
+Options:
+  -x              flood mode (doesn't check for replies)
+  -w ms           wait time between packets in ms (default: 1000, if -n not 1)
+  -a              add a hop-by-hop header with router alert option.
+  -q              add a hop-by-hop header with quickstart option.
+  -E              send as ethertype IPv4
+  -e ethertype    send as specified ethertype (hexadecimal!)
+  -H t:l:v        add a hop-by-hop header with special content
+  -D t:l:v        add a destination header with special content
+  -D &quot;xxx&quot;        add a large destination header which fragments the packet
+  -f              add a one-shot fragementation header
+  -F ipv6address  use source routing to this final destination
+  -t ttl          specify TTL (default: 255)
+  -c class        specify a class (0-4095)
+  -l label        specify a label (0-1048575)
+  -L length       set fake payload length (0-65535)
+  -N nextheader   set fake next header (0-255)
+  -V version      set IP version (0-15)
+  -d data_size    define the size of the ping data buffer
+  -O              send TCP Fast Open cookie request option (needs -S)
+  -T number       ICMPv6 type to send (default: 128 = ping)
+  -C number       ICMPv6 code to send (default: 0)
+  -S port         use a TCP SYN packet on the defined port instead of ping
+  -U port         use a UDP packet on the defined port instead of ping
+  -n count        how often to send the packet (default: 1)
+t:l:v syntax: type:length:value, value is in hex, e.g. 1:2:0eab
+You can put an &quot;x&quot; into src6, srcmac and dstmac for an automatic value.
+
+Craft a ICMPv6/TCP/UDP packet with special IPv6 or EH header options.
+Returns -1 on error or no reply, 0 on normal reply or 1 on error reply.
+</code></pre>
+<hr>
+<h5 id=atk6-thcsyn6>atk6-thcsyn6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-thcsyn6 -h
+atk6-thcsyn6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-thcsyn6 [-aAcdDfrORS] [-i microsecond] [-m dstmac] [-p port] [-s sourceip6] interface target port
+
+Options:
+ -i      sending interval of packets (in microseconds)
+ -a      add hop-by-hop header with router alert
+ -d      add destination header (can be set up to 64 times)
+ -f      add atomic fragmentation header (can be set up to 64 times)
+ -A      send TCP-ACK packets
+ -S      send TCP-SYN-ACK packets
+ -r      randomize the source from your /64 prefix
+ -R      randomize the source fully
+ -D      randomize the destination (treat as /64)
+ -O      add a TCP Fast Open cookie (SYN-only packets)
+ -m dstmac     use this destination mac address
+ -s sourceip6  use this as source IPv6 address
+ -p port       use fixed source port
+
+Flood the target port with TCP-SYN packets. If you supply &quot;x&quot; as port, it
+is randomized.
+</code></pre>
+<hr>
+<h5 id=atk6-toobig6>atk6-toobig6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-toobig6 -h
+atk6-toobig6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-toobig6 [-u] interface target-ip existing-ip mtu [hop-limit]
+
+Implants the specified mtu on the target.
+If the TTL of the target is not 64, then specify this as the last option.
+Option -u will send the TooBig without the spoofed ping6 from existing-ip.
+</code></pre>
+<hr>
+<h5 id=atk6-toobigsniff6>atk6-toobigsniff6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-toobigsniff6 -h
+atk6-toobigsniff6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-toobigsniff6 [-c] interface target mtu
+
+Sniff for packte from target and send an ICMPv6 too big error message based on
+that packet with the MTU specified. If you supply a '*' as-address, any global
+traffic sniffed will be used.
+If you supply the option -c the tool will not quit upon first packet match, but
+continue running and send packets until aborted.
+</code></pre>
+<hr>
+<h5 id=atk6-trace6>atk6-trace6</h5>
+<p>(unknown subject)</p>
+<pre><code>root@kali:~# atk6-trace6 -h
+atk6-trace6 3.8 (c) 2020 by van Hauser / THC &lt;vh@thc.org&gt; www.github.com/vanhauser-thc/thc-ipv6
+
+Syntax: atk6-trace6 [-abdtu] [-s src6] interface targetaddress [port]
+
+Options:
+  -a       insert a hop-by-hop header with router alert option.
+  -D       insert a destination extension header
+  -E       insert a destination extension header with an invalid option
+  -F       insert a one-shot fragmentation header
+  -b       instead of an ICMP6 Ping, use TooBig (you will not see the target)
+  -B       instead of an ICMP6 Ping, use PingReply (you will not see the target)
+  -d       resolves the IPv6 addresses to DNS.
+  -t       enables tunnel detection
+  -u       use UDP instead of TCP if a port is supplied
+  -r       raw mode (for adapters networks that have no ethernet)
+  -s src6  specifies the source IPv6 address
+Maximum hop reach: 31
+
+A basic but very fast traceroute6 program.
+If no port is specified, ICMP6 Ping requests are used, otherwise TCP SYN
+packets to the specified port. Options D, E and F can be use multiple times.
+</code></pre>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2021-Sep-13<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/thc-ipv6/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../tftpd32/index.html>
+<i class=ti-arrow-left></i>
+<span>tftpd32</span>
+</a>
+<a href=../tnscmd10g/index.html>
+<span>tnscmd10g</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/thc-ipv6/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:16:38 GMT -->
+</html>

@@ -1,0 +1,3577 @@
+<!doctype html><html lang=en-us>
+
+<!-- Mirrored from www.kali.org/tools/net-snmp/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:14:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head itemscope itemtype=https://www.kali.org/>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width">
+<title itemprop=name>net-snmp | Kali Linux Tools</title>
+<meta itemprop=name content="net-snmp | Kali Linux Tools">
+<meta name=application-name content="net-snmp | Kali Linux Tools">
+<meta name=twitter:title content="net-snmp | Kali Linux Tools">
+<meta property="og:site_name" content="Kali Linux">
+<meta property="og:title" content="net-snmp | Kali Linux Tools">
+<meta itemprop=description content>
+<meta name=description content>
+<meta name=twitter:description content>
+<meta property="og:description" content>
+<meta name=keywords content="kali,linux,kalilinux,Penetration,Testing,Penetration Testing,Distribution,Advanced">
+<meta name=apple-mobile-web-app-status-bar-style content="black-translucent">
+<meta name=msapplication-navbutton-color content="#367BF0">
+<meta name=theme-color content="#367BF0">
+<meta name=language content="English">
+<meta property="og:locale" content="en_US">
+<meta itemprop=image content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:image" content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image content="https://www.kali.org/images/kali-logo.svg">
+<meta name=twitter:image:src content="https://www.kali.org/images/kali-logo.svg">
+<meta property="og:updated_time" content="2022-02-10T00:00:00Z">
+<meta name=twitter:site content="@kalilinux">
+<meta name=twitter:creator content="@kalilinux">
+<link rel="alternate icon" class=js-site-favicon type=image/png href=../../images/favicon.png>
+<link rel=icon class=js-site-favicon type=image/svg+xml href=https://www.kali.org/images/favicon.svg>
+<base 
+<link rel=canonical href=index.html itemprop=url>
+<meta name=twitter:url content="index.html">
+<meta name=url content="index.html">
+<meta property="og:url" content="index.html">
+<link rel=sitemap type=application/xml title=Sitemap href=https://www.kali.org/sitemap.xml>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=alternate>
+<link href=https://www.kali.org/rss.xml type=application/rss+xml title="Kali Linux" rel=feed>
+<link href=../../style.min.css rel=stylesheet>
+<style>:root{--primary-color:#367BF0;--body-color:#f9f9f9;--text-color:#636363;--text-color-dark:#242738;--white-color:#ffffff;--light-color:#f8f9fa;--font-family:Noto Sans}body.dark-theme{--body-color:black;--text-color:#e1e1e1;--text-color-dark:white;--white-color:#121212;--light-color:#1A1A1A}</style>
+<script>const $=document.querySelector.bind(document),$$=document.querySelectorAll.bind(document)</script>
+</head>
+<body>
+<header>
+<nav class=container>
+<a id=logo href=https://www.kali.org/ style=background-image:url(https://www.kali.org/images/kali-logo.svg)></a>
+<ul id=navigation>
+<li>
+<a href=https://www.kali.org/get-kali/>Get Kali</a>
+</li>
+<li>
+<a href=https://www.kali.org/blog/>Blog</a>
+</li>
+<li class=dropdown-menu>
+<span>Documentation <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/docs/>Kali Linux Documentation</a>
+<a href=../index.html>Kali Tools Documentation</a>
+<a href="https://bugs.kali.org/search.php?project_id=1&amp;category_id[]=General%20Bug&amp;category_id[]=Kali%20Package%20Bug&amp;category_id[]=Kali%20Package%20Improvement&amp;status[]=30&amp;status[]=40&amp;status[]=50&amp;sticky=on&amp;sort=id%2Clast_updated&amp;dir=DESC%2CDESC&amp;hide_status=-2&amp;match_type=0">Known Issues</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Community <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/community/>Community Support</a>
+<a href=https://forums.kali.org/>Kali Linux Forums</a>
+<a href=ircs://irc.oftc.net:6697/#Kali-Linux>Real Time Chat</a>
+<a href=https://www.kali.org/newsletter/>Join Newsletter</a>
+<a href=https://http.kali.org/README.mirrorlist>Mirror Location</a>
+<a href=https://www.kali.org/docs/community/contribute/>Get Involved</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Courses <i class=ti-angle-down></i></span>
+<div>
+<a href=https://portal.offensive-security.com/courses/pen-103>Kali Linux Revealed (KLCP/PEN-103)</a>
+<a href=https://www.offensive-security.com/pwk-oscp/>PEN-200 (PWK/OSCP)</a>
+<a href=https://www.offensive-security.com/wifu-oswp/>PEN-210 (WiFu/OSWP)</a>
+<a href=https://www.offensive-security.com/pen300-osep/>PEN-300 (ETBD/OSEP)</a>
+<a href=https://www.offensive-security.com/web200-oswa/>WEB-200 (WAWK/OSWA)</a>
+<a href=https://www.offensive-security.com/awae-oswe/>WEB-300 (AWAE/OSWE)</a>
+<a href=https://www.offensive-security.com/exp301-osed/>EXP-301 (WUMED/OSED)</a>
+<a href=https://www.offensive-security.com/exp312-osmr/>EXP-312 (MCB/OSMR)</a>
+<a href=https://www.offensive-security.com/awe-osee/>EXP-401 (AWE/OSEE)</a>
+<a href=https://www.offensive-security.com/soc200-osda/>SOC-200 (AWE/OSDA)</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>Developers <i class=ti-angle-down></i></span>
+<div>
+<a href=https://gitlab.com/kalilinux>Git Repositories</a>
+<a href=https://pkg.kali.org/>Packages</a>
+<a href=https://autopkgtest.kali.org/>Auto Package Test</a>
+<a href=https://bugs.kali.org/>Bug Tracker</a>
+<a href=https://stats.nethunter.com/>Kali NetHunter Stats</a>
+</div>
+</li>
+<li class=dropdown-menu>
+<span>About <i class=ti-angle-down></i></span>
+<div>
+<a href=https://www.kali.org/features/>Kali Linux Overview</a>
+<a href=https://gitlab.com/kalilinux/documentation/graphic-resources>Gallery & Press Pack</a>
+<a href=https://www.kali.org/about-us/>Meet The Kali Team</a>
+<a href=https://www.kali.org/partnerships-sponsorships/>Partnerships & Friends</a>
+<a href=https://www.kali.org/contact/>Contact Us</a>
+</div>
+</li>
+</ul>
+<button title="show menu">
+<div></div>
+<div></div>
+<div></div>
+</button>
+</nav>
+</header>
+<main class=container>
+<aside>
+<a href=../index.html title="↤ Go back"></a>
+<ul><li><a><h3>net-snmp</h3></a></li></ul>
+<img src=https://www.kali.org/images/kali-tools-icon-missing.svg>
+<code>version: 5.9.1</code> <code>arch: any all</code>
+<hr>
+<div id=package-links>
+<a href=http://net-snmp.sourceforge.net/><i class=ti-world></i> net-snmp Homepage</a><span><span>|</span><a href=http://pkg.kali.org/net-snmp><i class=ti-target></i> Package Tracker</a></span><span><span>|</span><a href=https://salsa.debian.org/debian/net-snmp><i class=ti-folder></i> Source Code Repository</a></span>
+</div>
+<hr>
+<div id=metapackages>
+<h4><a href=https://www.kali.org/docs/general-use/metapackages/>Metapackages <i class=ti-link></i></a></h4>
+<ul class=table-of-contents>
+<li>
+<ul>
+<li><a href=../kali-meta/index.html#kali-linux-default title=kali-linux-default>default</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-everything title=kali-linux-everything>everything</a></li>
+<li><a href=../kali-meta/index.html#kali-linux-large title=kali-linux-large>large</a></li>
+</ul>
+</li>
+<li>
+Tools:
+<ul>
+<li><a href=../kali-meta/index.html#kali-tools-vulnerability title=kali-tools-vulnerability>vulnerability</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div id=binaries>
+<h4>Packages & Binaries</h4>
+<ul class=table-of-contents>
+<li>
+<a href=#libnetsnmptrapd40 title=libnetsnmptrapd40>
+<i class=ti-package></i>libnetsnmptrapd40
+</a>
+</li>
+<li>
+<a href=#libsnmp-base title=libsnmp-base>
+<i class=ti-package></i>libsnmp-base
+</a>
+</li>
+<li>
+<a href=#libsnmp-dev title=libsnmp-dev>
+<i class=ti-package></i>libsnmp-dev
+</a>
+<ul>
+<li>
+<a href=#mib2c title=mib2c>
+mib2c
+</a>
+</li>
+<li>
+<a href=#mib2c-update title=mib2c-update>
+mib2c-update
+</a>
+</li>
+<li>
+<a href=#net-snmp-config title=net-snmp-config>
+net-snmp-config
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#libsnmp-perl title=libsnmp-perl>
+<i class=ti-package></i>libsnmp-perl
+</a>
+</li>
+<li>
+<a href=#libsnmp40 title=libsnmp40>
+<i class=ti-package></i>libsnmp40
+</a>
+</li>
+<li>
+<a href=#snmp title=snmp>
+<i class=ti-package></i>snmp
+</a>
+<ul>
+<li>
+<a href=#agentxtrap title=agentxtrap>
+agentxtrap
+</a>
+</li>
+<li>
+<a href=#encode_keychange title=encode_keychange>
+encode_keychange
+</a>
+</li>
+<li>
+<a href=#fixproc title=fixproc>
+fixproc
+</a>
+</li>
+<li>
+<a href=#snmp-bridge-mib title=snmp-bridge-mib>
+snmp-bridge-mib
+</a>
+</li>
+<li>
+<a href=#snmpbulkget title=snmpbulkget>
+snmpbulkget
+</a>
+</li>
+<li>
+<a href=#snmpbulkwalk title=snmpbulkwalk>
+snmpbulkwalk
+</a>
+</li>
+<li>
+<a href=#snmpcheck title=snmpcheck>
+snmpcheck
+</a>
+</li>
+<li>
+<a href=#snmpconf title=snmpconf>
+snmpconf
+</a>
+</li>
+<li>
+<a href=#snmpdelta title=snmpdelta>
+snmpdelta
+</a>
+</li>
+<li>
+<a href=#snmpdf title=snmpdf>
+snmpdf
+</a>
+</li>
+<li>
+<a href=#snmpget title=snmpget>
+snmpget
+</a>
+</li>
+<li>
+<a href=#snmpgetnext title=snmpgetnext>
+snmpgetnext
+</a>
+</li>
+<li>
+<a href=#snmpinform title=snmpinform>
+snmpinform
+</a>
+</li>
+<li>
+<a href=#snmpnetstat title=snmpnetstat>
+snmpnetstat
+</a>
+</li>
+<li>
+<a href=#snmpping title=snmpping>
+snmpping
+</a>
+</li>
+<li>
+<a href=#snmpset title=snmpset>
+snmpset
+</a>
+</li>
+<li>
+<a href=#snmpstatus title=snmpstatus>
+snmpstatus
+</a>
+</li>
+<li>
+<a href=#snmptable title=snmptable>
+snmptable
+</a>
+</li>
+<li>
+<a href=#snmptest title=snmptest>
+snmptest
+</a>
+</li>
+<li>
+<a href=#snmptls title=snmptls>
+snmptls
+</a>
+</li>
+<li>
+<a href=#snmptranslate title=snmptranslate>
+snmptranslate
+</a>
+</li>
+<li>
+<a href=#snmptrap title=snmptrap>
+snmptrap
+</a>
+</li>
+<li>
+<a href=#snmpusm title=snmpusm>
+snmpusm
+</a>
+</li>
+<li>
+<a href=#snmpvacm title=snmpvacm>
+snmpvacm
+</a>
+</li>
+<li>
+<a href=#snmpwalk title=snmpwalk>
+snmpwalk
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#snmpd title=snmpd>
+<i class=ti-package></i>snmpd
+</a>
+<ul>
+<li>
+<a href=#net-snmp-create-v3-user title=net-snmp-create-v3-user>
+net-snmp-create-v3-user
+</a>
+</li>
+<li>
+<a href=#snmpd-1 title=snmpd>
+snmpd
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#snmptrapd title=snmptrapd>
+<i class=ti-package></i>snmptrapd
+</a>
+<ul>
+<li>
+<a href=#snmptrapd-1 title=snmptrapd>
+snmptrapd
+</a>
+</li>
+<li>
+<a href=#traptoemail title=traptoemail>
+traptoemail
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=#tkmib title=tkmib>
+<i class=ti-package></i>tkmib
+</a>
+<ul>
+<li>
+<a href=#tkmib-1 title=tkmib>
+tkmib
+</a>
+</ul>
+</li>
+</ul>
+</div>
+<hr>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+</aside>
+<section id=content>
+<h1>Packages and Binaries:</h1>
+<div id=packages-info>
+<h3 id=libnetsnmptrapd40>libnetsnmptrapd40</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP trap library contains functions for receiving SNMP
+trap and inform messages.</p>
+<p><strong>Installed size:</strong> <code>74 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libnetsnmptrapd40</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libmariadb3</li>
+<li>libsnmp-base</li>
+<li>libsnmp40
+</div></li>
+</ul>
+<hr>
+<h3 id=libsnmp-base>libsnmp-base</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>This package includes documentation and MIBs (Management Information Bases)
+for the SNMP libraries, agents and applications. MIBs contain a formal
+description of the data that can be managed using SNMP and applications.</p>
+<p>NOTE: If you want the OIDs (Object Identifiers) to resolve to their text
+description, you need to activate the non-free repository and install the
+&ldquo;snmp-mibs-downloader&rdquo; package.</p>
+<p><strong>Installed size:</strong> <code>2.11 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libsnmp-base</code></p>
+<hr>
+<h3 id=libsnmp-dev>libsnmp-dev</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP development files include the library headers, static
+libraries, net-snmp-config scripts and documentation needed for development
+of custom SNMP applications.</p>
+<p><strong>Installed size:</strong> <code>1.25 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libsnmp-dev</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6-dev</li>
+<li>libnetsnmptrapd40</li>
+<li>libpci-dev</li>
+<li>libsensors-dev</li>
+<li>libsnmp40</li>
+<li>libssl-dev</li>
+<li>libwrap0-dev</li>
+<li>procps
+</div></li>
+</ul>
+<h5 id=mib2c>mib2c</h5>
+<p>Generate template code for extending the agent</p>
+<pre><code>root@kali:~# man mib2c
+MIB2C(1)                           Net-SNMP                           MIB2C(1)
+
+NAME
+       mib2c -- generate template code for extending the agent
+
+SYNOPSIS
+       mib2c  [-h]  -c  CONFIGFILE  [-I  PATH]  [-f  OUTNAME]  [-i][-s][-q][-S
+       VAR=VAL] MIBNODE
+
+DESCRIPTION
+       The mib2c tool is designed to take a portion of the MIB  tree  (as  de-
+       fined  by a MIB file) and generate the template C code necessary to im-
+       plement the relevant management objects within it.
+
+       In order to implement a new MIB module, three files are necessary:
+
+       - MIB definition file
+       - C header file
+       - C implementation file.
+
+       The mib2c tool uses the MIB definition file to produce the two  C  code
+       files.  Thus, mib2c generates a template that you can edit to add logic
+       necessary to obtain information from the operating system  or  applica-
+       tion to complete the module.
+
+       MIBNODE  is  the top level mib node you want to generate code for.  You
+       must give mib2c a mib node (e.g. ifTable) on the command  line,  not  a
+       mib file.  This is the single most common mistake.
+
+       The mib2c tool accepts both SMIv1 and SMIv2 MIBs.
+
+       mib2c needs to be able to find and load a MIB file in order to generate
+       C code for the MIB. To enable mib2c to find the MIB file, set the  MIBS
+       environment variable to include the MIB file you are using.  An example
+       of setting this environment variable is:
+
+          MIBS=+NET-SNMP-TUTORIAL-MIB
+
+          or
+
+          MIBS=ALL
+
+       The first example ensures that mib2c  finds  the  NET-SNMP-TUTORIAL-MIB
+       mib,  in  addition  to the default MIB modules. The default list of MIB
+       modules is set when the suite is first configured and built  and  basi-
+       cally  corresponds to the list of modules that the agent supports.  The
+       second example ensures that mib2c finds all MIBs in the search location
+       for   MIB   files.  The  default  search  location  for  MIB  files  is
+       /usr/share/snmp/mibs. This search location can be modified by the  MIB-
+       DIRS environment variable.
+
+       Both  the  MIB  files to be loaded and the MIB file search location can
+       also be configured in the snmp.conf file. Please see  snmp.conf(5)  for
+       more information.
+
+       The  generated *.c and *.h files will be created in the current working
+       directory.
+
+OPTIONS
+       -h     Display a help message.
+
+       -c CONFIGFILE
+              Use CONFIGFILE  when  generating  code.   These  files  will  be
+              searched  for  first  in  the  current directory and then in the
+              /usr/share directory (which is where the default mib2c  configu-
+              ration  files  can be found).  Running mib2c without the -c CON-
+              FIGFILE option will display a description of  the  valid  values
+              for  CONFIGFILE,  that is, the available config files, including
+              new ones that you might author.
+
+              For example,
+
+              % mib2c ifTable
+
+              will display a description of the currently available values for
+              CONFIGFILE.
+
+              The following values are supported for CONFIGFILE:
+
+              mib2c.mfd.conf
+              mib2c.scalar.conf
+              mib2c.int_watch.conf
+              mib2c.iterate.conf
+              mib2c.create-dataset.conf
+              mib2c.array-user.conf
+              mib2c.column_defines.conf
+              mib2c.column_enums.conf
+
+              GENERATING CODE FOR SCALAR OBJECTS:
+
+              If you're writing code for some scalars, run:
+
+                   mib2c -c mib2c.scalar.conf MIBNODE
+
+              If  you  want  to  magically  &quot;tie&quot; integer variables to integer
+              scalars, use:
+
+                   mib2c -c mib2c.int_watch.conf MIBNODE
+
+              GENERATING CODE FOR TABLES:
+
+              The recommended configuration file for tables is  the  MIBs  for
+              Dummies,  or  MFD,  configuration  file. It hides as much of the
+              SNMP details as possible, generating small, easy  to  understand
+              functions.   It  is  also  the most flexible and well documented
+              configuration     file.      See     the      agent/mibgroup/if-
+              mib/ifTable/ifTable*.c files for an example:
+
+                      mib2c -c mib2c.mfd.conf MIBNODE
+
+              If your table data is kept somewhere else (e.g. it's in the ker-
+              nel and not in the memory of the agent itself) and you  need  to
+              &quot;iterate&quot;  over it to find the right data for the SNMP row being
+              accessed.  See the agent/mibgroup/mibII/vacm_context.c file  for
+              an example:
+
+                   mib2c -c mib2c.iterate.conf MIBNODE
+
+              If  your  table data is kept in the agent (i.e. it's not located
+              in an external source) and is purely data driven  (i.e.  you  do
+              not  need  to  perform  any  work  when  a set occurs).  See the
+              agent/mibgroup/examples/data_set.c file for an example of such a
+              table:
+
+                   mib2c -c mib2c.create-dataset.conf MIBNODE
+
+              If  your  table data is kept in the agent (i.e. it's not located
+              in an external source), and you can keep your data sorted by the
+              table index but you do need to perform work when a set occurs:
+
+                   mib2c -c mib2c.array-user.conf MIBNODE
+
+              GENERATING HEADER FILE DEFINITIONS
+
+              To  generate  just a header with a define for each column number
+              in your table:
+
+                   mib2c -c mib2c.column_defines.conf MIBNODE
+
+              To generate just a header with a define for each  enum  for  any
+              column containing enums:
+
+                   mib2c -c mib2c.column_enums.conf MIBNODE
+
+                   GENERATING CODE FOR THE 4.X LINE OF CODE (THE OLDER API)
+
+                   mib2c -c mib2c.old-api.conf MIBNODE
+
+       -IPATH Search  for  configuration files in PATH.  Multiple paths can be
+              specified using multiple -I switches or  by  using  one  with  a
+              comma separated list of paths in it.
+
+       -f OUTNAME
+              Places  the  output code into OUTNAME.c and OUTNAME.h. Normally,
+              mib2c will place the output code into files which correspond  to
+              the  table  names  it  is generating code for, which is probably
+              what you want anyway.
+
+       -i     Do not run indent on the resulting code.
+
+       -s     Do not look for MIBNODE.sed and run sed on the  resulting  code.
+              This is useful to shorten long mib variable names in the code.
+
+       -q     Run  in  &quot;quiet&quot; mode, which minimizes the status messages mib2c
+              generates.
+
+       -SVAR=VAL
+              Preset a variable VAR, in the mib2c.*.conf file,  to  the  value
+              VAL.   None   of   the   existing   mib2c   configuration  files
+              (mib2c.*.conf) currently makes use of this feature, however,  so
+              this option should be considered available only for future use.
+
+EXAMPLES
+       The  following generates C template code for the header and implementa-
+       tion files to implement UCD-DEMO-MIB::ucdDemoPublic.
+
+              % mib2c -c mib2c.scalar.conf ucdDemoPublic
+              writing to ucdDemoPublic.h
+              writing to ucdDemoPublic.c
+              running indent on ucdDemoPublic.h
+              running indent on ucdDemoPublic.c
+
+       The resulting ucdDemoPublic.c and ucdDemoPublic.h files  are  generated
+       the current working directory.
+
+       The  following generates C template code for the header and implementa-
+       tion files  for the module to implement TCP-MIB::tcpConnTable.
+
+              % mib2c -c mib2c.iterate.conf tcpConnTable
+              writing to tcpConnTable.h
+              writing to tcpConnTable.c
+              running indent on tcpConnTable.h
+              running indent on tcpConnTable.c
+
+       The resulting tcpConnTable.c and tcpConnTable.h files are generated  in
+       the current working directory.
+
+SEE ALSO
+       snmpcmd(1), snmp.conf(5)
+
+V5.9.1                            05 Apr 2010                         MIB2C(1)
+</code></pre>
+<hr>
+<h5 id=mib2c-update>mib2c-update</h5>
+<p>Script to merge custom code into updated mib2c code</p>
+<pre><code>root@kali:~# man mib2c-update
+mib2c-update(1)                    Net-SNMP                    mib2c-update(1)
+
+NAME
+       mib2c-update - script to merge custom code into updated mib2c code
+
+SYNOPSIS
+       mib2c-update
+
+DESCRIPTION
+       Use  mib2c-update  to  generate  your mib2c code templates, and it will
+       track the original code and the changes you make to the  code.  If  the
+       mib2c template changes (bug fixes, enhances in later releases), re-run-
+       ning mib2c will update the template and then attempt to  re-apply  your
+       changes.
+
+       This can be extremely useful when developing your own mib2c templates.
+
+       When you first run mib2c-update, it will create several hidden directo-
+       ries and a .mib2c-updaterc file. You must edit the .mib2c-udpaterc file
+       to  specify  two  values.  The  first, UPDATE_OID, is the table name to
+       specify when running mib2c. The second, UPDATE_CONF, is the mib2c  con-
+       figuration file to specify when running mib2c.
+
+       Additional mib2c options can be specified in UPDATE_MIB2C_OPTS.
+
+BUGS
+       mib2c-update  has  only  been tested on individual tables. Specifying a
+       scalar or and entire MIB might not work.
+
+V5.9.1                            07 Apr 2010                  mib2c-update(1)
+</code></pre>
+<hr>
+<h5 id=net-snmp-config>net-snmp-config</h5>
+<p>Returns information about installed net-snmp libraries and binaries</p>
+<pre><code>root@kali:~# net-snmp-config -h
+unknown option -h
+
+Usage:
+  net-snmp-config [--cflags] [--agent-libs] [--libs] [--version]
+                  ... [see below for complete flag list]
+
+    --version         displays the net-snmp version number
+    --indent-options  displays the indent options from the Coding Style
+    --debug-tokens    displays a example command line to search to source
+                      code for a list of available debug tokens
+
+  SNMP Setup commands:
+
+    --create-snmpv3-user creates a SNMPv3 user in Net-SNMP config file.
+                         See net-snmp-create-v3-user --help for list of
+                         accepted options.
+
+  These options produce the various compilation flags needed when
+  building external SNMP applications:
+
+    --base-lib-cflags lists additional compilation flags needed for linking
+                      against libsnmp
+    --base-cflags     lists additional compilation flags needed
+    --cflags          lists additional compilation flags needed
+                      (includes -I. and extra developer warning flags)
+
+  These options produce the various link flags needed when
+  building external SNMP applications:
+
+    --libs            lists libraries needed for building applications
+    --agent-libs      lists libraries needed for building subagents
+
+  These options produce various link flags broken down into parts.
+  (Most of the time the simple options above should be used.)
+
+    --libdir              path to netsnmp libraries
+
+    --base-agent-libs     netsnmp specific agent libraries
+
+    --netsnmp-libs        netsnmp specific libraries (with path)
+    --netsnmp-agent-libs  netsnmp specific agent libraries (with path)
+
+    --ldflags             link flags for external libraries
+    --external-libs       external libraries needed by netsnmp libs
+    --external-agent-libs external libraries needed by netsnmp agent libs
+
+  These options produce various link flags used when linking an
+  external application against an uninstalled build directory.
+
+    --build-includes      include path to build/source includes
+    --build-lib-dirs      link path to libraries
+    --build-lib-deps      path to libraries for dependency target
+    --build-command       command to compile $3... to $2
+
+  Automated subagent building (produces an OUTPUTNAME binary file):
+  [this feature has not been tested very well yet.  use at your risk.]
+
+    --compile-subagent OUTPUTNAME [--norm] [--cflags flags]
+                                  [--ldflags flags] mibmodule1.c [...]]
+
+         --norm           leave the generated .c file around to read.
+         --cflags flags   extra cflags to use (e.g. -I...).
+         --ldflags flags  extra ld flags to use (e.g. -L... -l...).
+
+  Details on how the net-snmp package was compiled:
+
+    --configure-options   display original configure arguments
+    --prefix              display the installation prefix
+    --snmpd-module-list   display the modules compiled into the agent
+    --default-mibs        display default list of MIBs
+    --default-mibdirs     display default list of MIB directories
+    --snmpconfpath        display default SNMPCONFPATH
+    --persistent-directory display default persistent directory
+    --perlprog            display path to perl for the perl modules
+
+</code></pre>
+<hr>
+<h3 id=libsnmp-perl>libsnmp-perl</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP Perl5 support files provide the Perl functions for
+integration of SNMP into applications written in Perl.</p>
+<p><strong>Installed size:</strong> <code>2.12 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libsnmp-perl</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libnetsnmptrapd40</li>
+<li>libsnmp40</li>
+<li>perl</li>
+<li>perlapi-5.32.1
+</div></li>
+</ul>
+<hr>
+<h3 id=libsnmp40>libsnmp40</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP library contains common functions for the construction,
+sending, receiving, decoding, and manipulation of the SNMP requests
+and responses.</p>
+<p><strong>Installed size:</strong> <code>5.23 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install libsnmp40</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libpci3</li>
+<li>libperl5.32</li>
+<li>libsensors5</li>
+<li>libsnmp-base</li>
+<li>libssl1.1</li>
+<li>libwrap0
+</div></li>
+</ul>
+<hr>
+<h3 id=snmp>snmp</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP applications are a collection of command line clients
+for issuing SNMP requests to agents.</p>
+<p><strong>Installed size:</strong> <code>677 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install snmp</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libc6</li>
+<li>libsnmp-base</li>
+<li>libsnmp40</li>
+<li>libssl1.1
+</div></li>
+</ul>
+<h5 id=agentxtrap>agentxtrap</h5>
+<p>Send an AgentX NotifyPDU to an AgentX master agent</p>
+<pre><code>root@kali:~# agentxtrap -h
+USAGE: agentxtrap [OPTIONS] TRAP-PARAMETERS
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h			display this help message
+  -V			display package version number
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+  -d			dump all traffic
+  -P MIBOPTS		Toggle various defaults controlling mib parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -c context
+  -U uptime
+  -x ADDRESS		use ADDRESS as AgentX address
+
+TRAP-PARAMETERS:
+  trapoid [OID TYPE VALUE] ...
+</code></pre>
+<hr>
+<h5 id=encode_keychange>encode_keychange</h5>
+<p>Produce the KeyChange string for SNMPv3</p>
+<pre><code>root@kali:~# encode_keychange -h
+Usage: encode_keychange [-fhPvV] -t (md5|sha1) [-O &quot;&lt;old_passphrase&gt;&quot;][-N &quot;&lt;new_passphrase&gt;&quot;][-E [0x]&lt;engineID&gt;]
+
+    -E [0x]&lt;engineID&gt;		EngineID used for kul generation.
+    -f				Force passphrases to be read from stdin.
+    -h				Help.
+    -N &quot;&lt;new_passphrase&gt;&quot;	Passphrase used to generate new Ku.
+    -O &quot;&lt;old_passphrase&gt;&quot;	Passphrase used to generate old Ku.
+    -P				Turn off prompt indicators.
+    -t md5 | sha1		HMAC hash transform type.
+    -v				Verbose.
+    -V				Visible.  Echo passphrases to terminal.
+		
+
+Only -t is mandatory.  The transform is used to convert P=&gt;Ku, convert
+    Ku=&gt;Kul, and to hash the old Kul with the random bits.
+
+    Passphrase will be taken from the first successful source as follows:
+	a) Commandline options,
+	b) The file &quot;/root/.snmp/passphrase.ek&quot;,
+	c) stdin  -or-  User input from the terminal.
+
+-f will require reading from the stdin/terminal, ignoring a) and b).
+    -P will prevent prompts for passphrases to stdout from being printed.
+
+    &lt;engineID&gt; is interpreted as a hex string when preceded by &quot;0x&quot;,
+    otherwise it is created to contain &quot;text&quot;.  If nothing is given,
+    &lt;engineID&gt; is constructed from the first IP address for the local host.
+		
+</code></pre>
+<hr>
+<h5 id=fixproc>fixproc</h5>
+<p>Fixes a process by performing the specified action.</p>
+<pre><code>root@kali:~# man fixproc
+fixproc(1)                         Net-SNMP                         fixproc(1)
+
+NAME
+       fixproc - Fixes a process by performing the specified action.
+
+SYNOPSIS
+       fixproc  [-min  n] [-max n] [-check | -kill | -restart | -exist | -fix]
+       proc ...
+
+DESCRIPTION
+       Fixes a process named &quot;proc&quot; by performing the specified  action.   The
+       actions  can  be  check,  kill,  restart, exist, or fix.  The action is
+       specified on the command line or is read from a default database, which
+       describes  the  default  action to take for each process.  The database
+       format and the meaning of each action are described below.
+
+OPTIONS
+       -min n minimum number of processes that should be running, defaults  to
+              1
+
+       -max n maximum  number of processes that should be running, defaults to
+              1
+
+       -check check process against database /local/etc/fixproc.conf.
+
+       -kill  kill process, wait 5 seconds, kill -9 if still exist
+
+       -restart
+              kill process, wait 5 seconds, kill -9 if still exist, then start
+              again
+
+       -exist checks if proc exists in ps &amp;&amp; (min &lt;= num. of processes &lt;= max)
+
+       -fix   check  process against database /local/etc/fixproc.conf. Perform
+              defined action, if check fails.
+
+V5.9.1                            16 Nov 2006                       fixproc(1)
+</code></pre>
+<hr>
+<h5 id=snmp-bridge-mib>snmp-bridge-mib</h5>
+<p>Provide Linux bridge information via SNMP</p>
+<pre><code>root@kali:~# snmp-bridge-mib -h
+MIB search path: /root/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf
+Cannot find module (SNMPv2-MIB): At line 1 in (none)
+Cannot find module (IF-MIB): At line 1 in (none)
+Cannot find module (IP-MIB): At line 1 in (none)
+Cannot find module (TCP-MIB): At line 1 in (none)
+Cannot find module (UDP-MIB): At line 1 in (none)
+Cannot find module (HOST-RESOURCES-MIB): At line 1 in (none)
+Cannot find module (NOTIFICATION-LOG-MIB): At line 1 in (none)
+Cannot find module (DISMAN-EVENT-MIB): At line 1 in (none)
+Cannot find module (DISMAN-SCHEDULE-MIB): At line 1 in (none)
+Cannot find module (HOST-RESOURCES-TYPES): At line 1 in (none)
+Cannot find module (MTA-MIB): At line 1 in (none)
+Cannot find module (NETWORK-SERVICES-MIB): At line 1 in (none)
+Cannot find module (SNMPv2-TC): At line 15 in /usr/share/snmp/mibs/UCD-DISKIO-MIB.txt
+Cannot find module (SNMPv2-SMI): At line 34 in /usr/share/snmp/mibs/UCD-SNMP-MIB.txt
+Cannot find module (HCNUM-TC): At line 37 in /usr/share/snmp/mibs/UCD-SNMP-MIB.txt
+Cannot find module (SNMPv2-TC): At line 40 in /usr/share/snmp/mibs/UCD-SNMP-MIB.txt
+Did not find 'enterprises' in module #-1 (/usr/share/snmp/mibs/UCD-SNMP-MIB.txt)
+Did not find 'CounterBasedGauge64' in module #-1 (/usr/share/snmp/mibs/UCD-SNMP-MIB.txt)
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/UCD-SNMP-MIB.txt)
+Did not find 'TruthValue' in module #-1 (/usr/share/snmp/mibs/UCD-SNMP-MIB.txt)
+Unlinked OID in UCD-SNMP-MIB: ucdavis ::= { enterprises 2021 }
+Undefined identifier: enterprises near line 42 of /usr/share/snmp/mibs/UCD-SNMP-MIB.txt
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/UCD-DISKIO-MIB.txt)
+Did not find 'ucdExperimental' in module UCD-SNMP-MIB (/usr/share/snmp/mibs/UCD-DISKIO-MIB.txt)
+Unlinked OID in UCD-DISKIO-MIB: ucdDiskIOMIB ::= { ucdExperimental 15 }
+Undefined identifier: ucdExperimental near line 19 of /usr/share/snmp/mibs/UCD-DISKIO-MIB.txt
+Cannot find module (SNMPv2-TC): At line 10 in /usr/share/snmp/mibs/UCD-DLMOD-MIB.txt
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/UCD-DLMOD-MIB.txt)
+Did not find 'ucdExperimental' in module UCD-SNMP-MIB (/usr/share/snmp/mibs/UCD-DLMOD-MIB.txt)
+Unlinked OID in UCD-DLMOD-MIB: ucdDlmodMIB ::= { ucdExperimental 14 }
+Undefined identifier: ucdExperimental near line 13 of /usr/share/snmp/mibs/UCD-DLMOD-MIB.txt
+Cannot find module (SNMPv2-TC): At line 15 in /usr/share/snmp/mibs/LM-SENSORS-MIB.txt
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/LM-SENSORS-MIB.txt)
+Did not find 'ucdExperimental' in module UCD-SNMP-MIB (/usr/share/snmp/mibs/LM-SENSORS-MIB.txt)
+Unlinked OID in LM-SENSORS-MIB: lmSensors ::= { ucdExperimental 16 }
+Undefined identifier: ucdExperimental near line 32 of /usr/share/snmp/mibs/LM-SENSORS-MIB.txt
+Did not find 'ucdavis' in module UCD-SNMP-MIB (/usr/share/snmp/mibs/UCD-DEMO-MIB.txt)
+Unlinked OID in UCD-DEMO-MIB: ucdDemoMIB ::= { ucdavis 14 }
+Undefined identifier: ucdavis near line 7 of /usr/share/snmp/mibs/UCD-DEMO-MIB.txt
+Cannot find module (SNMP-TARGET-MIB): At line 1 in (none)
+Cannot find module (SNMP-FRAMEWORK-MIB): At line 9 in /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Cannot find module (SNMPv2-SMI): At line 8 in /usr/share/snmp/mibs/NET-SNMP-MIB.txt
+Did not find 'enterprises' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-MIB.txt)
+Unlinked OID in NET-SNMP-MIB: netSnmp ::= { enterprises 8072 }
+Undefined identifier: enterprises near line 10 of /usr/share/snmp/mibs/NET-SNMP-MIB.txt
+Cannot find module (SNMPv2-TC): At line 21 in /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Did not find 'SnmpAdminString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'netSnmpObjects' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'netSnmpModuleIDs' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'netSnmpNotifications' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'netSnmpGroups' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'RowStatus' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Did not find 'TruthValue' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt)
+Unlinked OID in NET-SNMP-AGENT-MIB: nsAgentNotifyGroup ::= { netSnmpGroups 9 }
+Undefined identifier: netSnmpGroups near line 545 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsTransactionGroup ::= { netSnmpGroups 8 }
+Undefined identifier: netSnmpGroups near line 536 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsConfigGroups ::= { netSnmpGroups 7 }
+Undefined identifier: netSnmpGroups near line 515 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsCacheGroup ::= { netSnmpGroups 4 }
+Undefined identifier: netSnmpGroups near line 505 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsModuleGroup ::= { netSnmpGroups 2 }
+Undefined identifier: netSnmpGroups near line 495 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: netSnmpAgentMIB ::= { netSnmpModuleIDs 2 }
+Undefined identifier: netSnmpModuleIDs near line 24 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsTransactions ::= { netSnmpObjects 8 }
+Undefined identifier: netSnmpObjects near line 55 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsConfiguration ::= { netSnmpObjects 7 }
+Undefined identifier: netSnmpObjects near line 54 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsErrorHistory ::= { netSnmpObjects 6 }
+Undefined identifier: netSnmpObjects near line 53 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsCache ::= { netSnmpObjects 5 }
+Undefined identifier: netSnmpObjects near line 52 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsDLMod ::= { netSnmpObjects 4 }
+Undefined identifier: netSnmpObjects near line 51 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsExtensions ::= { netSnmpObjects 3 }
+Undefined identifier: netSnmpObjects near line 50 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsMibRegistry ::= { netSnmpObjects 2 }
+Undefined identifier: netSnmpObjects near line 49 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsVersion ::= { netSnmpObjects 1 }
+Undefined identifier: netSnmpObjects near line 48 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsNotifyRestart ::= { netSnmpNotifications 3 }
+Undefined identifier: netSnmpNotifications near line 482 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsNotifyShutdown ::= { netSnmpNotifications 2 }
+Undefined identifier: netSnmpNotifications near line 476 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Unlinked OID in NET-SNMP-AGENT-MIB: nsNotifyStart ::= { netSnmpNotifications 1 }
+Undefined identifier: netSnmpNotifications near line 470 of /usr/share/snmp/mibs/NET-SNMP-AGENT-MIB.txt
+Cannot find module (SNMP-FRAMEWORK-MIB): At line 1 in (none)
+Cannot find module (SNMP-MPD-MIB): At line 1 in (none)
+Cannot find module (SNMP-USER-BASED-SM-MIB): At line 1 in (none)
+Cannot find module (SNMP-VIEW-BASED-ACM-MIB): At line 1 in (none)
+Cannot find module (SNMP-COMMUNITY-MIB): At line 1 in (none)
+Cannot find module (IPV6-ICMP-MIB): At line 1 in (none)
+Cannot find module (IPV6-MIB): At line 1 in (none)
+Cannot find module (IPV6-TCP-MIB): At line 1 in (none)
+Cannot find module (IPV6-UDP-MIB): At line 1 in (none)
+Cannot find module (IP-FORWARD-MIB): At line 1 in (none)
+Cannot find module (SNMP-FRAMEWORK-MIB): At line 10 in /usr/share/snmp/mibs/NET-SNMP-PASS-MIB.txt
+Cannot find module (SNMP-FRAMEWORK-MIB): At line 10 in /usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt
+Cannot find module (SNMPv2-TC): At line 12 in /usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt
+Cannot find module (INET-ADDRESS-MIB): At line 13 in /usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt
+Did not find 'SnmpAdminString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt)
+Did not find 'netSnmp' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt)
+Did not find 'RowStatus' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt)
+Did not find 'StorageType' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt)
+Did not find 'InetAddressType' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt)
+Did not find 'InetAddress' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt)
+Unlinked OID in NET-SNMP-EXAMPLES-MIB: netSnmpExamples ::= { netSnmp 2 }
+Undefined identifier: netSnmp near line 16 of /usr/share/snmp/mibs/NET-SNMP-EXAMPLES-MIB.txt
+Did not find 'SnmpAdminString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-PASS-MIB.txt)
+Did not find 'netSnmpExamples' in module NET-SNMP-EXAMPLES-MIB (/usr/share/snmp/mibs/NET-SNMP-PASS-MIB.txt)
+Unlinked OID in NET-SNMP-PASS-MIB: netSnmpPassExamples ::= { netSnmpExamples 255 }
+Undefined identifier: netSnmpExamples near line 14 of /usr/share/snmp/mibs/NET-SNMP-PASS-MIB.txt
+Cannot find module (SNMPv2-TC): At line 16 in /usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt
+Did not find 'nsExtensions' in module NET-SNMP-AGENT-MIB (/usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt)
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt)
+Did not find 'RowStatus' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt)
+Did not find 'StorageType' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt)
+Unlinked OID in NET-SNMP-EXTEND-MIB: nsExtendGroups ::= { nsExtensions 3 }
+Undefined identifier: nsExtensions near line 39 of /usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt
+Unlinked OID in NET-SNMP-EXTEND-MIB: nsExtendObjects ::= { nsExtensions 2 }
+Undefined identifier: nsExtensions near line 38 of /usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt
+Unlinked OID in NET-SNMP-EXTEND-MIB: netSnmpExtendMIB ::= { nsExtensions 1 }
+Undefined identifier: nsExtensions near line 19 of /usr/share/snmp/mibs/NET-SNMP-EXTEND-MIB.txt
+Cannot find module (SNMP-NOTIFICATION-MIB): At line 1 in (none)
+Cannot find module (SNMPv2-TM): At line 1 in (none)
+Cannot find module (SNMP-FRAMEWORK-MIB): At line 9 in /usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt
+Cannot find module (SNMP-VIEW-BASED-ACM-MIB): At line 16 in /usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt
+Cannot find module (SNMPv2-TC): At line 25 in /usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt
+Did not find 'SnmpAdminString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'netSnmpObjects' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'netSnmpGroups' in module NET-SNMP-MIB (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'vacmGroupName' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'vacmAccessContextPrefix' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'vacmAccessSecurityModel' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'vacmAccessSecurityLevel' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'DisplayString' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'RowStatus' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Did not find 'StorageType' in module #-1 (/usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt)
+Unlinked OID in NET-SNMP-VACM-MIB: netSnmpVacmMIB ::= { netSnmpObjects 9 }
+Undefined identifier: netSnmpObjects near line 28 of /usr/share/snmp/mibs/NET-SNMP-VACM-MIB.txt
+Cannot adopt OID in UCD-SNMP-MIB: logMatchRegExCompilation ::= { logMatchEntry 101 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchErrorFlag ::= { logMatchEntry 100 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchCycle ::= { logMatchEntry 11 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchCount ::= { logMatchEntry 10 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchCounter ::= { logMatchEntry 9 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchCurrentCount ::= { logMatchEntry 8 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchCurrentCounter ::= { logMatchEntry 7 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchGlobalCount ::= { logMatchEntry 6 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchGlobalCounter ::= { logMatchEntry 5 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchRegEx ::= { logMatchEntry 4 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchFilename ::= { logMatchEntry 3 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchName ::= { logMatchEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchIndex ::= { logMatchEntry 1 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmAccessEntry ::= { nsVacmAccessTable 1 }
+Cannot adopt OID in UCD-SNMP-MIB: extErrFixCmd ::= { extEntry 103 }
+Cannot adopt OID in UCD-SNMP-MIB: extErrFix ::= { extEntry 102 }
+Cannot adopt OID in UCD-SNMP-MIB: extOutput ::= { extEntry 101 }
+Cannot adopt OID in UCD-SNMP-MIB: extResult ::= { extEntry 100 }
+Cannot adopt OID in UCD-SNMP-MIB: extCommand ::= { extEntry 3 }
+Cannot adopt OID in UCD-SNMP-MIB: extNames ::= { extEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: extIndex ::= { extEntry 1 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoPublic ::= { ucdDemoMIBObjects 1 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodTable ::= { ucdDlmodMIB 2 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodNextIndex ::= { ucdDlmodMIB 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExamples ::= { netSnmp 2 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpConformance ::= { netSnmp 5 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpNotificationPrefix ::= { netSnmp 4 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpExperimental ::= { netSnmp 9999 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpEnumerations ::= { netSnmp 3 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpObjects ::= { netSnmp 1 }
+Cannot adopt OID in UCD-SNMP-MIB: versionDoDebugging ::= { version 20 }
+Cannot adopt OID in UCD-SNMP-MIB: versionSavePersistentData ::= { version 13 }
+Cannot adopt OID in UCD-SNMP-MIB: versionRestartAgent ::= { version 12 }
+Cannot adopt OID in UCD-SNMP-MIB: versionUpdateConfig ::= { version 11 }
+Cannot adopt OID in UCD-SNMP-MIB: versionClearCache ::= { version 10 }
+Cannot adopt OID in UCD-SNMP-MIB: versionConfigureOptions ::= { version 6 }
+Cannot adopt OID in UCD-SNMP-MIB: versionIdent ::= { version 5 }
+Cannot adopt OID in UCD-SNMP-MIB: versionCDate ::= { version 4 }
+Cannot adopt OID in UCD-SNMP-MIB: versionDate ::= { version 3 }
+Cannot adopt OID in UCD-SNMP-MIB: versionTag ::= { version 2 }
+Cannot adopt OID in UCD-SNMP-MIB: versionIndex ::= { version 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleHeartbeatNotification ::= { netSnmpExampleNotificationPrefix 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheStatus ::= { nsCacheEntry 3 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheTimeout ::= { nsCacheEntry 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCachedOID ::= { nsCacheEntry 1 }
+Cannot adopt OID in UCD-SNMP-MIB: unknown ::= { ucdSnmpAgent 255 }
+Cannot adopt OID in UCD-SNMP-MIB: dragonfly ::= { ucdSnmpAgent 17 }
+Cannot adopt OID in UCD-SNMP-MIB: macosx ::= { ucdSnmpAgent 16 }
+Cannot adopt OID in UCD-SNMP-MIB: aix ::= { ucdSnmpAgent 15 }
+Cannot adopt OID in UCD-SNMP-MIB: hpux11 ::= { ucdSnmpAgent 14 }
+Cannot adopt OID in UCD-SNMP-MIB: win32 ::= { ucdSnmpAgent 13 }
+Cannot adopt OID in UCD-SNMP-MIB: openbsd ::= { ucdSnmpAgent 12 }
+Cannot adopt OID in UCD-SNMP-MIB: bsdi ::= { ucdSnmpAgent 11 }
+Cannot adopt OID in UCD-SNMP-MIB: linux ::= { ucdSnmpAgent 10 }
+Cannot adopt OID in UCD-SNMP-MIB: irix ::= { ucdSnmpAgent 9 }
+Cannot adopt OID in UCD-SNMP-MIB: freebsd ::= { ucdSnmpAgent 8 }
+Cannot adopt OID in UCD-SNMP-MIB: netbsd1 ::= { ucdSnmpAgent 7 }
+Cannot adopt OID in UCD-SNMP-MIB: hpux10 ::= { ucdSnmpAgent 6 }
+Cannot adopt OID in UCD-SNMP-MIB: ultrix ::= { ucdSnmpAgent 5 }
+Cannot adopt OID in UCD-SNMP-MIB: osf ::= { ucdSnmpAgent 4 }
+Cannot adopt OID in UCD-SNMP-MIB: solaris ::= { ucdSnmpAgent 3 }
+Cannot adopt OID in UCD-SNMP-MIB: sunos4 ::= { ucdSnmpAgent 2 }
+Cannot adopt OID in UCD-SNMP-MIB: hpux9 ::= { ucdSnmpAgent 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutputGroup ::= { nsExtendGroups 2 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendConfigGroup ::= { nsExtendGroups 1 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOEntry ::= { diskIOTable 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsTransactionEntry ::= { nsTransactionTable 1 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpGroups ::= { netSnmpConformance 2 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpCompliances ::= { netSnmpConformance 1 }
+Cannot adopt OID in UCD-SNMP-MIB: mrModuleName ::= { mrEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: mrIndex ::= { mrEntry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugTokenEntry ::= { nsDebugTokenTable 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendStatus ::= { nsExtendConfigEntry 21 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendStorage ::= { nsExtendConfigEntry 20 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendRunType ::= { nsExtendConfigEntry 7 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendExecType ::= { nsExtendConfigEntry 6 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendCacheTime ::= { nsExtendConfigEntry 5 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendInput ::= { nsExtendConfigEntry 4 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendArgs ::= { nsExtendConfigEntry 3 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendCommand ::= { nsExtendConfigEntry 2 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendToken ::= { nsExtendConfigEntry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsModuleTable ::= { nsMibRegistry 1 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpPlaypen ::= { netSnmpExperimental 9999 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpIETFWGEntry ::= { netSnmpIETFWGTable 1 }
+Cannot adopt OID in UCD-SNMP-MIB: prErrFixCmd ::= { prEntry 103 }
+Cannot adopt OID in UCD-SNMP-MIB: prErrFix ::= { prEntry 102 }
+Cannot adopt OID in UCD-SNMP-MIB: prErrMessage ::= { prEntry 101 }
+Cannot adopt OID in UCD-SNMP-MIB: prErrorFlag ::= { prEntry 100 }
+Cannot adopt OID in UCD-SNMP-MIB: prCount ::= { prEntry 5 }
+Cannot adopt OID in UCD-SNMP-MIB: prMax ::= { prEntry 4 }
+Cannot adopt OID in UCD-SNMP-MIB: prMin ::= { prEntry 3 }
+Cannot adopt OID in UCD-SNMP-MIB: prNames ::= { prEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: prIndex ::= { prEntry 1 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodEntry ::= { dlmodTable 1 }
+Cannot adopt OID in UCD-SNMP-MIB: memSwapErrorMsg ::= { memory 101 }
+Cannot adopt OID in UCD-SNMP-MIB: memSwapError ::= { memory 100 }
+Cannot adopt OID in UCD-SNMP-MIB: memSysAvail ::= { memory 27 }
+Cannot adopt OID in UCD-SNMP-MIB: memCachedX ::= { memory 26 }
+Cannot adopt OID in UCD-SNMP-MIB: memBufferX ::= { memory 25 }
+Cannot adopt OID in UCD-SNMP-MIB: memSharedX ::= { memory 24 }
+Cannot adopt OID in UCD-SNMP-MIB: memMinimumSwapX ::= { memory 23 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalFreeX ::= { memory 22 }
+Cannot adopt OID in UCD-SNMP-MIB: memAvailRealX ::= { memory 21 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalRealX ::= { memory 20 }
+Cannot adopt OID in UCD-SNMP-MIB: memAvailSwapX ::= { memory 19 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalSwapX ::= { memory 18 }
+Cannot adopt OID in UCD-SNMP-MIB: memUsedRealTXT ::= { memory 17 }
+Cannot adopt OID in UCD-SNMP-MIB: memUsedSwapTXT ::= { memory 16 }
+Cannot adopt OID in UCD-SNMP-MIB: memCached ::= { memory 15 }
+Cannot adopt OID in UCD-SNMP-MIB: memBuffer ::= { memory 14 }
+Cannot adopt OID in UCD-SNMP-MIB: memShared ::= { memory 13 }
+Cannot adopt OID in UCD-SNMP-MIB: memMinimumSwap ::= { memory 12 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalFree ::= { memory 11 }
+Cannot adopt OID in UCD-SNMP-MIB: memAvailRealTXT ::= { memory 10 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalRealTXT ::= { memory 9 }
+Cannot adopt OID in UCD-SNMP-MIB: memAvailSwapTXT ::= { memory 8 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalSwapTXT ::= { memory 7 }
+Cannot adopt OID in UCD-SNMP-MIB: memAvailReal ::= { memory 6 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalReal ::= { memory 5 }
+Cannot adopt OID in UCD-SNMP-MIB: memAvailSwap ::= { memory 4 }
+Cannot adopt OID in UCD-SNMP-MIB: memTotalSwap ::= { memory 3 }
+Cannot adopt OID in UCD-SNMP-MIB: memErrorName ::= { memory 2 }
+Cannot adopt OID in UCD-SNMP-MIB: memIndex ::= { memory 1 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoMIBObjects ::= { ucdDemoMIB 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsModuleTimeout ::= { nsModuleEntry 6 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsModuleModes ::= { nsModuleEntry 5 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsModuleName ::= { nsModuleEntry 4 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsmRegistrationPriority ::= { nsModuleEntry 3 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsmRegistrationPoint ::= { nsModuleEntry 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsmContextName ::= { nsModuleEntry 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmMiscSensorsEntry ::= { lmMiscSensorsTable 1 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpNotificationObjects ::= { netSnmpNotificationPrefix 1 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpNotifications ::= { netSnmpNotificationPrefix 0 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassTable ::= { netSnmpPassExamples 2 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassOIDValue ::= { netSnmpPassExamples 99 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassInteger64 ::= { netSnmpPassExamples 8 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassCounter64 ::= { netSnmpPassExamples 7 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassGauge ::= { netSnmpPassExamples 6 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassCounter ::= { netSnmpPassExamples 5 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassIpAddress ::= { netSnmpPassExamples 4 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassTimeTicks ::= { netSnmpPassExamples 3 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassString ::= { netSnmpPassExamples 1 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpDomains ::= { netSnmpEnumerations 3 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpAgentOIDs ::= { netSnmpEnumerations 2 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmpModuleIDs ::= { netSnmpEnumerations 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmFanSensorsEntry ::= { lmFanSensorsTable 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmTempSensorsEntry ::= { lmTempSensorsTable 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsModuleGroup ::= { netSnmpGroups 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheGroup ::= { netSnmpGroups 4 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsConfigGroups ::= { netSnmpGroups 7 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsTransactionGroup ::= { netSnmpGroups 8 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsAgentNotifyGroup ::= { netSnmpGroups 9 }
+Cannot adopt OID in UCD-SNMP-MIB: fileEntry ::= { fileTable 1 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmStatus ::= { nsVacmAccessEntry 5 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmStorageType ::= { nsVacmAccessEntry 4 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmViewName ::= { nsVacmAccessEntry 3 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmContextMatch ::= { nsVacmAccessEntry 2 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmAuthType ::= { nsVacmAccessEntry 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: netSnmpExtendMIB ::= { nsExtensions 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendObjects ::= { nsExtensions 2 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendGroups ::= { nsExtensions 3 }
+Cannot adopt OID in LM-SENSORS-MIB: lmVoltSensorsEntry ::= { lmVoltSensorsTable 1 }
+Cannot adopt OID in NET-SNMP-MIB: netSnmp ::= { enterprises 8072 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdavis ::= { enterprises 2021 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOBusyTime ::= { diskIOEntry 14 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIONWrittenX ::= { diskIOEntry 13 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIONReadX ::= { diskIOEntry 12 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOLA15 ::= { diskIOEntry 11 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOLA5 ::= { diskIOEntry 10 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOLA1 ::= { diskIOEntry 9 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOWrites ::= { diskIOEntry 6 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOReads ::= { diskIOEntry 5 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIONWritten ::= { diskIOEntry 4 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIONRead ::= { diskIOEntry 3 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIODevice ::= { diskIOEntry 2 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOIndex ::= { diskIOEntry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsTransactionMode ::= { nsTransactionEntry 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsTransactionID ::= { nsTransactionEntry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugTokenStatus ::= { nsDebugTokenEntry 4 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugTokenPrefix ::= { nsDebugTokenEntry 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: nsIETFWGChair2 ::= { netSnmpIETFWGEntry 3 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: nsIETFWGChair1 ::= { netSnmpIETFWGEntry 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: nsIETFWGName ::= { netSnmpIETFWGEntry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLoggingTable ::= { nsConfigLogging 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostsEntry ::= { netSnmpHostsTable 1 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodStatus ::= { dlmodEntry 5 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodError ::= { dlmodEntry 4 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodPath ::= { dlmodEntry 3 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodName ::= { dlmodEntry 2 }
+Cannot adopt OID in UCD-DLMOD-MIB: dlmodIndex ::= { dlmodEntry 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmMiscSensorsValue ::= { lmMiscSensorsEntry 3 }
+Cannot adopt OID in LM-SENSORS-MIB: lmMiscSensorsDevice ::= { lmMiscSensorsEntry 2 }
+Cannot adopt OID in LM-SENSORS-MIB: lmMiscSensorsIndex ::= { lmMiscSensorsEntry 1 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassEntry ::= { netSnmpPassTable 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmSensors ::= { ucdExperimental 16 }
+Cannot adopt OID in UCD-DLMOD-MIB: ucdDlmodMIB ::= { ucdExperimental 14 }
+Cannot adopt OID in UCD-DISKIO-MIB: ucdDiskIOMIB ::= { ucdExperimental 15 }
+Cannot adopt OID in UCD-SNMP-MIB: dskEntry ::= { dskTable 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: netSnmpAgentMIB ::= { netSnmpModuleIDs 2 }
+Cannot adopt OID in LM-SENSORS-MIB: lmFanSensorsValue ::= { lmFanSensorsEntry 3 }
+Cannot adopt OID in LM-SENSORS-MIB: lmFanSensorsDevice ::= { lmFanSensorsEntry 2 }
+Cannot adopt OID in LM-SENSORS-MIB: lmFanSensorsIndex ::= { lmFanSensorsEntry 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmTempSensorsValue ::= { lmTempSensorsEntry 3 }
+Cannot adopt OID in LM-SENSORS-MIB: lmTempSensorsDevice ::= { lmTempSensorsEntry 2 }
+Cannot adopt OID in LM-SENSORS-MIB: lmTempSensorsIndex ::= { lmTempSensorsEntry 1 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchTable ::= { logMatch 2 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchMaxEntries ::= { logMatch 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLoggingEntry ::= { nsLoggingTable 1 }
+Cannot adopt OID in UCD-SNMP-MIB: fileErrorMsg ::= { fileEntry 101 }
+Cannot adopt OID in UCD-SNMP-MIB: fileErrorFlag ::= { fileEntry 100 }
+Cannot adopt OID in UCD-SNMP-MIB: fileMax ::= { fileEntry 4 }
+Cannot adopt OID in UCD-SNMP-MIB: fileSize ::= { fileEntry 3 }
+Cannot adopt OID in UCD-SNMP-MIB: fileName ::= { fileEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: fileIndex ::= { fileEntry 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutput2Table ::= { nsExtendObjects 4 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutput1Table ::= { nsExtendObjects 3 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendConfigTable ::= { nsExtendObjects 2 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendNumEntries ::= { nsExtendObjects 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutput1Entry ::= { nsExtendOutput1Table 1 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuNumCpus ::= { systemStats 67 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawGuestNice ::= { systemStats 66 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawGuest ::= { systemStats 65 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawSteal ::= { systemStats 64 }
+Cannot adopt OID in UCD-SNMP-MIB: ssRawSwapOut ::= { systemStats 63 }
+Cannot adopt OID in UCD-SNMP-MIB: ssRawSwapIn ::= { systemStats 62 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawSoftIRQ ::= { systemStats 61 }
+Cannot adopt OID in UCD-SNMP-MIB: ssRawContexts ::= { systemStats 60 }
+Cannot adopt OID in UCD-SNMP-MIB: ssRawInterrupts ::= { systemStats 59 }
+Cannot adopt OID in UCD-SNMP-MIB: ssIORawReceived ::= { systemStats 58 }
+Cannot adopt OID in UCD-SNMP-MIB: ssIORawSent ::= { systemStats 57 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawInterrupt ::= { systemStats 56 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawKernel ::= { systemStats 55 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawWait ::= { systemStats 54 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawIdle ::= { systemStats 53 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawSystem ::= { systemStats 52 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawNice ::= { systemStats 51 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuRawUser ::= { systemStats 50 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuIdle ::= { systemStats 11 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuSystem ::= { systemStats 10 }
+Cannot adopt OID in UCD-SNMP-MIB: ssCpuUser ::= { systemStats 9 }
+Cannot adopt OID in UCD-SNMP-MIB: ssSysContext ::= { systemStats 8 }
+Cannot adopt OID in UCD-SNMP-MIB: ssSysInterrupts ::= { systemStats 7 }
+Cannot adopt OID in UCD-SNMP-MIB: ssIOReceive ::= { systemStats 6 }
+Cannot adopt OID in UCD-SNMP-MIB: ssIOSent ::= { systemStats 5 }
+Cannot adopt OID in UCD-SNMP-MIB: ssSwapOut ::= { systemStats 4 }
+Cannot adopt OID in UCD-SNMP-MIB: ssSwapIn ::= { systemStats 3 }
+Cannot adopt OID in UCD-SNMP-MIB: ssErrorName ::= { systemStats 2 }
+Cannot adopt OID in UCD-SNMP-MIB: ssIndex ::= { systemStats 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutput2Entry ::= { nsExtendOutput2Table 1 }
+Cannot adopt OID in UCD-SNMP-MIB: laEntry ::= { laTable 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheTable ::= { nsCache 3 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheEnabled ::= { nsCache 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheDefaultTimeout ::= { nsCache 1 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatchEntry ::= { logMatchTable 1 }
+Cannot adopt OID in UCD-SNMP-MIB: extEntry ::= { extTable 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsConfigLogging ::= { nsConfiguration 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsConfigDebug ::= { nsConfiguration 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleString ::= { netSnmpExampleScalars 3 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleSleeper ::= { netSnmpExampleScalars 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleInteger ::= { netSnmpExampleScalars 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmVoltSensorsValue ::= { lmVoltSensorsEntry 3 }
+Cannot adopt OID in LM-SENSORS-MIB: lmVoltSensorsDevice ::= { lmVoltSensorsEntry 2 }
+Cannot adopt OID in LM-SENSORS-MIB: lmVoltSensorsIndex ::= { lmVoltSensorsEntry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCacheEntry ::= { nsCacheTable 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugTokenTable ::= { nsConfigDebug 4 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugDumpPdu ::= { nsConfigDebug 3 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugOutputAll ::= { nsConfigDebug 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugEnabled ::= { nsConfigDebug 1 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoPassphrase ::= { ucdDemoPublic 4 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoUserList ::= { ucdDemoPublic 3 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoPublicString ::= { ucdDemoPublic 2 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoResetKeys ::= { ucdDemoPublic 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleHeartbeatName ::= { netSnmpExampleNotificationObjects 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleHeartbeatRate ::= { netSnmpExampleNotificationObjects 1 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassExamples ::= { netSnmpExamples 255 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleNotifications ::= { netSnmpExamples 3 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleTables ::= { netSnmpExamples 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleScalars ::= { netSnmpExamples 1 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: nsVacmAccessTable ::= { netSnmpVacmMIB 1 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdShutdown ::= { ucdTraps 2 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdStart ::= { ucdTraps 1 }
+Cannot adopt OID in LM-SENSORS-MIB: lmMiscSensorsTable ::= { lmSensors 5 }
+Cannot adopt OID in LM-SENSORS-MIB: lmVoltSensorsTable ::= { lmSensors 4 }
+Cannot adopt OID in LM-SENSORS-MIB: lmFanSensorsTable ::= { lmSensors 3 }
+Cannot adopt OID in LM-SENSORS-MIB: lmTempSensorsTable ::= { lmSensors 2 }
+Cannot adopt OID in LM-SENSORS-MIB: lmSensorsMIB ::= { lmSensors 1 }
+Cannot adopt OID in UCD-SNMP-MIB: mrEntry ::= { mrTable 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendConfigEntry ::= { nsExtendConfigTable 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostRowStatus ::= { netSnmpHostsEntry 5 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostStorage ::= { netSnmpHostsEntry 4 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostAddress ::= { netSnmpHostsEntry 3 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostAddressType ::= { netSnmpHostsEntry 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostName ::= { netSnmpHostsEntry 1 }
+Cannot adopt OID in UCD-SNMP-MIB: prEntry ::= { prTable 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleNotification ::= { netSnmpExampleNotifications 1 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleNotificationObjects ::= { netSnmpExampleNotifications 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpExampleNotificationPrefix ::= { netSnmpExampleNotifications 0 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpHostsTable ::= { netSnmpExampleTables 2 }
+Cannot adopt OID in NET-SNMP-EXAMPLES-MIB: netSnmpIETFWGTable ::= { netSnmpExampleTables 1 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassOID ::= { netSnmpPassEntry 3 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassInteger ::= { netSnmpPassEntry 2 }
+Cannot adopt OID in NET-SNMP-PASS-MIB: netSnmpPassIndex ::= { netSnmpPassEntry 1 }
+Cannot adopt OID in NET-SNMP-VACM-MIB: netSnmpVacmMIB ::= { netSnmpObjects 9 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsVersion ::= { netSnmpObjects 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsMibRegistry ::= { netSnmpObjects 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsExtensions ::= { netSnmpObjects 3 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDLMod ::= { netSnmpObjects 4 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsCache ::= { netSnmpObjects 5 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsErrorHistory ::= { netSnmpObjects 6 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsConfiguration ::= { netSnmpObjects 7 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsTransactions ::= { netSnmpObjects 8 }
+Cannot adopt OID in UCD-DEMO-MIB: ucdDemoMIB ::= { ucdavis 14 }
+Cannot adopt OID in UCD-SNMP-MIB: logMatch ::= { ucdavis 16 }
+Cannot adopt OID in UCD-SNMP-MIB: fileTable ::= { ucdavis 15 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdTraps ::= { ucdavis 251 }
+Cannot adopt OID in UCD-SNMP-MIB: systemStats ::= { ucdavis 11 }
+Cannot adopt OID in UCD-SNMP-MIB: mrTable ::= { ucdavis 102 }
+Cannot adopt OID in UCD-SNMP-MIB: snmperrs ::= { ucdavis 101 }
+Cannot adopt OID in UCD-SNMP-MIB: version ::= { ucdavis 100 }
+Cannot adopt OID in UCD-SNMP-MIB: laTable ::= { ucdavis 10 }
+Cannot adopt OID in UCD-SNMP-MIB: dskTable ::= { ucdavis 9 }
+Cannot adopt OID in UCD-SNMP-MIB: memory ::= { ucdavis 4 }
+Cannot adopt OID in UCD-SNMP-MIB: extTable ::= { ucdavis 8 }
+Cannot adopt OID in UCD-SNMP-MIB: prTable ::= { ucdavis 2 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdSnmpAgent ::= { ucdavis 250 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdExperimental ::= { ucdavis 13 }
+Cannot adopt OID in UCD-SNMP-MIB: ucdInternal ::= { ucdavis 12 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsModuleEntry ::= { nsModuleTable 1 }
+Cannot adopt OID in UCD-SNMP-MIB: dskErrorMsg ::= { dskEntry 101 }
+Cannot adopt OID in UCD-SNMP-MIB: dskErrorFlag ::= { dskEntry 100 }
+Cannot adopt OID in UCD-SNMP-MIB: dskUsedHigh ::= { dskEntry 16 }
+Cannot adopt OID in UCD-SNMP-MIB: dskUsedLow ::= { dskEntry 15 }
+Cannot adopt OID in UCD-SNMP-MIB: dskAvailHigh ::= { dskEntry 14 }
+Cannot adopt OID in UCD-SNMP-MIB: dskAvailLow ::= { dskEntry 13 }
+Cannot adopt OID in UCD-SNMP-MIB: dskTotalHigh ::= { dskEntry 12 }
+Cannot adopt OID in UCD-SNMP-MIB: dskTotalLow ::= { dskEntry 11 }
+Cannot adopt OID in UCD-SNMP-MIB: dskPercentNode ::= { dskEntry 10 }
+Cannot adopt OID in UCD-SNMP-MIB: dskPercent ::= { dskEntry 9 }
+Cannot adopt OID in UCD-SNMP-MIB: dskUsed ::= { dskEntry 8 }
+Cannot adopt OID in UCD-SNMP-MIB: dskAvail ::= { dskEntry 7 }
+Cannot adopt OID in UCD-SNMP-MIB: dskTotal ::= { dskEntry 6 }
+Cannot adopt OID in UCD-SNMP-MIB: dskMinPercent ::= { dskEntry 5 }
+Cannot adopt OID in UCD-SNMP-MIB: dskMinimum ::= { dskEntry 4 }
+Cannot adopt OID in UCD-SNMP-MIB: dskDevice ::= { dskEntry 3 }
+Cannot adopt OID in UCD-SNMP-MIB: dskPath ::= { dskEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: dskIndex ::= { dskEntry 1 }
+Cannot adopt OID in UCD-DISKIO-MIB: diskIOTable ::= { ucdDiskIOMIB 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLoggingGroup ::= { nsConfigGroups 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsDebugGroup ::= { nsConfigGroups 1 }
+Cannot adopt OID in UCD-SNMP-MIB: snmperrErrMessage ::= { snmperrs 101 }
+Cannot adopt OID in UCD-SNMP-MIB: snmperrErrorFlag ::= { snmperrs 100 }
+Cannot adopt OID in UCD-SNMP-MIB: snmperrNames ::= { snmperrs 2 }
+Cannot adopt OID in UCD-SNMP-MIB: snmperrIndex ::= { snmperrs 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsTransactionTable ::= { nsTransactions 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLogStatus ::= { nsLoggingEntry 5 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLogMaxLevel ::= { nsLoggingEntry 4 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLogType ::= { nsLoggingEntry 3 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLogToken ::= { nsLoggingEntry 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsLogLevel ::= { nsLoggingEntry 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendResult ::= { nsExtendOutput1Entry 4 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutNumLines ::= { nsExtendOutput1Entry 3 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutputFull ::= { nsExtendOutput1Entry 2 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutput1Line ::= { nsExtendOutput1Entry 1 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendOutLine ::= { nsExtendOutput2Entry 2 }
+Cannot adopt OID in NET-SNMP-EXTEND-MIB: nsExtendLineIndex ::= { nsExtendOutput2Entry 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsNotifyStart ::= { netSnmpNotifications 1 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsNotifyShutdown ::= { netSnmpNotifications 2 }
+Cannot adopt OID in NET-SNMP-AGENT-MIB: nsNotifyRestart ::= { netSnmpNotifications 3 }
+Cannot adopt OID in UCD-SNMP-MIB: laErrMessage ::= { laEntry 101 }
+Cannot adopt OID in UCD-SNMP-MIB: laErrorFlag ::= { laEntry 100 }
+Cannot adopt OID in UCD-SNMP-MIB: laLoadFloat ::= { laEntry 6 }
+Cannot adopt OID in UCD-SNMP-MIB: laLoadInt ::= { laEntry 5 }
+Cannot adopt OID in UCD-SNMP-MIB: laConfig ::= { laEntry 4 }
+Cannot adopt OID in UCD-SNMP-MIB: laLoad ::= { laEntry 3 }
+Cannot adopt OID in UCD-SNMP-MIB: laNames ::= { laEntry 2 }
+Cannot adopt OID in UCD-SNMP-MIB: laIndex ::= { laEntry 1 }
+Warning: Failed to connect to the agentx master agent ([NIL]): 
+Killed
+</code></pre>
+<hr>
+<h5 id=snmpbulkget>snmpbulkget</h5>
+<p>Communicates with a network entity using SNMP GETBULK requests.</p>
+<pre><code>root@kali:~# snmpbulkget -h
+USAGE: snmpbulkget [OPTIONS] AGENT OID [OID]...
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  n&lt;NUM&gt;:  set non-repeaters to &lt;NUM&gt;
+			  r&lt;NUM&gt;:  set max-repeaters to &lt;NUM&gt;
+</code></pre>
+<hr>
+<h5 id=snmpbulkwalk>snmpbulkwalk</h5>
+<p>Retrieve a subtree of management values using SNMP GETBULK requests</p>
+<pre><code>root@kali:~# snmpbulkwalk -h
+USAGE: snmpbulkwalk [OPTIONS] AGENT [OID]
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  c:       do not check returned OIDs are increasing
+			  i:       include given OIDs in the search range
+			  n&lt;NUM&gt;:  set non-repeaters to &lt;NUM&gt;
+			  p:       print the number of variables found
+			  r&lt;NUM&gt;:  set max-repeaters to &lt;NUM&gt;
+</code></pre>
+<hr>
+<h5 id=snmpcheck>snmpcheck</h5>
+<p>Check hosts SNMP access</p>
+<pre><code>root@kali:~# snmpcheck -h
+
+Usage:  snmpcheck [-x] [-n|y] [-h] [-H] [-V NUM] [-L] [-f] [[-a] HOSTS] 
+
+  -h	Display this message.
+  -a	check error log file AND hosts specified on command line.
+  -p	Don't try and ping-echo the host first
+  -f	Only check for things I can fix
+  HOSTS	check these hosts for problems.
+
+X Options:
+  -x	forces ascii base if $DISPLAY set (instead of tk).
+  -H	start in hidden mode.  (hides user interface)
+  -V NUM	sets the initial verbosity level of the command log (def: 1)
+  -L	Show the log window at startup
+  -d	Don't start by checking anything.  Just bring up the interface.
+
+Ascii Options:
+  -n	Don't ever try and fix the problems found.  Just list.
+  -y	Always fix problems found.
+
+</code></pre>
+<hr>
+<h5 id=snmpconf>snmpconf</h5>
+<p>Creates and modifies SNMP configuration files</p>
+<pre><code>root@kali:~# snmpconf -h
+/usr/bin/snmpconf [options] [FILETOCREATE...]
+options:
+  -f           overwrite existing files without prompting
+  -i           install created files into /usr/share/snmp.
+  -p           install created files into /root/.snmp.
+  -I DIR       install created files into DIR.
+  -a           Don't ask any questions, just read in current
+                   current .conf files and comment them
+  -r all|none  Read in all or none of the .conf files found.
+  -R file,...  Read in a particular list of .conf files.
+  -g GROUP     Ask a series of GROUPed questions.
+  -G           List known GROUPs.
+  -c conf_dir  use alternate configuration directory.
+  -q           run more quietly with less advice.
+  -d           turn on debugging output.
+  -D           turn on debugging dumper output.
+</code></pre>
+<hr>
+<h5 id=snmpdelta>snmpdelta</h5>
+<p>Monitor delta differences in SNMP Counter values</p>
+<pre><code>root@kali:~# snmpdelta -h
+Usage: snmpdelta [-Cf] [-CF commandFile] [-Cl] [-CL SumFileName]
+	[-Cs] [-Ck] [-Ct] [-CS] [-Cv vars/pkt] [-Cp period]
+	[-CP peaks] [OPTIONS] AGENT oid [oid ...]
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+snmpdelta specific options
+  -Cf		Don't fix errors and retry the request.
+  -Cl		write configuration to file
+  -CF config	load configuration from file
+  -Cp period	specifies the poll period
+  -CP peaks	reporting period in poll periods
+  -Cv vars/pkt	number of variables per packet
+  -Ck		keep seconds in output time
+  -Cm		show max values
+  -CS		log to a sum file
+  -Cs		show timestamps
+  -Ct		get timing from agent
+  -CT		print output in tabular form
+  -CL sumfile	specifies the sum file name
+</code></pre>
+<hr>
+<h5 id=snmpdf>snmpdf</h5>
+<p>Display disk space usage on a network entity via SNMP</p>
+<pre><code>root@kali:~# snmpdf -h
+Usage: snmpdf [-Cu] [OPTIONS] AGENT
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+
+snmpdf options:
+	-Cu	Use UCD-SNMP dskTable to do the calculations.
+		[Normally the HOST-RESOURCES-MIB is consulted first.]
+	-Ch	Print using human readable format (MiB, GiB, TiB)
+	-CH	Print using human readable SI format (MB, GB, TB)
+</code></pre>
+<hr>
+<h5 id=snmpget>snmpget</h5>
+<p>Communicates with a network entity using SNMP GET requests</p>
+<pre><code>root@kali:~# snmpget -h
+USAGE: snmpget [OPTIONS] AGENT OID [OID]...
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  f:  do not fix errors and retry the request
+</code></pre>
+<hr>
+<h5 id=snmpgetnext>snmpgetnext</h5>
+<p>Communicates with a network entity using SNMP GETNEXT requests</p>
+<pre><code>root@kali:~# snmpgetnext -h
+USAGE: snmpgetnext [OPTIONS] AGENT OID [OID]...
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  f:  do not fix errors and retry the request
+</code></pre>
+<hr>
+<h5 id=snmpinform>snmpinform</h5>
+<p>Sends an SNMP notification to a manager</p>
+<pre><code>root@kali:~# snmpinform -h
+USAGE: snmpinform [OPTIONS] AGENT TRAP-PARAMETERS
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviour:
+			  i:  send an INFORM instead of a TRAP
+
+  -v 1 TRAP-PARAMETERS:
+	 enterprise-oid agent trap-type specific-type uptime [OID TYPE VALUE]...
+  or
+  -v 2 TRAP-PARAMETERS:
+	 uptime trapoid [OID TYPE VALUE] ...
+</code></pre>
+<hr>
+<h5 id=snmpnetstat>snmpnetstat</h5>
+<p>Display networking status and configuration information from a network entity via SNMP</p>
+<pre><code>root@kali:~# snmpnetstat -h
+usage: snmpnetstat [snmp_opts] [-Canv] [-Cf address_family]
+       snmpnetstat [snmp_opts] [-Cibodnv] [-CI interface] [-Cw wait]
+       snmpnetstat [snmp_opts] [-Cs[s]] [-Cp protocol]
+       snmpnetstat [snmp_opts] [-Crnv] [-Cf address_family]
+</code></pre>
+<hr>
+<h5 id=snmpping>snmpping</h5>
+<p>Command an agent to ping a remote host</p>
+<pre><code>root@kali:~# snmpping -h
+Usage: snmpping [OPTIONS] AGENT DESTINATION
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+
+snmpping options:
+	-Cc&lt;pings&gt;	Specify the number of pings (1-15)
+	-Cs&lt;size&gt;	Specify the amount of extra data (0-65507)
+</code></pre>
+<hr>
+<h5 id=snmpset>snmpset</h5>
+<p>Communicates with a network entity using SNMP SET requests</p>
+<pre><code>root@kali:~# snmpset -h
+USAGE: snmpset [OPTIONS] AGENT OID TYPE VALUE [OID TYPE VALUE]...
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  q:  don't print results on success
+
+  TYPE: one of i, u, t, a, o, s, x, d, b
+	i: INTEGER, u: unsigned INTEGER, t: TIMETICKS, a: IPADDRESS
+	o: OBJID, s: STRING, x: HEX STRING, d: DECIMAL STRING, b: BITS
+	U: unsigned int64, I: signed int64, F: float, D: double
+</code></pre>
+<hr>
+<h5 id=snmpstatus>snmpstatus</h5>
+<p>Retrieves a fixed set of management information from a network entity</p>
+<pre><code>root@kali:~# snmpstatus -h
+USAGE: snmpstatus [OPTIONS] AGENT
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  f:  do not fix errors and retry the request
+</code></pre>
+<hr>
+<h5 id=snmptable>snmptable</h5>
+<p>Retrieve an SNMP table and display it in tabular form</p>
+<pre><code>root@kali:~# snmptable -h
+USAGE: snmptable [OPTIONS] AGENT TABLE-OID
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  b:       brief field names
+			  B:       do not use GETBULK requests
+			  c&lt;NUM&gt;:  print table in columns of &lt;NUM&gt; chars width
+			  f&lt;STR&gt;:  print table delimitied with &lt;STR&gt;
+			  h:       print only the column headers
+			  H:       print no column headers
+			  i:       print index values
+			  l:       left justify output
+			  r&lt;NUM&gt;:  for GETBULK: set max-repeaters to &lt;NUM&gt;
+			           for GETNEXT: retrieve &lt;NUM&gt; entries at a time
+			  w&lt;NUM&gt;:  print table in parts of &lt;NUM&gt; chars width
+</code></pre>
+<hr>
+<h5 id=snmptest>snmptest</h5>
+<p>Communicates with a network entity using SNMP requests</p>
+<pre><code>root@kali:~# snmptest -h
+USAGE: snmptest [OPTIONS] AGENT
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+</code></pre>
+<hr>
+<h5 id=snmptls>snmptls</h5>
+<pre><code>root@kali:~# snmptls -h
+USAGE: snmptls [-Cm mapTypeOID] [-Cd data] [-Cs storageType] [OPTIONS] AGENT&lt;command&gt; [command options]
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  [options]   certToSecName add &lt;priority&gt; &lt;hashType&gt; &lt;fingerprint&gt;
+	-Cm		Maptype; [snmpTlstmCertCommonName|snmpTlstmCertSANRFC822Name|snmpTlstmCertSANIpAddress|snmpTlstmCertSANDNSName|snmpTlstmCertSpecified]
+			(default is snmpTlstmCertSpecified)
+	-Cd		Data; data for snmpTlstmCertSpecified.
+	-Cs		storageType; default is nonVolatile.
+  [options]   targetParamsFingerprint add &lt;params-name&gt; &lt;hashType&gt; &lt;fingerprint&gt;
+	-Cs		storageType; default is nonVolatile.
+  [options]   targetAddr add &lt;target-name&gt; &lt;hashType&gt; [&lt;hash_type&gt; &lt;remote-fingerprint&gt;] [server-identity]
+	-Cs		storageType; default is nonVolatile.
+</code></pre>
+<hr>
+<h5 id=snmptranslate>snmptranslate</h5>
+<p>Translate MIB OID names between numeric and textual forms</p>
+<pre><code>root@kali:~# snmptranslate --help
+snmptranslate: invalid option -- '-'
+invalid option: -?
+USAGE: snmptranslate [OPTIONS] OID [OID]...
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h			display this help message
+  -V			display package version number
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+  -w WIDTH		set width of tree and detail output
+  -T TRANSOPTS		Set various options controlling report produced:
+			  B:  print all matching objects for a regex search
+			  d:  print full details of the given OID
+			  p:  print tree format symbol table
+			  a:  print ASCII format symbol table
+			  l:  enable labeled OID report
+			  o:  enable OID report
+			  s:  enable dotted symbolic report
+			  z:  enable MIB child OID report
+			  t:  enable alternate format symbolic suffix report
+  -P MIBOPTS		Toggle various defaults controlling mib parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+</code></pre>
+<hr>
+<h5 id=snmptrap>snmptrap</h5>
+<p>Sends an SNMP notification to a manager</p>
+<pre><code>root@kali:~# snmptrap -h
+USAGE: snmptrap [OPTIONS] AGENT TRAP-PARAMETERS
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviour:
+			  i:  send an INFORM instead of a TRAP
+
+  -v 1 TRAP-PARAMETERS:
+	 enterprise-oid agent trap-type specific-type uptime [OID TYPE VALUE]...
+  or
+  -v 2 TRAP-PARAMETERS:
+	 uptime trapoid [OID TYPE VALUE] ...
+</code></pre>
+<hr>
+<h5 id=snmpusm>snmpusm</h5>
+<p>Creates and maintains SNMPv3 users on a network entity</p>
+<pre><code>root@kali:~# snmpusm -h
+Usage: snmpusm [OPTIONS] AGENT COMMAND
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+
+snmpusm commands:
+  [options]               create     USER [CLONEFROM-USER]
+  [options]               delete     USER
+  [options]               activate   USER
+  [options]               deactivate USER
+  [options] [-Cw]         cloneFrom  USER CLONEFROM-USER
+  [options] [-Ca] [-Cx]   changekey  [USER]
+  [options] [-Ca] [-Cx]   passwd     OLD-PASSPHRASE NEW-PASSPHRASE [USER]
+  [options] (-Ca|-Cx) -Ck passwd     OLD-KEY-OR-PASS NEW-KEY-OR-PASS [USER]
+
+snmpusm options:
+	-CE ENGINE-ID	Set usmUserEngineID (e.g. 800000020109840301).
+	-Cp STRING	Set usmUserPublic value to STRING.
+	-Cw		Create the user with createAndWait.
+			(it won't be active until you active it)
+	-Cx		Change the privacy key.
+	-Ca		Change the authentication key.
+	-Ck		Allows one to use localized key (must start with 0x)
+			instead of passphrase.
+</code></pre>
+<hr>
+<h5 id=snmpvacm>snmpvacm</h5>
+<p>Creates and maintains SNMPv3 View-based Access Control entries on a network entity</p>
+<pre><code>root@kali:~# snmpvacm -h
+Usage: snmpvacm [OPTIONS] AGENT COMMAND
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+
+snmpvacm commands:
+        createAccess     GROUPNAME [CONTEXTPREFIX] SECURITYMODEL SECURITYLEVEL CONTEXTMATCH READVIEWNAME WRITEVIEWNAME NOTIFYVIEWNAME
+        deleteAccess     GROUPNAME [CONTEXTPREFIX] SECURITYMODEL SECURITYLEVEL
+        createSec2Group  MODEL SECURITYNAME  GROUPNAME
+        deleteSec2Group  MODEL SECURITYNAME
+  [-Ce] createView       NAME SUBTREE [MASK]
+        deleteView       NAME SUBTREE
+        createAuth       GROUPNAME [CONTEXTPREFIX] SECURITYMODEL SECURITYLEVEL AUTHTYPE CONTEXTMATCH VIEWNAME
+        deleteAuth       GROUPNAME [CONTEXTPREFIX] SECURITYMODEL SECURITYLEVEL AUTHTYPE
+</code></pre>
+<hr>
+<h5 id=snmpwalk>snmpwalk</h5>
+<p>Retrieve a subtree of management values using SNMP GETNEXT requests</p>
+<pre><code>root@kali:~# snmpwalk -h
+USAGE: snmpwalk [OPTIONS] AGENT [OID]
+
+  Version:  5.9.1
+  Web:      http://www.net-snmp.org/
+  Email:    net-snmp-coders@lists.sourceforge.net
+
+OPTIONS:
+  -h, --help		display this help message
+  -H			display configuration file directives understood
+  -v 1|2c|3		specifies SNMP version to use
+  -V, --version		display package version number
+SNMP Version 1 or 2c specific
+  -c COMMUNITY		set the community string
+SNMP Version 3 specific
+  -a PROTOCOL		set authentication protocol (MD5|SHA|SHA-224|SHA-256|SHA-384|SHA-512)
+  -A PASSPHRASE		set authentication protocol pass phrase
+  -e ENGINE-ID		set security engine ID (e.g. 800000020109840301)
+  -E ENGINE-ID		set context engine ID (e.g. 800000020109840301)
+  -l LEVEL		set security level (noAuthNoPriv|authNoPriv|authPriv)
+  -n CONTEXT		set context name (e.g. bridge1)
+  -u USER-NAME		set security name (e.g. bert)
+  -x PROTOCOL		set privacy protocol (DES|AES|AES-192|AES-256)
+  -X PASSPHRASE		set privacy protocol pass phrase
+  -Z BOOTS,TIME		set destination engine boots/time
+General communication options
+  -r RETRIES		set the number of retries
+  -t TIMEOUT		set the request timeout (in seconds)
+Debugging
+  -d			dump input/output packets in hexadecimal
+  -D[TOKEN[,...]]	turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+General options
+  -m MIB[:...]		load given list of MIBs (ALL loads everything)
+  -M DIR[:...]		look in given list of directories for MIBs
+    (default: $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -P MIBOPTS		Toggle various defaults controlling MIB parsing:
+			  u:  allow the use of underlines in MIB symbols
+			  c:  disallow the use of &quot;--&quot; to terminate comments
+			  d:  save the DESCRIPTIONs of the MIB objects
+			  e:  disable errors when MIB symbols conflict
+			  w:  enable warnings when MIB symbols conflict
+			  W:  enable detailed warnings when MIB symbols conflict
+			  R:  replace MIB symbols from latest module
+  -O OUTOPTS		Toggle various defaults controlling output display:
+			  0:  print leading 0 for single-digit hex characters
+			  a:  print all strings in ascii format
+			  b:  do not break OID indexes down
+			  e:  print enums numerically
+			  E:  escape quotes in string indices
+			  f:  print full OIDs on output
+			  n:  print OIDs numerically
+			  p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			  q:  quick print for easier parsing
+			  Q:  quick print with equal-signs
+			  s:  print only last symbolic element of OID
+			  S:  print MIB module-id plus last element
+			  t:  print timeticks unparsed as numeric integers
+			  T:  print human-readable text along with hex strings
+			  u:  print OIDs using UCD-style prefix suppression
+			  U:  don't print units
+			  v:  print values only (not OID = value)
+			  x:  print all strings in hex format
+			  X:  extended index format
+  -I INOPTS		Toggle various defaults controlling input parsing:
+			  b:  do best/regex matching to find a MIB node
+			  h:  don't apply DISPLAY-HINTs
+			  r:  do not check values for range/type legality
+			  R:  do random access to OID labels
+			  u:  top-level OIDs must have '.' prefix (UCD-style)
+			  s SUFFIX:  Append all textual OIDs with SUFFIX before parsing
+			  S PREFIX:  Prepend all textual OIDs with PREFIX before parsing
+  -L LOGOPTS		Toggle various defaults controlling logging:
+			  e:           log to standard error
+			  o:           log to standard output
+			  n:           don't log at all
+			  f file:      log to the specified file
+			  s facility:  log to syslog (via the specified facility)
+
+			  (variants)
+			  [EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			  [EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			  [FS] pri token:    log to file/syslog for level 'pri' and above
+			  [FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -C APPOPTS		Set various application specific behaviours:
+			  p:  print the number of variables found
+			  i:  include given OID in the search range
+			  I:  don't include the given OID, even if no results are returned
+			  c:  do not check returned OIDs are increasing
+			  t:  Display wall-clock time to complete the walk
+			  T:  Display wall-clock time to complete each request
+			  E {OID}:  End the walk at the specified OID
+</code></pre>
+<hr>
+<h3 id=snmpd>snmpd</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP agent is a daemon which listens for incoming SNMP
+requests from clients and provides responses.</p>
+<p><strong>Installed size:</strong> <code>147 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install snmpd</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>adduser</li>
+<li>debconf</li>
+<li>debconf | debconf-2.0</li>
+<li>init-system-helpers</li>
+<li>libc6</li>
+<li>libsnmp-base</li>
+<li>libsnmp40</li>
+<li>lsb-base
+</div></li>
+</ul>
+<h5 id=net-snmp-create-v3-user>net-snmp-create-v3-user</h5>
+<p>Create a SNMPv3 user in net-snmp configuration file</p>
+<pre><code>root@kali:~# net-snmp-create-v3-user -h
+unknown suboption to /usr/bin/net-snmp-create-v3-user: -h
+
+Usage:
+  net-snmp-create-v3-user [-ro] [-A authpass] [-X privpass]
+                          [-a MD5|SHA|SHA-512|SHA-384|SHA-256|SHA-224] [-x DES|AES] [username]
+
+</code></pre>
+<hr>
+<h5 id=snmpd-1>snmpd</h5>
+<p>Daemon to respond to SNMP request packets.</p>
+<pre><code>root@kali:~# snmpd -h
+
+Usage:  snmpd [OPTIONS] [LISTENING ADDRESSES]
+
+	Version:  5.9.1
+	Web:      http://www.net-snmp.org/
+	Email:    net-snmp-coders@lists.sourceforge.net
+
+  -a			log addresses
+  -A			append to the logfile rather than truncating it
+  -c FILE[,...]		read FILE(s) as configuration file(s)
+  -C			do not read the default configuration files
+			  (config search path: /etc/snmp:/usr/share/snmp:/usr/lib/x86_64-linux-gnu/snmp:/root/.snmp)
+  -d			dump sent and received SNMP packets
+  -D[TOKEN[,...]]	turn on debugging output for the given TOKEN(s)
+			  (try ALL for extremely verbose output)
+			  Don't put space(s) between -D and TOKEN(s).
+  -f			do not fork from the shell
+  -g GID		change to this numeric gid after opening
+			  transport endpoints
+  -h, --help		display this usage message
+  -H			display configuration file directives understood
+  -I [-]INITLIST	list of mib modules to initialize (or not)
+			  (run snmpd with -Dmib_init for a list)
+  -L &lt;LOGOPTS&gt;		toggle options controlling where to log to
+	e:           log to standard error
+	o:           log to standard output
+	n:           don't log at all
+	f file:      log to the specified file
+	s facility:  log to syslog (via the specified facility)
+
+	(variants)
+	[EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+	[EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+	[FS] pri token:    log to file/syslog for level 'pri' and above
+	[FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -m MIBLIST		use MIBLIST instead of the default MIB list
+  -M DIRLIST		use DIRLIST as the list of locations to look for MIBs
+			  (default $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -p FILE		store process id in FILE
+  -q			print information in a more parsable format
+  -r			do not exit if files only accessible to root
+			  cannot be opened
+  -u UID		change to this uid (numeric or textual) after
+			  opening transport endpoints
+  -v, --version		display version information
+  -V			verbose display
+  -x ADDRESS		use ADDRESS as AgentX address
+  -X			run as an AgentX subagent rather than as an
+			  SNMP master agent
+
+Deprecated options:
+  -l FILE		use -Lf &lt;FILE&gt; instead
+  -P			use -p instead
+  -s			use -Lsd instead
+  -S d|i|0-7		use -Ls &lt;facility&gt; instead
+
+
+Usage:  snmpd [OPTIONS] [LISTENING ADDRESSES]
+
+	Version:  5.9.1
+	Web:      http://www.net-snmp.org/
+	Email:    net-snmp-coders@lists.sourceforge.net
+
+  -a			log addresses
+  -A			append to the logfile rather than truncating it
+  -c FILE[,...]		read FILE(s) as configuration file(s)
+  -C			do not read the default configuration files
+			  (config search path: /etc/snmp:/usr/share/snmp:/usr/lib/x86_64-linux-gnu/snmp:/root/.snmp)
+  -d			dump sent and received SNMP packets
+  -D[TOKEN[,...]]	turn on debugging output for the given TOKEN(s)
+			  (try ALL for extremely verbose output)
+			  Don't put space(s) between -D and TOKEN(s).
+  -f			do not fork from the shell
+  -g GID		change to this numeric gid after opening
+			  transport endpoints
+  -h, --help		display this usage message
+  -H			display configuration file directives understood
+  -I [-]INITLIST	list of mib modules to initialize (or not)
+			  (run snmpd with -Dmib_init for a list)
+  -L &lt;LOGOPTS&gt;		toggle options controlling where to log to
+	e:           log to standard error
+	o:           log to standard output
+	n:           don't log at all
+	f file:      log to the specified file
+	s facility:  log to syslog (via the specified facility)
+
+	(variants)
+	[EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+	[EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+	[FS] pri token:    log to file/syslog for level 'pri' and above
+	[FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+  -m MIBLIST		use MIBLIST instead of the default MIB list
+  -M DIRLIST		use DIRLIST as the list of locations to look for MIBs
+			  (default $HOME/.snmp/mibs:/usr/share/snmp/mibs:/usr/share/snmp/mibs/iana:/usr/share/snmp/mibs/ietf)
+  -p FILE		store process id in FILE
+  -q			print information in a more parsable format
+  -r			do not exit if files only accessible to root
+			  cannot be opened
+  -u UID		change to this uid (numeric or textual) after
+			  opening transport endpoints
+  -v, --version		display version information
+  -V			verbose display
+  -x ADDRESS		use ADDRESS as AgentX address
+  -X			run as an AgentX subagent rather than as an
+			  SNMP master agent
+
+Deprecated options:
+  -l FILE		use -Lf &lt;FILE&gt; instead
+  -P			use -p instead
+  -s			use -Lsd instead
+  -S d|i|0-7		use -Ls &lt;facility&gt; instead
+
+</code></pre>
+<hr>
+<h3 id=snmptrapd>snmptrapd</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>snmptrapd is an SNMP application (daemon) that receives and logs SNMP TRAP
+and INFORM messages.</p>
+<p><strong>Installed size:</strong> <code>90 KB</code><br>
+<strong>How to install:</strong> <code>sudo apt install snmptrapd</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>init-system-helpers</li>
+<li>libc6</li>
+<li>libnetsnmptrapd40</li>
+<li>libsnmp40</li>
+<li>libwrap0</li>
+<li>snmpd
+</div></li>
+</ul>
+<h5 id=snmptrapd-1>snmptrapd</h5>
+<p>Receive and log SNMP trap messages.</p>
+<pre><code>root@kali:~# snmptrapd -h
+Usage: snmptrapd [OPTIONS] [LISTENING ADDRESSES]
+
+	NET-SNMP Version:  5.9.1
+	Web:      http://www.net-snmp.org/
+	Email:    net-snmp-coders@lists.sourceforge.net
+
+  -a			ignore authentication failure traps
+  -A			append to log file rather than truncating it
+  -c FILE		read FILE as a configuration file
+  -C			do not read the default configuration files
+  -d			dump sent and received SNMP packets
+  -D[TOKEN[,...]]		turn on debugging output for the specified TOKENs
+			   (ALL gives extremely verbose debugging output)
+  -f			do not fork from the shell
+  -F FORMAT		use specified format for logging to standard error
+  -g GID		change to this numeric gid after opening
+			  transport endpoints
+  -h, --help		display this usage message
+  -H			display configuration file directives understood
+  -m MIBLIST		use MIBLIST instead of the default MIB list
+  -M DIRLIST		use DIRLIST as the list of locations
+			  to look for MIBs
+  -n			use numeric addresses instead of attempting
+			  hostname lookups (no DNS)
+  -p FILE		store process id in FILE
+  -t			Prevent traps from being logged to syslog
+  -u UID		change to this uid (numeric or textual) after
+			  opening transport endpoints
+  -v, --version		display version information
+  -x ADDRESS		use ADDRESS as AgentX address
+  -X			don't become a subagent
+  -O &lt;OUTOPTS&gt;		toggle options controlling output display
+			0:  print leading 0 for single-digit hex characters
+			a:  print all strings in ascii format
+			b:  do not break OID indexes down
+			e:  print enums numerically
+			E:  escape quotes in string indices
+			f:  print full OIDs on output
+			n:  print OIDs numerically
+			p PRECISION:  display floating point values with specified PRECISION (printf format string)
+			q:  quick print for easier parsing
+			Q:  quick print with equal-signs
+			s:  print only last symbolic element of OID
+			S:  print MIB module-id plus last element
+			t:  print timeticks unparsed as numeric integers
+			T:  print human-readable text along with hex strings
+			u:  print OIDs using UCD-style prefix suppression
+			U:  don't print units
+			v:  print values only (not OID = value)
+			x:  print all strings in hex format
+			X:  extended index format
+  -L &lt;LOGOPTS&gt;		toggle options controlling where to log to
+			e:           log to standard error
+			o:           log to standard output
+			n:           don't log at all
+			f file:      log to the specified file
+			s facility:  log to syslog (via the specified facility)
+
+			(variants)
+			[EON] pri:   log to standard error, output or /dev/null for level 'pri' and above
+			[EON] p1-p2: log to standard error, output or /dev/null for levels 'p1' to 'p2'
+			[FS] pri token:    log to file/syslog for level 'pri' and above
+			[FS] p1-p2 token:  log to file/syslog for levels 'p1' to 'p2'
+</code></pre>
+<hr>
+<h5 id=traptoemail>traptoemail</h5>
+<p>Snmptrapd handler script to convert snmp traps into emails</p>
+<pre><code>root@kali:~# traptoemail -h
+
+traptoemail [-s smtpserver] [-f fromaddress] toaddress [...]
+
+  traptoemail shouldn't be called interatively by a user.  It is
+  designed to be called as an snmptrapd extension via a &quot;traphandle&quot;
+  directive in the snmptrapd.conf file.  See the snmptrapd.conf file for
+  details.
+
+  Options:
+    -s smtpserver      Sets the smtpserver for where to send the mail through.
+    -f fromaddress     Sets the email address to be used on the From: line.
+    toaddress          Where you want the email sent to.
+
+</code></pre>
+<hr>
+<h3 id=tkmib>tkmib</h3>
+<p>The Simple Network Management Protocol (SNMP) provides a framework
+for the exchange of management information between agents (servers)
+and clients.</p>
+<p>The Net-SNMP MIB (Management Information Base) Browser provides a
+graphical frontend for the Net-SNMP tools. It can be used to browse
+the MIB tree and interactively send requests to SNMP agents.</p>
+<p><strong>Installed size:</strong> <code>1.61 MB</code><br>
+<strong>How to install:</strong> <code>sudo apt install tkmib</code></p>
+<p><div class=dependencies-spoiler></p>
+<ul>
+<li>libsnmp-perl</li>
+<li>perl-tk
+</div></li>
+</ul>
+<h5 id=tkmib-1>tkmib</h5>
+<p>An interactive graphical MIB browser for SNMP</p>
+<pre><code>root@kali:~# tkmib -h
+setting opts
+
+tkmib [-C] [-o OID] [SNMPCMD arguments] [host]
+  -f CONFIG_FILE  load CONFIG_FILE after starting up. (default: ~/.snmp/tkmibrc)
+                  (use -f /dev/null to not read one).
+
+  See the snmpcmd manual page for related SNMPCMD arguments.  (Not all
+  options are currently supported.)
+</code></pre>
+<hr>
+</div>
+<p id=post-meta>
+Updated on: 2022-Feb-10<br>
+</p>
+<hr>
+<div id=pagination>
+<a href=https://gitlab.com/kalilinux/documentation/kali-tools/edit/main/net-snmp/index.md rel=noopener target=blank>
+<i class=ti-pencil-alt></i>&nbsp;Edit this page
+</a>
+<div></div>
+<a href=../nbtscan/index.html>
+<i class=ti-arrow-left></i>
+<span>nbtscan</span>
+</a>
+<a href=../netbase/index.html>
+<span>netbase</span>
+<i class=ti-arrow-right></i>
+</a>
+</div>
+</section>
+</main>
+<style>main{flex-wrap:wrap;--margins:40px}aside{width:100%;max-width:800px;min-width:300px;margin-top:20px;top:10px;margin-right:60px;border-right:1px solid rgba(127,127,127,.2);flex:1;max-height:calc(100vh - 10px);overflow:auto;scrollbar-width:thin}aside::-webkit-scrollbar{width:5px}aside::-webkit-scrollbar-track{background:#eee}aside::-webkit-scrollbar-thumb{background:#ccc}@media(max-width:1300px){main{flex-direction:column}aside{order:0;margin:auto;margin-top:30px;position:relative;border:0;padding-bottom:60px;max-height:unset;top:0}}aside img{max-width:224px;display:block;margin:10px 0 20px}aside h3{display:inline;text-transform:capitalize}aside h4{margin-bottom:8px}aside h4 a,aside h4 a:hover{color:inherit}aside h4 a i{text-shadow:.5px .5px .25px,-.5px -.5px .25px,.5px -.5px .25px,-.5px .5px .25px;color:var(--primary-color);margin-left:.4em;font-size:.5em;vertical-align:top}aside li::before{display:none}aside>div>a{text-transform:capitalize;padding-right:30px}aside a,aside code{white-space:nowrap}#package-links span{white-space:nowrap;display:inline-block}#package-links>a,#package-links>span{padding-top:8px;display:inline-block}#package-links>span{transform:translateX(-30px)}#package-links>span span{padding:0 10px;box-sizing:content-box;width:10px}.table-of-contents{padding-left:0}.table-of-contents li{margin:4px 0}.table-of-contents li li::before,section#content .dependencies-spoiler li::before{background:0 0;height:auto;display:block;font-family:themify;filter:none;color:#888}#metapackages .table-of-contents li li::before{content:'\e6bf'}#binaries .table-of-contents li li::before{content:'$'}section#content .dependencies-spoiler li::before{content:'\e687'}.table-of-contents a{text-overflow:ellipsis;overflow:hidden}.table-of-contents>li{padding:0}.table-of-contents>li>a{margin:0;font-size:16px}.table-of-contents>li>a i{margin:0 8px 0 2px}.table-of-contents>li ul{display:grid;grid-template-columns:repeat(auto-fill,120px)}.table-of-contents>li li{margin-left:7px}aside li ul:not(:empty){max-height:unset;margin-top:0}section#content{margin-top:var(--margins);width:100%}section#content :first-child{margin-top:0}section#content code{max-height:800px}#packages-info h3{padding-left:15px;margin-left:5px;border-left:3px solid var(--primary-color)}#packages-info ul{margin-left:20px}section#content .dependencies-spoiler{position:relative;background:rgba(127,127,127,5%);padding:3em 0 0;border-radius:var(--border-radius);box-shadow:0 0 10px rgba(127,127,127,.3);margin:40px 0;height:0;overflow:hidden;cursor:pointer}section#content .dependencies-spoiler.open{height:auto;padding-bottom:1em}section#content .dependencies-spoiler ul{display:grid;grid-template-columns:repeat(auto-fill,260px)}section#content .dependencies-spoiler::before{display:block;content:'Dependencies:';position:absolute;top:.7em;left:1em;font-size:1.1em;text-shadow:0 0 1px}section#content .dependencies-spoiler::after{display:block;content:'\e64b';font-family:themify;position:absolute;top:.7em;right:1em;font-size:1.1em;text-shadow:0 0 1px}</style>
+<script>$$('.dependencies-spoiler').forEach(a=>a.onclick=({currentTarget:a})=>a.classList.toggle('open'))</script>
+<footer>
+<div class=darkmode-switch>
+<span>LIGHT</span><label class=switch>
+<input type=checkbox name=toggle-darkmode>
+<div></div>
+</label><span>DARK</span>
+</div>
+<div class=container>
+<div>
+<h4>Downloads</h4>
+<a href=https://www.kali.org/get-kali/ rel=noopener target=_blank>Kali Linux</a>
+<a href=https://www.kali.org/get-kali/#kali-mobile rel=noopener target=_blank>Kali NetHunter</a>
+<h4>Links</h4>
+<a href=https://www.kali.org/ rel=noopener target=_blank>Home</a>
+<a href=https://www.kali.org/blog/ rel=noopener target=_blank>Blog</a>
+<a href=https://www.kali.org/docs/ rel=noopener target=_blank>Documentation</a>
+<a href=https://www.kali.org/tools rel=noopener target=_blank>Tools</a>
+<a href=https://forums.kali.org/ rel=noopener target=_blank>Support Forum</a>
+<a href=https://bugs.kali.org/ rel=noopener target=_blank>Bug Tracker</a>
+<a href=https://status.kali.org/ rel=noopener target=_blank>System Status</a>
+</div>
+<div>
+<h4>Policies</h4>
+<a href=https://www.kali.org/docs/policy/cookie/>Cookie Policy</a>
+<a href=https://www.kali.org/docs/policy/privacy/>Privacy Policy</a>
+<a href=https://www.kali.org/docs/policy/trademark/>Trademark Policy</a>
+<h4>Follow Us</h4>
+<a href=https://twitter.com/kalilinux title=Twitter rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717.0-4.92 2.203-4.92 4.917.0.39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475.0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314.0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39.0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054.0 13.999-7.496 13.999-13.986.0-.209.0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+Twitter
+</a>
+<a href=https://www.facebook.com/kalilinux title=Facebook rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.9981 11.9991C23.9981 5.37216 18.626.0 11.9991.0 5.37216.0.0 5.37216.0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533V15.4676H7.07758V11.9991H10.1242V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128.0 2.686.23435 2.686.23435v2.9529h-1.513C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991h3.3279l-.532 3.4685H13.8739v8.3848C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991z"/></svg>
+Facebook
+</a>
+<a href=https://gitlab.com/kalilinux title=GitLab rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M23.955 13.587l-1.342-4.135-2.664-8.189c-.135-.423-.73-.423-.867.0L16.418 9.45H7.582L4.919 1.263C4.783.84 4.185.84 4.05 1.26L1.386 9.449.044 13.587c-.121.375.014.789.331 1.023L12 23.054l11.625-8.443c.318-.235.453-.647.33-1.024"/></svg>
+GitLab
+</a>
+<a href=https://github.com/kalilinux title=GitHub rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M12 .297c-6.63.0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577.0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93.0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176.0.0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22.0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22.0 1.606-.015 2.896-.015 3.286.0.315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+GitHub
+</a>
+<a href=https://www.microsoft.com/en-us/p/kali-linux/9pkr34tncv07 title="Microsoft Store" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6.0H12.6V0H24v11.4z"/></svg>
+Microsoft Store
+</a>
+<a href=https://hub.docker.com/u/kalilinux title=Docker rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M4.82 17.275c-.684.0-1.304-.56-1.304-1.24s.56-1.243 1.305-1.243c.748.0 1.31.56 1.31 1.242s-.622 1.24-1.305 1.24zm16.012-6.763c-.135-.992-.75-1.8-1.56-2.42l-.315-.25-.254.31c-.494.56-.69 1.553-.63 2.295.06.562.24 1.12.554 1.554-.254.13-.568.25-.81.377-.57.187-1.124.25-1.68.25H.097l-.06.37c-.12 1.182.06 2.42.562 3.54l.244.435v.06c1.5 2.483 4.17 3.6 7.078 3.6 5.594.0 10.182-2.42 12.357-7.633 1.425.062 2.864-.31 3.54-1.676l.18-.31-.3-.187c-.81-.494-1.92-.56-2.85-.31l-.018.002zm-8.008-.992h-2.428v2.42h2.43V9.518l-.002.003zm0-3.043h-2.428v2.42h2.43V6.48l-.002-.003zm0-3.104h-2.428v2.42h2.43v-2.42h-.002zm2.97 6.147H13.38v2.42h2.42V9.518l-.007.003zm-8.998.0H4.383v2.42h2.422V9.518l-.01.003zm3.03.0h-2.4v2.42H9.84V9.518l-.015.003zm-6.03.0H1.4v2.42h2.428V9.518l-.03.003zm6.03-3.043h-2.4v2.42H9.84V6.48l-.015-.003zm-3.045.0H4.387v2.42H6.8V6.48l-.016-.003z"/></svg>
+Docker
+</a>
+<a href=https://app.vagrantup.com/kalilinux title=Vagrant rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.672 6.774V4.917l3.164-1.822L3.56.005.397 1.852v2.263L7.52 21.41 12 23.995v-6.496l2.107-1.224-.024-.015 4.245-9.486V4.917l5.275-3.065L20.439.005l-5.272 3.087h-.003v2.11L12 12.584v2.467l-2.11 1.224zm3.164-3.66L8.814 3.1 5.672 4.917v1.857l4.218 9.501L12 15.234v-2.65L8.836 5.202zm9.492 1.803v1.857l-4.22 9.101L12 17.332v6.663l4.521-2.607L23.603 4.05V1.852z"/></svg>
+Vagrant
+</a>
+<a href=https://aws.amazon.com/marketplace/pp/B08LL91KKB title="Amazon AWS" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183.0.08-.048.16-.152.24l-.503.335a.383.383.0 01-.208.072c-.08.0-.16-.04-.239-.112a2.47 2.47.0 01-.287-.375 6.18 6.18.0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67.0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533.0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272.0.551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28.0-.568.031-.863.103s-.583.16-.862.272a2.287 2.287.0 01-.28.104.488.488.0 01-.127.023c-.112.0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597.0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84.0 011.246-.151c.95.0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263.0.534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66.0 00-.735-.136 6.02 6.02.0 00-.75-.048c-.535.0-.926.104-1.19.32-.263.215-.39.518-.39.917.0.375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144.0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398.0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151.0.255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549.0 01.32-.08h.638c.152.0.256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52.0 01.311-.08h.743c.127.0.2.065.2.2.0.04-.009.08-.017.128a1.137 1.137.0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51.0 01-.303.08h-.687c-.151.0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415.0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563.0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048.0.096.008.144.024s.12.048.2.08c.271.12.566.215.878.279.319.064.63.096.95.096.502.0.894-.088 1.165-.264a.86.86.0 00.415-.758.777.777.0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902.0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175.0.359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69.0 01.24.2.43.43.0 01.071.263v.375c0 .168-.064.256-.184.256a.83.83.0 01-.303-.096 3.652 3.652.0 00-1.532-.311c-.455.0-.815.071-1.062.223-.248.152-.375.383-.375.71.0.224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117.0.343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598.0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914.0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
+Amazon AWS
+</a>
+<a href=https://azuremarketplace.microsoft.com/en/marketplace/apps/kali-linux.kali-linux title="Microsoft Azure" rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7 6.105 8.677.0 19.253h5.505v.014L13.23 2.7z"/></svg>
+Microsoft Azure
+</a>
+<a href=https://www.kali.org/rss.xml title=RSS rel=noopener target=_blank><svg viewBox="0 0 24 24" fill="currentcolor" width="24" height="24"><path d="M19.199 24C19.199 13.467 10.533 4.8.0 4.8V0c13.165.0 24 10.835 24 24h-4.801zM3.291 17.415c1.814.0 3.293 1.479 3.293 3.295.0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526.0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727.0 15.909 7.184 15.909 15.91z"/></svg>
+RSS
+</a>
+</div>
+<div><svg id="footer-logo" viewBox="0 0 135.47 135.47"><path fill="currentcolor" d="m71.766 36.352s-10.212-.6795-27.602 4.7619c-17.722 5.5452-27.773 13.405-27.773 13.405s26.414-14.748 56.228-15.586zm38.09 16.035 1.3276-.08664s-7.6062-9.2286-22.165-13.724c8.1839 3.3267 15.307 7.7345 20.837 13.81zm2.1727 3.8344c.20411-.3539.86302 1.1243 1.3634 1.7453.0212.124.0564.19967-.23373.13998-.0244-.12747-.0665-.16444-.0665-.16444s-.70029-.41667-.91499-.71224c-.21487-.29556-.253-.81255-.14825-1.0086zm17.867 43.93s1.6147-18.538-27.511-22.812c-3.6915-.54163-8.3599-.9585-13.082-.97044-23.344.30865-24.195-26.924-6.6044-28.299 7.2901-.60152 15.995 3.3311 24.505 7.2941-.0316 1.0569.0121 1.9961.70646 2.864.69414.86762 3.3607 1.8142 4.2128 2.3031.85203.48907 3.5816 2.2245 5.2543 4.4017.36275-.67854 3.3921-2.6504 3.3921-2.6504s-.72571.01579-2.414-.61519c-1.6885-.63098-3.6921-2.5401-3.7395-2.6504-.0473-.11052-.0788-.28401.31578-.36295.2996-.25224-.37893-1.0727-.67874-1.3723-.2996-.2998-2.3036-3.7073-2.3508-3.7863-.0473-.07894-.0632-.1577-.20507-.25243-.4419-.1421-2.3826.20506-2.3826.20506s-2.9847-1.4659-4.0135-4.6264c.015.55358-.5118 1.158.0 2.4298-1.5562-.65832-2.8929-1.7811-3.9472-4.5557-.62751 1.5781.0 2.5815.0 2.5815s-3.6646-1.024-4.2509-4.4036c-.6435 1.5171.0 2.4296.0 2.4296s-5.9742-3.1172-15.901-3.1624c-6.646-.60961-8.0296-12.301-7.4139-14.269.0.0-9.586-5.0521-28.456-7.2841-18.87-2.2322-34.346-.33638-34.346-.33638s33.421-1.6039 60.195 9.2356c.91018 4.0709 3.6482 10.851 5.1229 14.11-4.2197 2.9175-8.9781 5.6609-9.7191 15.391-.74074 9.7297 7.6245 18.288 17.998 18.552 9.8502.52469 16.656.59921 24.905 4.8759 7.8739 4.3537 14.33 17.62 14.969 29.551.69008-8.8524-2.632-27.889-18.134-33.669 21.667 3.7917 23.573 19.854 23.573 19.854zm-58.64-65.253-.77963-2.5147s-12.864-2.2844-30.16-1.055c-17.296 1.2294-34.759 7.2839-34.759 7.2839s35.732-8.991 65.698-3.7143"/></svg>
+© OffSec Services Limited 2022. All rights reserved.
+</div>
+</div>
+</footer>
+<script src=../../script.min.js></script>
+</body>
+
+<!-- Mirrored from www.kali.org/tools/net-snmp/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Feb 2022 05:14:49 GMT -->
+</html>

