@@ -1,7 +1,0 @@
-Contact: security at offensive-security dot com
-Acknowledgments: https://www.offensive-security.com/bug-bounty-program/
-Preferred-Languages: en
-Canonical: https://www.kali.org/.well-known/security.txt
-Policy: https://www.offensive-security.com/offsec/bug-bounty-program-insights/
-Policy: https://www.offensive-security.com/bug-bounty-program/
-Hiring: https://www.offensive-security.com/careers/
